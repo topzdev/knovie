@@ -1,0 +1,24 @@
+.heading {
+	&--primary {
+		font-size: 4rem;
+		letter-spacing: -1px;
+		color: rgba(var(--base-text-color), 0.9);
+	}
+
+	&--secondary {
+		font-size: 1.8rem;
+		font-family: var(--font-regular);
+		font-weight: 700;
+		opacity: 0.9;
+	}
+}
+
+.paragraph {
+	&--primary {
+		font-family: var(--font-regular);
+		font-size: 1.6rem;
+		line-height: 1.5;
+		font-weight: 200;
+		opacity: 0.8;
+	}
+}

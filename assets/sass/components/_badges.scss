@@ -1,0 +1,28 @@
+.badge {
+	display: inline-block;
+	padding: 3px 8px;
+	margin-bottom: 2px;
+	box-shadow: var(--elevation-20);
+	text-decoration: none;
+	color: #000;
+	user-select: none;
+	&--primary {
+		display: inline-flex;
+		font-size: 16px;
+		background: rgba(var(--primary-color), 1);
+		color: rgba(var(--primary-text-color), 1);
+		border-radius: 5px;
+		font-weight: 700;
+		align-items: center;
+
+		svg {
+			height: 20px;
+		}
+	}
+
+	&--outlined {
+		border: 2px solid rgba(var(--primary-color), 1);
+		color: rgba(var(--primary-color), 1);
+		background: transparent !important;
+	}
+}

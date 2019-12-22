@@ -1,0 +1,7 @@
+@mixin transition() {
+	transition: all 300ms ease-in-out;
+}
+
+@mixin box-shadow() {
+	box-shadow: 0 10px 20px rgba(#000, 0.05);
+}

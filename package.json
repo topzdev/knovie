@@ -1,0 +1,26 @@
+{
+  "name": "knovie",
+  "version": "1.0.0",
+  "description": "Know more about your favorite movie",
+  "author": "Christopher Lugod",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@mdi/js": "^4.7.95",
+    "@nuxtjs/axios": "^5.3.6",
+    "normalize.css": "^8.0.1",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.4"
+  }
+}

@@ -1,0 +1,21 @@
+.navbar {
+	position: absolute;
+	background: transparent;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	// * Index 100-Navbar
+	&__nav {
+		display: flex;
+		height: var(--navbar-height);
+	}
+
+	&__brand {
+		height: 50px;
+		user-select: none;
+		img {
+			height: 100%;
+		}
+	}
+}
