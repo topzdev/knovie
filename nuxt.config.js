@@ -1,6 +1,9 @@
 import colors from "vuetify/es5/util/colors";
 
 export default {
+  generate: {
+    devtools: true
+  },
   mode: "universal",
   /*
    ** Headers of the page
@@ -19,6 +22,7 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
+
   /*
    ** Customize the progress-bar color
    */
@@ -34,7 +38,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/vuetify"],
+  buildModules: ["@nuxtjs/vuetify", "@nuxtjs/dotenv"],
   /*
    ** Nuxt.js modules
    */
@@ -75,6 +79,10 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.node = {
+        fs: "empty"
+      };
+    }
   }
 };

@@ -1,18 +1,18 @@
 <template>
-  <div>
-    <Previewer />
+  <div v-if="movie">
+    <Previewer :movie="movie" />
     <v-container class="movie">
       <v-row>
         <v-col cols="9" class="movie__main">
-          <MovieDescription :title="title" />
-          <MovieCast :title="title" casts />
+          <MovieDescription :title="title" :description="movie.overview" />
+          <MovieCast :title="title" :casts="movie.credits.cast" />
         </v-col>
         <v-col cols="3" class="movie__sidebar">
-          <MovieInfo :title="title" overview />
+          <MovieInfo :title="title" :info="movie" />
         </v-col>
       </v-row>
     </v-container>
-    <MovieGallery :title="title" images />
+    <MovieGallery :title="title" :images="movie.images" />
 
     <v-container>
       <v-row>
@@ -61,10 +61,20 @@ export default {
     };
   },
   watch: {
-    $route(to, from) {}
+    $route(to, from) {
+      this.$store.dispatch("movie/fetchMovie", this.$route.params.id);
+    },
+    movie() {
+      this.title = this.movie.title;
+    }
   },
   created() {
-    this.title = this.$route.params.title;
+    this.$store.dispatch("movie/fetchMovie", this.$route.params.id);
+  },
+  computed: {
+    movie() {
+      return this.$store.getters["movie/getCurrent"];
+    }
   }
 };
 </script>

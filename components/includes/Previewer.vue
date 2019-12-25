@@ -3,8 +3,8 @@
     <div class="previewer__cover shadow-overlay">
       <img
         class="fit-image"
-        src="../../assets/img/sample.jpg"
-        :alt="title+' official wallpaper'"
+        :src="movie.backdrop_path"
+        :alt="movie.title + ' official wallpaper'"
         draggable="false"
         aria-label="Movie Wallpaper"
       />
@@ -14,35 +14,50 @@
         <div class="previewer__poster backdrop-gradient">
           <img
             class="fit-image"
-            src="../../assets/img/sample-poster.jpg"
-            :alt="title+' poster'"
+            :src="movie.poster_path"
+            :title="movie.title"
+            :alt="movie.title + ' poster'"
             draggable="false"
             aria-label="Movie Poster"
           />
         </div>
 
         <div class="previewer__body">
-          <h1 class="slider__title">{{title}}</h1>
+          <h1 class="slider__title">{{ movie.title }}</h1>
           <ul class="previewer__list mb-1">
-            <li>
-              <nuxt-link to="/" class="badge badge--primary badge--outlined">Action</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/" class="badge badge--primary badge--outlined">War</nuxt-link>
+            <li v-for="genre in movie.genres" :key="genre.id">
+              <nuxt-link
+                :to="`/search/${genre.name}`"
+                class="badge badge--primary badge--outlined"
+                >{{ genre.name }}</nuxt-link
+              >
             </li>
           </ul>
 
           <ul class="previewer__critic mb-1">
             <li>
-              <p class="slider__rating" aria-label="ratings" title="IMdb rating">
-                {{rating}}
+              <p
+                class="slider__rating"
+                aria-label="ratings"
+                title="IMdb rating"
+              >
+                {{
+                  movie.imdb_rating !== "N/A"
+                    ? movie.imdb_rating
+                    : movie.vote_average
+                }}
                 <span>/10</span>
               </p>
             </li>
             <li>
               <div class="previewer__critic-item">
-                <img src="../../assets/img/like.png" alt title="Likes" draggable="false" />
-                <p>338</p>
+                <img
+                  src="../../assets/img/like.png"
+                  alt
+                  title="Likes"
+                  draggable="false"
+                />
+                <p>{{ movie.imdb_vote || movie.vote_count }}</p>
               </div>
             </li>
             <li>
@@ -105,7 +120,8 @@ export default {
       cover: "",
       poster: ""
     };
-  }
+  },
+  props: ["movie"]
 };
 </script>
 

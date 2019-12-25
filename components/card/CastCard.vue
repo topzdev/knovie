@@ -1,32 +1,34 @@
 <template>
   <div class="card--secondary">
-    <nuxt-link to="/" class="card--secondary__img">
+    <nuxt-link :to="'/people/' + cast.cast_id" class="card--secondary__img">
       <img
-        src="../../assets/img/sample-cast.jpg"
+        :src="imagePath(cast.profile_path, 'w185')"
         class="fit-image"
-        alt="Tony Stark Cast"
+        :alt="cast.name + ' as ' + cast.character"
+        :title="cast.name + ' as ' + cast.character"
         draggable="false"
       />
     </nuxt-link>
 
     <div class="card--secondary__content">
-      <nuxt-link to="/" class="card--secondary__name">{{name}}</nuxt-link>
-      <p class="card--secondary__film-name">as {{film_name}}</p>
+      <nuxt-link
+        :to="'/people/' + cast.cast_id"
+        class="card--secondary__name"
+        >{{ cast.name }}</nuxt-link
+      >
+      <p class="card--secondary__film-name">as {{ cast.character }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import imagePath from "~/utils/imagePath";
 export default {
-  data() {
-    return {
-      name: "Robery Downey Jr.",
-      film_name: "Tony Stark",
-      img: "tony-stark.png"
-    };
+  props: ["cast"],
+  methods: {
+    imagePath
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

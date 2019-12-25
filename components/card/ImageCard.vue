@@ -5,23 +5,29 @@
         <v-icon size="30">{{ icons.download }}</v-icon>
       </button>
     </div>
-    <img :src="image" alt class="fit-image" draggable="false" />
+    <img
+      :src="imagePath(image.file_path, size)"
+      alt
+      class="fit-image"
+      draggable="false"
+    />
   </div>
 </template>
 
 <script>
 import { mdiDownloadOutline } from "@mdi/js";
+import imagePath from "~/utils/imagePath";
 export default {
-  props: ["image"],
+  props: ["image", "size"],
   data() {
     return {
       icons: {
         download: mdiDownloadOutline
       }
     };
-  }
+  },
+  methods: { imagePath }
 };
 </script>
 
-<style>
-</style>
+<style></style>

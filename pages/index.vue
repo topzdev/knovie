@@ -1,10 +1,12 @@
 <template>
   <div>
-    <Slider />
+    <Slider category="now_playing" />
     <v-container class="py-5">
-      <Showcase title="Upcoming Movies" />
-      <Showcase title="Popular" />
-      <Showcase title="Top Rated" />
+      <Showcase title="Upcoming Movies" :movies="upcoming" />
+
+      <Showcase title="Popular" :movies="popular" />
+
+      <Showcase title="Top Rated" :movies="top_rated" />
     </v-container>
   </div>
 </template>
@@ -18,6 +20,25 @@ export default {
   components: {
     Slider,
     Showcase
+  },
+  created() {
+    this.$store.dispatch("movie/fetchCategory", [
+      "popular",
+      "upcoming",
+      "top_rated"
+    ]);
+  },
+
+  computed: {
+    top_rated() {
+      return this.$store.getters["movie/getCategories"]("top_rated");
+    },
+    upcoming() {
+      return this.$store.getters["movie/getCategories"]("upcoming");
+    },
+    popular() {
+      return this.$store.getters["movie/getCategories"]("popular");
+    }
   }
 };
 </script>
