@@ -1,8 +1,5 @@
 import axios from "axios";
-import imagePath from "../utils/imagePath";
-import moment from "moment";
-import pallete from "image-palette";
-import pixels from "image-pixels";
+import colorMatcher from "~/utils/colorMatcher";
 require("dotenv").config();
 
 export const state = () => ({
@@ -29,49 +26,33 @@ export const mutations = {
   },
   SET_CURRENT(state, movie) {
     state.current = movie;
-  }
-};
+  },
 
-const setDataDependencies = results => {
-  if (!Array.isArray(results)) {
-    results = [results];
-  }
-  return results.map(data => {
-    data.backdrop_path = imagePath(data.backdrop_path, "w1280");
-    data.poster_path = imagePath(data.poster_path, "w342");
-    data.year = moment(data.release_date).format("YYYY");
-
-    return data;
-  });
+  SET_COLLECTION(state, collection) {}
 };
 
 export const actions = {
-  fetchCategory({ commit, state }, category) {
-    if (!Array.isArray(category)) {
-      category = [category];
+  async fetchCategory({ commit, state }, category) {
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.TMDB_API_KEY_V3}&language=${state.language}&page=1&append_to_response=genre`
+      );
+      console.log(res.data.results);
+      commit("SET_CATEGORIES", {
+        movies: res.data.results,
+        category
+      });
+    } catch (err) {
+      console.error(err);
     }
-    category.forEach(async data => {
-      try {
-        const res = await axios.get(
-          `https://api.themoviedb.org/3/movie/${data}?api_key=${process.env.TMDB_API_KEY_V3}&language=${state.language}&page=1`
-        );
-
-        commit("SET_CATEGORIES", {
-          movies: setDataDependencies(res.data.results),
-          category: data
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    });
   },
 
   async fetchMovie({ commit, state }, id) {
     try {
       let tmdb = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits,reviews,similar,recommendations`
       );
-
+      // !Remove this to avoid request limit
       let imdb = await axios.get(`http://www.omdbapi.com/?i=${tmdb.data.imdb_id}&plot=full
       &apikey=${process.env.OMDB_API_KEY}`);
 
@@ -81,8 +62,24 @@ export const actions = {
       tmdb.data.imdb_rating = imdbRating;
       tmdb.data.imdb_votes = imdbVotes;
 
+      let color = await colorMatcher(tmdb.data.backdrop_path);
+      tmdb.data.color = color;
+
       console.log(imdb.data, tmdb.data);
-      commit("SET_CURRENT", setDataDependencies(tmdb.data)[0]);
+      commit("SET_CURRENT", tmdb.data);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  async fetchCollection({ commit }, collection_id) {
+    try {
+      let res = await axios.get(
+        `https://api.themoviedb.org/3/collection/${collection_id}?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US`
+      );
+
+      console.log(res.data);
+      commit("SET_COLLECTION", res.data);
     } catch (err) {
       console.error(err);
     }

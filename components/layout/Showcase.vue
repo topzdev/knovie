@@ -6,9 +6,9 @@
       <v-col
         cols="6"
         class="mb-1"
-        :class="setSize"
-        v-for="movie in movies"
-        :key="movie.title"
+        :class="cardSize ? cardSize : setSize"
+        v-for="movie in movies.slice(0, toShow ? toShow : limitShow)"
+        :key="movie.id"
       >
         <MovieCard :movie="movie" />
       </v-col>
@@ -35,7 +35,8 @@ export default {
   data() {
     return {
       loading: false,
-      setSize: "col-lg-custom"
+      setSize: "col-lg-custom",
+      limitShow: 15
     };
   }
 };

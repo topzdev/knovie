@@ -90,12 +90,18 @@
       margin-bottom: 3px;
       @include transition;
       transition: all 200ms ease;
+      word-spacing: -2px;
+      & > *:not(:last-child) {
+        &:after {
+          content: "/";
+        }
+      }
     }
 
     &__title {
       font-size: 2.4rem;
       margin-bottom: -2px;
-      line-height: 1;
+      line-height: 1.1;
     }
 
     &__date {
@@ -115,13 +121,14 @@
     }
 
     &__img {
-      --box-size: 130px;
+      --box-size: 210px;
       display: block;
       position: relative;
       z-index: 2;
       border-radius: 5px;
       box-shadow: var(--elevation-10);
       user-select: none;
+      height: var(--box-size);
 
       img {
         border-radius: 10px;

@@ -9,22 +9,22 @@
     </v-container>
     <div class="gallery--full" :style="`height: ${gallerySize}`">
       <v-row no-gutters>
-        <v-col
-          lg="4"
-          height="100%"
-          :style="`max-height:${gallerySize / (12 / 12)}px`"
-        >
-          <GalleryCard :image="bigImage()" size="w780" />
+        <v-col height="100%" :style="`max-height:${gallerySize / (12 / 12)}px`">
+          <GalleryCard :image="{ ...bigImage(), title }" size="w780" />
         </v-col>
-        <v-col lg="8" height="100%">
+        <v-col :lg="smallImage().divider" height="100%">
           <v-row no-gutters>
             <v-col
-              lg="4"
+              :lg="smallImage().size"
               :style="`max-height:${gallerySize / (12 / 4)}px`"
-              v-for="image in smallImage()"
+              v-for="image in smallImage().images"
               :key="image.file_path"
             >
-              <GalleryCard :image="image" size="w780" />
+              <GalleryCard
+                :image="{ ...image, title }"
+                size="w780"
+                :title="title"
+              />
             </v-col>
           </v-row>
         </v-col>
@@ -61,7 +61,28 @@ export default {
       return this.$props.images.backdrops[0];
     },
     smallImage() {
-      return this.$props.images.backdrops.slice(1);
+      let { backdrops } = this.$props.images;
+      let lenght = backdrops.length - 1;
+      let setBackdrop = {
+        size: "",
+        images: [],
+        divider: 8
+      };
+      if (lenght >= 9) {
+        setBackdrop.size = 4;
+        setBackdrop.images = backdrops.slice(1, 10);
+      } else if (lenght < 9) {
+        setBackdrop.size = 6;
+        setBackdrop.images = backdrops.slice(1, 7);
+        setBackdrop.divider = 6;
+      } else if (length < 6) {
+        setBackdrop.size = 6;
+        setBackdrop.images = backdrops.slice(1, 5);
+      } else {
+        setBackdrop.divider = 0;
+      }
+
+      return setBackdrop;
     }
   }
 };

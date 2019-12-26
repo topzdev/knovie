@@ -5,7 +5,11 @@
     style="--box-shadow: var(--primary-color)"
   >
     <div class="card--primary__img">
-      <img :src="movie.poster_path" :alt="movie.title" draggable="false" />
+      <img
+        :src="imagePath(movie.poster_path, 'w185')"
+        :alt="movie.title"
+        draggable="false"
+      />
     </div>
 
     <div class="card__actions">
@@ -17,14 +21,21 @@
     <div class="card--primary__body">
       <div class="badge badge--primary">{{ movie.vote_average }}</div>
       <h1 class="card--primary__title">{{ movie.title }}</h1>
-      <div class="card--primary__genre">{{ genre }}</div>
-      <p class="card--primary__date">{{ movie.year }}</p>
+      <div class="card--primary__genre" v-if="genres">
+        <span v-for="genre in movie.genre_ids.slice(0, 2)" :key="genre">
+          {{ _.find(genres, { id: genre }).name }}
+        </span>
+      </div>
+      <p class="card--primary__date">{{ moment(movie.year).format("YYYY") }}</p>
     </div>
   </nuxt-link>
 </template>
 
 <script>
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
+import imagePath from "@/utils/imagePath";
+import moment from "moment";
+
 export default {
   props: ["movie"],
   data: () => {
@@ -32,17 +43,17 @@ export default {
       icons: {
         heart: mdiHeartOutline,
         heartFull: mdiHeart
-      },
-      title: "Joker",
-      rating: 8.4,
-      genre: "Action/Drama",
-      date: 2019,
-      img: ""
+      }
     };
   },
-
+  computed: {
+    genres() {
+      return this.$store.getters["getGenres"];
+    }
+  },
   methods: {
-    onMouseEnter() {}
+    imagePath,
+    moment
   }
 };
 </script>

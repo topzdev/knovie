@@ -1,25 +1,21 @@
 <template>
   <header class="slider">
     <!--   -->
-    <VueSlickCarousel
-      class="slider-for"
-      v-bind="mainSlickOption"
-      v-if="getMovies"
-    >
-      <div v-for="trend in getMovies" :key="trend.title">
+    <VueSlickCarousel class="slider-for" v-bind="mainSlickOption" v-if="movies">
+      <div v-for="movie in movies" :key="movie.title">
         <v-container>
           <div class="slider__details">
-            <h1 class="slider__title">{{ trend.title }}</h1>
+            <h1 class="slider__title">{{ movie.title }}</h1>
 
             <p class="slider__rating mb-2">
-              {{ trend.vote_average }}
+              {{ movie.vote_average }}
               <span>/10</span>
             </p>
 
-            <p class="slider__description">{{ trend.overview }}</p>
+            <p class="slider__description">{{ movie.overview }}</p>
 
             <div class="slider__actions mt-2">
-              <nuxt-link :to="setLink(trend.id)" class="btn btn--primary mr-1"
+              <nuxt-link :to="setLink(movie.id)" class="btn btn--primary mr-1"
                 >View more</nuxt-link
               >
 
@@ -32,8 +28,8 @@
         <div class="slider__cover shadow-overlay">
           <img
             class="fit-image"
-            :src="trend.backdrop_path"
-            :alt="trend.title"
+            :src="imagePath(movie.backdrop_path, 'w1280')"
+            :alt="movie.title"
             draggable="false"
             aria-label="Movie Image slider"
           />
@@ -43,14 +39,10 @@
     <VueSlickCarousel
       class="slider-nav slider__sidebar"
       v-bind="sideSlickOption"
-      v-if="getMovies"
+      v-if="movies"
     >
       >
-      <SliderCard
-        v-for="trend in getMovies"
-        :key="trend.title"
-        :trend="trend"
-      />
+      <SliderCard v-for="movie in movies" :key="movie.title" :trend="movie" />
     </VueSlickCarousel>
   </header>
 </template>
@@ -62,7 +54,7 @@ import SliderCard from "../card/SliderCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VueSlickCarousel from "vue-slick-carousel";
-
+import imagePath from "@/utils/imagePath";
 export default {
   components: {
     SliderCard,
@@ -96,19 +88,12 @@ export default {
       loading: false
     };
   },
-  props: ["category"],
+  props: ["category", "movies"],
   methods: {
     setLink(title) {
       return `/movie/${title}`;
-    }
-  },
-  computed: {
-    getMovies() {
-      return this.$store.getters["movie/getCategories"](this.$props.category);
-    }
-  },
-  created() {
-    this.$store.dispatch("movie/fetchCategory", this.$props.category);
+    },
+    imagePath
   }
 };
 </script>

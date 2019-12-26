@@ -1,33 +1,55 @@
 <template>
   <div v-if="movie">
-    <Previewer :movie="movie" />
+    <Previewer :movie="movie" :color="movie.color" />
     <v-container class="movie">
       <v-row>
         <v-col cols="9" class="movie__main">
-          <MovieDescription :title="title" :description="movie.overview" />
-          <MovieCast :title="title" :casts="movie.credits.cast" />
+          <MovieDescription
+            :title="movie.title"
+            :description="movie.overview"
+          />
+          <MovieCast :title="movie.title" :casts="movie.credits.cast" />
         </v-col>
         <v-col cols="3" class="movie__sidebar">
-          <MovieInfo :title="title" :info="movie" />
+          <MovieInfo :title="movie.title" :info="movie" />
         </v-col>
       </v-row>
     </v-container>
-    <MovieGallery :title="title" :images="movie.images" />
+    <MovieGallery :title="movie.title" :images="movie.images" />
+
+    <v-container v-if="movie.reviews.results">
+      <v-row>
+        <v-col cols="9">
+          <MovieReview :title="movie.title" :reviews="movie.reviews.results" />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <MovieCollection
+      v-if="movie.belongs_to_collection"
+      :title="movie.title"
+      :collection="movie.belongs_to_collection"
+      :color="movie.color"
+    />
 
     <v-container>
       <v-row>
         <v-col cols="9">
-          <MovieReview :title="title" reviews />
-        </v-col>
-      </v-row>
-    </v-container>
+          <Showcase
+            v-if="movie.similar.results.length"
+            :title="'Related'"
+            :cardSize="'col-lg-3'"
+            :movies="movie.similar.results"
+            :toShow="8"
+          />
 
-    <MovieCollection :title="title" />
-
-    <v-container>
-      <v-row>
-        <v-col cols="9">
-          <Showcase :title="'Related'" :cardSize="'col-lg-3'" />
+          <Showcase
+            v-else
+            :title="'Recommended Movies'"
+            :cardSize="'col-lg-3'"
+            :movies="movie.recommendations.results"
+            :toShow="8"
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -45,6 +67,9 @@ import MovieCollection from "../../components/movie/MovieCollection";
 import Showcase from "../../components/layout/Showcase";
 
 export default {
+  async fetch({ params, store }) {
+    await store.dispatch("movie/fetchMovie", params.id);
+  },
   components: {
     MovieCast,
     Previewer,
@@ -55,22 +80,12 @@ export default {
     MovieCollection,
     Showcase
   },
-  data() {
-    return {
-      title: ""
-    };
-  },
   watch: {
     $route(to, from) {
       this.$store.dispatch("movie/fetchMovie", this.$route.params.id);
-    },
-    movie() {
-      this.title = this.movie.title;
     }
   },
-  created() {
-    this.$store.dispatch("movie/fetchMovie", this.$route.params.id);
-  },
+  scrollToTop: true,
   computed: {
     movie() {
       return this.$store.getters["movie/getCurrent"];

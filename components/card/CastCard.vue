@@ -16,7 +16,9 @@
         class="card--secondary__name"
         >{{ cast.name }}</nuxt-link
       >
-      <p class="card--secondary__film-name">as {{ cast.character }}</p>
+      <p class="card--secondary__film-name" v-if="cast.character">
+        as {{ cast.character }}
+      </p>
     </div>
   </div>
 </template>

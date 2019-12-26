@@ -2,7 +2,7 @@
   ><div class="card--slider shadow-overlay mb-2">
     <img
       class="fit-image"
-      :src="trend.backdrop_path"
+      :src="imagePath(trend.backdrop_path, 'w300')"
       alt="Avenger Endgame"
       draggable="false"
       aria-label="Movie Image slider"
@@ -16,7 +16,11 @@
 </template>
 
 <script>
+import imagePath from "@/utils/imagePath";
 export default {
-  props: ["trend"]
+  props: ["trend"],
+  methods: {
+    imagePath
+  }
 };
 </script>

@@ -3,7 +3,7 @@
     <div class="previewer__cover shadow-overlay">
       <img
         class="fit-image"
-        :src="movie.backdrop_path"
+        :src="imagePath(movie.backdrop_path, 'w1280')"
         :alt="movie.title + ' official wallpaper'"
         draggable="false"
         aria-label="Movie Wallpaper"
@@ -11,10 +11,15 @@
     </div>
     <v-container>
       <div class="previewer__content">
-        <div class="previewer__poster backdrop-gradient">
+        <div
+          class="previewer__poster backdrop-gradient"
+          :style="
+            `--first: rgb(${color.primaryColor}); --second: rgb(${color.secondaryColor})`
+          "
+        >
           <img
             class="fit-image"
-            :src="movie.poster_path"
+            :src="imagePath(movie.poster_path, 'w342')"
             :title="movie.title"
             :alt="movie.title + ' poster'"
             draggable="false"
@@ -106,22 +111,20 @@
 
 <script>
 import { mdiHeartOutline, mdiPlay } from "@mdi/js";
+import imagePath from "@/utils/imagePath";
 export default {
   data() {
     return {
       icons: {
         heart: mdiHeartOutline,
         play: mdiPlay
-      },
-      title: "Avenger Endgame",
-      rating: "9.4",
-      description:
-        " After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
-      cover: "",
-      poster: ""
+      }
     };
   },
-  props: ["movie"]
+  props: ["movie", "color"],
+  methods: {
+    imagePath
+  }
 };
 </script>
 
