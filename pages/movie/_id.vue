@@ -3,31 +3,28 @@
     <Previewer :movie="movie" :color="movie.color" />
     <v-container class="movie">
       <v-row>
-        <v-col cols="9" class="movie__main">
-          <MovieDescription
-            :title="movie.title"
-            :description="movie.overview"
-          />
-          <MovieCast :title="movie.title" :casts="movie.credits.cast" />
+        <v-col cols="9" class="movie__main pt-5">
+          <MovieDescription :title="''" :description="movie.overview" />
+          <MovieCast :title="''" :casts="movie.credits.cast" />
         </v-col>
         <v-col cols="3" class="movie__sidebar">
-          <MovieInfo :title="movie.title" :info="movie" />
+          <MovieInfo :title="''" :info="movie" />
         </v-col>
       </v-row>
     </v-container>
-    <MovieGallery :title="movie.title" :images="movie.images" />
+    <MovieGallery :title="''" :images="movie.images" />
 
     <v-container v-if="movie.reviews.results">
       <v-row>
         <v-col cols="9">
-          <MovieReview :title="movie.title" :reviews="movie.reviews.results" />
+          <MovieReview :title="''" :reviews="movie.reviews.results" />
         </v-col>
       </v-row>
     </v-container>
 
     <MovieCollection
       v-if="movie.belongs_to_collection"
-      :title="movie.title"
+      :title="''"
       :collection="movie.belongs_to_collection"
       :color="movie.color"
     />

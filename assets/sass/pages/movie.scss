@@ -1,7 +1,9 @@
 .movie {
+  @include transition;
   color: rgba(var(--base-text-color), 1);
 
   &__sidebar {
+    @include transition;
     background-color: rgba(var(--secondary-color), 1);
   }
 

@@ -24,7 +24,6 @@ export default {
     onScroll() {
       const currentScrollPosition =
         window.pageYOffset || document.documentElement.scrollTop;
-      console.log(currentScrollPosition);
       if (currentScrollPosition > window.innerHeight) {
         this.showScrollButton = true;
       } else {

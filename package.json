@@ -14,6 +14,7 @@
     "@mdi/js": "^4.7.95",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.1",
+    "animate.css": "^3.7.2",
     "cli-truncate": "^2.1.0",
     "color": "^3.1.2",
     "file-saver": "^2.0.2",
@@ -29,7 +30,8 @@
     "vue-fixed-header": "^3.2.13",
     "vue-lodash": "^2.0.2",
     "vue-scrollto": "^2.17.1",
-    "vue-slick-carousel": "^1.0.0-beta.3"
+    "vue-slick-carousel": "^1.0.0-beta.3",
+    "vuejs-paginate": "^2.1.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0",

@@ -9,6 +9,7 @@ export const state = () => ({
   top_rated: null,
   current: null,
   loading: false,
+  searched: null,
   language: "en-US"
 });
 
@@ -21,6 +22,9 @@ export const getters = {
   },
   getLoading: state => {
     return state.loading;
+  },
+  getSearch: state => {
+    return state.searched;
   }
 };
 
@@ -36,7 +40,9 @@ export const mutations = {
     state.loading = status;
   },
 
-  SET_COLLECTION(state, collection) {}
+  SET_SEARCH(state, movies) {
+    state.searched = movies;
+  }
 };
 
 export const actions = {
@@ -45,7 +51,7 @@ export const actions = {
       const res = await axios.get(
         `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.TMDB_API_KEY_V3}&language=${state.language}&page=1&append_to_response=genre`
       );
-      console.log(res.data.results);
+
       commit("SET_CATEGORIES", {
         movies: res.data.results,
         category
@@ -73,7 +79,6 @@ export const actions = {
       let color = await colorMatcher(tmdb.data.backdrop_path);
       tmdb.data.color = color;
 
-      console.log(imdb.data, tmdb.data);
       commit("SET_CURRENT", tmdb.data);
     } catch (err) {
       console.error(err);
@@ -86,10 +91,22 @@ export const actions = {
         `https://api.themoviedb.org/3/collection/${collection_id}?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US`
       );
 
-      console.log(res.data);
       commit("SET_COLLECTION", res.data);
     } catch (err) {
       console.error(err);
+    }
+  },
+
+  async fetchSearch({ commit }, { query, page }) {
+    console.log(query, page);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&query=${query}&page=${page}`
+      );
+
+      commit("SET_SEARCH", res.data);
+    } catch (err) {
+      console.log(err);
     }
   },
 

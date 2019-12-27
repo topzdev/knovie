@@ -87,8 +87,8 @@
       top: 0;
       background-image: linear-gradient(
         to bottom,
-        rgba(var(--base-color), 1),
-        rgba(var(--base-color), 0)
+        rgba(var(--color-dark), 1),
+        rgba(var(--color-dark), 0)
       );
     }
 
@@ -96,8 +96,8 @@
       bottom: 0;
       background-image: linear-gradient(
         to top,
-        rgba(var(--base-color), 1),
-        rgba(var(--base-color), 0)
+        rgba(var(--color-dark), 1),
+        rgba(var(--color-dark), 0)
       );
     }
   }
@@ -115,13 +115,13 @@
   }
   &__title {
     font-size: 6rem;
-    color: #fff;
+    color: rgba(var(--color-white), 0.9);
     text-shadow: var(--elevation-24);
   }
   &__description {
     font-size: 1.6rem;
-    font-weight: 200;
-    color: rgba(var(--color-white), 0.8);
+    font-weight: 400;
+    color: rgba(var(--color-white), 0.9);
   }
 
   &__rating {

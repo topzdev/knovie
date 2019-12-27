@@ -15,6 +15,7 @@
         </nuxt-link>
 
         <NavbarSearch />
+        <DarkModeButton />
       </div>
     </v-container>
   </div>
@@ -22,6 +23,7 @@
 
 <script>
 import NavbarSearch from "./navbar/NavbarSearch";
+import DarkModeButton from "./DarkModeButton";
 export default {
   data() {
     return {
@@ -31,7 +33,8 @@ export default {
     };
   },
   components: {
-    NavbarSearch
+    NavbarSearch,
+    DarkModeButton
   },
   methods: {
     onScroll() {

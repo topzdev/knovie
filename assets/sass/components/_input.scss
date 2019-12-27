@@ -11,12 +11,13 @@
     @include transition;
 
     &:hover {
-      border-bottom: 2px solid rgba(var(--secondary-text-color), 1);
-      color: rgba(var(--secondary-text-color), 1);
+      border-bottom-color: rgba(var(--secondary-text-color), 0.8);
+      color: rgba(var(--secondary-text-color), 0.8);
     }
 
     &:focus {
-      border-bottom: 2px solid rgba(var(--primary-color), 1);
+      border-bottom-color: rgba(var(--primary-color), 1);
+      color: rgba(var(--secondary-text-color), 1);
     }
 
     &::placeholder {

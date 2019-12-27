@@ -1,0 +1,10 @@
+:root {
+  --base-color: 255, 255, 255;
+  --base-text-color: 0, 0, 0;
+
+  --primary-color: 36, 150, 150;
+  --primary-text-color: 255, 255, 255;
+  /* color: rgb(36, 150, 150); */
+  --secondary-color: 247, 247, 247;
+  --secondary-text-color: 0, 0, 0;
+}

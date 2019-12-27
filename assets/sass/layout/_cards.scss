@@ -8,7 +8,7 @@
     max-width: 250px;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: var(--elevation-20);
+    box-shadow: var(--elevation-10);
     text-decoration: none;
     backface-visibility: hidden;
     @include transition;
@@ -22,8 +22,8 @@
       &::after {
         background-image: linear-gradient(
           to top right,
-          rgba(var(--base-color), 0.65),
-          rgba(var(--base-color), 0)
+          rgba(var(--color-dark), 0.65),
+          rgba(var(--color-dark), 0)
         );
       }
     }
@@ -62,8 +62,8 @@
         @include transition;
         background-image: linear-gradient(
           to top,
-          rgba(var(--base-color), 0.9),
-          rgba(var(--base-color), 0.1)
+          rgba(var(--color-dark), 0.9),
+          rgba(var(--color-dark), 0.1)
         );
       }
     }
@@ -231,8 +231,8 @@
   &--review {
     background-color: rgba(var(--base-color), 1);
     color: rgba(var(--base-text-color), 1);
-    box-shadow: var(--elevation-8);
-    border-radius: 5px;
+    box-shadow: var(--elevation-5);
+    border-radius: 10px;
     & .paragraph--primary {
       font-size: 1.4rem;
     }
@@ -242,13 +242,13 @@
     }
 
     &__content {
-      padding: 18px 15px 7px 15px;
+      padding: 24px 20px 15px 20px;
     }
 
     &__user {
       display: flex;
       align-items: center;
-      padding: 7px 12px;
+      padding: 10px 20px;
       margin-top: 10px;
       background-color: rgba(var(--secondary-color), 1);
 

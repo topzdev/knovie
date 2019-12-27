@@ -1,0 +1,10 @@
+:root {
+  --base-color: 20, 20, 20;
+  --base-text-color: 255, 255, 255;
+
+  --primary-color: 29, 247, 247;
+  --primary-text-color: 0, 0, 0;
+
+  --secondary-color: 16, 16, 16;
+  --secondary-text-color: 255, 255, 255;
+}

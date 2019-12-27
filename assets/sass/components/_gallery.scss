@@ -1,24 +1,24 @@
 .gallery {
-	&--full {
-		display: flex;
-		width: 100%;
-		height: 500px;
-		background: rgba(var(--base-color), 1);
-		overflow: hidden;
+  &--full {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    background: rgba(var(--base-color), 1);
+    overflow: hidden;
 
-		&:hover .card--gallery {
-			opacity: 0.5;
+    &:hover .card--gallery {
+      opacity: 0.6;
 
-			img {
-				filter: blur(1px);
-			}
-		}
+      img {
+        filter: blur(1px);
+      }
+    }
 
-		&:hover .card--gallery:hover {
-			opacity: 1;
-			img {
-				filter: blur(0);
-			}
-		}
-	}
+    &:hover .card--gallery:hover {
+      opacity: 1;
+      img {
+        filter: blur(0);
+      }
+    }
+  }
 }

@@ -5,7 +5,11 @@
     style="--box-shadow: var(--primary-color)"
   >
     <div class="card--primary__img">
-      <img :src="imagePath(movie.poster_path, 'w185')" :alt="movie.title" draggable="false" />
+      <img
+        :src="imagePath(movie.poster_path, 'w185')"
+        :alt="movie.title"
+        draggable="false"
+      />
     </div>
 
     <div class="card__actions">
@@ -18,12 +22,13 @@
       <div class="badge badge--primary">{{ movie.vote_average }}</div>
       <h1 class="card--primary__title">{{ movie.title }}</h1>
       <div class="card--primary__genre" v-if="genres">
-        <span
-          v-for="genre in movie.genre_ids.slice(0, 2)"
-          :key="genre"
-        >{{_.find(genres, { id: genre }).name}}</span>
+        <span v-for="genre in movie.genre_ids.slice(0, 2)" :key="genre">{{
+          _.find(genres, { id: genre }).name
+        }}</span>
       </div>
-      <p class="card--primary__date">{{ moment(movie.year).format("YYYY") }}</p>
+      <p class="card--primary__date">
+        {{ moment(movie.release_date).format("YYYY") }}
+      </p>
     </div>
   </nuxt-link>
 </template>
@@ -50,7 +55,10 @@ export default {
   },
   methods: {
     imagePath,
-    moment
+    moment,
+    henlo(url) {
+      console.log("hellooo");
+    }
   }
 };
 </script>

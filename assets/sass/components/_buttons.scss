@@ -114,7 +114,7 @@
   }
 
   &--peek {
-    color: rgba(var(--primary-color), 0.5);
+    color: rgba(var(--primary-color), 0.8);
     margin-left: 3px;
 
     &:hover {
@@ -124,13 +124,13 @@
 
   &--icon {
     svg {
-      fill: rgba(var(--color-white), 0.5);
+      fill: rgba(var(--secondary-text-color), 0.8);
       @include transition;
     }
 
     &:hover {
       svg {
-        fill: rgba(var(--color-white), 1);
+        fill: rgba(var(--secondary-text-color), 1);
       }
     }
   }
@@ -138,8 +138,8 @@
   &--scroll-top {
     display: block;
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 50px;
+    right: 50px;
     height: 60px;
     width: 60px;
     border-radius: 100%;

@@ -24,7 +24,6 @@ export const actions = {
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY_V3}`
       )
       .then(res => {
-        console.log(res.data.genres);
         commit("SET_GENRES", res.data.genres);
       })
       .catch(err => console.error(err));

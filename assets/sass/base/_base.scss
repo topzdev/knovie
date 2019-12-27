@@ -1,27 +1,29 @@
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body,
 html {
-	font-family: var(--font-regular);
-	font-weight: 400;
-	font-size: 62.5% !important;
-	color: var(--primary-color) !important;
-	background-color: rgba(var(--base-color), 1);
-	-webkit-font-smoothing: antialiased;
+  font-family: var(--font-regular);
+  font-weight: 400;
+  font-size: 62.5% !important;
+  color: var(--primary-color) !important;
+  background-color: rgba(var(--base-color), 1);
+  -webkit-font-smoothing: antialiased;
+  @include transition;
 }
 
 button {
-	background: none;
-	outline: none !important;
-	border: none;
+  background: none;
+  outline: none !important;
+  border: none;
 }
 
 p {
-	margin: 0;
+  margin: 0;
+  @include transition;
 }
 
 h1,
@@ -30,20 +32,21 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-heading);
-	margin: 0;
+  font-family: var(--font-heading);
+  margin: 0;
+  @include transition;
 }
 
-input[type='number'] {
-	-webkit-appearance: textfield;
-	-moz-appearance: textfield;
-	appearance: textfield;
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-	-webkit-appearance: none;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
 img {
-	user-select: none;
+  user-select: none;
 }

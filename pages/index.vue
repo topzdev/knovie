@@ -1,7 +1,7 @@
 <template>
   <div>
     <Slider category="now_playing" v-if="!loading" :movies="now_playing" />
-    <v-container class="py-5">
+    <v-container class="pt-2 pb-5">
       <Showcase title="Upcoming Movies" :movies="upcoming" />
 
       <Showcase title="Popular" :movies="popular" />
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import "animate.css";
 import "normalize.css";
 import Slider from "../components/includes/Slider";
 import Showcase from "../components/layout/Showcase";
