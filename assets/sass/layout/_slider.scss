@@ -27,6 +27,7 @@
     right: -80px;
     z-index: 110;
     height: var(--slider-size);
+    min-height: var(--slider-size);
     width: var(--sidebar-width);
     padding-top: 10px;
     transition: all ease 1000ms;
@@ -41,6 +42,12 @@
       overflow: visible;
       padding: 100px 0 !important;
     }
+    &.slick-track,
+    & .slick-list {
+      height: var(--slider-size);
+      min-height: var(--slider-size);
+    }
+
     & .slick-list,
     & .slick-slide,
     & .slick-center {

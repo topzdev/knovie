@@ -91,9 +91,12 @@
       @include transition;
       transition: all 200ms ease;
       word-spacing: -2px;
-      & > *:not(:last-child) {
-        &:after {
-          content: "/";
+
+      span {
+        &:not(:last-child) {
+          &:after {
+            content: "/";
+          }
         }
       }
     }

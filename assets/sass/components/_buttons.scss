@@ -121,4 +121,42 @@
       text-decoration: underline;
     }
   }
+
+  &--icon {
+    svg {
+      fill: rgba(var(--color-white), 0.5);
+      @include transition;
+    }
+
+    &:hover {
+      svg {
+        fill: rgba(var(--color-white), 1);
+      }
+    }
+  }
+
+  &--scroll-top {
+    display: block;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    transform: scale(1);
+    background-color: rgba(var(--primary-color), 1);
+    z-index: 130;
+
+    @include transition;
+
+    // * Scroll button 130
+    svg {
+      fill: rgba(var(--primary-text-color), 1);
+      height: 60px;
+    }
+
+    &--shrink {
+      transform: scale(0);
+    }
+  }
 }

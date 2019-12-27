@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Slider category="now_playing" :movies="now_playing" />
+    <Slider category="now_playing" v-if="!loading" :movies="now_playing" />
     <v-container class="py-5">
       <Showcase title="Upcoming Movies" :movies="upcoming" />
 
@@ -21,11 +21,13 @@ export default {
     Slider,
     Showcase
   },
-  async fetch({ store }) {
+  async fetch({ store, data }) {
+    await store.dispatch("movie/setLoading", true);
     await store.dispatch("movie/fetchCategory", "now_playing");
     await store.dispatch("movie/fetchCategory", "top_rated");
     await store.dispatch("movie/fetchCategory", "upcoming");
     await store.dispatch("movie/fetchCategory", "popular");
+    await store.dispatch("movie/setLoading", false);
   },
   computed: {
     now_playing() {
@@ -39,6 +41,9 @@ export default {
     },
     popular() {
       return this.$store.getters["movie/getCategories"]("popular");
+    },
+    loading() {
+      return this.$store.getters["movie/getLoading"];
     }
   }
 };

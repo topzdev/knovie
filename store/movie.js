@@ -8,6 +8,7 @@ export const state = () => ({
   popular: null,
   top_rated: null,
   current: null,
+  loading: false,
   language: "en-US"
 });
 
@@ -17,6 +18,9 @@ export const getters = {
   },
   getCurrent: state => {
     return state.current;
+  },
+  getLoading: state => {
+    return state.loading;
   }
 };
 
@@ -26,6 +30,10 @@ export const mutations = {
   },
   SET_CURRENT(state, movie) {
     state.current = movie;
+  },
+
+  SET_LOADING(state, status) {
+    state.loading = status;
   },
 
   SET_COLLECTION(state, collection) {}
@@ -83,5 +91,9 @@ export const actions = {
     } catch (err) {
       console.error(err);
     }
+  },
+
+  setLoading({ commit }, status) {
+    commit("SET_LOADING", status);
   }
 };
