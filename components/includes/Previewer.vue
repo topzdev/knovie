@@ -1,6 +1,6 @@
 <template>
-  <div class="previewer">
-    <div class="previewer__cover shadow-overlay">
+  <div class="previewer--primary">
+    <div class="previewer--primary__cover shadow-overlay">
       <img
         class="fit-image"
         :src="imagePath(movie.backdrop_path, 'w1280')"
@@ -10,9 +10,9 @@
       />
     </div>
     <v-container>
-      <div class="previewer__content">
+      <div class="previewer--primary__content">
         <div
-          class="previewer__poster backdrop-gradient"
+          class="previewer--primary__poster backdrop-gradient"
           :style="
             `--first: rgb(${color.primaryColor}); --second: rgb(${color.secondaryColor})`
           "
@@ -27,46 +27,36 @@
           />
         </div>
 
-        <div class="previewer__body">
+        <div class="previewer--primary__body">
           <h1 class="slider__title">{{ movie.title }}</h1>
-          <ul class="previewer__list mb-1">
+          <ul class="previewer--primary__list mb-1">
             <li v-for="genre in movie.genres" :key="genre.id">
               <nuxt-link
                 :to="`/search/${genre.name}`"
                 class="badge badge--primary badge--outlined"
-                >{{ genre.name }}</nuxt-link
-              >
+              >{{ genre.name }}</nuxt-link>
             </li>
           </ul>
 
-          <ul class="previewer__critic mb-1">
+          <ul class="previewer--primary__critic mb-1">
             <li>
-              <p
-                class="slider__rating"
-                aria-label="ratings"
-                title="IMdb rating"
-              >
+              <p class="slider__rating" aria-label="ratings" title="IMdb rating">
                 {{
-                  movie.imdb_rating !== "N/A"
-                    ? movie.imdb_rating
-                    : movie.vote_average
+                movie.imdb_rating !== "N/A"
+                ? movie.imdb_rating
+                : movie.vote_average
                 }}
                 <span>/10</span>
               </p>
             </li>
             <li>
-              <div class="previewer__critic-item">
-                <img
-                  src="../../assets/img/like.png"
-                  alt
-                  title="Likes"
-                  draggable="false"
-                />
+              <div class="previewer--primary__critic-item">
+                <img src="../../assets/img/like.png" alt title="Likes" draggable="false" />
                 <p>{{ movie.imdb_vote || movie.vote_count }}</p>
               </div>
             </li>
             <li>
-              <div class="previewer__critic-item">
+              <div class="previewer--primary__critic-item">
                 <img
                   src="../../assets/img/popcorn.png"
                   alt
@@ -79,7 +69,7 @@
             </li>
 
             <li>
-              <div class="previewer__critic-item">
+              <div class="previewer--primary__critic-item">
                 <img
                   src="../../assets/img/rotten.png"
                   alt

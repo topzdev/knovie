@@ -3,26 +3,30 @@
   font-size: 16px;
   outline: none;
   &--search {
-    padding: 10px 15px;
-    border-bottom: 2px solid rgba(var(--secondary-text-color), 0.5);
+    padding: 12px 20px;
+    // border-bottom: 2px solid rgba(var(--secondary-text-color), 0.5);
     width: 400px;
     font-size: 18px;
-    color: rgba(var(--secondary-text-color), 0.5);
+    color: rgba(var(--secondary-color), 0.6);
+    background: rgba(var(--secondary-text-color), 0.25);
+    border-radius: 100px;
     @include transition;
 
     &:hover {
-      border-bottom-color: rgba(var(--secondary-text-color), 0.8);
-      color: rgba(var(--secondary-text-color), 0.8);
+      // border-bottom-color: rgba(var(--secondary-text-color), 0.8);
+      background: rgba(var(--secondary-text-color), 0.5);
+      color: rgba(var(--secondary-color), 0.8);
     }
 
     &:focus {
-      border-bottom-color: rgba(var(--primary-color), 1);
-      color: rgba(var(--secondary-text-color), 1);
+      // border-bottom-color: rgba(var(--primary-color), 1);
+      background: rgba(var(--secondary-text-color), 0.7);
+      color: rgba(var(--secondary-color), 1);
     }
 
     &::placeholder {
       color: inherit;
-      font-weight: 400;
+      font-weight: 500;
     }
   }
 }

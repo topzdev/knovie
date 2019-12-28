@@ -114,3 +114,8 @@
     0px 24px 38px 3px var(--depth-color-lower),
     0px 9px 46px 8px var(--depth-color-base);
 }
+
+::selection {
+  background-color: rgba(var(--primary-color), 1);
+  color: rgba(var(--primary-text-color), 1);
+}

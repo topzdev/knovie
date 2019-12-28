@@ -74,12 +74,87 @@
     align-items: center;
 
     .btn {
+      display: flex;
+      align-items: center;
       position: absolute;
       top: 0;
       right: 0;
       height: 100%;
+      width: 3rem;
+      margin-right: 1rem;
       svg {
+        fill: rgba(var(--secondary-color), 0.6) !important;
       }
+
+      &:hover {
+        svg {
+          fill: rgba(var(--secondary-color), 1) !important;
+        }
+      }
+    }
+  }
+}
+
+.navbar-preview {
+  display: flex;
+  height: 6rem;
+  background-color: rgba(var(--secondary-color), 1);
+
+  &__list {
+    display: flex;
+    height: 6rem;
+    margin-left: 220px;
+    list-style: none;
+  }
+  &__item {
+    display: block;
+    height: 100%;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+  &__link {
+    position: relative;
+    display: flex;
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: center;
+    color: rgba(var(--secondary-text-color), 1);
+    text-decoration: none;
+    padding: 0 60px 0 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    @include transition;
+
+    &:hover,
+    &:focus {
+      color: rgba(var(--primary-color), 0.8);
+
+      &::after {
+        bottom: 0;
+        background-color: rgba(var(--primary-color), 0.8);
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background-color: rgba(var(--primary-color), 1);
+      @include transition;
+    }
+  }
+
+  .nuxt-link-exact-active {
+    color: rgba(var(--primary-color), 1) !important;
+    &::after {
+      bottom: 0;
     }
   }
 }

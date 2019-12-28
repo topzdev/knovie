@@ -83,11 +83,12 @@
 
     &__genre {
       font-size: 15px;
-      color: rgba(var(--primary-color), 0.8);
+      color: rgba(var(--primary-color), 1);
       height: 18px;
       overflow: hidden;
       height: 0;
       margin-bottom: 3px;
+      font-weight: 600;
       @include transition;
       transition: all 200ms ease;
       word-spacing: -2px;

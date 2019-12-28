@@ -10,6 +10,9 @@ export const state = () => ({
   current: null,
   loading: false,
   searched: null,
+  cast: null,
+  reviews: null,
+  media: null,
   language: "en-US"
 });
 
@@ -112,5 +115,7 @@ export const actions = {
 
   setLoading({ commit }, status) {
     commit("SET_LOADING", status);
-  }
+  },
+
+  async fetchCast({ commit }, { credit_id, movie_info }) {}
 };

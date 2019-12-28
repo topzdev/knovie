@@ -66,12 +66,12 @@
 		left: 50%;
 
 		transform: translate(-50%, -50%);
-		height: 95%;
+		height: 100%;
 		width: 150%;
-		opacity: 0.4;
+		opacity: 0.6;
 		border-radius: inherit;
 		background: inherit;
-		filter: blur(50px);
+		filter: blur(30px);
 		@include transition;
 	}
 }

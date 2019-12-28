@@ -65,16 +65,26 @@
     color: rgba(var(--secondary-text-color), 1) !important;
     box-shadow: var(--elevation-10);
     border: 1px solid rgba(var(--secondary-text-color), 0.1);
+    @include transition;
+
+    &:hover {
+      background-color: rgba(var(--primary-color), 0.7) !important;
+    }
   }
 
   &__item--active {
     background-color: rgba(var(--primary-color), 1) !important;
     color: rgba(var(--primary-text-color), 1) !important;
+
+    &:hover {
+      background-color: rgba(var(--primary-color), 1) !important;
+    }
   }
 
   &__more {
     font-size: 1.8rem;
     color: rgba(var(--secondary-text-color), 0.6) !important;
+    user-select: none;
   }
 
   &__navigation {
