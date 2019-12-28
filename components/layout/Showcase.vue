@@ -15,8 +15,8 @@
     </v-row>
 
     <v-row>
-      <v-col cols="auto" class="d-block ml-auto">
-        <MoreButton :title="title + ' Movies'" />
+      <v-col cols="auto" class="d-block ml-auto" v-if="url">
+        <MoreButton :title="title + ' Movies'" :url="url" />
       </v-col>
     </v-row>
   </div>
@@ -31,7 +31,7 @@ export default {
     MovieCard,
     MoreButton
   },
-  props: ["title", "cardSize", "toShow", "movies"],
+  props: ["title", "cardSize", "toShow", "movies", "url"],
   data() {
     return {
       loading: false,

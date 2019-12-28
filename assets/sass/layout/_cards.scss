@@ -358,4 +358,26 @@
       }
     }
   }
+
+  &--cover {
+    --primary: var(--primary-color);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(var(--primary), 0.3),
+        rgba(var(--primary), 0)
+      );
+    }
+  }
 }

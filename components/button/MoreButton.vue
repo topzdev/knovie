@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link to class="btn btn--more d-block">
+  <nuxt-link :to="url" class="btn btn--more d-block">
     View All {{ title }}
     <span>&rharu;</span>
   </nuxt-link>
@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  props: ["title"]
+  props: ["title", "url"]
 };
 </script>

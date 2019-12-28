@@ -49,21 +49,7 @@
 import imagePath from "@/utils/imagePath";
 import moment from "moment";
 export default {
-  data() {
-    return {
-      movie: {
-        backdrop_path: "/dCB7d4l0mfpsISZvr6aPE2z5QF6.jpg",
-        poster_path: "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
-        title: "Star Wars: The Rise of Skywalker",
-        release_date: "2019-12-18"
-      },
-      color: {
-        primaryColor: "52,113,190",
-        secondaryColor: "98,55,83",
-        textColor: "255,255,255"
-      }
-    };
-  },
+  props: ["movie", "color"],
   methods: {
     imagePath,
     moment

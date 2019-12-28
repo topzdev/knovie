@@ -7,11 +7,7 @@
     <v-container>
       <div class="navbar__nav">
         <nuxt-link to="/" class="navbar__brand">
-          <img
-            src="~/assets/img/knovie-logo.png"
-            alt="Knovie Logo"
-            draggable="false"
-          />
+          <img src="~/assets/img/knovie-logo.png" alt="Knovie Logo" draggable="false" />
         </nuxt-link>
 
         <NavbarSearch />
@@ -48,6 +44,7 @@ export default {
           currentScrollPosition > this.lastScrollPosition ? true : false;
       } else {
         this.fixedNavbar = false;
+        this.hiddenNav = false;
       }
 
       this.lastScrollPosition = currentScrollPosition;

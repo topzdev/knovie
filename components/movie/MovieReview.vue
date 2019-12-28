@@ -3,19 +3,14 @@
     <h1 class="heading--primary mb-1">Reviews</h1>
 
     <v-row>
-      <v-col
-        cols="12"
-        class="mb-2"
-        v-for="review in reviews.slice(0, 3)"
-        :key="review.id"
-      >
+      <v-col cols="12" class="mb-2" v-for="review in reviews.slice(0, 3)" :key="review.id">
         <ReviewCard :review="review" />
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" class="place-end">
-        <MoreButton :title="title + ' Reviews'" />
+        <MoreButton :url="url" :title="title + ' Reviews'" />
       </v-col>
     </v-row>
   </section>
@@ -31,7 +26,7 @@ export default {
     ReviewCard
   },
 
-  props: ["title", "reviews"],
+  props: ["title", "reviews", "url"],
   data() {
     return {
       icons: {

@@ -1,5 +1,6 @@
 import axios from "axios";
 import colorMatcher from "~/utils/colorMatcher";
+import parseParams from "~/utils/parseParams";
 require("dotenv").config();
 
 export const state = () => ({
@@ -10,9 +11,7 @@ export const state = () => ({
   current: null,
   loading: false,
   searched: null,
-  cast: null,
   reviews: null,
-  media: null,
   language: "en-US"
 });
 
@@ -28,6 +27,9 @@ export const getters = {
   },
   getSearch: state => {
     return state.searched;
+  },
+  getReviews: state => {
+    return state.reviews;
   }
 };
 
@@ -45,6 +47,10 @@ export const mutations = {
 
   SET_SEARCH(state, movies) {
     state.searched = movies;
+  },
+
+  SET_REVIEWS(state, reviews) {
+    state.reviews = reviews;
   }
 };
 
@@ -66,23 +72,31 @@ export const actions = {
 
   async fetchMovie({ commit, state }, id) {
     try {
-      let tmdb = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits,reviews,similar,recommendations`
-      );
-      // !Remove this to avoid request limit
-      let imdb = await axios.get(`http://www.omdbapi.com/?i=${tmdb.data.imdb_id}&plot=full
-      &apikey=${process.env.OMDB_API_KEY}`);
+      id = parseParams(id);
 
-      const { Metascore, imdbVotes, imdbRating } = imdb.data;
+      if (state.current != null && state.current.id == id) {
+        console.log("Same");
 
-      tmdb.data.meta_score = Metascore;
-      tmdb.data.imdb_rating = imdbRating;
-      tmdb.data.imdb_votes = imdbVotes;
+        await commit("SET_CURRENT", state.current);
+      } else {
+        let tmdb = await axios.get(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits,reviews,similar,recommendations`
+        );
+        // !Remove this to avoid request limit
+        let imdb = await axios.get(`http://www.omdbapi.com/?i=${tmdb.data.imdb_id}&plot=full
+        &apikey=${process.env.OMDB_API_KEY}`);
 
-      let color = await colorMatcher(tmdb.data.backdrop_path);
-      tmdb.data.color = color;
+        const { Metascore, imdbVotes, imdbRating } = imdb.data;
 
-      commit("SET_CURRENT", tmdb.data);
+        tmdb.data.meta_score = Metascore;
+        tmdb.data.imdb_rating = imdbRating;
+        tmdb.data.imdb_votes = imdbVotes;
+
+        let color = await colorMatcher(tmdb.data.backdrop_path);
+        tmdb.data.color = color;
+        console.log(state);
+        commit("SET_CURRENT", tmdb.data);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -117,5 +131,17 @@ export const actions = {
     commit("SET_LOADING", status);
   },
 
-  async fetchCast({ commit }, { credit_id, movie_info }) {}
+  async fetchReviews({ commit }, { id, page }) {
+    try {
+      id = parseParams(id);
+      console.log(id, page);
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&page=${page}`
+      );
+
+      commit("SET_REVIEWS", res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 };

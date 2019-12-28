@@ -30,7 +30,7 @@
     <v-container>
       <v-row>
         <v-col cols="9" class="place-end">
-          <MoreButton :title="title + ' Images'" />
+          <MoreButton :url="url" :title="title + ' Images'" />
         </v-col>
       </v-row>
     </v-container>
@@ -45,7 +45,7 @@ export default {
     GalleryCard,
     MoreButton
   },
-  props: ["title", "images"],
+  props: ["title", "images", "url"],
   data() {
     return {
       gallerySize: 500
@@ -65,7 +65,7 @@ export default {
         divider: 8,
         row: 3
       };
-      console.log(length)
+      
       if (length >= 9) {
         setBackdrop.size = 4;
         setBackdrop.images = backdrops.slice(1, 10);

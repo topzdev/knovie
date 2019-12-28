@@ -5,24 +5,33 @@
       <v-row>
         <v-col cols="9" class="movie__main pt-5">
           <MovieDescription :title="''" :description="movie.overview" />
-          <MovieCast :title="''" :casts="movie.credits.cast" />
+          <MovieCast
+            :url="`/movie/cast/${$route.params.id}`"
+            :title="''"
+            :casts="movie.credits.cast"
+          />
         </v-col>
         <v-col cols="3" class="movie__sidebar">
           <MovieInfo :title="''" :info="movie" />
         </v-col>
       </v-row>
     </v-container>
-    <MovieGallery :title="''" :images="movie.images" />
+    <MovieGallery :url="`/movie/gallery/${$route.params.id}`" :title="''" :images="movie.images" />
 
     <v-container v-if="movie.reviews.results">
       <v-row>
         <v-col cols="9">
-          <MovieReview :title="''" :reviews="movie.reviews.results" />
+          <MovieReview
+            :url="`/movie/reviews/${$route.params.id}`"
+            :title="''"
+            :reviews="movie.reviews.results"
+          />
         </v-col>
       </v-row>
     </v-container>
 
     <MovieCollection
+      :url="`/collection/${$route.params.id}`"
       v-if="movie.belongs_to_collection"
       :title="''"
       :collection="movie.belongs_to_collection"

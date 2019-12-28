@@ -108,8 +108,8 @@
       left: 0;
       background-image: linear-gradient(
         to right,
-        rgba(var(--primary), 0.75),
-        rgba(var(--secondary), 0.75)
+        rgba(var(--primary), 0.7),
+        rgba(var(--secondary), 0.7)
       );
     }
 
@@ -141,7 +141,7 @@
       width: 175px;
       min-width: 175px;
       z-index: -1;
-      margin-bottom: -80px;
+      margin-bottom: -90px;
       border-radius: 20px;
       overflow: hidden;
       user-select: none;
