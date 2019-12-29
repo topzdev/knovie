@@ -29,9 +29,9 @@
     }
   }
 
-  &--fixed &__nav {
-    height: 50px;
-  }
+  // &--fixed &__nav {
+  //   height: 50px;
+  // }
 
   &--fixed &__brand {
     height: 40px;
@@ -46,16 +46,17 @@
     height: 100px;
     z-index: -1;
     background-image: linear-gradient(
-      rgba(var(--secondary-color), 0.3),
+      rgba(var(--secondary-color), 0.5),
       rgba(var(--secondary-color), 0)
     );
   }
   // * Index 100-Navbar
   &__nav {
     display: flex;
-    height: 55px;
+    height: 35px;
     height: var(--navbar-height);
     align-items: center;
+    padding-top: 1rem;
   }
 
   &__brand {
@@ -65,6 +66,33 @@
     img {
       height: 100%;
       width: auto;
+    }
+  }
+  &__list {
+    list-style: none;
+    height: 100%;
+    margin-right: 2rem;
+    margin-bottom: -1px;
+  }
+
+  &__item {
+    height: 100%;
+    &:not(:last-child) {
+      margin-right: 0 !important;
+    }
+  }
+
+  &__link {
+    display: flex;
+    height: 100%;
+    align-items: center !important;
+    padding: 0 15px !important;
+    color: rgba(var(--secondary-text-color), 1);
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: 600 !important;
+    &::after {
+      height: 3px !important;
     }
   }
 
@@ -105,6 +133,13 @@
     height: 6rem;
     margin-left: 220px;
     list-style: none;
+
+    .nuxt-link-exact-active {
+      color: rgba(var(--primary-color), 1) !important;
+      &::after {
+        bottom: 0;
+      }
+    }
   }
   &__item {
     display: block;
@@ -148,13 +183,6 @@
       width: 100%;
       background-color: rgba(var(--primary-color), 1);
       @include transition;
-    }
-  }
-
-  .nuxt-link-exact-active {
-    color: rgba(var(--primary-color), 1) !important;
-    &::after {
-      bottom: 0;
     }
   }
 }

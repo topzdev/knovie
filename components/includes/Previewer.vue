@@ -83,15 +83,20 @@
 
           <!-- <p class="slider__description" aria-label="sypnosis">{{description}}</p> -->
 
+          <Modal
+            :show="show"
+            v-on:toggle-modal="toggleModal"
+            :style="`--primary:${color.primaryColor}; --secondary:${color.secondaryColor};`"
+          >
+            <MovieTrailer :trailer="movie.videos.results[0].key" :show="show" />
+          </Modal>
+
           <div class="slider__actions mt-2">
-            <button class="btn btn--primary mr-1 px-3">
+            <button class="btn btn--primary mr-1 px-3" @click="show = !show">
               Watch Trailer
               <v-icon>{{ icons.play }}</v-icon>
             </button>
-
-            <button class="btn btn--favorite">
-              <v-icon>{{ icons.heart }}</v-icon>
-            </button>
+            <HeartButton :id="movie.id" />
           </div>
         </div>
       </div>
@@ -102,18 +107,31 @@
 <script>
 import { mdiHeartOutline, mdiPlay } from "@mdi/js";
 import imagePath from "@/utils/imagePath";
+import HeartButton from "@/components/button/HeartButton";
+import MovieTrailer from "@/components/movie/MovieTrailer";
+import Modal from "@/components/modal/MainModal";
+
 export default {
   data() {
     return {
       icons: {
         heart: mdiHeartOutline,
         play: mdiPlay
-      }
+      },
+      show: false
     };
+  },
+  components: {
+    HeartButton,
+    MovieTrailer,
+    Modal
   },
   props: ["movie", "color"],
   methods: {
-    imagePath
+    imagePath,
+    toggleModal(state) {
+      this.show = state;
+    }
   }
 };
 </script>

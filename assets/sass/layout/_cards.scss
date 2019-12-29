@@ -232,10 +232,11 @@
   &--review {
     background-color: rgba(var(--base-color), 1);
     color: rgba(var(--base-text-color), 1);
-    box-shadow: var(--elevation-5);
+    box-shadow: var(--elevation-10);
     border-radius: 10px;
+    overflow: hidden;
     & .paragraph--primary {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
 
     & .heading--secondary {

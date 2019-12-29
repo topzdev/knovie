@@ -1,6 +1,7 @@
 <template>
   <div v-if="movie">
     <Previewer :movie="movie" :color="movie.color" />
+
     <v-container class="movie">
       <v-row>
         <v-col cols="9" class="movie__main pt-5">
@@ -63,14 +64,14 @@
 </template>
 
 <script>
-import Previewer from "../../components/includes/Previewer";
-import MovieCast from "../../components/movie/MovieCast";
-import MovieGallery from "../../components/movie/MovieGallery";
-import MovieDescription from "../../components/movie/MovieDescription";
-import MovieInfo from "../../components/movie/MovieInfo";
-import MovieReview from "../../components/movie/MovieReview";
-import MovieCollection from "../../components/movie/MovieCollection";
-import Showcase from "../../components/layout/Showcase";
+import Previewer from "@/components/includes/Previewer";
+import MovieCast from "@/components/movie/MovieCast";
+import MovieGallery from "@/components/movie/MovieGallery";
+import MovieDescription from "@/components/movie/MovieDescription";
+import MovieInfo from "@/components/movie/MovieInfo";
+import MovieReview from "@/components/movie/MovieReview";
+import MovieCollection from "@/components/movie/MovieCollection";
+import Showcase from "@/components/layout/Showcase";
 
 export default {
   async fetch({ params, store }) {

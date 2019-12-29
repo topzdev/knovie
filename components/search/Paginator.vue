@@ -3,7 +3,7 @@
     v-model="currentPage"
     :length="totalPage"
     :value="currentPage"
-    :total-visible="totalVisible"
+    :total-visible="visible ? visible : 10"
     prev-icon="mdi-chevron-left"
     next-icon="mdi-chevron-right"
   ></v-pagination>
@@ -11,15 +11,17 @@
 
 <script>
 export default {
-  props: ["totalPage"],
+  props: ["totalPage", "visible"],
   data() {
     return {
       currentPage: 1,
-      totalVisible: 10,
       totalResult: 0
     };
   },
   watch: {
+    $route() {
+      this.currentPage = parseInt(this.$route.query.page || 1);
+    },
     currentPage() {
       this.$router.push({
         path: this.$route.path,
@@ -30,7 +32,7 @@ export default {
 
   created() {
     console.log(this.$route.query);
-    this.currentPage = parseInt(this.$route.query.page);
+    this.currentPage = parseInt(this.$route.query.page || 1);
   }
 };
 </script>

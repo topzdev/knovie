@@ -69,4 +69,15 @@
     font-size: 3rem;
     color: rgba(var(--text-color), 1);
   }
+
+  &__trailer {
+  }
+
+  &__trailer {
+    display: block;
+    height: 500px;
+    min-height: 500px;
+    width: 60%;
+    min-width: 536px;
+  }
 }

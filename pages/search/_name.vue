@@ -1,16 +1,9 @@
 <template>
   <div class="search pb-5">
-    <transition
-      enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
-    >
+    <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <img
-        :src="
-          pageBackground
-            ? pageBackground
-            : imagePath(searched.results[0].poster_path, 'w185')
-        "
-        alt=""
+        :src="pageBackground"
+        alt="Backdrop image"
         class="search__backdrop fit-image"
         v-if="transition"
       />
@@ -19,22 +12,21 @@
       <v-container>
         <h1 class="heading--primary">
           Search Results for
-          <span class="search__query">{{ $route.params.name }}</span>
+          <span class="search__query" v-text="$route.params.name" />
         </h1>
-        <h3 class="search__count" aria-label="Search result count">
-          {{ searched.total_results }}
-        </h3>
+        <h3
+          class="search__count"
+          aria-label="Search result count"
+          v-text=" searched.total_results"
+        />
       </v-container>
     </div>
     <v-container>
       <div class="search__content">
-        <v-pagination
+        <Paginator
           class="v-pagination__top"
-          v-model="currentPage"
-          :length="totalPage ? totalPage : searched.total_pages"
-          :total-visible="totalVisible"
-          prev-icon="mdi-chevron-left"
-          next-icon="mdi-chevron-right"
+          :totalPage="totalPage ? totalPage : searched.total_pages"
+          :visible="7"
         />
         <div class="search__result mb-3 mt-3">
           <v-row>
@@ -49,13 +41,7 @@
             </v-col>
           </v-row>
         </div>
-        <v-pagination
-          v-model="currentPage"
-          :length="totalPage ? totalPage : searched.total_pages"
-          :total-visible="totalVisible"
-          prev-icon="mdi-chevron-left"
-          next-icon="mdi-chevron-right"
-        />
+        <Paginator :totalPage="totalPage ? totalPage : searched.total_pages" />
       </div>
     </v-container>
   </div>
@@ -64,6 +50,8 @@
 <script>
 import MovieCard from "@/components/card/MovieCard";
 import imagePath from "@/utils/imagePath";
+import Paginator from "@/components/search/Paginator";
+
 export default {
   async fetch({ store, params, query }) {
     // console.log(params.name, query.page);
@@ -89,14 +77,11 @@ export default {
     }
   },
   components: {
-    MovieCard
+    MovieCard,
+    Paginator
   },
   data() {
     return {
-      currentPage: 1,
-      totalPage: null,
-      totalVisible: 10,
-      totalResult: 0,
       pageBackground: null,
       transition: false
     };
@@ -108,16 +93,6 @@ export default {
         query: params.name,
         page: query.page ? query.page : 1
       });
-    },
-    currentPage() {
-      this.$router.push({
-        path: this.$route.path,
-        query: { page: this.currentPage }
-      });
-    },
-    searched(nextValue, oldValue) {
-      this.totalPage = nextValue.total_pages;
-      this.totalResult = nextValue.total_results;
     }
   },
 

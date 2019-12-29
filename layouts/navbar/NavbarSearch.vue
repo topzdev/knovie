@@ -1,10 +1,10 @@
 <template>
-  <div class="navbar__search ml-auto">
+  <div class="navbar__search">
     <input
       type="text"
       v-model="searchQuery"
       class="inp inp--search"
-      aria-label="search"
+      aria-label="Search movie"
       placeholder="Search movie or tv show"
       v-on:keyup.enter="onSearch"
     />
