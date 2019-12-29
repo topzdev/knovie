@@ -17,7 +17,11 @@
         </v-col>
       </v-row>
     </v-container>
-    <MovieGallery :url="`/movie/gallery/${$route.params.id}`" :title="''" :images="movie.images" />
+    <MovieGallery
+      :url="`/movie/gallery/${$route.params.id}`"
+      :title="''"
+      :images="movie.images"
+    />
 
     <v-container v-if="movie.reviews.results">
       <v-row>
@@ -72,8 +76,12 @@ import MovieInfo from "@/components/movie/MovieInfo";
 import MovieReview from "@/components/movie/MovieReview";
 import MovieCollection from "@/components/movie/MovieCollection";
 import Showcase from "@/components/layout/Showcase";
+import { moviePreviewHead } from "@/utils/seoHead";
 
 export default {
+  head() {
+    return moviePreviewHead(this.movie, this.$route);
+  },
   async fetch({ params, store }) {
     await store.dispatch("movie/fetchMovie", params.id);
   },

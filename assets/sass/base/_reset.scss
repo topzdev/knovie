@@ -1,69 +1,51 @@
-.search {
-  position: relative;
-  background-size: cover;
-
-  &__content {
-    position: relative;
-    z-index: 2;
-  }
-
-  &__backdrop {
-    position: absolute;
-    display: block;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    filter: blur(10px);
-    @include transition;
-  }
-
-  &::before {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--base-color), 0.8);
-    z-index: 1;
-  }
-
-  &__filter {
-    // background-color: rgba(var(--secondary-color), 0.8);
-    padding-bottom: 25px;
-    padding-top: 30px;
-    @include transition;
-    position: relative;
-    z-index: 2;
-  }
-
-  &__sorter {
-    justify-content: flex-end !important;
-  }
-
-  &__count {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: rgba(var(--secondary-text-color), 0.6);
-    margin-top: 5px;
-  }
-
-  &__query {
-    color: rgba(var(--primary-color), 1);
-  }
-
-  &__selects {
-  }
-}
-
+//  * Theme
 .theme--dark {
   background-color: rgba(var(--secondary-color), 1) !important ;
   color: rgba(var(--secondary-text-color), 1) !important;
 }
+
+// *Selects
+.search__selects {
+  .v-label {
+    font-size: 1.4rem !important;
+    display: block;
+    color: rgba(var(--secondary-text-color), 0.7) !important;
+    margin-top: -3px !important;
+    margin-left: 1px !important;
+  }
+  .v-input--is-dirty .v-label {
+    margin-left: -4px !important;
+  }
+  .v-input__slot {
+    &::before,
+    &::after {
+      background-color: rgba(var(--primary-color), 0.6) !important;
+      height: 2px !important;
+    }
+  }
+  //v-input v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light v-text-field v-text-field--is-booted v-select primary--text
+
+  //v-input v-input--is-focused theme--light v-text-field v-text-field--is-booted v-select primary--text
+  .v-select .v-select__selections {
+    color: rgba(var(--secondary-text-color), 1) !important;
+  }
+
+  .v-input__icon {
+    i {
+      color: rgba(var(--secondary-text-color), 1) !important;
+    }
+  }
+
+  .v-text-field.v-input--is-focused > .v-input__control > .v-input__slot:after {
+    color: rgba(var(--primary-color), 1) !important;
+    height: 2px !important;
+  }
+  .v-menu__content {
+    top: 0 !important;
+  }
+}
+
+//  * Menu List Item
 .v-list-item {
   color: rgba(var(--secondary-text-color), 1) !important;
 }
@@ -80,6 +62,7 @@
   color: rgba(var(--primary-text-color), 1) !important;
 }
 
+//  * Pagination
 .v-pagination {
   &__item,
   &__navigation {

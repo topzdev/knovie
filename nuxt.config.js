@@ -34,7 +34,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/vue-lodash"],
+  plugins: ["~/plugins/vue-lodash", "~/plugins/vue-lazy"],
   /*
    ** Nuxt.js dev-modules
    */

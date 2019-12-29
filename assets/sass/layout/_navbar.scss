@@ -29,10 +29,15 @@
     }
   }
 
-  // &--fixed &__nav {
-  //   height: 50px;
-  // }
-
+  &--fixed &__search {
+    margin-bottom: 1rem;
+  }
+  &--fixed &__link {
+    padding-bottom: 1rem !important;
+  }
+  &--fixed .btn--icon {
+    margin-bottom: 1rem;
+  }
   &--fixed &__brand {
     height: 40px;
   }
@@ -88,7 +93,7 @@
     align-items: center !important;
     padding: 0 15px !important;
     color: rgba(var(--secondary-text-color), 1);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-decoration: none;
     font-weight: 600 !important;
     &::after {
@@ -166,11 +171,6 @@
     &:hover,
     &:focus {
       color: rgba(var(--primary-color), 0.8);
-
-      &::after {
-        bottom: 0;
-        background-color: rgba(var(--primary-color), 0.8);
-      }
     }
 
     &::after {

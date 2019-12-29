@@ -12,6 +12,7 @@ export const state = () => ({
   loading: false,
   searched: null,
   reviews: null,
+
   language: "en-US"
 });
 
@@ -80,17 +81,25 @@ export const actions = {
         await commit("SET_CURRENT", state.current);
       } else {
         let tmdb = await axios.get(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits,reviews,similar,recommendations`
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits,reviews,similar,recommendations,keywords, external_ids`
         );
         // !Remove this to avoid request limit
         let imdb = await axios.get(`http://www.omdbapi.com/?i=${tmdb.data.imdb_id}&plot=full
         &apikey=${process.env.OMDB_API_KEY}`);
+
+        // For social ids
+        let external_id = await axios.get(
+          `https://api.themoviedb.org/3/movie/${id}/external_ids?api_key=${process.env.TMDB_API_KEY_V3}`
+        );
 
         const { Metascore, imdbVotes, imdbRating } = imdb.data;
 
         tmdb.data.meta_score = Metascore;
         tmdb.data.imdb_rating = imdbRating;
         tmdb.data.imdb_votes = imdbVotes;
+        tmdb.data.external_id = external_id.data;
+
+        console.log(tmdb);
 
         let color = await colorMatcher(tmdb.data.backdrop_path);
         tmdb.data.color = color;

@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template >
+  <div data-app="true">
     <Navbar />
     <nuxt />
     <ScrollButton />
