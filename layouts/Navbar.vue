@@ -7,12 +7,30 @@
     <v-container class="py-0">
       <div class="navbar__nav">
         <nuxt-link to="/" class="navbar__brand">
-          <img src="~/assets/img/knovie-logo.png" alt="Knovie Logo" draggable="false" />
+          <img
+            src="~/assets/img/knovie-logo.png"
+            alt="Knovie Logo"
+            draggable="false"
+          />
         </nuxt-link>
 
         <ul class="navbar__list navbar-preview__list ml-auto">
           <li class="navbar__item navbar-preview__item">
-            <nuxt-link to="/" class="navbar__link navbar-preview__link" aria-label="Home">Home</nuxt-link>
+            <nuxt-link
+              to="/"
+              class="navbar__link navbar-preview__link"
+              aria-label="Movie"
+              >Movie
+            </nuxt-link>
+          </li>
+          <li class="navbar__item navbar-preview__item">
+            <nuxt-link
+              to="/tv"
+              class="navbar__link navbar-preview__link"
+              aria-label="List of tv shows"
+              title="See list of tv shows"
+              >TV Shows</nuxt-link
+            >
           </li>
           <li class="navbar__item navbar-preview__item">
             <nuxt-link
@@ -20,15 +38,8 @@
               class="navbar__link navbar-preview__link"
               aria-label="Discover movies"
               title="Discover and search movies or tv shows "
-            >Discover</nuxt-link>
-          </li>
-          <li class="navbar__item navbar-preview__item">
-            <nuxt-link
-              to="/tv-shows"
-              class="navbar__link navbar-preview__link"
-              aria-label="List of tv shows"
-              title="See list of tv shows"
-            >TV Shows</nuxt-link>
+              >Discover</nuxt-link
+            >
           </li>
           <li class="navbar__item navbar-preview__item">
             <nuxt-link
@@ -36,7 +47,8 @@
               class="navbar__link navbar-preview__link"
               aria-label="Movie you liked"
               title="Movie you like"
-            >Liked</nuxt-link>
+              >Liked</nuxt-link
+            >
           </li>
         </ul>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="info">
-    <SmallPreviewer :movie="movie" :color="movie.color" />
-    <NavbarPreview />
+    <MovieSubPreviewer :movie="movie" :color="movie.color" />
+    <NavbarPreview name="view-movie-id" />
 
     <v-container class="pb-5">
       <v-row>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import SmallPreviewer from "@/components/includes/SmallPreviewer";
+import MovieSubPreviewer from "@/components/movie/MovieSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import ReviewCard from "@/components/card/ReviewCard";
 
@@ -57,7 +57,7 @@ export default {
     return {};
   },
   components: {
-    SmallPreviewer,
+    MovieSubPreviewer,
     NavbarPreview,
     ReviewCard,
     Paginator
@@ -86,5 +86,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

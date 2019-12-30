@@ -92,13 +92,14 @@ export const actions = {
           `https://api.themoviedb.org/3/movie/${id}/external_ids?api_key=${process.env.TMDB_API_KEY_V3}`
         );
 
-        const { Metascore, imdbVotes, imdbRating } = imdb.data;
+        const { Metascore, imdbVotes, imdbRating, Rated } = imdb.data;
 
         tmdb.data.meta_score = Metascore;
         tmdb.data.imdb_rating = imdbRating;
         tmdb.data.imdb_votes = imdbVotes;
+        tmdb.data.rated = Rated;
         tmdb.data.external_id = external_id.data;
-
+        console.log(imdb.data);
         console.log(tmdb);
 
         let color = await colorMatcher(tmdb.data.backdrop_path);

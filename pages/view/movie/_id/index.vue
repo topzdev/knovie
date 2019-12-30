@@ -1,13 +1,13 @@
 <template>
   <div v-if="movie">
-    <Previewer :movie="movie" :color="movie.color" />
+    <MoviePreviewer :movie="movie" :color="movie.color" />
 
     <v-container class="movie">
-      <v-row>
+      <v-row align="start">
         <v-col cols="9" class="movie__main pt-5">
           <MovieDescription :title="''" :description="movie.overview" />
           <MovieCast
-            :url="`/movie/cast/${$route.params.id}`"
+            :url="`/view/movie/${$route.params.id}/cast`"
             :title="''"
             :casts="movie.credits.cast"
           />
@@ -18,7 +18,7 @@
       </v-row>
     </v-container>
     <MovieGallery
-      :url="`/movie/gallery/${$route.params.id}`"
+      :url="`/view/movie/${$route.params.id}/gallery`"
       :title="''"
       :images="movie.images"
     />
@@ -27,7 +27,7 @@
       <v-row>
         <v-col cols="9">
           <MovieReview
-            :url="`/movie/reviews/${$route.params.id}`"
+            :url="`/view/movie/${$route.params.id}/reviews`"
             :title="''"
             :reviews="movie.reviews.results"
           />
@@ -50,16 +50,18 @@
             v-if="movie.similar.results.length"
             :title="'Related'"
             :cardSize="'col-lg-3'"
-            :movies="movie.similar.results"
+            :result="movie.similar.results"
             :toShow="8"
+            type="Movies"
           />
 
           <Showcase
             v-else
             :title="'Recommended Movies'"
             :cardSize="'col-lg-3'"
-            :movies="movie.recommendations.results"
+            :result="movie.recommendations.results"
             :toShow="8"
+            type="Movies"
           />
         </v-col>
       </v-row>
@@ -68,7 +70,7 @@
 </template>
 
 <script>
-import Previewer from "@/components/includes/Previewer";
+import MoviePreviewer from "@/components/movie/MoviePreviewer";
 import MovieCast from "@/components/movie/MovieCast";
 import MovieGallery from "@/components/movie/MovieGallery";
 import MovieDescription from "@/components/movie/MovieDescription";
@@ -87,7 +89,7 @@ export default {
   },
   components: {
     MovieCast,
-    Previewer,
+    MoviePreviewer,
     MovieGallery,
     MovieDescription,
     MovieInfo,

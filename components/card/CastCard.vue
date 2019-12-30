@@ -2,7 +2,7 @@
   <div class="card--secondary">
     <nuxt-link :to="'/people/' + cast.cast_id" class="card--secondary__img">
       <img
-        :src="imagePath(cast.profile_path, 'w185')"
+        v-lazy="imagePath(cast.profile_path, 'w185')"
         class="fit-image"
         :alt="`${cast.name} as ${cast.character}`"
         :title="`${cast.name} as ${cast.character}`"

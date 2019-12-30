@@ -1,16 +1,16 @@
 <template>
   <nuxt-link
     :to="{
-      name: 'view-movie-id',
-      params: { id: parseLink(movie.title, movie.id) }
+      name: 'view-tv-id',
+      params: { id: parseLink(tv.name, tv.id) }
     }"
     class="card--primary"
     style="--box-shadow: var(--primary-color)"
   >
     <div class="card--primary__img">
       <img
-        v-lazy="imagePath(movie.poster_path, 'w185')"
-        :alt="movie.title"
+        v-lazy="imagePath(tv.poster_path, 'w185')"
+        :alt="tv.name"
         draggable="false"
       />
     </div>
@@ -22,18 +22,18 @@
     </div>
 
     <div class="card--primary__body">
-      <div class="badge badge--primary" v-text="movie.vote_average"></div>
+      <div class="badge badge--primary" v-text="tv.vote_average"></div>
       <h1
         class="card--primary__title"
-        v-text="cliTruncate(movie.title, 40, { position: 'end' })"
+        v-text="cliTruncate(tv.name, 40, { position: 'end' })"
       />
       <div class="card--primary__genre" v-if="genres">
-        <span v-for="genre in movie.genre_ids.slice(0, 2)" :key="genre">
-          {{ _.find(genres, { id: genre }).name }}
+        <span v-for="genre in tv.genre_ids.slice(0, 2)" :key="genre">
+          {{ _.find(genres, { id: genre }) }}
         </span>
       </div>
       <p class="card--primary__date">
-        {{ moment(movie.release_date).format("YYYY") }}
+        {{ moment(tv.release_date).format("YYYY") }}
       </p>
     </div>
   </nuxt-link>
@@ -46,7 +46,7 @@ import moment from "moment";
 import cliTruncate from "cli-truncate";
 
 export default {
-  props: ["movie"],
+  props: ["tv"],
   data() {
     return {
       icons: {
@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     genres() {
-      return this.$store.getters["getMovieGenres"];
+      return this.$store.getters["getTVGenres"];
     }
   },
   methods: {

@@ -6,7 +6,7 @@
       </button>
     </div>
     <img
-      :src="imagePath(image.file_path, size)"
+      v-lazy="imagePath(image.file_path, size)"
       alt
       class="fit-image"
       draggable="false"
@@ -34,7 +34,7 @@ export default {
       const { file_path, title } = this.$props.image;
       FileSaver.saveAs(
         imagePath(file_path, "original"),
-        title + "-" + file_path.replace(" ", "_")
+        "knovie.com" + "-" + file_path.replace(" ", "_")
       );
     }
   }

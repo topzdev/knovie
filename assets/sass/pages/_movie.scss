@@ -1,10 +1,15 @@
 .movie {
   @include transition;
-  color: rgba(var(--base-text-color), 1);
+  color: rgba(var(--base-text-color), 0.7);
+
+  & .heading--secondary {
+    color: rgba(var(--base-text-color), 0.9);
+  }
 
   &__sidebar {
     @include transition;
     background-color: rgba(var(--secondary-color), 1);
+    margin-top: 4rem;
   }
 
   &__main {
@@ -14,13 +19,28 @@
   &__info {
     padding: 1.5rem;
   }
+
+  &__logo {
+    height: 4rem;
+  }
+
   &__info-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     list-style: none;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
 
     p {
-      font-size: 15px;
+      font-size: 1.5rem;
+    }
+
+    li {
+      display: inline;
+      &:not(:last-child) {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
     }
   }
 

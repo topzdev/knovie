@@ -2,7 +2,8 @@ import axios from "axios";
 require("dotenv").config();
 
 export const state = () => ({
-  genres: null,
+  movie_genres: null,
+  tv_genres: null,
   sort_by: [
     { name: "Popularity Desc", id: "popularity.desc" },
     { name: "Popularity Asc", id: "popularity.asc" },
@@ -17,8 +18,11 @@ export const state = () => ({
 });
 
 export const getters = {
-  getGenres: state => {
-    return state.genres;
+  getMovieGenres: state => {
+    return state.movie_genres;
+  },
+  getTVGenres: state => {
+    return state.tv_genres;
   },
   getSortBy: state => {
     return state.sort_by;
@@ -36,9 +40,13 @@ export const getters = {
 };
 
 export const mutations = {
-  SET_GENRES(state, genres) {
+  SET_MOVIE_GENRES(state, genres) {
     genres.unshift({ id: -1, name: "All" });
-    state.genres = genres;
+    state.movie_genres = genres;
+  },
+  SET_TV_GENRES(state, genres) {
+    genres.unshift({ id: -1, name: "All" });
+    state.tv_genres = genres;
   },
   SET_RECOMMENDED(state, movies) {
     state.recommend = movies;
@@ -50,14 +58,19 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit }, context) {
-    return axios
-      .get(
+    try {
+      const tv_genre = await axios.get(
+        `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.TMDB_API_KEY_V3}`
+      );
+      commit("SET_TV_GENRES", tv_genre.data.genres);
+
+      const movie_genre = await axios.get(
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY_V3}`
-      )
-      .then(res => {
-        commit("SET_GENRES", res.data.genres);
-      })
-      .catch(err => console.error(err));
+      );
+      commit("SET_MOVIE_GENRES", movie_genre.data.genres);
+    } catch (error) {
+      console.log(error);
+    }
   },
   async fetchRecommend(
     { commit },

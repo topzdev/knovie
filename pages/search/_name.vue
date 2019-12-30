@@ -10,7 +10,7 @@
           <h3
             class="search__count"
             aria-label="Search result count"
-            v-text=" numeral(searched.total_results).format('0,0')"
+            v-text="numeral(searched.total_results).format('0,0')"
           />
         </v-container>
       </div>

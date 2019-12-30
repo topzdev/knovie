@@ -12,10 +12,14 @@
               <span>/10</span>
             </p>
 
-            <p class="slider__description">{{ cliTruncate(movie.overview, 400, {position: 'end'}) }}</p>
+            <p class="slider__description">
+              {{ cliTruncate(movie.overview, 400, { position: "end" }) }}
+            </p>
 
             <div class="slider__actions mt-2">
-              <nuxt-link :to="setLink(movie.id)" class="btn btn--primary mr-1">View more</nuxt-link>
+              <nuxt-link :to="setLink(movie.id)" class="btn btn--primary mr-1"
+                >View more</nuxt-link
+              >
 
               <button class="btn btn--favorite">
                 <v-icon>{{ icons.heart }}</v-icon>
@@ -34,10 +38,10 @@
         </div>
       </div>
     </VueSlickCarousel>
-    <VueSlickCarousel class="slider-nav slider__sidebar" v-bind="sideSlickOption" v-if="movies">
+    <!-- <VueSlickCarousel class="slider-nav slider__sidebar" v-bind="sideSlickOption" v-if="movies">
       >
       <SliderCard v-for="movie in movies" :key="movie.title" :trend="movie" />
-    </VueSlickCarousel>
+    </VueSlickCarousel> -->
   </header>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Slider category="now_playing" v-if="!loading" :movies="now_playing" />
+    <Slider category="now_playing" :movies="now_playing" />
     <v-container class="pt-2 pb-5">
-      <Showcase title="Upcoming Movies" :movies="upcoming" />
+      <Showcase title="Upcoming Movies" :result="upcoming" type="Movies" />
 
-      <Showcase title="Popular" :movies="popular" />
+      <Showcase title="Popular" :result="popular" type="Movies" />
 
-      <Showcase title="Top Rated" :movies="top_rated" />
+      <Showcase title="Top Rated" :result="top_rated" type="Movies" />
     </v-container>
   </div>
 </template>
@@ -23,12 +23,10 @@ export default {
     Showcase
   },
   async fetch({ store, data }) {
-    await store.dispatch("movie/setLoading", true);
     await store.dispatch("movie/fetchCategory", "now_playing");
     await store.dispatch("movie/fetchCategory", "top_rated");
     await store.dispatch("movie/fetchCategory", "upcoming");
     await store.dispatch("movie/fetchCategory", "popular");
-    await store.dispatch("movie/setLoading", false);
   },
   computed: {
     now_playing() {
@@ -42,9 +40,6 @@ export default {
     },
     popular() {
       return this.$store.getters["movie/getCategories"]("popular");
-    },
-    loading() {
-      return this.$store.getters["movie/getLoading"];
     }
   }
 };

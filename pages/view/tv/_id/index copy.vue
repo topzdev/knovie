@@ -1,0 +1,114 @@
+<template>
+  <div v-if="movie">
+    <MoviePreviewer :movie="movie" :color="movie.color" />
+
+    <v-container class="movie">
+      <v-row align="start">
+        <v-col cols="9" class="movie__main pt-5">
+          <MovieDescription :title="''" :description="movie.overview" />
+          <MovieCast
+            :url="`/view/movie/${$route.params.id}/cast`"
+            :title="''"
+            :casts="movie.credits.cast"
+          />
+        </v-col>
+        <v-col cols="3" class="movie__sidebar">
+          <MovieInfo :title="''" :info="movie" />
+        </v-col>
+      </v-row>
+    </v-container>
+    <MovieGallery
+      :url="`/view/movie/${$route.params.id}/gallery`"
+      :title="''"
+      :images="movie.images"
+    />
+
+    <v-container v-if="movie.reviews.results">
+      <v-row>
+        <v-col cols="9">
+          <MovieReview
+            :url="`/view/movie/${$route.params.id}/reviews`"
+            :title="''"
+            :reviews="movie.reviews.results"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <MovieCollection
+      :url="`/collection/${$route.params.id}`"
+      v-if="movie.belongs_to_collection"
+      :title="''"
+      :collection="movie.belongs_to_collection"
+      :color="movie.color"
+    />
+
+    <v-container>
+      <v-row>
+        <v-col cols="9">
+          <Showcase
+            v-if="movie.similar.results.length"
+            :title="'Related'"
+            :cardSize="'col-lg-3'"
+            :result="movie.similar.results"
+            :toShow="8"
+            type="Movies"
+          />
+
+          <Showcase
+            v-else
+            :title="'Recommended Movies'"
+            :cardSize="'col-lg-3'"
+            :result="movie.recommendations.results"
+            :toShow="8"
+            type="Movies"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+</template>
+
+<script>
+import MoviePreviewer from "@/components/movie/MoviePreviewer";
+import MovieCast from "@/components/movie/MovieCast";
+import MovieGallery from "@/components/movie/MovieGallery";
+import MovieDescription from "@/components/movie/MovieDescription";
+import MovieInfo from "@/components/movie/MovieInfo";
+import MovieReview from "@/components/movie/MovieReview";
+import MovieCollection from "@/components/movie/MovieCollection";
+import Showcase from "@/components/layout/Showcase";
+import { moviePreviewHead } from "@/utils/seoHead";
+
+export default {
+  head() {
+    return moviePreviewHead(this.movie, this.$route);
+  },
+  async fetch({ params, store }) {
+    await store.dispatch("movie/fetchMovie", params.id);
+  },
+  components: {
+    MovieCast,
+    MoviePreviewer,
+    MovieGallery,
+    MovieDescription,
+    MovieInfo,
+    MovieReview,
+    MovieCollection,
+    Showcase
+  },
+  watch: {
+    $route(to, from) {
+      this.$store.dispatch("movie/fetchMovie", this.$route.params.id);
+    }
+  },
+  scrollToTop: true,
+  computed: {
+    movie() {
+      return this.$store.getters["movie/getCurrent"];
+    }
+  }
+};
+</script>
+
+<style></style>

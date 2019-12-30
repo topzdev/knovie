@@ -19,7 +19,11 @@
           <v-col class="search__selects ml-auto">
             <v-row class="search__sorter">
               <v-col cols="3" class="py-0">
-                <v-select v-model="filter.year_value" :items="getYears" label="Year"></v-select>
+                <v-select
+                  v-model="filter.year_value"
+                  :items="getYears"
+                  label="Year"
+                ></v-select>
               </v-col>
               <v-col cols="4" class="py-0">
                 <v-select
@@ -39,9 +43,13 @@
                   label="Genre"
                 ></v-select>
               </v-col>
-              <v-col class="p-0 d-flex pt-1 align-items-center justify-content-center">
+              <v-col
+                class="p-0 d-flex pt-1 align-items-center justify-content-center"
+              >
                 <button class="btn--icon" @click="filterToggle = !filterToggle">
-                  <v-icon size="30">{{filterToggle ? icons.filter : icons.filterOpen}}</v-icon>
+                  <v-icon size="30">{{
+                    filterToggle ? icons.filter : icons.filterOpen
+                  }}</v-icon>
                 </button>
               </v-col>
             </v-row>
@@ -104,7 +112,7 @@ export default {
       return this.$store.getters.getYears;
     },
     getGenre: function() {
-      return this.$store.getters.getGenres;
+      return this.$store.getters.getMovieGenres;
     },
     getSortBy: function() {
       return this.$store.getters.getSortBy;
@@ -137,5 +145,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

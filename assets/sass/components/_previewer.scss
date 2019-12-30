@@ -43,6 +43,7 @@
     &__body {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       width: 600px !important;
       padding-bottom: 10px;
       & .slider__title {
