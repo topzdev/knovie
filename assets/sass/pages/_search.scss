@@ -32,6 +32,39 @@
     z-index: 1;
   }
 
+  &__toggle {
+    height: 50px;
+  }
+
+  &__toggler {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    top: 0;
+    height: 74px;
+    align-items: flex-start;
+    @include transition;
+    transition-delay: 100ms;
+  }
+
+  &__toggler &__query {
+    height: 37px;
+    min-height: 37px;
+    cursor: pointer;
+    transform: scale(1) translateX(0);
+    @include transition;
+    transition-delay: 100ms;
+  }
+
+  &__toggler-chossen {
+    top: -37px;
+  }
+
+  &__toggler-disabled {
+    color: rgba(var(--secondary-text-color), 0.3) !important;
+    transform: scale(0.8) translateX(-35px) !important;
+  }
+
   &__filter {
     // background-color: rgba(var(--secondary-color), 0.8);
     padding-bottom: 25px;

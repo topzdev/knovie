@@ -40,14 +40,18 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetchCategory({ commit, state }, category) {
+  async fetchCategory({ commit, state }, { category, page }) {
     try {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/tv/${category}?api_key=${process.env.TMDB_API_KEY_V3}&language=${state.language}&page=1&append_to_response=genre`
+        `https://api.themoviedb.org/3/tv/${category}?api_key=${
+          process.env.TMDB_API_KEY_V3
+        }&language=${state.language}&page=${
+          page ? page : 1
+        }&append_to_response=genre`
       );
 
       commit("SET_CATEGORIES", {
-        tv_results: res.data.results,
+        tv_results: res.data,
         category
       });
     } catch (err) {
@@ -79,6 +83,12 @@ export const actions = {
           `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits,reviews,similar,recommendations,keywords, external_ids`
         );
 
+        // For social ids
+        let external_id = await axios.get(
+          `https://api.themoviedb.org/3/tv/${id}/external_ids?api_key=${process.env.TMDB_API_KEY_V3}`
+        );
+
+        tmdb.data.external_id = external_id.data;
         let color = await colorMatcher(tmdb.data.backdrop_path);
         tmdb.data.color = color;
         console.log(state);

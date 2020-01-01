@@ -1,12 +1,34 @@
 <template>
   <div>
-    <Slider category="now_playing" :movies="now_playing" />
+    <MovieSlider :movies="popular.results" />
     <v-container class="pt-2 pb-5">
-      <Showcase title="Upcoming Movies" :result="upcoming" type="Movies" />
+      <Showcase
+        title="Popular"
+        :result="popular.results"
+        type="Movies"
+        url="/movie/popular"
+      />
 
-      <Showcase title="Popular" :result="popular" type="Movies" />
+      <Showcase
+        title="Upcoming"
+        :result="upcoming.results"
+        type="Movies"
+        url="/movie/upcoming"
+      />
 
-      <Showcase title="Top Rated" :result="top_rated" type="Movies" />
+      <Showcase
+        title="Now Playing"
+        :result="now_playing.results"
+        type="Movies"
+        url="/movie/now_playing"
+      />
+
+      <Showcase
+        title="Top Rated"
+        :result="top_rated.results"
+        type="Movies"
+        url="/movie/top_rated"
+      />
     </v-container>
   </div>
 </template>
@@ -14,19 +36,19 @@
 <script>
 import "animate.css";
 import "normalize.css";
-import Slider from "../components/includes/Slider";
+import MovieSlider from "../components/movie/MovieSlider";
 import Showcase from "../components/layout/Showcase";
 
 export default {
   components: {
-    Slider,
+    MovieSlider,
     Showcase
   },
   async fetch({ store, data }) {
-    await store.dispatch("movie/fetchCategory", "now_playing");
-    await store.dispatch("movie/fetchCategory", "top_rated");
-    await store.dispatch("movie/fetchCategory", "upcoming");
-    await store.dispatch("movie/fetchCategory", "popular");
+    await store.dispatch("movie/fetchCategory", { category: "now_playing" });
+    await store.dispatch("movie/fetchCategory", { category: "top_rated" });
+    await store.dispatch("movie/fetchCategory", { category: "upcoming" });
+    await store.dispatch("movie/fetchCategory", { category: "popular" });
   },
   computed: {
     now_playing() {

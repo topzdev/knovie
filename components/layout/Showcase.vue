@@ -23,7 +23,7 @@
           v-for="tv in result.slice(0, toShow ? toShow : limitShow)"
           :key="tv.id"
         >
-          <TVCard :tv="tv" />
+          <TVCard :tv_show="tv" />
         </v-col>
       </template>
     </v-row>

@@ -14,8 +14,8 @@
     @include transition;
 
     &:hover {
-      box-shadow: 0 3px 20px rgba(var(--box-shadow), 0.2),
-        0 -3px 20px rgba(var(--box-shadow), 0.2);
+      box-shadow: 0 3px 20px rgba(var(--box-shadow), 0.3),
+        0 -3px 20px rgba(var(--box-shadow), 0.3);
     }
 
     &:hover &__img {
@@ -29,7 +29,7 @@
     }
 
     &:hover &__genre {
-      height: 16px;
+      height: auto;
     }
     &:hover .badge {
       opacity: 1;
@@ -91,7 +91,7 @@
       font-weight: 600;
       @include transition;
       transition: all 200ms ease;
-      word-spacing: -2px;
+      word-spacing: -1px;
 
       span {
         &:not(:last-child) {
@@ -331,10 +331,16 @@
   }
   &__actions {
     --hover-color: var(--color-red);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 10px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    right: 0;
     z-index: 2;
+    height: 100%;
+    width: 100%;
     @include transition;
 
     button,

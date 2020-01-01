@@ -1,17 +1,17 @@
 <template>
-  <SearchResult :results="getResults">
+  <SearchResult :results="results" :type="results.type === 'movie' ? 'movie' : 'tv'">
     <div class="search__filter">
       <v-container>
         <v-row>
           <v-col class="py-0">
-            <h1 class="heading--primary">
+            <h1 class="heading--primary search__toggle">
               Discover
-              <span class="search__query" v-text="type" />
+              <DiscoverToggle :toggle="results.type" v-on:dis-toggle="disToggler" />
             </h1>
             <h3
               class="search__count"
               aria-label="Search result count"
-              v-text="numeral(getResults.total_results).format('0,0')"
+              v-text="numeral(results.total_results).format('0,0')"
               title="total results"
             />
           </v-col>
@@ -19,16 +19,12 @@
           <v-col class="search__selects ml-auto">
             <v-row class="search__sorter">
               <v-col cols="3" class="py-0">
-                <v-select
-                  v-model="filter.year_value"
-                  :items="getYears"
-                  label="Year"
-                ></v-select>
+                <v-select v-model="filter.year_value" :items="getYears" label="Year"></v-select>
               </v-col>
               <v-col cols="4" class="py-0">
                 <v-select
                   v-model="filter.sort_value"
-                  :items="getSortBy"
+                  :items="results.type === 'movie' ? getSortMovieBy : getSortTVBy"
                   item-text="name"
                   item-value="id"
                   label="Sort by"
@@ -37,19 +33,15 @@
               <v-col cols="4" class="py-0">
                 <v-select
                   v-model="filter.genre_value"
-                  :items="getGenre"
+                  :items="results.type === 'movie' ? getMovieGenre : getTVGenre"
                   item-text="name"
                   item-value="id"
                   label="Genre"
                 ></v-select>
               </v-col>
-              <v-col
-                class="p-0 d-flex pt-1 align-items-center justify-content-center"
-              >
+              <v-col class="p-0 d-flex pt-1 align-items-center justify-content-center">
                 <button class="btn--icon" @click="filterToggle = !filterToggle">
-                  <v-icon size="30">{{
-                    filterToggle ? icons.filter : icons.filterOpen
-                  }}</v-icon>
+                  <v-icon size="30">{{ filterToggle ? icons.filter : icons.filterOpen }}</v-icon>
                 </button>
               </v-col>
             </v-row>
@@ -63,14 +55,17 @@
 <script>
 import SearchResult from "@/components/search/SearchResult";
 import { mdiFilter, mdiFilterOutline } from "@mdi/js";
+import DiscoverToggle from "@/components/button/DiscoverToggle";
 import numeral from "numeral";
+
 export default {
   async fetch({ store }) {
     await store.dispatch("fetchRecommend", {
       year_value: new Date().getFullYear(),
       sort_value: "popularity.desc",
       genre_value: "",
-      page: 1
+      page: 1,
+      type: "movie"
     });
   },
   data() {
@@ -80,7 +75,8 @@ export default {
         year_value: "All",
         sort_value: "popularity.desc",
         genre_value: -1,
-        page: 1
+        page: 1,
+        toggle: false
       },
       icons: {
         filter: mdiFilterOutline,
@@ -90,32 +86,44 @@ export default {
     };
   },
   components: {
-    SearchResult
+    SearchResult,
+    DiscoverToggle
   },
   methods: {
     numeral,
     fetchResults(page) {
-      const { year_value, sort_value, genre_value } = this.filter;
+      const { year_value, sort_value, genre_value, toggle } = this.filter;
       this.$store.dispatch("fetchRecommend", {
         year_value,
         sort_value,
         genre_value,
-        page
+        page,
+        type: toggle ? "tv" : "movie"
       });
+    },
+    disToggler(toggle) {
+      this.filter.toggle = toggle;
+      this.fetchResults(this.page);
     }
   },
   computed: {
-    getResults: function() {
+    results: function() {
       return this.$store.getters.getRecommend;
     },
     getYears: function() {
       return this.$store.getters.getYears;
     },
-    getGenre: function() {
+    getMovieGenre: function() {
       return this.$store.getters.getMovieGenres;
     },
-    getSortBy: function() {
-      return this.$store.getters.getSortBy;
+    getTVGenre: function() {
+      return this.$store.getters.getTVGenres;
+    },
+    getSortMovieBy: function() {
+      return this.$store.getters.getSortMovieBy;
+    },
+    getSortTVBy: function() {
+      return this.$store.getters.getSortTVBy;
     }
   },
 
@@ -127,20 +135,10 @@ export default {
     },
     filter: {
       handler() {
-        console.log("Filter observed");
         this.fetchResults(this.page);
       },
       deep: true
     }
-  },
-  created() {
-    const { year_value, sort_value, genre_value, page } = this.filter;
-    this.$store.dispatch("fetchRecommend", {
-      year_value,
-      sort_value,
-      genre_value,
-      page
-    });
   }
 };
 </script>

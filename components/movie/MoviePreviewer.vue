@@ -83,11 +83,7 @@
 
           <!-- <p class="slider__description" aria-label="sypnosis">{{description}}</p> -->
 
-          <Modal
-            :show="show"
-            v-on:toggle-modal="toggleModal"
-            :style="`--primary:${color.primaryColor}; --secondary:${color.secondaryColor};`"
-          >
+          <Modal :show="show" v-on:toggle-modal="toggleModal" :color="movie.color">
             <MovieTrailer :trailer="movie.videos.results[0].key" :show="show" />
           </Modal>
 

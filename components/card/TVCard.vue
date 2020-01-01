@@ -2,17 +2,13 @@
   <nuxt-link
     :to="{
       name: 'view-tv-id',
-      params: { id: parseLink(tv.name, tv.id) }
+      params: { id: parseLink(tv_show.name, tv_show.id) }
     }"
     class="card--primary"
     style="--box-shadow: var(--primary-color)"
   >
     <div class="card--primary__img">
-      <img
-        v-lazy="imagePath(tv.poster_path, 'w185')"
-        :alt="tv.name"
-        draggable="false"
-      />
+      <img v-lazy="imagePath(tv_show.poster_path, 'w185')" :alt="tv_show.name" draggable="false" />
     </div>
 
     <div class="card__actions">
@@ -22,19 +18,17 @@
     </div>
 
     <div class="card--primary__body">
-      <div class="badge badge--primary" v-text="tv.vote_average"></div>
-      <h1
-        class="card--primary__title"
-        v-text="cliTruncate(tv.name, 40, { position: 'end' })"
-      />
-      <div class="card--primary__genre" v-if="genres">
-        <span v-for="genre in tv.genre_ids.slice(0, 2)" :key="genre">
-          {{ _.find(genres, { id: genre }) }}
-        </span>
+      <div class="badge badge--primary" v-text="tv_show.vote_average"></div>
+      <h1 class="card--primary__title" v-text="cliTruncate(tv_show.name, 40, { position: 'end' })"></h1>
+
+      <div class="card--primary__genre">
+        <span
+          v-for="genre in tv_show.genre_ids.slice(0, 2)"
+          :key="genre"
+          v-text="extractName(genre, genres)"
+        />
       </div>
-      <p class="card--primary__date">
-        {{ moment(tv.release_date).format("YYYY") }}
-      </p>
+      <p class="card--primary__date" v-text="moment(tv_show.first_air_date).format('YYYY')"></p>
     </div>
   </nuxt-link>
 </template>
@@ -46,7 +40,7 @@ import moment from "moment";
 import cliTruncate from "cli-truncate";
 
 export default {
-  props: ["tv"],
+  props: ["tv_show"],
   data() {
     return {
       icons: {
@@ -65,10 +59,16 @@ export default {
     imagePath,
     moment,
     parseLink(title, id) {
+      console.log(title, id);
       return `${title
         .replace(/[^a-zA-Z ]/g, "")
         .replace(/ /g, "-")
         .toLowerCase()}-${id}`;
+    },
+    extractName(value, genres) {
+      const val = this._.find(genres, { id: value });
+      if (val === undefined) return "";
+      return val.name;
     }
   }
 };

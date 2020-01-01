@@ -56,14 +56,18 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetchCategory({ commit, state }, category) {
+  async fetchCategory({ commit, state }, { category, page }) {
     try {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.TMDB_API_KEY_V3}&language=${state.language}&page=1&append_to_response=genre`
+        `https://api.themoviedb.org/3/movie/${category}?api_key=${
+          process.env.TMDB_API_KEY_V3
+        }&language=${state.language}&page=${
+          page ? page : 1
+        }&append_to_response=genre`
       );
 
       commit("SET_CATEGORIES", {
-        movies: res.data.results,
+        movies: res.data,
         category
       });
     } catch (err) {

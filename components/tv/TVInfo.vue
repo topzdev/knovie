@@ -1,28 +1,29 @@
 <template>
   <div class="movie__info">
-    <h1 class="heading--secondary mb-1">Creator</h1>
-    <ul class="movie__info-list">
-      <li>
-        <div class="card--small">
-          <nuxt-link
-            :to="`/people/${info.created_by[0].credit_id}`"
-            class="card--small__image"
-          >
-            <img
-              :src="imagePath(info.created_by[0].profile_path, 'w185')"
-              alt="Movie Director"
-              class="fit-image"
-              draggable="false"
-            />
-          </nuxt-link>
-          <div class="card--small__description">
-            <nuxt-link :to="`/people/${info.created_by[0].credit_id}`">{{
-              info.created_by[0].name
-            }}</nuxt-link>
+    <template v-if="info.created_by.length > 0">
+      <h1 class="heading--secondary mb-1">Creator</h1>
+      <ul class="movie__info-list">
+        <li>
+          <div class="card--small">
+            <nuxt-link :to="`/people/${info.created_by[0].credit_id}`" class="card--small__image">
+              <img
+                :src="imagePath(info.created_by[0].profile_path, 'w185')"
+                alt="Movie Director"
+                class="fit-image"
+                draggable="false"
+              />
+            </nuxt-link>
+            <div class="card--small__description">
+              <nuxt-link :to="`/people/${info.created_by[0].credit_id}`">
+                {{
+                info.created_by[0].name
+                }}
+              </nuxt-link>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </template>
 
     <h1 class="heading--secondary mb-1">Network</h1>
     <ul class="movie__info-list">
@@ -46,18 +47,14 @@
     <h1 class="heading--secondary mb-1">First Aired Date</h1>
     <ul class="movie__info-list">
       <li>
-        <p class="paragraph--primary">
-          {{ moment(info.first_air_date).format("MMMM Do YYYY") }}
-        </p>
+        <p class="paragraph--primary">{{ moment(info.first_air_date).format("MMMM Do YYYY") }}</p>
       </li>
     </ul>
 
     <h1 class="heading--secondary mb-1">Last Aired Date</h1>
     <ul class="movie__info-list">
       <li>
-        <p class="paragraph--primary">
-          {{ moment(info.last_air_date).format("MMMM Do YYYY") }}
-        </p>
+        <p class="paragraph--primary">{{ moment(info.last_air_date).format("MMMM Do YYYY") }}</p>
       </li>
     </ul>
 
@@ -65,16 +62,10 @@
       class="heading--secondary mb-1"
       title="production companies"
       aria-label="production companies"
-    >
-      Production Companies
-    </h1>
+    >Production Companies</h1>
     <ul class="movie__info-list">
       <li v-for="companies in info.production_companies" :key="companies.id">
-        <p
-          v-text="companies.name"
-          :title="companies.name"
-          :aria-label="companies.name"
-        ></p>
+        <p v-text="companies.name" :title="companies.name" :aria-label="companies.name"></p>
       </li>
     </ul>
     <h1 class="heading--secondary mb-1">Type</h1>

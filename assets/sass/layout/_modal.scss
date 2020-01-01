@@ -16,4 +16,16 @@
     rgba(var(--primary), 0.7),
     rgba(var(--secondary), 0.7)
   );
+
+  &__image {
+    display: block;
+    height: 500px;
+    min-height: 500px;
+    box-shadow: var(--elevation-10);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(var(--primary), 1),
+      rgba(var(--secondary), 1)
+    );
+  }
 }

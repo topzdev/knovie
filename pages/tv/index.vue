@@ -1,38 +1,42 @@
 <template>
   <div>
-    <Slider :movies="airing_today" />
+    <TVSlider :tv_show="popular.results" />
     <v-container class="pt-2 pb-5">
-      <Showcase title="Popular TV Shows" :result="popular" type="TV Shows" />
+      <Showcase title="Popular" :result="popular.results" type="TV Shows" url="/tv/popular" />
 
       <Showcase
-        title="On The Air TV Shows"
-        :result="on_the_air"
+        title="Airing Today"
+        :result="airing_today.results"
         type="TV Shows"
+        url="/tv/airing_today"
       />
 
       <Showcase
-        title="Top Rated TV Shows"
-        :result="top_rated"
+        title="On The Air"
+        :result="on_the_air.results"
         type="TV Shows"
+        url="/tv/on_the_air"
       />
+
+      <Showcase title="Top Rated" :result="top_rated.results" type="TV Shows" url="/tv/top_rated" />
     </v-container>
   </div>
 </template>
 
 <script>
-import Slider from "@/components/includes/Slider";
+import TVSlider from "@/components/tv/TVSlider";
 import Showcase from "@/components/layout/Showcase";
 
 export default {
   components: {
-    Slider,
+    TVSlider,
     Showcase
   },
   async fetch({ store, data }) {
-    await store.dispatch("tv/fetchCategory", "airing_today");
-    await store.dispatch("tv/fetchCategory", "top_rated");
-    await store.dispatch("tv/fetchCategory", "on_the_air");
-    await store.dispatch("tv/fetchCategory", "popular");
+    await store.dispatch("tv/fetchCategory", { category: "airing_today" });
+    await store.dispatch("tv/fetchCategory", { category: "top_rated" });
+    await store.dispatch("tv/fetchCategory", { category: "on_the_air" });
+    await store.dispatch("tv/fetchCategory", { category: "popular" });
   },
   computed: {
     airing_today() {

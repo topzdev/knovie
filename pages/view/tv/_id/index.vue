@@ -1,27 +1,23 @@
 <template>
-  <div v-if="tv">
-    <TVPreviewer :tv="tv" :color="tv.color" />
+  <div v-if="tv_show">
+    <TVPreviewer :tv_show="tv_show" :color="tv_show.color" />
 
     <v-container class="movie">
       <v-row align="start">
         <v-col cols="9" class="movie__main pt-5">
-          <TVDescription :description="tv.overview" />
+          <TVDescription :description="tv_show.overview" />
           <TVCast
             :url="`/view/tv/${$route.params.id}/cast`"
             :title="''"
-            :casts="tv.credits.cast"
+            :casts="tv_show.credits.cast"
           />
         </v-col>
         <v-col cols="3" class="movie__sidebar">
-          <TVInfo :title="''" :info="tv" />
+          <TVInfo :title="''" :info="tv_show" />
         </v-col>
       </v-row>
     </v-container>
-    <TVGallery
-      :url="`/view/tv/${$route.params.id}/gallery`"
-      :title="''"
-      :images="tv.images"
-    />
+    <TVGallery :url="`/view/tv/${$route.params.id}/gallery`" :title="''" :images="tv_show.images" />
 
     <v-container>
       <v-row>
@@ -29,7 +25,7 @@
           <TVReview
             :url="`/view/tv/${$route.params.id}/reviews`"
             :title="''"
-            :reviews="tv.reviews.results"
+            :reviews="tv_show.reviews.results"
           />
         </v-col>
       </v-row>
@@ -37,20 +33,20 @@
     <!-- 
     <MovieCollection
       :url="`/collection/${$route.params.id}`"
-      v-if="tv.belongs_to_collection"
+      v-if="tv_show.belongs_to_collection"
       :title="''"
-      :collection="tv.belongs_to_collection"
-      :color="tv.color"
-    /> -->
+      :collection="tv_show.belongs_to_collection"
+      :color="tv_show.color"
+    />-->
 
     <v-container>
       <v-row>
         <v-col cols="9">
           <Showcase
-            v-if="tv.similar.results.length"
+            v-if="tv_show.similar.results.length"
             :title="'Related'"
             :cardSize="'col-lg-3'"
-            :result="tv.similar.results"
+            :result="tv_show.similar.results"
             :toShow="8"
             type="TV Shows"
           />
@@ -59,7 +55,7 @@
             v-else
             :title="'Recommended Movies'"
             :cardSize="'col-lg-3'"
-            :result="tv.recommendations.results"
+            :result="tv_show.recommendations.results"
             :toShow="8"
             type="TV Shows"
           />
@@ -78,12 +74,12 @@ import TVInfo from "@/components/tv/TVInfo";
 import TVReview from "@/components/tv/TVReview";
 import TVCollection from "@/components/tv/TVCollection";
 import Showcase from "@/components/layout/Showcase";
-// import { moviePreviewHead } from "@/utils/seoHead";
+import { moviePreviewHead } from "@/utils/seoHead";
 
 export default {
-  // head() {
-  //   return moviePreviewHead(this.movie, this.$route);
-  // },
+  head() {
+    return moviePreviewHead(this.tv_show, this.$route);
+  },
   async fetch({ params, store }) {
     await store.dispatch("tv/fetchTVShow", params.id);
   },
@@ -104,7 +100,7 @@ export default {
   },
   scrollToTop: true,
   computed: {
-    tv() {
+    tv_show() {
       return this.$store.getters["tv/getCurrent"];
     }
   }

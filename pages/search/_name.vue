@@ -1,6 +1,6 @@
 <template>
-  <div class="search">
-    <SearchResult :results="searched">
+  <div>
+    <SearchResult :results="searched" type="movie">
       <div class="search__filter">
         <v-container>
           <h1 class="heading--primary">

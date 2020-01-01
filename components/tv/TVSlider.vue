@@ -1,25 +1,21 @@
 <template>
   <header class="slider">
     <!--   -->
-    <VueSlickCarousel class="slider-for" v-bind="mainSlickOption" v-if="movies">
-      <div v-for="movie in movies" :key="movie.title">
+    <VueSlickCarousel class="slider-for" v-bind="mainSlickOption" v-if="tv_show">
+      <div v-for="tv in tv_show" :key="tv.name">
         <v-container>
           <div class="slider__details">
-            <h1 class="slider__title">{{ movie.title }}</h1>
+            <h1 class="slider__title">{{ tv.name }}</h1>
 
             <p class="slider__rating mb-2">
-              {{ movie.vote_average }}
+              {{ tv.vote_average }}
               <span>/10</span>
             </p>
 
-            <p class="slider__description">
-              {{ cliTruncate(movie.overview, 400, { position: "end" }) }}
-            </p>
+            <p class="slider__description">{{ cliTruncate(tv.overview, 400, { position: "end" }) }}</p>
 
             <div class="slider__actions mt-2">
-              <nuxt-link :to="setLink(movie.id)" class="btn btn--primary mr-1"
-                >View more</nuxt-link
-              >
+              <nuxt-link :to="setLink(tv.name+'-'+tv.id)" class="btn btn--primary mr-1">View more</nuxt-link>
 
               <button class="btn btn--favorite">
                 <v-icon>{{ icons.heart }}</v-icon>
@@ -30,18 +26,18 @@
         <div class="slider__cover shadow-overlay">
           <img
             class="fit-image"
-            :src="imagePath(movie.backdrop_path, 'w1280')"
-            :alt="movie.title"
+            :src="imagePath(tv.backdrop_path, 'w1280')"
+            :alt="tv.name"
             draggable="false"
-            aria-label="Movie Image slider"
+            aria-label="TV Image slider"
           />
         </div>
       </div>
     </VueSlickCarousel>
-    <!-- <VueSlickCarousel class="slider-nav slider__sidebar" v-bind="sideSlickOption" v-if="movies">
+    <!-- <VueSlickCarousel class="slider-nav slider__sidebar" v-bind="sideSlickOption" v-if="TVs">
       >
-      <SliderCard v-for="movie in movies" :key="movie.title" :trend="movie" />
-    </VueSlickCarousel> -->
+      <SliderCard v-for="TV in TVs" :key="tv.name" :trend="TV" />
+    </VueSlickCarousel>-->
   </header>
 </template>
 
@@ -67,7 +63,7 @@ export default {
       title: "Avenger Endgame",
       mainSlickOption: {
         infinite: true,
-        autoplaySpeed: 15000,
+        autoplaySpeed: 8000,
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: true,
@@ -87,10 +83,10 @@ export default {
       loading: false
     };
   },
-  props: ["category", "movies"],
+  props: ["category", "tv_show"],
   methods: {
     setLink(title) {
-      return `/movie/${title}`;
+      return `/view/tv/${title}`;
     },
     imagePath,
     cliTruncate

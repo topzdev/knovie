@@ -1,9 +1,6 @@
 <template>
   <div class="search navbar-padding">
-    <transition
-      enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
-    >
+    <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <img
         :src="pageBackground"
         alt="Backdrop image"
@@ -26,20 +23,18 @@
         <div class="search__result mb-3 mt-3">
           <v-row>
             <v-col
-              @mouseenter="setBackground(movie.poster_path)"
+              @mouseenter="setBackground(result.poster_path)"
               @mouseleave="removeBackground()"
-              v-for="movie in results.results"
-              :key="movie.id"
+              v-for="result in results.results"
+              :key="result.id"
               class="col-lg-custom mb-2"
             >
-              <MovieCard :movie="movie" />
+              <TVCard v-if="type === 'tv'" :tv_show="result" />
+              <MovieCard v-else-if="type === 'movie'" :movie="result" />
             </v-col>
           </v-row>
         </div>
-        <Paginator
-          v-if="results.total_pages > 0"
-          :totalPage="results.total_pages"
-        />
+        <Paginator v-if="results.total_pages > 0" :totalPage="results.total_pages" />
       </div>
     </v-container>
   </div>
@@ -47,11 +42,12 @@
 
 <script>
 import MovieCard from "../card/MovieCard";
+import TVCard from "../card/TVCard";
 import imagePath from "@/utils/imagePath";
 import Paginator from "../search/Paginator";
 
 export default {
-  props: ["results"],
+  props: ["results", "type"],
   data() {
     return {
       pageBackground: null,
@@ -60,6 +56,7 @@ export default {
   },
   components: {
     MovieCard,
+    TVCard,
     Paginator
   },
   methods: {
