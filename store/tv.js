@@ -24,6 +24,9 @@ export const getters = {
   },
   getReviews: state => {
     return state.reviews;
+  },
+  getSearch: state => {
+    return state.search;
   }
 };
 
@@ -36,6 +39,9 @@ export const mutations = {
   },
   SET_REVIEWS(state, reviews) {
     state.reviews = reviews;
+  },
+  SET_SEARCH(state, movies) {
+    state.search = movies;
   }
 };
 

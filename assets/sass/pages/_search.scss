@@ -62,12 +62,15 @@
 
   &__toggler-disabled {
     color: rgba(var(--secondary-text-color), 0.3) !important;
-    transform: scale(0.8) translateX(-35px) !important;
+    transform: scale(0.8) translateX(-25px) !important;
+
+    &:hover {
+      color: rgba(var(--secondary-text-color), 0.8) !important;
+    }
   }
 
   &__filter {
     // background-color: rgba(var(--secondary-color), 0.8);
-    padding-bottom: 25px;
     padding-top: 30px;
     @include transition;
     position: relative;
@@ -89,7 +92,34 @@
     color: rgba(var(--primary-color), 1);
   }
 
-  &__selects {
+  &__tab {
+    margin-top: 3rem;
+  }
+
+  &__tab-item {
+    font: var(--font-heading);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: rgba(var(--base-text-color), 0.5);
+    @include transition;
+    span {
+      font-size: 2.2rem;
+    }
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    &:hover {
+      color: rgba(var(--base-text-color), 0.8);
+    }
+  }
+
+  &__tab-active {
+    transform: scale(1.1);
+    color: rgba(var(--primary-color), 1);
+    &:hover {
+      color: rgba(var(--primary-color), 1);
+    }
   }
 }
 

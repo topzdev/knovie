@@ -2,13 +2,9 @@
   <section aria-label="Collection" class="mt-5">
     <div
       class="movie__collection"
-      :style="
-        '--background-color:' +
-          color.primaryColor +
-          ' ;' +
-          '--text-color:' +
-          color.textColor
-      "
+      :style="  
+      `--background-color: ${color.primaryColor};
+          --text-color: ${color.textColor}`"
     >
       <div class="movie__collection-image">
         <div v-if="collection.backdrop_path != null">
@@ -23,23 +19,16 @@
 
       <v-container>
         <div class="movie__collection-content">
-          <h1 class="movie__collection-header">
-            Part of the {{ collection.name }}
-          </h1>
-          <!-- <p
-            class="paragraph--primary"
-          >Includes The Avengers, Avengers: Age of Ultron, Avengers: Infinity War</p> -->
+          <h1 class="movie__collection-header">Part of the {{ collection.name }}</h1>
 
           <nuxt-link
-            :to="'/movie/collection/' + collection.id"
+            :to="`/view/collection/${parseLink(collection.name, collection.id)}`"
             class="btn btn--primary mt-2"
-            :style="
-              `background-color:rgb(${color.secondaryColor}); 
-              border-color: rgb(${color.secondaryColor});
-              color: rgba(${color.textColor})`
+            :style="`background-color:rgb(${color.primaryColor});
+            border-color: rgb(${color.primaryColor});
+            color: rgba(${color.textColor})`
             "
-            >View {{ collection.name }}'s</nuxt-link
-          >
+          >View {{ collection.name }}'s</nuxt-link>
         </div>
       </v-container>
     </div>
@@ -47,11 +36,14 @@
 </template>
 
 <script>
+import parseLink from "@/utils/parseLink";
 import imagePath from "@/utils/imagePath";
+
 export default {
   props: ["collection", "color"],
   methods: {
-    imagePath
+    imagePath,
+    parseLink
   }
 };
 </script>

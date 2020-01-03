@@ -1,8 +1,10 @@
 import * as Vibrant from "node-vibrant";
 import imagePath from "./imagePath";
 import Color from "color";
+
 export default async image => {
   let returnColor = {};
+
   await Vibrant.from(imagePath(image, "w780")).getPalette((err, palette) => {
     const { Vibrant, DarkMuted } = palette;
     console.log(palette);

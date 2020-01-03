@@ -36,7 +36,6 @@
     </v-container>
 
     <MovieCollection
-      :url="`/collection/${$route.params.id}`"
       v-if="movie.belongs_to_collection"
       :title="''"
       :collection="movie.belongs_to_collection"
@@ -79,7 +78,7 @@ import MovieReview from "@/components/movie/MovieReview";
 import MovieCollection from "@/components/movie/MovieCollection";
 import Showcase from "@/components/layout/Showcase";
 import { moviePreviewHead } from "@/utils/seoHead";
-
+import parseLink from "@/utils/parseLink";
 export default {
   head() {
     return moviePreviewHead(this.movie, this.$route);
@@ -102,6 +101,7 @@ export default {
       this.$store.dispatch("movie/fetchMovie", this.$route.params.id);
     }
   },
+  methods: { parseLink },
   scrollToTop: true,
   computed: {
     movie() {

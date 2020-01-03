@@ -2,7 +2,8 @@
   <iframe
     allowfullscreen
     frameborder="0"
-    :src="`https://www.youtube.com/embed/${trailer}?autoplay=${show ? 1 : 0}`"
+    v-if="trailer.results.length != 0"
+    :src="`https://www.youtube.com/embed/${trailer.results[0].key}?autoplay=${show ? 1 : 0}`"
     class="movie__trailer"
   />
 </template>

@@ -1,6 +1,8 @@
 import axios from "axios";
 import colorMatcher from "~/utils/colorMatcher";
 import parseParams from "~/utils/parseParams";
+import moment from "moment";
+import _ from "lodash";
 require("dotenv").config();
 
 export const state = () => ({
@@ -12,7 +14,7 @@ export const state = () => ({
   loading: false,
   searched: null,
   reviews: null,
-
+  collection: null,
   language: "en-US"
 });
 
@@ -31,6 +33,9 @@ export const getters = {
   },
   getReviews: state => {
     return state.reviews;
+  },
+  getCollection: state => {
+    return state.collection;
   }
 };
 
@@ -52,6 +57,10 @@ export const mutations = {
 
   SET_REVIEWS(state, reviews) {
     state.reviews = reviews;
+  },
+
+  SET_COLLECTION(state, movie) {
+    state.collection = movie;
   }
 };
 
@@ -116,18 +125,6 @@ export const actions = {
     }
   },
 
-  async fetchCollection({ commit }, collection_id) {
-    try {
-      let res = await axios.get(
-        `https://api.themoviedb.org/3/collection/${collection_id}?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US`
-      );
-
-      commit("SET_COLLECTION", res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  },
-
   async fetchSearch({ commit }, { query, page }) {
     console.log(query, page);
     try {
@@ -141,10 +138,6 @@ export const actions = {
     }
   },
 
-  setLoading({ commit }, status) {
-    commit("SET_LOADING", status);
-  },
-
   async fetchReviews({ commit }, { id, page }) {
     try {
       id = parseParams(id);
@@ -154,6 +147,37 @@ export const actions = {
       );
 
       commit("SET_REVIEWS", res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  async fetchCollection({ commit }, id) {
+    try {
+      id = parseParams(id);
+
+      let res = await axios.get(
+        `https://api.themoviedb.org/3/collection/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=images&language=en-US`
+      );
+      let color = await colorMatcher(res.data.backdrop_path);
+
+      let vote_average = 0;
+      res.data.parts.forEach(movie => {
+        vote_average += movie.vote_average;
+      });
+
+      const years = res.data.parts.map(movie =>
+        moment(movie.release_date).format("YYYY")
+      );
+
+      res.data.year_max = _.max(years);
+      res.data.year_min = _.min(years);
+      res.data.vote_average = parseFloat(
+        vote_average / res.data.parts.length
+      ).toFixed(1);
+      res.data.color = color;
+      console.log(res.data);
+      commit("SET_COLLECTION", res.data);
     } catch (err) {
       console.error(err);
     }

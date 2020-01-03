@@ -36,6 +36,8 @@
 <script>
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import imagePath from "@/utils/imagePath";
+import parseLink from "@/utils/parseLink";
+
 import moment from "moment";
 import cliTruncate from "cli-truncate";
 
@@ -58,13 +60,7 @@ export default {
     cliTruncate,
     imagePath,
     moment,
-    parseLink(title, id) {
-      console.log(title, id);
-      return `${title
-        .replace(/[^a-zA-Z ]/g, "")
-        .replace(/ /g, "-")
-        .toLowerCase()}-${id}`;
-    },
+    parseLink,
     extractName(value, genres) {
       const val = this._.find(genres, { id: value });
       if (val === undefined) return "";

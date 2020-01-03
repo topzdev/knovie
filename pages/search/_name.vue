@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchResult :results="searched" type="movie">
+    <SearchResult :results="result().data" :type="result().type">
       <div class="search__filter">
         <v-container>
           <h1 class="heading--primary">
@@ -10,8 +10,38 @@
           <h3
             class="search__count"
             aria-label="Search result count"
-            v-text="numeral(searched.total_results).format('0,0')"
+            v-text="numeral(movie.total_results + tv_show.total_results).format('0,0')"
           />
+
+          <div class="search__tab">
+            <button
+              class="search__tab-item"
+              :class="{'search__tab-active': active.movie}"
+              @click="tabChanger('movie')"
+              title="resutls for Movie"
+            >
+              Movies
+              <span>({{movie.total_results}})</span>
+            </button>
+            <button
+              class="search__tab-item"
+              :class="{'search__tab-active': active.tv_show}"
+              @click="tabChanger('tv_show')"
+              title="results for TV shows"
+            >
+              TV Shows
+              <span>({{tv_show.total_results}})</span>
+            </button>
+            <button
+              class="search__tab-item"
+              :class="{'search__tab-active': active.people}"
+              @click="tabChanger('people')"
+              title="results for Movie"
+            >
+              People
+              <span>(38)</span>
+            </button>
+          </div>
         </v-container>
       </div>
     </SearchResult>
@@ -29,12 +59,22 @@ export default {
       query: params.name,
       page: query.page ? query.page : 1
     });
+
+    await store.dispatch("tv/fetchSearch", {
+      query: params.name,
+      page: query.page ? query.page : 1
+    });
   },
   components: {
     SearchResult
   },
   data() {
     return {
+      active: {
+        movie: true,
+        tv_show: false,
+        people: false
+      },
       pageBackground: null,
       transition: false
     };
@@ -46,14 +86,45 @@ export default {
         query: params.name,
         page: query.page ? query.page : 1
       });
+
+      this.$store.dispatch("tv/fetchSearch", {
+        query: params.name,
+        page: query.page ? query.page : 1
+      });
     }
   },
   methods: {
-    numeral
+    numeral,
+    result() {
+      const { movie, tv_show, people } = this.active;
+
+      if (movie)
+        return {
+          type: "movie",
+          data: this.movie,
+          length: this.movie.total_results
+        };
+      if (tv_show)
+        return {
+          type: "tv",
+          data: this.tv_show,
+          length: this.tv_show.total_results
+        };
+    },
+    tabChanger(type) {
+      this.active.movie = false;
+      this.active.tv_show = false;
+      this.active.people = false;
+
+      this.active[type] = true;
+    }
   },
   computed: {
-    searched() {
+    movie() {
       return this.$store.getters["movie/getSearch"];
+    },
+    tv_show() {
+      return this.$store.getters["tv/getSearch"];
     }
   }
 };
