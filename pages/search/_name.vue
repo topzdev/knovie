@@ -10,7 +10,7 @@
           <h3
             class="search__count"
             aria-label="Search result count"
-            v-text="numeral(movie.total_results + tv_show.total_results).format('0,0')"
+            v-text="numeral(movie.total_results + tv_show.total_results + people.total_results).format('0,0')"
           />
 
           <div class="search__tab">
@@ -36,10 +36,10 @@
               class="search__tab-item"
               :class="{'search__tab-active': active.people}"
               @click="tabChanger('people')"
-              title="results for Movie"
+              title="results for People"
             >
               People
-              <span>(38)</span>
+              <span>({{people.total_results}})</span>
             </button>
           </div>
         </v-container>
@@ -61,6 +61,11 @@ export default {
     });
 
     await store.dispatch("tv/fetchSearch", {
+      query: params.name,
+      page: query.page ? query.page : 1
+    });
+
+    await store.dispatch("people/fetchSearch", {
       query: params.name,
       page: query.page ? query.page : 1
     });
@@ -91,6 +96,11 @@ export default {
         query: params.name,
         page: query.page ? query.page : 1
       });
+
+      this.$store.dispatch("people/fetchSearch", {
+        query: params.name,
+        page: query.page ? query.page : 1
+      });
     }
   },
   methods: {
@@ -110,12 +120,17 @@ export default {
           data: this.tv_show,
           length: this.tv_show.total_results
         };
+      if (people)
+        return {
+          type: "people",
+          data: this.people,
+          length: this.people.total_results
+        };
     },
     tabChanger(type) {
       this.active.movie = false;
       this.active.tv_show = false;
       this.active.people = false;
-
       this.active[type] = true;
     }
   },
@@ -125,9 +140,12 @@ export default {
     },
     tv_show() {
       return this.$store.getters["tv/getSearch"];
+    },
+    people() {
+      return this.$store.getters["people/getSearch"];
     }
   }
 };
-</script>
+</script>PeopleCard
 
 <style></style>

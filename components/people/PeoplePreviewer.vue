@@ -1,29 +1,34 @@
 <template>
   <div class="people">
-    <v-containe>
-      <div class="people__previewer">
-        <div
-          class="previewer--primary__poster backdrop-gradient"
-          :style="
-            `--first: rgb(${people.color.primaryColor}); --second: rgb(${people.color.secondaryColor})`
-          "
-        >
-          <img
-            class="fit-image"
-            :src="imagePath(people.profile, 'w342')"
-            :title="people.name"
-            :alt="people.name + ' poster'"
-            draggable="false"
-            aria-label="Movie Poster"
-          />
+    <div class="people__previewer">
+      <v-container class="py-0">
+        <div class="people__header">
+          <v-row>
+            <v-col cols="3">
+              <div class="people__poster">
+                <img
+                  class="fit-image"
+                  :src="imagePath(people.profile_path, 'w342')"
+                  :title="people.name"
+                  :alt="people.name + ' poster'"
+                  draggable="false"
+                  aria-label="Movie Poster"
+                />
+              </div>
+            </v-col>
+            <v-col>
+              <div class="people__body">
+                <h1 class="people__title">{{ people.name }}</h1>
+              </div>
+            </v-col>
+          </v-row>
         </div>
-        <div class="previewer--primary__body">
-          <h1 class="slider__title">{{ people.name }}</h1>
-        </div>
-      </div>
-    </v-containe>
+      </v-container>
+    </div>
   </div>
 </template>
+
+
 
 <script>
 import imagePath from "@/utils/imagePath";

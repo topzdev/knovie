@@ -1,24 +1,26 @@
 <template>
   <div class="movie__info">
     <!-- Director -->
-    <h1 class="heading--secondary mb-1">Director</h1>
-    <ul class="movie__info-list">
-      <li>
-        <div class="card--small">
-          <nuxt-link :to="`/people/${director.credit_id}`" class="card--small__image">
-            <img
-              :src="imagePath(director.profile_path, 'w185')"
-              alt="Movie Director"
-              class="fit-image"
-              draggable="false"
-            />
-          </nuxt-link>
-          <div class="card--small__description">
-            <nuxt-link :to="`/people/${director.credit_id}`">{{director.name}}</nuxt-link>
+    <div v-if="director ? true : false">
+      <h1 class="heading--secondary mb-1">Director</h1>
+      <ul class="movie__info-list">
+        <li>
+          <div class="card--small">
+            <nuxt-link :to="`/people/${director.credit_id}`" class="card--small__image">
+              <img
+                :src="imagePath(director.profile_path, 'w185')"
+                alt="Movie Director"
+                class="fit-image"
+                draggable="false"
+              />
+            </nuxt-link>
+            <div class="card--small__description">
+              <nuxt-link :to="`/people/${director.credit_id}`">{{director.name}}</nuxt-link>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
 
     <h1 class="heading--secondary mb-1">Rated</h1>
     <ul class="movie__info-list">
@@ -109,7 +111,9 @@ export default {
 
   computed: {
     director: function() {
-      return this._.find(this.$props.info.credits.crew, { job: "Director" });
+      return (
+        this._.find(this.$props.info.credits.crew, { job: "Director" }) || null
+      );
     }
   }
 };

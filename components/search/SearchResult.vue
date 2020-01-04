@@ -31,6 +31,7 @@
             >
               <TVCard v-if="type === 'tv'" :tv_show="result" />
               <MovieCard v-else-if="type === 'movie'" :movie="result" />
+              <PeopleCard v-else-if="type === 'people'" :people="result" />
             </v-col>
           </v-row>
         </div>
@@ -43,6 +44,7 @@
 <script>
 import MovieCard from "../card/MovieCard";
 import TVCard from "../card/TVCard";
+import PeopleCard from "../card/PeopleCard";
 import imagePath from "@/utils/imagePath";
 import Paginator from "../search/Paginator";
 
@@ -57,7 +59,8 @@ export default {
   components: {
     MovieCard,
     TVCard,
-    Paginator
+    Paginator,
+    PeopleCard
   },
   methods: {
     imagePath,
