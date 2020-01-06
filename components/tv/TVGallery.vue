@@ -1,39 +1,47 @@
 <template>
   <section aria-label="Movie Gallery">
-    <v-container>
-      <v-row>
-        <v-col>
+    <div class="container">
+      <div class="row">
+        <div class="col">
           <h1 class="heading--primary">Gallery</h1>
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
     <div class="gallery--full" :style="`height: ${gallerySize}`">
-      <v-row no-gutters>
-        <v-col height="100%" :style="`max-height:${gallerySize / (12 / 12)}px`">
+      <div class="row no-gutters">
+        <div
+          class="col"
+          height="100%"
+          :style="`max-height:${gallerySize / (12 / 12)}px`"
+        >
           <GalleryCard :image="{ ...bigImage(), title }" size="w780" />
-        </v-col>
-        <v-col :lg="smallImage().divider" height="100%">
-          <v-row no-gutters style="height: 100%">
-            <v-col
-              :lg="smallImage().size"
-              :style="`max-height:${gallerySize / smallImage().row }px`"
+        </div>
+        <div :class="`col-lg-${smallImage().divider}`" height="100%">
+          <div class="row no-gutters" style="height: 100%">
+            <div
+              :class="`col-lg-${smallImage().size}`"
+              :style="`max-height:${gallerySize / smallImage().row}px`"
               v-for="image in smallImage().images"
               :key="image.file_path"
             >
-              <GalleryCard :image="{ ...image, title }" size="w780" :title="title" />
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
+              <GalleryCard
+                :image="{ ...image, title }"
+                size="w780"
+                :title="title"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <v-container>
-      <v-row>
-        <v-col cols="9" class="place-end">
+    <div class="container">
+      <div class="row">
+        <div class="col-9 place-end">
           <MoreButton :url="url" :title="title + ' Images'" />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -65,7 +73,7 @@ export default {
         divider: 8,
         row: 3
       };
-      
+
       if (length >= 9) {
         setBackdrop.size = 4;
         setBackdrop.images = backdrops.slice(1, 10);

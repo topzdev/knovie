@@ -1,8 +1,13 @@
 <template>
   <div>
     <TVSlider :tv_show="popular.results" />
-    <v-container class="pt-2 pb-5">
-      <Showcase title="Popular" :result="popular.results" type="TV Shows" url="/tv/popular" />
+    <div class="container pt-2 pb-5">
+      <Showcase
+        title="Popular"
+        :result="popular.results"
+        type="TV Shows"
+        url="/tv/popular"
+      />
 
       <Showcase
         title="Airing Today"
@@ -18,8 +23,13 @@
         url="/tv/on_the_air"
       />
 
-      <Showcase title="Top Rated" :result="top_rated.results" type="TV Shows" url="/tv/top_rated" />
-    </v-container>
+      <Showcase
+        title="Top Rated"
+        :result="top_rated.results"
+        type="TV Shows"
+        url="/tv/top_rated"
+      />
+    </div>
   </div>
 </template>
 

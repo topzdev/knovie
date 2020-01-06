@@ -1,9 +1,9 @@
 <template>
   <SearchResult :results="results" :type="$route.params.type">
     <div class="search__filter">
-      <v-container>
-        <v-row>
-          <v-col class="py-0">
+      <div class="container">
+        <div class="row">
+          <div class="col py-0">
             <h1 class="heading--primary">
               <span class="search__query" v-text="parseCategory" />
               {{ $route.params.type === "movie" ? "Movies" : "TV Shows" }}
@@ -14,15 +14,16 @@
               v-text="numeral(results.total_results).format('0,0')"
               title="total results"
             />
-          </v-col>
-        </v-row>
-      </v-container>
+          </div>
+        </div>
+      </div>
     </div>
   </SearchResult>
 </template>
 
 <script>
 import SearchResult from "@/components/search/SearchResult";
+import { capitalize } from "lodash/core";
 import numeral from "numeral";
 
 export default {
@@ -63,7 +64,7 @@ export default {
     parseCategory() {
       const { category } = this.$route.params;
 
-      return this._.capitalize(category.replace("_", " "));
+      return capitalize(category.replace("_", " "));
     }
   }
 };

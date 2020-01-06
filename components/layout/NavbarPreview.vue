@@ -1,6 +1,6 @@
 <template>
   <div class="navbar-preview">
-    <v-container class="p-0">
+    <div class="p-0">
       <ul class="navbar-preview__list">
         <li class="navbar-preview__item">
           <nuxt-link
@@ -31,7 +31,7 @@
           >
         </li>
       </ul>
-    </v-container>
+    </div>
   </div>
 </template>
 

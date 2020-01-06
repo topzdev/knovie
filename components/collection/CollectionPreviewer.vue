@@ -14,7 +14,7 @@
         aria-label="Collection Wallpaper"
       />
     </div>
-    <v-container>
+    <div class="container">
       <div class="previewer--secondary__content">
         <div
           class="previewer--secondary__poster backdrop-gradient"
@@ -49,18 +49,18 @@
           </ul>
         </div>
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 
 <script>
 import imagePath from "@/utils/imagePath";
-import moment from "moment";
+import dayjs from 'dayjs'
 export default {
   props: ["collection", "color"],
   methods: {
     imagePath,
-    moment
+    dayjs
   }
 };
 </script>

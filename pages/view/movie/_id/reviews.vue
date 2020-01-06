@@ -3,42 +3,40 @@
     <MovieSubPreviewer :movie="movie" :color="movie.color" />
     <NavbarPreview name="view-movie-id" />
 
-    <v-container class="pb-5">
-      <v-row>
-        <v-col cols="12">
+    <div class="container pb-5">
+      <div class="row">
+        <div class="col-12">
           <h1 class="heading--primary mb-1 mt-3">Reviews</h1>
-        </v-col>
+        </div>
 
-        <v-col cols="8">
-          <v-row v-if="other_reviews == null">
-            <v-col
-              cols="12"
-              class="mb-1"
+        <div class="col-8">
+          <div class="row" v-if="other_reviews == null">
+            <div
+              class="col-12 mb-1"
               v-for="reviews in movie.reviews.results"
               :key="reviews.id"
             >
               <ReviewCard :review="reviews" />
-            </v-col>
-          </v-row>
-          <v-row v-else>
-            <v-col
-              cols="12"
-              class="mb-1"
+            </div>
+          </div>
+          <div class="row" v-else>
+            <div
+              class="col-12 mb-1"
               v-for="reviews in other_reviews.results"
               :key="reviews.id"
             >
               <ReviewCard :review="reviews" />
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <v-row v-if="other_reviews != null && reviews.total_pages > 1">
-        <v-col cols="12">
+      <div class="row" v-if="other_reviews != null && reviews.total_pages > 1">
+        <div class="col-12">
           <Paginator :totalPage="5" />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -4,40 +4,40 @@
     <NavbarPreview name="view-tv-id" />
 
     <div class="info__cast mt-3 pb-5">
-      <v-container>
-        <v-col>
-          <v-row>
-            <v-col>
+      <div class="container">
+        <div class="col">
+          <div class="row">
+            <div class="col">
               <h1 class="heading--primary mb-1">Cast</h1>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col
-              class="col-lg-2 mb-1"
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col col-lg-2 mb-1"
               v-for="cast in tv_shows.credits.cast"
               :key="cast.credit_id"
             >
               <CastCard :cast="cast" />
-            </v-col>
-          </v-row>
+            </div>
+          </div>
           <template v-if="tv_shows.credits.crew.length > 0">
-            <v-row>
-              <v-col>
+            <div class="row">
+              <div class="col">
                 <h1 class="heading--primary mt-5 mb-1">Crew</h1>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col
-                class="col-lg-2 mb-1"
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="col col-lg-2 mb-1"
                 v-for="crew in tv_shows.credits.crew"
                 :key="crew.credit_id"
               >
                 <CrewCard :crew="crew" />
-              </v-col>
-            </v-row>
+              </div>
+            </div>
           </template>
-        </v-col>
-      </v-container>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -3,15 +3,15 @@
     <MovieSubPreviewer :movie="movie" :color="movie.color" />
     <NavbarPreview name="view-movie-id" />
 
-    <v-container>
-      <v-row class="py-0">
-        <v-col>
+    <div class="container">
+      <div class="row py-0">
+        <div class="col">
           <h1 class="heading--primary mt-3 mb-1">Wallpapers</h1>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col
-          cols="4"
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col col-4"
           v-for="image in movie.images.backdrops"
           :key="image.file_path"
         >
@@ -21,16 +21,16 @@
             class="card--cover"
             :style="`--primary: ${movie.color.secondaryColor}`"
           />
-        </v-col>
-      </v-row>
-      <v-row class="py-0">
-        <v-col>
+        </div>
+      </div>
+      <div class="row py-0">
+        <div class="col">
           <h1 class="heading--primary mt-3 mb-1">Posters</h1>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col
-          cols="2"
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col col-2"
           v-for="image in movie.images.posters"
           :key="image.file_path"
         >
@@ -40,9 +40,9 @@
             class="card--cover"
             :style="`--primary: ${movie.color.secondaryColor}`"
           />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,18 +1,20 @@
 import axios from "axios";
-import colorMatcher from "@/utils/colorMatcher";
 import parseParams from "@/utils/parseParams";
-import moment from "moment";
-import _ from "lodash";
 require("dotenv").config();
 
 export const state = () => ({
-  people: null,
-  search: null
+  person: null,
+  search: null,
+  popular: null,
+  latest: null
 });
 
 export const getters = {
-  getPeople(state) {
-    return state.people;
+  getCategories: state => category => {
+    return state[category];
+  },
+  getPerson(state) {
+    return state.person;
   },
   getSearch(state) {
     return state.search;
@@ -20,16 +22,36 @@ export const getters = {
 };
 
 export const mutations = {
-  SET_PEOPLE(state, people) {
-    state.people = people;
+  SET_CATEGORIES(state, { person, category }) {
+    state[category] = person;
   },
-  SET_SEARCH: function(state, people) {
-    state.search = people;
+  SET_PERSON(state, person) {
+    state.person = person;
+  },
+  SET_SEARCH: function(state, person) {
+    state.search = person;
   }
 };
 
 export const actions = {
-  async fetchPeople({ commit }, id) {
+  async fetchCategory({ commit, state }, { category, page }) {
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/person/${category}?api_key=${
+          process.env.TMDB_API_KEY_V3
+        }&language=${state.language}&page=${page ? page : 1}`
+      );
+
+      commit("SET_CATEGORIES", {
+        person: res.data,
+        category
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  async fetchPerson({ commit }, id) {
     try {
       id = parseParams(id);
 
@@ -45,7 +67,7 @@ export const actions = {
       );
       res.data.tv_credits.crew = sortArrayByDate(res.data.tv_credits.crew);
       res.data.tv_credits.cast = sortArrayByDate(res.data.tv_credits.cast);
-      commit("SET_PEOPLE", res.data);
+      commit("SET_PERSON", res.data);
     } catch (err) {
       console.log(err);
     }
@@ -72,9 +94,22 @@ const sortArrayByDate = toSort => {
 
   return toSort
     .sort(function compare(a, b) {
-      var dateA = new Date(a.release_date ? a.release_date : a.first_air_date);
-      var dateB = new Date(b.release_date ? b.release_date : b.first_air_date);
-      return dateA - dateB;
+      console.log(a.release_date ? a.release_date : a.first_air_date);
+      if (
+        a.release_date
+          ? a.release_date
+          : a.first_air_date != undefined && b.release_date
+          ? b.release_date
+          : b.first_air_date != undefined
+      ) {
+        var dateA = new Date(
+          a.release_date ? a.release_date : a.first_air_date
+        );
+        var dateB = new Date(
+          b.release_date ? b.release_date : b.first_air_date
+        );
+        return dateA - dateB;
+      }
     })
     .slice()
     .reverse();

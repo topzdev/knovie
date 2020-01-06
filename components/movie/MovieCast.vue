@@ -1,16 +1,20 @@
 <template>
   <div>
     <h1 class="heading--primary mb-1">Cast</h1>
-    <v-row>
-      <v-col class="col-lg-15 mb-1" v-for="cast in casts.slice(0, 10)" :key="cast.id">
+    <div class="row">
+      <div
+        class="col col-lg-15 mb-1"
+        v-for="cast in casts.slice(0, 10)"
+        :key="cast.id"
+      >
         <CastCard :cast="cast" />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="auto" class="d-block ml-auto">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-auto d-block ml-auto">
         <MoreButton :url="url" :title="title + ' Cast & Crew'" />
-      </v-col>
-    </v-row>
+      </div>
+    </div>
   </div>
 </template>
 

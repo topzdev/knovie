@@ -1,6 +1,6 @@
 <template>
 	<div class="navbar">
-		<v-container>
+		<div class="container">
 			<div class="navbar__nav">
 				<nuxt-link to="/" class="navbar__brand">
 					<img
@@ -10,7 +10,7 @@
 					/>
 				</nuxt-link>
 			</div>
-		</v-container>
+		</div>
 	</div>
 </template>
 

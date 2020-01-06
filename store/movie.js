@@ -1,8 +1,7 @@
 import axios from "axios";
 import colorMatcher from "~/utils/colorMatcher";
 import parseParams from "~/utils/parseParams";
-import moment from "moment";
-import _ from "lodash";
+import { min, max } from "lodash/core";
 require("dotenv").config();
 
 export const state = () => ({
@@ -167,11 +166,11 @@ export const actions = {
       });
 
       const years = res.data.parts.map(movie =>
-        moment(movie.release_date).format("YYYY")
+        dayjs(movie.release_date).format("YYYY")
       );
 
-      res.data.year_max = _.max(years);
-      res.data.year_min = _.min(years);
+      res.data.year_max = max(years);
+      res.data.year_min = min(years);
       res.data.vote_average = parseFloat(
         vote_average / res.data.parts.length
       ).toFixed(1);

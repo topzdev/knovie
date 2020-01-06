@@ -1,6 +1,9 @@
 <template>
   <div class="search navbar-padding">
-    <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+    <transition
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+    >
       <img
         :src="pageBackground"
         alt="Backdrop image"
@@ -12,7 +15,7 @@
     <!-- Filtering or Sorter here -->
     <slot></slot>
 
-    <v-container>
+    <div class="container">
       <div class="search__content mb-5">
         <Paginator
           v-if="results.total_pages > 0"
@@ -21,30 +24,33 @@
           :visible="7"
         />
         <div class="search__result mb-3 mt-3">
-          <v-row>
-            <v-col
+          <div class="row">
+            <div
+              class="col col-lg-custom mb-2"
               @mouseenter="setBackground(result.poster_path)"
               @mouseleave="removeBackground()"
               v-for="result in results.results"
               :key="result.id"
-              class="col-lg-custom mb-2"
             >
               <TVCard v-if="type === 'tv'" :tv_show="result" />
               <MovieCard v-else-if="type === 'movie'" :movie="result" />
-              <PeopleCard v-else-if="type === 'people'" :people="result" />
-            </v-col>
-          </v-row>
+              <PersonCard v-else-if="type === 'people'" :person="result" />
+            </div>
+          </div>
         </div>
-        <Paginator v-if="results.total_pages > 0" :totalPage="results.total_pages" />
+        <Paginator
+          v-if="results.total_pages > 0"
+          :totalPage="results.total_pages"
+        />
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 
 <script>
 import MovieCard from "../card/MovieCard";
 import TVCard from "../card/TVCard";
-import PeopleCard from "../card/PeopleCard";
+import PersonCard from "../card/PersonCard";
 import imagePath from "@/utils/imagePath";
 import Paginator from "../search/Paginator";
 
@@ -60,7 +66,7 @@ export default {
     MovieCard,
     TVCard,
     Paginator,
-    PeopleCard
+    PersonCard
   },
   methods: {
     imagePath,

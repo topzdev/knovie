@@ -2,49 +2,40 @@
   <div class="mt-4">
     <h1 class="heading--primary">{{ title }}</h1>
 
-    <v-row class="mt-2" v-if="result">
-      <template v-if="type === 'Movies'">
-        <v-col
-          cols="6"
-          class="mb-1"
+    <div class="row mt-2" v-if="result">
+      <template>
+        <div
+          class="col mb-1"
           :class="cardSize ? cardSize : setSize"
-          v-for="movie in result.slice(0, toShow ? toShow : limitShow)"
-          :key="movie.id"
+          v-for="data in result.slice(0, toShow ? toShow : limitShow)"
+          :key="data.id"
         >
-          <MovieCard :movie="movie" />
-        </v-col>
+          <MovieCard :movie="data" v-if="type === 'Movies'" />
+          <TVCard :tv_show="data" v-else-if="type === 'TV Shows'" />
+          <PersonCard :person="data" v-else-if="type === 'Person'" />
+        </div>
       </template>
+    </div>
 
-      <template v-else-if="type === 'TV Shows'">
-        <v-col
-          cols="6"
-          class="mb-1"
-          :class="cardSize ? cardSize : setSize"
-          v-for="tv in result.slice(0, toShow ? toShow : limitShow)"
-          :key="tv.id"
-        >
-          <TVCard :tv_show="tv" />
-        </v-col>
-      </template>
-    </v-row>
-
-    <v-row>
-      <v-col cols="auto" class="d-block ml-auto" v-if="url">
+    <div class="row">
+      <div class="d-block ml-auto col-lg-auto" v-if="url">
         <MoreButton :title="`${title} ${type}`" :url="url" />
-      </v-col>
-    </v-row>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import MovieCard from "@/components/card/MovieCard";
 import TVCard from "@/components/card/TVCard";
+import PersonCard from "@/components/card/PersonCard";
 import MoreButton from "@/components/button/MoreButton";
 
 export default {
   components: {
     MovieCard,
     TVCard,
+    PersonCard,
     MoreButton
   },
   props: ["title", "cardSize", "toShow", "result", "url", "type"],

@@ -56,13 +56,13 @@
 </template>
 
 <script>
-import moment from "moment";
+import dayjs from 'dayjs'
 import numeral from "numeral";
 import imagePath from "@/utils/imagePath";
 export default {
   props: ["info"],
   methods: {
-    moment,
+    dayjs,
     numeral,
     imagePath
   }

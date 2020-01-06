@@ -12,6 +12,7 @@
 <script>
 export default {
   props: ["totalPage", "visible"],
+
   data() {
     return {
       currentPage: 1,

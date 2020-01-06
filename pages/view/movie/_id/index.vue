@@ -2,38 +2,38 @@
   <div v-if="movie">
     <MoviePreviewer :movie="movie" :color="movie.color" />
 
-    <v-container class="movie">
-      <v-row align="start">
-        <v-col cols="9" class="movie__main pt-5">
+    <div class="movie container">
+      <div class="row" align="start">
+        <div class="col col-9 movie__main pt-5">
           <MovieDescription :title="''" :description="movie.overview" />
           <MovieCast
             :url="`/view/movie/${$route.params.id}/cast`"
             :title="''"
             :casts="movie.credits.cast"
           />
-        </v-col>
-        <v-col cols="3" class="movie__sidebar">
+        </div>
+        <div class="col col-3 movie__sidebar">
           <MovieInfo :title="''" :info="movie" />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
     <MovieGallery
       :url="`/view/movie/${$route.params.id}/gallery`"
       :title="''"
       :images="movie.images"
     />
 
-    <v-container v-if="movie.reviews.results">
-      <v-row>
-        <v-col cols="9">
+    <div class="container" v-if="movie.reviews.results">
+      <div class="row">
+        <div class="col col-9">
           <MovieReview
             :url="`/view/movie/${$route.params.id}/reviews`"
             :title="''"
             :reviews="movie.reviews.results"
           />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
 
     <MovieCollection
       v-if="movie.belongs_to_collection"
@@ -42,9 +42,9 @@
       :color="movie.color"
     />
 
-    <v-container>
-      <v-row>
-        <v-col cols="9">
+    <div class="container">
+      <div class="row">
+        <div class="col col-9">
           <Showcase
             v-if="movie.similar.results.length"
             :title="'Related'"
@@ -62,9 +62,9 @@
             :toShow="8"
             type="Movies"
           />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

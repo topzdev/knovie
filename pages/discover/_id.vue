@@ -1,9 +1,9 @@
 <template>
   <SearchResult :results="results" :type="results.type === 'movie' ? 'movie' : 'tv'">
     <div class="search__filter">
-      <v-container>
-        <v-row>
-          <v-col class="py-0">
+      <div class="container">
+        <div class="row">
+          <div class="col py-0">
             <h1 class="heading--primary search__toggle">
               Discover
               <DiscoverToggle :toggle="results.type" v-on:dis-toggle="disToggler" />
@@ -14,14 +14,14 @@
               v-text="numeral(results.total_results).format('0,0')"
               title="total results"
             />
-          </v-col>
+          </div>
 
-          <v-col class="search__selects ml-auto">
-            <v-row class="search__sorter">
-              <v-col cols="3" class="py-0">
+          <div class="col search__selects ml-auto" >
+            <div class="row search__sorter" >
+              <div class="col col-3 py-0">
                 <v-select v-model="filter.year_value" :items="getYears" label="Year"></v-select>
-              </v-col>
-              <v-col cols="4" class="py-0">
+              </div>
+              <div class="col col-4 py-0">
                 <v-select
                   v-model="filter.sort_value"
                   :items="results.type === 'movie' ? getSortMovieBy : getSortTVBy"
@@ -29,8 +29,8 @@
                   item-value="id"
                   label="Sort by"
                 ></v-select>
-              </v-col>
-              <v-col cols="4" class="py-0">
+              </div>
+              <div class="col col-4 py-0" >
                 <v-select
                   v-model="filter.genre_value"
                   :items="results.type === 'movie' ? getMovieGenre : getTVGenre"
@@ -38,16 +38,16 @@
                   item-value="id"
                   label="Genre"
                 ></v-select>
-              </v-col>
-              <v-col class="p-0 d-flex pt-1 align-items-center justify-content-center">
+              </div>
+              <div class="col p-0 d-flex pt-1 align-items-center justify-content-center">
                 <button class="btn--icon" @click="filterToggle = !filterToggle">
                   <v-icon size="30">{{ filterToggle ? icons.filter : icons.filterOpen }}</v-icon>
                 </button>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </SearchResult>
 </template>

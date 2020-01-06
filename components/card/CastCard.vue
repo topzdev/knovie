@@ -2,9 +2,9 @@
   <div class="card--secondary">
     <nuxt-link
       :to="{
-      name: 'view-people-id',
-      params: { id: parseLink(cast.name, cast.id) }
-    }"
+        name: 'view-person-id',
+        params: { id: parseLink(cast.name, cast.id) }
+      }"
       class="card--secondary__img"
     >
       <img
@@ -20,17 +20,20 @@
     <div class="card--secondary__content">
       <nuxt-link
         :to="{
-      name: 'view-people-id',
-      params: { id: parseLink(cast.name, cast.id) }
-    }"
+          name: 'view-person-id',
+          params: { id: parseLink(cast.name, cast.id) }
+        }"
         class="card--secondary__name"
         aria-label="Actors/Actress of the movie"
-      >{{ cast.name }}</nuxt-link>
+        >{{ cast.name }}</nuxt-link
+      >
       <p
         class="card--secondary__film-name"
         v-if="cast.character"
         aria-label="Movie role/character"
-      >as {{ cast.character }}</p>
+      >
+        as {{ cast.character }}
+      </p>
     </div>
   </div>
 </template>

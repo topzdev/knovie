@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <v-container>
+      <div class="container">
         <div class="movie__collection-content">
           <h1 class="movie__collection-header">Part of the {{ collection.name }}</h1>
 
@@ -30,7 +30,7 @@
             "
           >View {{ collection.name }}'s</nuxt-link>
         </div>
-      </v-container>
+      </div>
     </div>
   </section>
 </template>

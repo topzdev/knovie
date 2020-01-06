@@ -8,7 +8,11 @@
     style="--box-shadow: var(--primary-color)"
   >
     <div class="card--primary__img">
-      <img v-lazy="imagePath(tv_show.poster_path, 'w185')" :alt="tv_show.name" draggable="false" />
+      <img
+        v-lazy="imagePath(tv_show.poster_path, 'w185')"
+        :alt="tv_show.name"
+        draggable="false"
+      />
     </div>
 
     <div class="card__actions">
@@ -19,7 +23,10 @@
 
     <div class="card--primary__body">
       <div class="badge badge--primary" v-text="tv_show.vote_average"></div>
-      <h1 class="card--primary__title" v-text="cliTruncate(tv_show.name, 40, { position: 'end' })"></h1>
+      <h1
+        class="card--primary__title"
+        v-text="cliTruncate(tv_show.name, 40, { position: 'end' })"
+      ></h1>
 
       <div class="card--primary__genre">
         <span
@@ -28,7 +35,10 @@
           v-text="extractName(genre, genres)"
         />
       </div>
-      <p class="card--primary__date" v-text="moment(tv_show.first_air_date).format('YYYY')"></p>
+      <p
+        class="card--primary__date"
+        v-text="dayjs(tv_show.first_air_date).format('YYYY')"
+      ></p>
     </div>
   </nuxt-link>
 </template>
@@ -37,8 +47,8 @@
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import imagePath from "@/utils/imagePath";
 import parseLink from "@/utils/parseLink";
-
-import moment from "moment";
+import { find } from "lodash/core";
+import dayjs from "dayjs";
 import cliTruncate from "cli-truncate";
 
 export default {
@@ -59,10 +69,10 @@ export default {
   methods: {
     cliTruncate,
     imagePath,
-    moment,
+    dayjs,
     parseLink,
     extractName(value, genres) {
-      const val = this._.find(genres, { id: value });
+      const val = find(genres, { id: value });
       if (val === undefined) return "";
       return val.name;
     }

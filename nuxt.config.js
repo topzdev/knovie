@@ -10,7 +10,7 @@ export default {
    */
   head: {
     titleTemplate: "%s - " + process.env.npm_package_name,
-    title: process.env.npm_package_name || "",
+    title: "Knovie",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -20,7 +20,8 @@ export default {
         content: process.env.npm_package_description || ""
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "stylesheet", href: "~/assets/variables.scss" }]
   },
 
   /*
@@ -34,7 +35,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/vue-lodash", "~/plugins/vue-lazy"],
+  plugins: ["~/plugins/vue-lazy"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -80,6 +81,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    analyze: true,
     extend(config, ctx) {
       config.node = {
         fs: "empty"

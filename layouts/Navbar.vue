@@ -4,7 +4,7 @@
     :class="{ 'navbar--fixed': fixedNavbar, 'navbar--hidden': hiddenNav }"
     id="scrollhere"
   >
-    <v-container class="py-0">
+    <div class="container py-0">
       <div class="navbar__nav">
         <nuxt-link to="/" class="navbar__brand">
           <img
@@ -20,8 +20,8 @@
               to="/"
               class="navbar__link navbar-preview__link"
               aria-label="Movie"
-              >Movie
-            </nuxt-link>
+              >Movie</nuxt-link
+            >
           </li>
           <li class="navbar__item navbar-preview__item">
             <nuxt-link
@@ -30,6 +30,15 @@
               aria-label="List of tv shows"
               title="See list of tv shows"
               >TV Shows</nuxt-link
+            >
+          </li>
+          <li class="navbar__item navbar-preview__item">
+            <nuxt-link
+              to="/person"
+              class="navbar__link navbar-preview__link"
+              aria-label="List of person"
+              title="See list of people in film industry"
+              >Person</nuxt-link
             >
           </li>
           <li class="navbar__item navbar-preview__item">
@@ -55,7 +64,7 @@
         <NavbarSearch />
         <DarkModeButton />
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 

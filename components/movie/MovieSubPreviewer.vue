@@ -14,7 +14,7 @@
         aria-label="Movie Wallpaper"
       />
     </div>
-    <v-container>
+    <div class="container">
       <div class="previewer--secondary__content">
         <div
           class="previewer--secondary__poster backdrop-gradient"
@@ -37,22 +37,22 @@
           <p
             class="previewer--secondary__year"
             aria-label="Movie released year"
-            :title="moment(movie.release_date).format('MMMM Do YYYY')"
-          >({{moment(movie.release_date).format('YYYY')}})</p>
+            :title="dayjs(movie.release_date).format('MMMM Do YYYY')"
+          >({{dayjs(movie.release_date).format('YYYY')}})</p>
         </div>
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 
 <script>
 import imagePath from "@/utils/imagePath";
-import moment from "moment";
+import dayjs from 'dayjs'
 export default {
   props: ["movie", "color"],
   methods: {
     imagePath,
-    moment
+    dayjs
   }
 };
 </script>

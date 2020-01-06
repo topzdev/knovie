@@ -1,7 +1,7 @@
 <template>
   <div>
     <MovieSlider :movies="popular.results" />
-    <v-container class="pt-2 pb-5">
+    <div class="container pt-2 pb-5">
       <Showcase
         title="Popular"
         :result="popular.results"
@@ -29,13 +29,12 @@
         type="Movies"
         url="/movie/top_rated"
       />
-    </v-container>
+    </div>
   </div>
 </template>
 
 <script>
 import "animate.css";
-import "normalize.css";
 import MovieSlider from "../components/movie/MovieSlider";
 import Showcase from "../components/layout/Showcase";
 

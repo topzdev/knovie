@@ -47,14 +47,14 @@
     <h1 class="heading--secondary mb-1">First Aired Date</h1>
     <ul class="movie__info-list">
       <li>
-        <p class="paragraph--primary">{{ moment(info.first_air_date).format("MMMM Do YYYY") }}</p>
+        <p class="paragraph--primary">{{ dayjs(info.first_air_date).format("MMMM Do YYYY") }}</p>
       </li>
     </ul>
 
     <h1 class="heading--secondary mb-1">Last Aired Date</h1>
     <ul class="movie__info-list">
       <li>
-        <p class="paragraph--primary">{{ moment(info.last_air_date).format("MMMM Do YYYY") }}</p>
+        <p class="paragraph--primary">{{ dayjs(info.last_air_date).format("MMMM Do YYYY") }}</p>
       </li>
     </ul>
 
@@ -91,13 +91,13 @@
 </template>
 
 <script>
-import moment from "moment";
+import dayjs from 'dayjs'
 import numeral from "numeral";
 import imagePath from "@/utils/imagePath";
 export default {
   props: ["info"],
   methods: {
-    moment,
+    dayjs,
     numeral,
     imagePath
   },

@@ -1,14 +1,18 @@
 <template>
   <nuxt-link
     :to="{
-      name: 'view-people-id',
-      params: { id: parseLink(people.name, people.id) }
+      name: 'view-person-id',
+      params: { id: parseLink(person.name, person.id) }
     }"
     class="card--primary"
     style="--box-shadow: var(--primary-color)"
   >
     <div class="card--primary__img">
-      <img v-lazy="imagePath(people.profile_path, 'w185')" :alt="people.name" draggable="false" />
+      <img
+        v-lazy="imagePath(person.profile_path, 'w185')"
+        :alt="person.name"
+        draggable="false"
+      />
     </div>
 
     <div class="card__actions">
@@ -18,10 +22,10 @@
     </div>
 
     <div class="card--primary__body">
-      <h1 class="card--primary__title" v-text="cliTruncate(people.name, 40)" />
+      <h1 class="card--primary__title" v-text="cliTruncate(person.name, 40)" />
       <div class="card--primary__genre">
         <span
-          v-for="known in people.known_for.slice(0, 2)"
+          v-for="known in person.known_for.slice(0, 2)"
           :key="known.title"
           v-text="known.title"
         />
@@ -34,11 +38,10 @@
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import imagePath from "@/utils/imagePath";
 import parseLink from "@/utils/parseLink";
-import moment from "moment";
 import cliTruncate from "cli-truncate";
 
 export default {
-  props: ["people"],
+  props: ["person"],
   data() {
     return {
       icons: {
@@ -50,7 +53,6 @@ export default {
   methods: {
     cliTruncate,
     imagePath,
-    moment,
     parseLink
   }
 };

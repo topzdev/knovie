@@ -6,7 +6,10 @@
       <ul class="movie__info-list">
         <li>
           <div class="card--small">
-            <nuxt-link :to="`/people/${director.credit_id}`" class="card--small__image">
+            <nuxt-link
+              :to="`/people/${director.credit_id}`"
+              class="card--small__image"
+            >
               <img
                 :src="imagePath(director.profile_path, 'w185')"
                 alt="Movie Director"
@@ -15,7 +18,9 @@
               />
             </nuxt-link>
             <div class="card--small__description">
-              <nuxt-link :to="`/people/${director.credit_id}`">{{director.name}}</nuxt-link>
+              <nuxt-link :to="`/people/${director.credit_id}`">{{
+                director.name
+              }}</nuxt-link>
             </div>
           </div>
         </li>
@@ -41,7 +46,9 @@
     <h1 class="heading--secondary mb-1">Release Date</h1>
     <ul class="movie__info-list">
       <li>
-        <p class="paragraph--primary">{{ moment(info.release_date).format("MMMM Do YYYY") }}</p>
+        <p class="paragraph--primary">
+          {{ dayjs(info.release_date).format("MMMM Do YYYY") }}
+        </p>
       </li>
     </ul>
 
@@ -49,16 +56,25 @@
       class="heading--secondary mb-1"
       title="production companies"
       aria-label="production companies"
-    >Production Companies</h1>
+    >
+      Production Companies
+    </h1>
     <ul class="movie__info-list">
       <li v-for="companies in info.production_companies" :key="companies.id">
-        <p v-text="companies.name" :title="companies.name" :aria-label="companies.name"></p>
+        <p
+          v-text="companies.name"
+          :title="companies.name"
+          :aria-label="companies.name"
+        ></p>
       </li>
     </ul>
 
     <h1 class="heading--secondary mb-1">Production Countries</h1>
     <ul class="movie__info-list">
-      <li v-for="countries in info.production_countries" :key="countries.iso_3166_1">
+      <li
+        v-for="countries in info.production_countries"
+        :key="countries.iso_3166_1"
+      >
         <p class="paragraph--primary">{{ countries.name }}</p>
       </li>
     </ul>
@@ -73,7 +89,9 @@
     <h1 class="heading--secondary mb-1">Budget</h1>
     <ul class="movie__info-list">
       <li>
-        <p class="paragraph--primary">${{ numeral(info.budget).format("0,0.00") }}</p>
+        <p class="paragraph--primary">
+          ${{ numeral(info.budget).format("0,0.00") }}
+        </p>
       </li>
     </ul>
     <div>
@@ -82,7 +100,9 @@
         <li>
           <p
             class="paragraph--primary"
-            v-text="info.revenue ? '$'+numeral(info.revenue).format('0,0.00'): '-'"
+            v-text="
+              info.revenue ? '$' + numeral(info.revenue).format('0,0.00') : '-'
+            "
           />
         </li>
       </ul>
@@ -91,29 +111,30 @@
     <h1 class="heading--secondary mb-1">Runtime</h1>
     <ul class="movie__info-list">
       <li>
-        <p class="paragraph--primary">{{ parseFloat(info.runtime / 60).toFixed(2) }} hrs</p>
+        <p class="paragraph--primary">
+          {{ parseFloat(info.runtime / 60).toFixed(2) }} hrs
+        </p>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import moment from "moment";
+import dayjs from 'dayjs'
 import numeral from "numeral";
 import imagePath from "@/utils/imagePath";
+import { find } from "lodash/core";
 export default {
   props: ["info"],
   methods: {
-    moment,
+    dayjs,
     numeral,
     imagePath
   },
 
   computed: {
     director: function() {
-      return (
-        this._.find(this.$props.info.credits.crew, { job: "Director" }) || null
-      );
+      return find(this.$props.info.credits.crew, { job: "Director" });
     }
   }
 };

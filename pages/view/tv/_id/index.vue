@@ -2,34 +2,38 @@
   <div v-if="tv_show">
     <TVPreviewer :tv_show="tv_show" :color="tv_show.color" />
 
-    <v-container class="movie">
-      <v-row align="start">
-        <v-col cols="9" class="movie__main pt-5">
+    <div class="movie container">
+      <div class="row" align="start">
+        <div class="col-lg-9 movie__main pt-5">
           <TVDescription :description="tv_show.overview" />
           <TVCast
             :url="`/view/tv/${$route.params.id}/cast`"
             :title="''"
             :casts="tv_show.credits.cast"
           />
-        </v-col>
-        <v-col cols="3" class="movie__sidebar">
+        </div>
+        <div class="movie__sidebar col-lg-3">
           <TVInfo :title="''" :info="tv_show" />
-        </v-col>
-      </v-row>
-    </v-container>
-    <TVGallery :url="`/view/tv/${$route.params.id}/gallery`" :title="''" :images="tv_show.images" />
+        </div>
+      </div>
+    </div>
+    <TVGallery
+      :url="`/view/tv/${$route.params.id}/gallery`"
+      :title="''"
+      :images="tv_show.images"
+    />
 
-    <v-container>
-      <v-row>
-        <v-col cols="9">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
           <TVReview
             :url="`/view/tv/${$route.params.id}/reviews`"
             :title="''"
             :reviews="tv_show.reviews.results"
           />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
     <!-- 
     <MovieCollection
       :url="`/collection/${$route.params.id}`"
@@ -39,9 +43,9 @@
       :color="tv_show.color"
     />-->
 
-    <v-container>
-      <v-row>
-        <v-col cols="9">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
           <Showcase
             v-if="tv_show.similar.results.length"
             :title="'Related'"
@@ -59,9 +63,9 @@
             :toShow="8"
             type="TV Shows"
           />
-        </v-col>
-      </v-row>
-    </v-container>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

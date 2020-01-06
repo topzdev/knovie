@@ -3,13 +3,13 @@
     <div class="previewer--primary__cover shadow-overlay">
       <img
         class="fit-image"
-        :src="imagePath(movie.backdrop_path, 'w1280')"
+        :src="imagePath(movie.backdrop_path, 'w780')"
         :alt="movie.title + ' official wallpaper'"
         draggable="false"
         aria-label="Movie Wallpaper"
       />
     </div>
-    <v-container>
+    <div class="container">
       <div class="previewer--primary__content">
         <div
           class="previewer--primary__poster backdrop-gradient"
@@ -34,24 +34,34 @@
               <nuxt-link
                 :to="`/search/${genre.name}`"
                 class="badge badge--primary badge--outlined"
-              >{{ genre.name }}</nuxt-link>
+                >{{ genre.name }}</nuxt-link
+              >
             </li>
           </ul>
 
           <ul class="previewer--primary__critic mb-1">
             <li>
-              <p class="slider__rating" aria-label="ratings" title="IMdb rating">
+              <p
+                class="slider__rating"
+                aria-label="ratings"
+                title="IMdb rating"
+              >
                 {{
-                movie.imdb_rating !== "N/A"
-                ? movie.imdb_rating
-                : movie.vote_average
+                  movie.imdb_rating !== "N/A"
+                    ? movie.imdb_rating
+                    : movie.vote_average
                 }}
                 <span>/10</span>
               </p>
             </li>
             <li>
               <div class="previewer--primary__critic-item">
-                <img src="../../assets/img/like.png" alt title="Likes" draggable="false" />
+                <img
+                  src="../../assets/img/like.png"
+                  alt
+                  title="Likes"
+                  draggable="false"
+                />
                 <p>{{ movie.imdb_vote || movie.vote_count }}</p>
               </div>
             </li>
@@ -83,7 +93,11 @@
 
           <!-- <p class="slider__description" aria-label="sypnosis">{{description}}</p> -->
 
-          <Modal :show="show" v-on:toggle-modal="toggleModal" :color="movie.color">
+          <Modal
+            :show="show"
+            v-on:toggle-modal="toggleModal"
+            :color="movie.color"
+          >
             <MovieTrailer :trailer="movie.videos" :show="show" />
           </Modal>
 
@@ -96,7 +110,7 @@
           </div>
         </div>
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 

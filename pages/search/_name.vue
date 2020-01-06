@@ -2,7 +2,7 @@
   <div>
     <SearchResult :results="result().data" :type="result().type">
       <div class="search__filter">
-        <v-container>
+        <div class="container">
           <h1 class="heading--primary">
             Search Results for
             <span class="search__query" v-text="$route.params.name" />
@@ -10,39 +10,45 @@
           <h3
             class="search__count"
             aria-label="Search result count"
-            v-text="numeral(movie.total_results + tv_show.total_results + people.total_results).format('0,0')"
+            v-text="
+              numeral(
+                movie.total_results +
+                  tv_show.total_results +
+                  people.total_results
+              ).format('0,0')
+            "
           />
 
           <div class="search__tab">
             <button
               class="search__tab-item"
-              :class="{'search__tab-active': active.movie}"
+              :class="{ 'search__tab-active': active.movie }"
               @click="tabChanger('movie')"
               title="resutls for Movie"
             >
               Movies
-              <span>({{movie.total_results}})</span>
+              <span>({{ movie.total_results }})</span>
             </button>
             <button
               class="search__tab-item"
-              :class="{'search__tab-active': active.tv_show}"
+              :class="{ 'search__tab-active': active.tv_show }"
               @click="tabChanger('tv_show')"
               title="results for TV shows"
             >
               TV Shows
-              <span>({{tv_show.total_results}})</span>
+              <span>({{ tv_show.total_results }})</span>
             </button>
             <button
               class="search__tab-item"
-              :class="{'search__tab-active': active.people}"
+              :class="{ 'search__tab-active': active.people }"
               @click="tabChanger('people')"
               title="results for People"
             >
               People
-              <span>({{people.total_results}})</span>
+              <span>({{ people.total_results }})</span>
             </button>
           </div>
-        </v-container>
+        </div>
       </div>
     </SearchResult>
   </div>
@@ -65,7 +71,7 @@ export default {
       page: query.page ? query.page : 1
     });
 
-    await store.dispatch("people/fetchSearch", {
+    await store.dispatch("person/fetchSearch", {
       query: params.name,
       page: query.page ? query.page : 1
     });
@@ -97,7 +103,7 @@ export default {
         page: query.page ? query.page : 1
       });
 
-      this.$store.dispatch("people/fetchSearch", {
+      this.$store.dispatch("person/fetchSearch", {
         query: params.name,
         page: query.page ? query.page : 1
       });
@@ -142,10 +148,11 @@ export default {
       return this.$store.getters["tv/getSearch"];
     },
     people() {
-      return this.$store.getters["people/getSearch"];
+      return this.$store.getters["person/getSearch"];
     }
   }
 };
-</script>PeopleCard
+</script>
+PeopleCard
 
 <style></style>
