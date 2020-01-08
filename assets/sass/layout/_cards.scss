@@ -274,6 +274,7 @@
       font-weight: 200;
     }
   }
+
   &--slider {
     position: relative;
     width: 100%;
@@ -329,6 +330,53 @@
       outline: none !important;
     }
   }
+
+  &--season {
+    display: flex;
+    align-items: center;
+    background-color: rgba(var(--secondary-color), 1);
+    color: rgba(var(--secondary-text-color), 1);
+    box-shadow: var(--elevation-10);
+    border-radius: 10px;
+    padding: 15px;
+
+    a {
+      text-decoration: none !important;
+    }
+
+    &__poster {
+      align-self: flex-start;
+      overflow: hidden;
+      border-radius: 10px;
+      height: 220px;
+      width: 150px;
+      min-width: 150px;
+      margin-right: 20px;
+    }
+
+    &__overview {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      padding-bottom: 20px;
+    }
+
+    &__episodes {
+      font-weight: 400;
+      opacity: 0.8;
+      font-size: 1.4rem;
+    }
+
+    &__title {
+      font-size: 3.5rem;
+
+      color: rgba(var(--secondary-text-color), 1);
+
+      span {
+        font-size: 2rem;
+      }
+    }
+  }
+
   &__actions {
     --hover-color: var(--color-red);
     display: flex;

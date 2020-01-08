@@ -116,5 +116,14 @@ export const actions = {
     } catch (err) {
       console.error(err);
     }
+  },
+  async fetchSeason({ commit }, { id, page }) {
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&page=${page}`
+      );
+    } catch (err) {
+      console.error(err);
+    }
   }
 };

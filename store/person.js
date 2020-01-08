@@ -94,7 +94,6 @@ const sortArrayByDate = toSort => {
 
   return toSort
     .sort(function compare(a, b) {
-      console.log(a.release_date ? a.release_date : a.first_air_date);
       if (
         a.release_date
           ? a.release_date

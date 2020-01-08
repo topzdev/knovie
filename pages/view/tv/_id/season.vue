@@ -6,30 +6,13 @@
     <div class="container pb-5">
       <div class="row">
         <div class="col col-12">
-          <h1 class="heading--primary mb-1 mt-3">Reviews</h1>
+          <h1 class="heading--primary mb-1 mt-3">Seasons</h1>
         </div>
 
-        <div class="col col-8">
-          <div class="row" v-if="other_reviews == null">
-            <div
-              class="col col-12 mb-1"
-              v-for="reviews in tv_show.reviews.results"
-              :key="reviews.id"
-            >
-              <ReviewCard :review="reviews" />
-            </div>
+        <div v-show="tv_show.seasons.length > 0">
+          <div v-for="season in tv_show.seasons" :key="season.name" class="col col-8">
+            <SeasonCard :season="season" :title="tv_show.name" />
           </div>
-          <div class="row" v-else>
-            <div class="col col-12 mb-1" v-for="reviews in other_reviews.results" :key="reviews.id">
-              <ReviewCard :review="reviews" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row" v-if="other_reviews != null && reviews.total_pages > 1">
-        <div class="col col-12">
-          <Paginator :totalPage="5" />
         </div>
       </div>
     </div>
@@ -39,9 +22,7 @@
 <script>
 import TVSubPreviewer from "@/components/tv/TVSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
-import ReviewCard from "@/components/card/ReviewCard";
-
-import Paginator from "@/components/search/Paginator";
+import SeasonCard from "@/components/card/SeasonCard";
 
 export default {
   async fetch({ store, params }) {
@@ -53,8 +34,7 @@ export default {
   components: {
     TVSubPreviewer,
     NavbarPreview,
-    ReviewCard,
-    Paginator
+    SeasonCard
   },
   watch: {
     $route() {

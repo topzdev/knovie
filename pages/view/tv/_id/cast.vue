@@ -1,7 +1,7 @@
 <template>
   <div class="info">
     <TVSubPreviewer :tv_show="tv_shows" :color="tv_shows.color" />
-    <NavbarPreview name="view-tv-id" />
+    <NavbarPreview name="view-tv-id" season="true" />
 
     <div class="info__cast mt-3 pb-5">
       <div class="container">

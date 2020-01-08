@@ -73,13 +73,12 @@
           <!-- <p class="slider__description" aria-label="sypnosis">{{description}}</p> -->
 
           <Modal
-            v-if="tv_show.videos.results.length > 0"
             :show="show"
             v-on:toggle-modal="toggleModal"
             :color="tv_show.color"
           >
             <MovieTrailer
-              :trailer="tv_show.videos.results[0].key"
+              :trailer="tv_show.videos"
               :show="show"
             />
           </Modal>

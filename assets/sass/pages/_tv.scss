@@ -1,0 +1,63 @@
+.tv-show {
+  &__seasons {
+    --background-color: pink;
+    --text-color: black;
+    display: block;
+    height: 320px;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    // overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 103%;
+
+      margin-top: -5px;
+      background: rgba(var(--background-color), 0.4);
+      z-index: 1;
+    }
+  }
+
+  &__seasons-cover {
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: absolute;
+    filter: blur(5px);
+  }
+  &__seasons-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  &__seasons-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 2;
+    top: -40px;
+    color: rgba(var(--color-white), 1);
+  }
+
+  &__seasons-title {
+    font-size: 5rem;
+    margin-top: -0.5rem;
+  }
+
+  &__seasons-year {
+    font-size: 3rem;
+  }
+
+  &__season-overview {
+    font-size: 1.8rem;
+    opacity: 0.7;
+  }
+}

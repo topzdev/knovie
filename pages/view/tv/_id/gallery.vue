@@ -1,7 +1,7 @@
 <template>
   <div class="info">
     <TVSubPreviewer :tv_show="tv_show" :color="tv_show.color" />
-    <NavbarPreview :name="'view-tv-id'" />
+    <NavbarPreview :name="'view-tv-id'" season="true" />
 
     <div class="container">
       <div class="row py-0">
@@ -10,11 +10,7 @@
         </div>
       </div>
       <div class="row">
-        <div
-          class="col col-4"
-          v-for="image in tv_show.images.backdrops"
-          :key="image.file_path"
-        >
+        <div class="col col-4" v-for="image in tv_show.images.backdrops" :key="image.file_path">
           <ImageCard
             :image="image"
             :size="'w780'"
@@ -29,11 +25,7 @@
         </div>
       </div>
       <div class="row">
-        <div
-          class="col col-2"
-          v-for="image in tv_show.images.posters"
-          :key="image.file_path"
-        >
+        <div class="col col-2" v-for="image in tv_show.images.posters" :key="image.file_path">
           <ImageCard
             :image="image"
             :size="'w300'"

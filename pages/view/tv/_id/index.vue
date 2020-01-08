@@ -17,11 +17,7 @@
         </div>
       </div>
     </div>
-    <TVGallery
-      :url="`/view/tv/${$route.params.id}/gallery`"
-      :title="''"
-      :images="tv_show.images"
-    />
+    <TVGallery :url="`/view/tv/${$route.params.id}/gallery`" :title="''" :images="tv_show.images" />
 
     <div class="container">
       <div class="row">
@@ -34,14 +30,8 @@
         </div>
       </div>
     </div>
-    <!-- 
-    <MovieCollection
-      :url="`/collection/${$route.params.id}`"
-      v-if="tv_show.belongs_to_collection"
-      :title="''"
-      :collection="tv_show.belongs_to_collection"
-      :color="tv_show.color"
-    />-->
+
+    <TVSeasons :tv_season="tv_show.seasons" :color="tv_show.color" />
 
     <div class="container">
       <div class="row">
@@ -76,7 +66,7 @@ import TVGallery from "@/components/tv/TVGallery";
 import TVDescription from "@/components/tv/TVDescription";
 import TVInfo from "@/components/tv/TVInfo";
 import TVReview from "@/components/tv/TVReview";
-import TVCollection from "@/components/tv/TVCollection";
+import TVSeasons from "@/components/tv/TVSeasons";
 import Showcase from "@/components/layout/Showcase";
 import { moviePreviewHead } from "@/utils/seoHead";
 
@@ -94,8 +84,8 @@ export default {
     TVDescription,
     TVInfo,
     TVReview,
-    TVCollection,
-    Showcase
+    Showcase,
+    TVSeasons
   },
   watch: {
     $route(to, from) {
