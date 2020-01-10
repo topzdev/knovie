@@ -7,13 +7,13 @@
       '--text-color': color.textColor
     }"
   >
-    <div class="previewer--secondary__cover">
+    <div class="previewer--secondary__cover" v-if="tv_show.backdrop_path">
       <img
         class="fit-image"
         :src="imagePath(tv_show.backdrop_path, 'w1280')"
         :alt="tv_show.name + ' official wallpaper'"
         draggable="false"
-        aria-label="Movie Wallpaper"
+        aria-label="TV Show Wallpaper"
       />
     </div>
     <div class="container">
@@ -30,21 +30,25 @@
             :title="tv_show.name"
             :alt="tv_show.name + ' poster'"
             draggable="false"
-            aria-label="Movie Poster"
+            aria-label="TV Show Poster"
           />
         </div>
 
         <div class="previewer--secondary__body">
-          <h1 class="previewer--secondary__title" aria-label="Movie title">
-            {{ tv_show.name }}
-          </h1>
+          <h1 class="previewer--secondary__title" aria-label="TV Show title">{{ tv_show.name }}</h1>
           <p
+            v-if="tv_show.first_air_date"
             class="previewer--secondary__year"
-            aria-label="Movie released year"
-            :title="dayjs(tv_show.first_air_date).format('MMMM Do YYYY')"
-          >
-            ({{ dayjs(tv_show.first_air_date).format("YYYY") }})
-          </p>
+            aria-label="TV Show released year"
+            :title="dayjs(tv_show.first_air_date ).format('MMMM Do YYYY')"
+          >({{ dayjs(tv_show.first_air_date).format("YYYY") }})</p>
+
+          <p
+            v-else
+            class="previewer--secondary__year"
+            aria-label="TV Show released year"
+            :title="dayjs(tv_show.air_date ).format('MMMM Do YYYY')"
+          >({{ dayjs(tv_show.air_date).format("YYYY") }})</p>
         </div>
       </div>
     </div>
@@ -53,7 +57,7 @@
 
 <script>
 import imagePath from "@/utils/imagePath";
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 export default {
   props: ["tv_show", "color"],
   methods: {

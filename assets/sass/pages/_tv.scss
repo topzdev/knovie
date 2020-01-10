@@ -1,4 +1,11 @@
 .tv-show {
+  color: rgba(var(--base-text-color), 1) !important;
+  p {
+    color: rgba(var(--base-text-color), 0.8) !important;
+  }
+  &__season-overview {
+  }
+
   &__seasons {
     --background-color: pink;
     --text-color: black;
@@ -36,6 +43,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    padding-top: 10px;
   }
   &__seasons-header {
     display: flex;

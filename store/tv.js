@@ -12,6 +12,7 @@ export const state = () => ({
   current: null,
   search: null,
   reviews: null,
+  season: null,
   language: "en-US"
 });
 
@@ -27,6 +28,9 @@ export const getters = {
   },
   getSearch: state => {
     return state.search;
+  },
+  getSeason: state => {
+    return state.season;
   }
 };
 
@@ -42,6 +46,9 @@ export const mutations = {
   },
   SET_SEARCH(state, movies) {
     state.search = movies;
+  },
+  SET_SEASON(state, season) {
+    state.season = season;
   }
 };
 
@@ -117,11 +124,16 @@ export const actions = {
       console.error(err);
     }
   },
-  async fetchSeason({ commit }, { id, page }) {
+  async fetchSeason({ commit }, { id, season_id }) {
     try {
+      id = parseParams(id);
       const res = await axios.get(
-        `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&page=${page}`
+        `https://api.themoviedb.org/3/tv/${id}/season/${season_id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=credits&language=en-US`
       );
+      console.log(res.data);
+      res.data.color = await colorMatcher(res.data.poster_path);
+
+      commit("SET_SEASON", res.data);
     } catch (err) {
       console.error(err);
     }

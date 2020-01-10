@@ -31,7 +31,11 @@
       </div>
     </div>
 
-    <TVSeasons :tv_season="tv_show.seasons" :color="tv_show.color" />
+    <TVSeasons
+      :tv_season="tv_show.seasons"
+      :color="tv_show.color"
+      :url="`/view/tv/${$route.params.id}/season`"
+    />
 
     <div class="container">
       <div class="row">

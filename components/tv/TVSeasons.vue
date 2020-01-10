@@ -12,33 +12,35 @@
     />
     <div class="container py-0">
       <div class="tv-show__seasons-header">
-        <div
-          class="previewer--primary__poster backdrop-gradient"
-          :style="
+        <nuxt-link :to="`${url}/${current_season.season_number}`">
+          <div
+            class="previewer--primary__poster backdrop-gradient"
+            :style="
             `--first: rgb(${color.primaryColor}); --second: rgb(${color.secondaryColor})`
           "
-        >
-          <img
-            v-if="current_season.poster_path"
-            class="fit-image"
-            :src="imagePath(current_season.poster_path, 'w342')"
-            :alt="current_season.season_number + ' poster'"
-            draggable="false"
-            aria-label="Movie Poster"
-          />
-        </div>
+          >
+            <img
+              v-if="current_season.poster_path"
+              class="fit-image"
+              :src="imagePath(current_season.poster_path, 'w342')"
+              :alt="current_season.season_number + ' poster'"
+              draggable="false"
+              aria-label="Movie Poster"
+            />
+          </div>
+        </nuxt-link>
 
         <div class="tv-show__seasons-description">
           <p class="tv-show__season-overview">Currently at</p>
           <h1 class="tv-show__seasons-title" v-text="current_season.name" />
           <p
             class="tv-show__seasons-year"
-          >{{dayjs(current_season.air_data).format('YYYY')}}|{{current_season.episode_count}} Episodes</p>
+          >{{dayjs(current_season.air_date).format('YYYY')}}|{{current_season.episode_count}} Episodes</p>
 
           <p class="tv-show__season-overview" v-text="current_season.overview" />
 
           <nuxt-link
-            :to="`/view/collection/${'d'}`"
+            :to="url"
             class="btn btn--primary mt-2"
             :style="`background-color:rgb(${color.primaryColor});
             border-color: rgb(${color.primaryColor});
@@ -58,7 +60,7 @@ import dayjs from "dayjs";
 import colorMatcher from "@/utils/colorMatcher";
 
 export default {
-  props: ["tv_season", "color"],
+  props: ["tv_season", "color", "url"],
   methods: {
     imagePath,
     dayjs,
