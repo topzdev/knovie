@@ -128,7 +128,7 @@ export const actions = {
     try {
       id = parseParams(id);
       const res = await axios.get(
-        `https://api.themoviedb.org/3/tv/${id}/season/${season_id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=credits&language=en-US`
+        `https://api.themoviedb.org/3/tv/${id}/season/${season_id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=credits,images&language=en-US`
       );
       console.log(res.data);
       res.data.color = await colorMatcher(res.data.poster_path);

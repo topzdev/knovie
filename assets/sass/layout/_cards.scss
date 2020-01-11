@@ -160,6 +160,10 @@
     }
   }
 
+  &--gallery &__actions {
+    height: 100% !important;
+  }
+
   &--gallery {
     position: relative;
     display: block;
@@ -412,14 +416,32 @@
     }
 
     &__title {
+      display: inline-flex;
+      align-items: flex-start;
+      justify-content: flex-start;
       font-size: 2.5rem;
 
       color: rgba(var(--secondary-text-color), 1);
 
       span {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        color: rgba(var(--primary-text-color), 1);
+        padding: 5px 8px;
+        border-radius: 5px;
+        margin-left: 10px;
+        background-color: rgba(var(--primary-color), 1);
       }
     }
+  }
+
+  &__link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
   }
 
   &__actions {
@@ -431,8 +453,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 2;
-    height: 100%;
+    z-index: 4;
     width: 100%;
     @include transition;
 
@@ -479,5 +500,11 @@
         rgba(var(--primary), 0)
       );
     }
+  }
+}
+
+.card-liked {
+  svg {
+    fill: rgba(var(--color-red), 1) !important;
   }
 }

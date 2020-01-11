@@ -1,20 +1,19 @@
 <template>
   <div class="card--episode">
     <div class="card--episode__poster">
-      <nuxt-link to="/">
-        <img
-          :src="imagePath(episode.still_path, 'w300')"
-          :alt="`${episode.name} poster`"
-          class="fit-image"
-          draggable="false"
-        />
-      </nuxt-link>
+      <img
+        :src="imagePath(episode.still_path, 'w300')"
+        :alt="`${episode.name} poster`"
+        class="fit-image"
+        draggable="false"
+      />
     </div>
 
     <div class="card--episode__description">
-      <nuxt-link :to="`season/${episode.season_number}`">
-        <h1 class="card--episode__title" aria-label="season title">{{episode.name}}</h1>
-      </nuxt-link>
+      <h1 class="card--episode__title" aria-label="season title">
+        {{episode.name}}
+        <span>{{parseFloat(episode.vote_average).toFixed(1)}}</span>
+      </h1>
       <p class="card--episode__episodes mb-2">{{dayjs(episode.air_date).format('MMMM D, YYYY')}}</p>
 
       <p v-show="overview_trucate" class="card--episode__overview">

@@ -14,8 +14,6 @@
         <div class="col col-8 mt-2">
           <TVEpisodes :episodes="tv_season.episodes" />
         </div>
-
-        <div class="col col-8"></div>
       </div>
     </div>
   </div>
@@ -27,6 +25,7 @@ import NavbarPreview from "@/components/layout/NavbarPreview";
 import TVOverview from "@/components/tv/season/TVOverview";
 import TVEpisodes from "@/components/tv/season/TVEpisodes";
 import TVCast from "@/components/tv/season/TVCast";
+import TVGallery from "@/components/tv/TVGallery";
 
 export default {
   async fetch({ store, params }) {
@@ -38,7 +37,8 @@ export default {
     NavbarPreview,
     TVOverview,
     TVEpisodes,
-    TVCast
+    TVCast,
+    TVGallery
   },
   computed: {
     tv_season() {

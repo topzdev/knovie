@@ -1,12 +1,5 @@
 <template>
-  <nuxt-link
-    :to="{
-      name: 'view-movie-id',
-      params: { id: parseLink(movie.title, movie.id) }
-    }"
-    class="card--primary"
-    style="--box-shadow: var(--primary-color)"
-  >
+  <div class="card--primary" style="--box-shadow: var(--primary-color)">
     <div class="card--primary__img">
       <img
         v-lazy="imagePath(movie.poster_path, 'w185')"
@@ -16,9 +9,7 @@
     </div>
 
     <div class="card__actions">
-      <button>
-        <v-icon size="30">{{ icons.heart }}</v-icon>
-      </button>
+      <client-only> <CardHeartButton :data="movie" type="movie"/></client-only>
     </div>
 
     <div class="card--primary__body">
@@ -36,7 +27,15 @@
         {{ dayjs(movie.release_date).format("YYYY") }}
       </p>
     </div>
-  </nuxt-link>
+
+    <nuxt-link
+      class="card__link"
+      :to="{
+        name: 'view-movie-id',
+        params: { id: parseLink(movie.title, movie.id) }
+      }"
+    />
+  </div>
 </template>
 
 <script>
@@ -46,21 +45,16 @@ import parseLink from "@/utils/parseLink";
 import dayjs from "dayjs";
 import { find } from "lodash/core";
 import cliTruncate from "cli-truncate";
-
+import CardHeartButton from "@/components/button/CardHeartButton";
 export default {
   props: ["movie"],
-  data() {
-    return {
-      icons: {
-        heart: mdiHeartOutline,
-        heartFull: mdiHeart
-      }
-    };
-  },
   computed: {
     genres() {
       return this.$store.getters["getMovieGenres"];
     }
+  },
+  components: {
+    CardHeartButton
   },
   methods: {
     cliTruncate,

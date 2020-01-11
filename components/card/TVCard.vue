@@ -1,12 +1,5 @@
 <template>
-  <nuxt-link
-    :to="{
-      name: 'view-tv-id',
-      params: { id: parseLink(tv_show.name, tv_show.id) }
-    }"
-    class="card--primary"
-    style="--box-shadow: var(--primary-color)"
-  >
+  <div class="card--primary" style="--box-shadow: var(--primary-color)">
     <div class="card--primary__img">
       <img
         v-lazy="imagePath(tv_show.poster_path, 'w185')"
@@ -16,9 +9,7 @@
     </div>
 
     <div class="card__actions">
-      <button>
-        <v-icon size="30">{{ icons.heart }}</v-icon>
-      </button>
+      <CardHeartButton :data="tv_show" type="tv" />
     </div>
 
     <div class="card--primary__body">
@@ -40,7 +31,13 @@
         v-text="dayjs(tv_show.first_air_date).format('YYYY')"
       ></p>
     </div>
-  </nuxt-link>
+    <nuxt-link
+      :to="{
+        name: 'view-tv-id',
+        params: { id: parseLink(tv_show.name, tv_show.id) }
+      }"
+    />
+  </div>
 </template>
 
 <script>
@@ -49,6 +46,7 @@ import imagePath from "@/utils/imagePath";
 import parseLink from "@/utils/parseLink";
 import { find } from "lodash/core";
 import dayjs from "dayjs";
+import CardHeartButton from "@/components/button/CardHeartButton";
 import cliTruncate from "cli-truncate";
 
 export default {
@@ -61,6 +59,7 @@ export default {
       }
     };
   },
+  components: { CardHeartButton },
   computed: {
     genres() {
       return this.$store.getters["getTVGenres"];

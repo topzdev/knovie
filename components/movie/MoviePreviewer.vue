@@ -106,7 +106,9 @@
               Watch Trailer
               <v-icon>{{ icons.play }}</v-icon>
             </button>
-            <HeartButton :id="movie.id" />
+            <client-only placeholder="like this movie...">
+              <HeartButton :data="movie" type="movie" />
+            </client-only>
           </div>
         </div>
       </div>

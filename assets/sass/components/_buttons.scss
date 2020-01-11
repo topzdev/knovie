@@ -66,7 +66,7 @@
     }
 
     &:hover {
-      background-color: rgba(var(--color-red), 1);
+      background-color: rgba(var(--color-red), 0.5);
       border: rgba(var(--color-red), 1);
       margin-top: -1px;
     }

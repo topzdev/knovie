@@ -1,26 +1,20 @@
 <template>
-  <button
-    class="btn btn--favorite"
-    :class="{ 'btn--favorite--liked': like }"
-    @click="toggleLike({ type, data })"
-  >
-    <v-icon>{{ like ? icons.fullHeart : icons.heart }}</v-icon>
+  <button :class="{ 'card-liked': like }" @click="toggleLike({ type, data })">
+    <v-icon size="30">{{ like ? icons.heartFull : icons.heart }}</v-icon>
   </button>
 </template>
 
 <script>
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import { mapActions } from "vuex";
-
 export default {
   props: ["data", "type"],
   data() {
     return {
       icons: {
         heart: mdiHeartOutline,
-        fullHeart: mdiHeart
+        heartFull: mdiHeart
       },
-
       like: false
     };
   },

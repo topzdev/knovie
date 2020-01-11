@@ -26,9 +26,9 @@
                 >View more</nuxt-link
               >
 
-              <button class="btn btn--favorite">
-                <v-icon>{{ icons.heart }}</v-icon>
-              </button>
+              <client-only>
+                <HeartButton :data="movie" type="movie" />
+              </client-only>
             </div>
           </div>
         </div>
@@ -60,10 +60,12 @@ import VueSlickCarousel from "vue-slick-carousel";
 import imagePath from "@/utils/imagePath";
 import parseLink from "@/utils/parseLink";
 import cliTruncate from "cli-truncate";
+import HeartButton from "@/components/button/HeartButton";
 export default {
   components: {
     SliderCard,
-    VueSlickCarousel
+    VueSlickCarousel,
+    HeartButton
   },
   data() {
     return {
