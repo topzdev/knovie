@@ -12,6 +12,20 @@
     border-radius: 100px;
     @include transition;
 
+    @include respond(laptop) {
+      width: 320px;
+      padding: 10px 20px;
+    }
+
+    @include respond(tab-land) {
+      width: 100%;
+    }
+
+    @include respond(mobile-m) {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+
     &:hover {
       // border-bottom-color: rgba(var(--secondary-text-color), 0.8);
       background: rgba(var(--secondary-text-color), 0.5);

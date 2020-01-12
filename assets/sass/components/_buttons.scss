@@ -22,6 +22,24 @@
     border: 3px solid rgba(var(--primary-color), 1);
     box-shadow: var(--elevation-5);
     @include transition;
+
+    @include respond(laptop) {
+      height: 4.6rem;
+      font-size: 1.4rem;
+    }
+    @include respond(tab-port) {
+      height: 4.4rem;
+      font-size: 1.35rem;
+    }
+    @include respond(mobile-lg) {
+      height: 4.3rem;
+      font-size: 1.2rem;
+      padding: 0 5rem;
+    }
+    @include respond(mobile-m) {
+      height: 4rem;
+      padding: 0 4rem;
+    }
     &:hover {
       background-color: rgba(var(--primary-color), 0.7);
       border: 3px solid rgba(var(--primary-color), 0.5);
@@ -60,6 +78,26 @@
     border: 3px solid rgba(var(--color-white), 1);
     backface-visibility: hidden;
     @include transition;
+
+    @include respond(laptop) {
+      height: 4.6rem;
+      width: 4.6rem;
+    }
+
+    @include respond(tab-port) {
+      height: 4.5rem;
+      width: 4.5rem;
+    }
+
+    @include respond(mobile-lg) {
+      height: 4.3rem;
+      width: 4.3rem;
+    }
+    @include respond(mobile-m) {
+      height: 4rem;
+      width: 4rem;
+    }
+
     svg {
       fill: rgba(var(--color-white), 1) !important;
       stroke-width: 5px;
@@ -80,20 +118,27 @@
   &--more {
     display: inline-block;
     padding: 2px 30px 10px 15px;
-    // padding-left: 30px;
     font-size: 1.5rem;
-    // background: rgba(var(--primary-color), 1);
     color: rgba(var(--base-text-color), 1);
     text-decoration: none;
     border-bottom: 1px solid rgba(var(--base-text-color), 1);
     font-weight: 700;
     font-family: var(--font-heading);
-    // letter-spacing: -1px;
     @include transition;
+
+    @include respond(mobile-lg) {
+      font-size: 1.3rem;
+    }
+
+    @include respond(mobile-s) {
+      font-size: 1.1rem;
+    }
 
     span {
       position: relative;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-size: 2.5rem;
       // margin-left: 4px;
       right: 0;
@@ -104,6 +149,18 @@
       border-radius: 100%;
       background: transparent;
       @include transition;
+
+      @include respond(mobile-lg) {
+        font-size: 2.2rem;
+        height: 30px;
+        width: 30px;
+      }
+
+      @include respond(mobile-s) {
+        height: 28px;
+        width: 28px;
+        font-size: 2rem;
+      }
     }
 
     &:hover {
@@ -144,7 +201,7 @@
   &--scroll-top {
     display: block;
     position: fixed;
-    bottom: 50px;
+    bottom: 40px;
     right: 50px;
     height: 60px;
     width: 60px;
@@ -152,8 +209,20 @@
     transform: scale(1);
     background-color: rgba(var(--primary-color), 1);
     z-index: 130;
-
     @include transition;
+    @include respond(mobile-lg) {
+      bottom: 30px;
+      right: 30px;
+      height: 55px;
+      width: 55px;
+    }
+
+    @include respond(mobile-s) {
+      bottom: 20px;
+      right: 20px;
+      height: 50px;
+      width: 50px;
+    }
 
     // * Scroll button 130
     svg {

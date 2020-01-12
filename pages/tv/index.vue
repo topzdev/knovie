@@ -2,32 +2,27 @@
   <div>
     <TVSlider :tv_show="popular.results" />
     <div class="container pt-2 pb-5">
-      <Showcase
-        title="Popular"
-        :result="popular.results"
-        type="TV Shows"
-        url="/tv/popular"
-      />
+      <Showcase title="Popular" :result="popular.results" type="TV Shows" url="/c/tv/popular" />
 
       <Showcase
         title="Airing Today"
         :result="airing_today.results"
         type="TV Shows"
-        url="/tv/airing_today"
+        url="/c/tv/airing_today"
       />
 
       <Showcase
         title="On The Air"
         :result="on_the_air.results"
         type="TV Shows"
-        url="/tv/on_the_air"
+        url="/c/tv/on_the_air"
       />
 
       <Showcase
         title="Top Rated"
         :result="top_rated.results"
         type="TV Shows"
-        url="/tv/top_rated"
+        url="/c/tv/top_rated"
       />
     </div>
   </div>

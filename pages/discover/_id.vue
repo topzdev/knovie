@@ -3,7 +3,7 @@
     <div class="search__filter">
       <div class="container">
         <div class="row">
-          <div class="col py-0">
+          <div class="col-12 col-md-5 col-lg-6 py-0">
             <h1 class="heading--primary search__toggle">
               Discover
               <DiscoverToggle :toggle="results.type" v-on:dis-toggle="disToggler" />
@@ -16,12 +16,12 @@
             />
           </div>
 
-          <div class="col search__selects ml-auto" >
-            <div class="row search__sorter" >
+          <div class="col-12 col-md-7 col-lg-6 search__selects mt-2 mt-lg-0 ml-auto">
+            <div class="row search__sorter">
               <div class="col col-3 py-0">
                 <v-select v-model="filter.year_value" :items="getYears" label="Year"></v-select>
               </div>
-              <div class="col col-4 py-0">
+              <div class="col col-5 py-0">
                 <v-select
                   v-model="filter.sort_value"
                   :items="results.type === 'movie' ? getSortMovieBy : getSortTVBy"
@@ -30,7 +30,7 @@
                   label="Sort by"
                 ></v-select>
               </div>
-              <div class="col col-4 py-0" >
+              <div class="col col-4 py-0">
                 <v-select
                   v-model="filter.genre_value"
                   :items="results.type === 'movie' ? getMovieGenre : getTVGenre"
@@ -38,11 +38,6 @@
                   item-value="id"
                   label="Genre"
                 ></v-select>
-              </div>
-              <div class="col p-0 d-flex pt-1 align-items-center justify-content-center">
-                <button class="btn--icon" @click="filterToggle = !filterToggle">
-                  <v-icon size="30">{{ filterToggle ? icons.filter : icons.filterOpen }}</v-icon>
-                </button>
               </div>
             </div>
           </div>
@@ -54,7 +49,6 @@
 
 <script>
 import SearchResult from "@/components/search/SearchResult";
-import { mdiFilter, mdiFilterOutline } from "@mdi/js";
 import DiscoverToggle from "@/components/button/DiscoverToggle";
 import numeral from "numeral";
 
@@ -77,10 +71,6 @@ export default {
         genre_value: -1,
         page: 1,
         toggle: false
-      },
-      icons: {
-        filter: mdiFilterOutline,
-        filterOpen: mdiFilter
       },
       filterToggle: false
     };

@@ -1,5 +1,5 @@
 <template>
-  <button class="btn--icon ml-2" @click="toggle = !toggle" aria-label="Toggle Light/Dark Mode">
+  <button class="btn--icon" @click="toggle = !toggle" aria-label="Toggle Light/Dark Mode">
     <v-icon size="30">{{ toggle ? icons.dark : icons.light }}</v-icon>
   </button>
 </template>

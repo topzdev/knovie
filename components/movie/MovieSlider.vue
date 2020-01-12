@@ -7,14 +7,14 @@
           <div class="slider__details">
             <h1 class="slider__title">{{ movie.title }}</h1>
 
-            <p class="slider__rating mb-2">
+            <p class="slider__rating mb-1">
               {{ movie.vote_average }}
               <span>/10</span>
             </p>
 
-            <p class="slider__description">
-              {{ cliTruncate(movie.overview, 400, { position: "end" }) }}
-            </p>
+            <p
+              class="slider__description"
+            >{{ cliTruncate(movie.overview, 180, { position: "end" }) }}</p>
 
             <div class="slider__actions mt-2">
               <nuxt-link
@@ -23,8 +23,7 @@
                   params: { id: parseLink(movie.title, movie.id) }
                 }"
                 class="btn btn--primary mr-1"
-                >View more</nuxt-link
-              >
+              >View more</nuxt-link>
 
               <client-only>
                 <HeartButton :data="movie" type="movie" />

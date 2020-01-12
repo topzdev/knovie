@@ -86,6 +86,10 @@
     font-weight: 400;
     color: rgba(var(--secondary-text-color), 0.6);
     margin-top: 5px;
+
+    @include respond(mobile-lg) {
+      font-size: 1.6rem;
+    }
   }
 
   &__query {
@@ -102,11 +106,40 @@
     font-weight: 700;
     color: rgba(var(--base-text-color), 0.5);
     @include transition;
+
     span {
       font-size: 2.2rem;
+      font-weight: 500;
+      @include respond(mobile-lg) {
+        font-size: 1.8rem;
+      }
+
+      @include respond(mobile-m) {
+        font-size: 1.4rem;
+      }
+
+      @include respond(mobile-s) {
+        font-size: 1.2rem;
+      }
     }
     &:not(:last-child) {
       margin-right: 2rem;
+
+      @include respond(mobile-lg) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @include respond(mobile-lg) {
+      font-size: 2.2rem;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 1.8rem;
+    }
+
+    @include respond(mobile-s) {
+      font-size: 1.6rem;
     }
 
     &:hover {
@@ -116,6 +149,7 @@
 
   &__tab-active {
     transform: scale(1.1);
+    margin-left: 6px;
     color: rgba(var(--primary-color), 1);
     &:hover {
       color: rgba(var(--primary-color), 1);
@@ -157,6 +191,22 @@
     box-shadow: var(--elevation-10);
     border: 1px solid rgba(var(--secondary-text-color), 0.1);
     @include transition;
+
+    @include respond(mobile-lg) {
+      height: 40px !important;
+      min-width: 40px !important;
+      font-size: 1.4rem !important;
+    }
+
+    @include respond(mobile-m) {
+      height: 35px !important;
+      min-width: 35px !important;
+      font-size: 1.3rem !important;
+    }
+
+    @include respond(mobile-s) {
+      font-size: 1.2rem;
+    }
 
     &:hover {
       background-color: rgba(var(--primary-color), 0.7) !important;

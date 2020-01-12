@@ -1,9 +1,6 @@
 <template>
   <div class="search navbar-padding">
-    <transition
-      enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
-    >
+    <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <img
         :src="pageBackground"
         alt="Backdrop image"
@@ -26,7 +23,7 @@
         <div class="search__result mb-3 mt-3">
           <div class="row">
             <div
-              class="col col-lg-custom mb-2"
+              class="col-6 col-sm-4 col-md-3 col-lg-custom mb-1"
               @mouseenter="setBackground(result.poster_path)"
               @mouseleave="removeBackground()"
               v-for="result in results.results"
@@ -38,10 +35,7 @@
             </div>
           </div>
         </div>
-        <Paginator
-          v-if="results.total_pages > 0"
-          :totalPage="results.total_pages"
-        />
+        <Paginator v-if="results.total_pages > 0" :totalPage="results.total_pages" />
       </div>
     </div>
   </div>

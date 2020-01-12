@@ -13,6 +13,18 @@
     backface-visibility: hidden;
     @include transition;
 
+    @include respond(mobile-lg) {
+      height: 300px;
+    }
+
+    @include respond(mobile-m) {
+      height: 280px;
+    }
+
+    @include respond(mobile-s) {
+      height: 220px;
+    }
+
     &:hover {
       box-shadow: 0 3px 20px rgba(var(--box-shadow), 0.3),
         0 -3px 20px rgba(var(--box-shadow), 0.3);
@@ -79,10 +91,18 @@
       z-index: 1;
       padding: 18px;
       color: rgba(var(--color-white), 1);
+
+      @include respond(mobile-lg) {
+        padding: 15px;
+      }
+
+      @include respond(mobile-s) {
+        padding: 13px;
+      }
     }
 
     &__genre {
-      font-size: 15px;
+      font-size: 1.5rem;
       color: rgba(var(--primary-color), 1);
       height: 18px;
       overflow: hidden;
@@ -92,6 +112,10 @@
       @include transition;
       transition: all 200ms ease;
       word-spacing: -1px;
+
+      @include respond(mobile-lg) {
+        font-size: 1.3rem;
+      }
 
       span {
         &:not(:last-child) {
@@ -106,11 +130,30 @@
       font-size: 2.4rem;
       margin-bottom: -2px;
       line-height: 1.1;
+
+      @include respond(mobile-lg) {
+        font-size: 2.1rem;
+      }
+
+      @include respond(mobile-m) {
+        font-size: 1.8rem;
+      }
+
+      @include respond(mobile-s) {
+        font-size: 1.6rem;
+      }
     }
 
     &__date {
       font-size: 1.4rem;
       color: rgba(var(--color-white), 0.6);
+      @include respond(mobile-lg) {
+        font-size: 1.3rem;
+      }
+
+      @include respond(mobile-s) {
+        font-size: 1.2rem;
+      }
     }
   }
 

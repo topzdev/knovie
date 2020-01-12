@@ -1,24 +1,18 @@
 <template>
   <header class="slider">
     <!--   -->
-    <VueSlickCarousel
-      class="slider-for"
-      v-bind="mainSlickOption"
-      v-if="tv_show"
-    >
+    <VueSlickCarousel class="slider-for" v-bind="mainSlickOption" v-if="tv_show">
       <div v-for="tv in tv_show" :key="tv.name">
         <div class="container">
           <div class="slider__details">
             <h1 class="slider__title">{{ tv.name }}</h1>
 
-            <p class="slider__rating mb-2">
+            <p class="slider__rating">
               {{ tv.vote_average }}
               <span>/10</span>
             </p>
 
-            <p class="slider__description">
-              {{ cliTruncate(tv.overview, 400, { position: "end" }) }}
-            </p>
+            <p class="slider__description">{{ cliTruncate(tv.overview, 180, { position: "end" }) }}</p>
 
             <div class="slider__actions mt-2">
               <nuxt-link
@@ -27,8 +21,7 @@
                   params: { id: parseLink(tv.name, tv.id) }
                 }"
                 class="btn btn--primary mr-1"
-                >View more</nuxt-link
-              >
+              >View more</nuxt-link>
 
               <ClientOnly placeholder="loading....">
                 <HeartButton :data="tv" type="tv" />

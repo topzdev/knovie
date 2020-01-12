@@ -112,16 +112,63 @@
     z-index: 11;
     padding-top: 7rem;
     width: 60%;
+
+    @include respond(laptop) {
+      width: 80%;
+    }
+
+    @include respond(tab-land) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    @include respond(tab-port) {
+      width: 90%;
+    }
+
+    @include respond(mobile-lg) {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
   &__title {
     font-size: 6rem;
-    color: rgba(var(--color-white), 0.9);
-    text-shadow: var(--elevation-24);
+
+    color: rgba(var(--color-white), 1);
+    text-shadow: 0 0 10px rgba(var(--color-dark), 0.2);
+
+    @include respond(laptop) {
+      font-size: 5.5rem;
+    }
+
+    @include respond(tab-land) {
+      font-size: 5rem;
+    }
+    @include respond(tab-port) {
+      font-size: 4.5rem;
+    }
+
+    @include respond(mobile-lg) {
+      font-size: 4rem;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 3.6rem;
+    }
   }
   &__description {
     font-size: 1.6rem;
     font-weight: 400;
     color: rgba(var(--color-white), 0.9);
+
+    @include respond(laptop) {
+      font-size: 1.5rem;
+    }
+
+    @include respond(mobile-lg) {
+      font-size: 1.4rem;
+    }
   }
 
   &__rating {
@@ -138,6 +185,26 @@
       color: rgba(var(--color-white), 0.8);
       font-size: 1.9rem;
       font-weight: 400;
+
+      @include respond(tab-land) {
+        font-size: 1.6rem;
+      }
+    }
+
+    @include respond(laptop) {
+      font-size: 4.8rem;
+    }
+
+    @include respond(tab-land) {
+      font-size: 4.4rem;
+    }
+
+    @include respond(mobile-lg) {
+      font-size: 3.8rem;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 3.5rem;
     }
   }
   &__actions {

@@ -1,40 +1,24 @@
 <template>
   <div>
     <MovieSlider :movies="popular.results" />
-    <div class="container pt-2 pb-5">
-      <Showcase
-        title="Popular"
-        :result="popular.results"
-        type="Movies"
-        url="/movie/popular"
-      />
+    <div class="container pb-5">
+      <Showcase title="Popular" :result="popular.results" type="Movies" url="/c/movie/popular" />
 
-      <Showcase
-        title="Upcoming"
-        :result="upcoming.results"
-        type="Movies"
-        url="/movie/upcoming"
-      />
+      <Showcase title="Upcoming" :result="upcoming.results" type="Movies" url="/c/movie/upcoming" />
 
       <Showcase
         title="Now Playing"
         :result="now_playing.results"
         type="Movies"
-        url="/movie/now_playing"
+        url="/c/movie/now_playing"
       />
 
-      <Showcase
-        title="Top Rated"
-        :result="top_rated.results"
-        type="Movies"
-        url="/movie/top_rated"
-      />
+      <Showcase title="Top Rated" :result="top_rated.results" type="Movies" url="/c/movie/top_rated" />
     </div>
   </div>
 </template>
 
 <script>
-import "animate.css";
 import MovieSlider from "../components/movie/MovieSlider";
 import Showcase from "../components/layout/Showcase";
 

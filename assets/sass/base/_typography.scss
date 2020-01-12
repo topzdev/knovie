@@ -3,6 +3,14 @@
     font-size: 3.5rem;
     letter-spacing: -1px;
     color: rgba(var(--base-text-color), 0.9);
+
+    @include respond(mobile-lg) {
+      font-size: 3rem;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 2.8rem;
+    }
   }
 
   &--secondary {

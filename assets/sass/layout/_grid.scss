@@ -1,11 +1,16 @@
 @media (min-width: 992px) {
-	.col-lg-custom {
-		flex: 0 0 20%;
-		max-width: 20%;
-	}
+  .col-lg-custom {
+    flex: 0 0 20%;
+    max-width: 20%;
 
-	.col-lg-15 {
-		flex: 0 0 20%;
-		max-width: 20%;
-	}
+    @include respond(laptop) {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+  }
+
+  .col-lg-15 {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
 }

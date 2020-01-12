@@ -7,21 +7,12 @@
     <div class="container py-0">
       <div class="navbar__nav">
         <nuxt-link to="/" class="navbar__brand">
-          <img
-            src="~/assets/img/knovie-logo.png"
-            alt="Knovie Logo"
-            draggable="false"
-          />
+          <img src="~/assets/img/knovie-logo.png" alt="Knovie Logo" draggable="false" />
         </nuxt-link>
 
         <ul class="navbar__list navbar-preview__list ml-auto">
           <li class="navbar__item navbar-preview__item">
-            <nuxt-link
-              to="/"
-              class="navbar__link navbar-preview__link"
-              aria-label="Movie"
-              >Movie</nuxt-link
-            >
+            <nuxt-link to="/" class="navbar__link navbar-preview__link" aria-label="Movie">Movie</nuxt-link>
           </li>
           <li class="navbar__item navbar-preview__item">
             <nuxt-link
@@ -29,8 +20,7 @@
               class="navbar__link navbar-preview__link"
               aria-label="List of tv shows"
               title="See list of tv shows"
-              >TV Shows</nuxt-link
-            >
+            >TV Shows</nuxt-link>
           </li>
           <li class="navbar__item navbar-preview__item">
             <nuxt-link
@@ -38,8 +28,7 @@
               class="navbar__link navbar-preview__link"
               aria-label="List of person"
               title="See list of people in film industry"
-              >Person</nuxt-link
-            >
+            >Person</nuxt-link>
           </li>
           <li class="navbar__item navbar-preview__item">
             <nuxt-link
@@ -47,8 +36,7 @@
               class="navbar__link navbar-preview__link"
               aria-label="Discover movies"
               title="Discover and search movies or tv shows "
-              >Discover</nuxt-link
-            >
+            >Discover</nuxt-link>
           </li>
           <li class="navbar__item navbar-preview__item">
             <nuxt-link
@@ -56,13 +44,13 @@
               class="navbar__link navbar-preview__link"
               aria-label="Movie you liked"
               title="Movie you like"
-              >Liked</nuxt-link
-            >
+            >Liked</nuxt-link>
           </li>
         </ul>
 
         <NavbarSearch />
-        <DarkModeButton />
+        <DarkModeButton class="navbar__mode ml-2" />
+        <NavbarSidebar />
       </div>
     </div>
   </div>
@@ -70,6 +58,7 @@
 
 <script>
 import NavbarSearch from "./navbar/NavbarSearch";
+import NavbarSidebar from "./navbar/NavbarSidebar";
 import DarkModeButton from "./DarkModeButton";
 export default {
   data() {
@@ -81,6 +70,7 @@ export default {
   },
   components: {
     NavbarSearch,
+    NavbarSidebar,
     DarkModeButton
   },
   methods: {

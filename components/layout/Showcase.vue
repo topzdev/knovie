@@ -5,7 +5,7 @@
     <div class="row mt-2" v-if="result">
       <template>
         <div
-          class="col mb-1"
+          class="col-6 mb-1 col-md-3 col-sm-4"
           :class="cardSize ? cardSize : setSize"
           v-for="data in result.slice(0, toShow ? toShow : limitShow)"
           :key="data.id"

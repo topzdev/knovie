@@ -23,7 +23,6 @@
 
 <script>
 import SearchResult from "@/components/search/SearchResult";
-import { capitalize } from "lodash/core";
 import numeral from "numeral";
 
 export default {
@@ -62,9 +61,15 @@ export default {
       return this.$store.getters[type + "/getCategories"](category);
     },
     parseCategory() {
-      const { category } = this.$route.params;
-
-      return capitalize(category.replace("_", " "));
+      let { category } = this.$route.params;
+      return category
+        .replace("_", " ")
+        .toLowerCase()
+        .split(" ")
+        .map(function(word) {
+          return word.replace(word[0], word[0].toUpperCase());
+        })
+        .join(" ");
     }
   }
 };

@@ -1,7 +1,106 @@
 @mixin transition() {
-	transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 
 @mixin box-shadow() {
-	box-shadow: 0 10px 20px rgba(#000, 0.05);
+  box-shadow: 0 10px 20px rgba(#000, 0.05);
 }
+@mixin respond($screen-size) {
+  // 0 - 320px
+  @if $screen-size == mobile-s {
+    @media (max-width: 20em) {
+      @content;
+    }
+  }
+  // 320px - 375px
+  @if $screen-size == mobile-m {
+    @media (max-width: 23.4375em) {
+      @content;
+    }
+  }
+  // 375px - 600px
+  @if $screen-size == mobile-lg {
+    @media (max-width: 37.5625em) {
+      @content;
+    }
+  }
+  // 600px - 768px
+  @if $screen-size == tab-port {
+    @media (max-width: 48em) {
+      @content;
+    }
+  }
+  // 768px - 900px
+  @if $screen-size == tab-land {
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+  // 900px - 1264px
+  @if $screen-size == laptop {
+    @media (max-width: 79em) {
+      @content;
+    }
+  }
+  // 1264px - 1940px
+  @if $screen-size == desktop {
+    @media (max-width: 119em) {
+      @content;
+    }
+  }
+  // 1940px - upward
+  @if $screen-size == big-desktop {
+    @media (min-width: 119em) {
+      @content;
+    }
+  }
+}
+
+// @mixin respond($screen-size) {
+//   @if $screen-size == mobile-s {
+//     @media (max-width: 20em) {
+//       @content;
+//     }
+//   }
+//   @if $screen-size == mobile-m {
+//     @media (max-width: 23.4375em) {
+//       @content;
+//     }
+//   }
+
+//   @if $screen-size == mobile-lg {
+//     @media (max-width: 27.5625em) {
+//       @content;
+//     }
+//   }
+
+//   @if $screen-size == tab-port {
+//     @media (max-width: 48em) {
+//       @content;
+//     }
+//   }
+
+//   @if $screen-size == tab-land {
+//     @media (max-width: 56.25em) {
+//       @content;
+//     }
+//   }
+
+//   @if $screen-size == laptop {
+//     @media (max-width: 64em) {
+//       @content;
+//     }
+//   }
+
+//   @if $screen-size == desktop {
+//     @media (max-width: 90em) {
+//       @content;
+//     }
+//   }
+
+//   @if $screen-size == big-desktop {
+//     @media (min-width: 112.5em) {
+//       @content;
+//     }
+//   }
+// }

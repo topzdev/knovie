@@ -1,7 +1,6 @@
 import axios from "axios";
 import colorMatcher from "~/utils/colorMatcher";
 import parseParams from "~/utils/parseParams";
-import { min, max } from "lodash/core";
 import dayjs from "dayjs";
 require("dotenv").config();
 
@@ -170,8 +169,8 @@ export const actions = {
         dayjs(movie.release_date).format("YYYY")
       );
 
-      res.data.year_max = max(years);
-      res.data.year_min = min(years);
+      res.data.year_max = Math.max(...years);
+      res.data.year_min = Math.min(...years);
       res.data.vote_average = parseFloat(
         vote_average / res.data.parts.length
       ).toFixed(1);

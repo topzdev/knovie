@@ -33,7 +33,7 @@
 	}
 
 	&::before {
-		bottom: 0;
+		bottom: -1px;
 		height: 25%;
 		z-index: 3;
 		background-image: linear-gradient(
@@ -83,7 +83,11 @@
 }
 
 .navbar-padding{
-	padding-top: 10rem;
+	padding-top: 8rem;
+
+	@include respond(mobile-lg){
+
+	}
 }
 
 .align-items-center{
