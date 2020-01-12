@@ -186,6 +186,7 @@
 
     @include respond(mobile-lg) {
       width: 64%;
+      left: -101%;
     }
   }
 

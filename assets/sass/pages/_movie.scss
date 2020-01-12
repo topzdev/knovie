@@ -10,14 +10,30 @@
     @include transition;
     background-color: rgba(var(--secondary-color), 1);
     margin-top: 4rem;
+
+    @include respond(tab-land) {
+      background-color: rgba(var(--base-color), 1);
+    }
   }
 
   &__main {
     padding-right: 4rem;
+
+    @include respond(laptop) {
+      padding-right: 0;
+      padding-right: 0;
+    }
   }
 
   &__info {
     padding: 1.5rem;
+  }
+
+  &__info-header {
+    display: none;
+    @include respond(laptop) {
+      display: block;
+    }
   }
 
   &__logo {

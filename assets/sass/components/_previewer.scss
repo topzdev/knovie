@@ -1,20 +1,28 @@
 .previewer {
   &--primary {
-    --previewer-height: 95vh;
     position: relative;
-    height: var(--previewer-height);
+    height: 95vh;
     width: 100%;
     overflow: hidden;
     padding-top: var(--navbar-height);
     background-color: #000;
+
+    @include respond(tab-port) {
+      overflow: visible;
+      height: auto;
+    }
 
     &__cover {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: var(--previewer-height);
+      height: 95vh;
       user-select: none;
+
+      @include respond(tab-port) {
+        height: 100%;
+      }
       img {
         filter: blur(3px);
       }
@@ -27,17 +35,56 @@
       top: 27%;
       width: 100%;
       z-index: 4;
+
+      @include respond(tab-land) {
+        padding: 0 1rem;
+      }
+
+      @include respond(tab-port) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        padding-top: 3rem;
+      }
     }
     &__poster {
       position: relative;
       height: 400px;
       width: 240px;
+      min-width: 240px;
       border-radius: 20px;
       overflow: hidden;
       user-select: none;
       box-shadow: var(--elevation-24);
       margin-right: 30px;
       z-index: -1;
+
+      @include respond(laptop) {
+        height: 360px;
+        width: 210px;
+        min-width: 210px;
+      }
+      @include respond(tab-land) {
+        height: 340px;
+        width: 190px;
+        min-width: 190px;
+      }
+
+      @include respond(tab-port) {
+        margin-bottom: 1rem;
+        height: 320px;
+        width: 190px;
+        min-width: 190px;
+        margin-right: 0;
+      }
+
+      @include respond(mobile-lg) {
+        height: 310px;
+        width: 180px;
+        min-width: 180px;
+        margin-right: 0;
+      }
     }
 
     &__body {
@@ -47,17 +94,91 @@
       width: 600px !important;
       padding-bottom: 10px;
       & .slider__title {
-        font-size: 55px;
+        font-size: 5.5rem;
         margin-bottom: 10px;
+
+        @include respond(laptop) {
+          font-size: 5.2rem !important;
+        }
+
+        @include respond(tab-land) {
+          font-size: 4.8rem !important;
+        }
+
+        @include respond(tab-port) {
+          font-size: 4.6rem !important;
+          text-align: center;
+        }
+        @include respond(mobile-lg) {
+          font-size: 4rem !important;
+          margin-bottom: 0;
+        }
+      }
+
+      @include respond(tab-port) {
+        align-items: center;
+        width: 100% !important;
+
+        & .btn--favorite {
+          position: absolute;
+          top: -10px;
+          right: 0;
+        }
+      }
+    }
+
+    &__rating {
+      @include respond(tab-port) {
+        position: absolute;
+        top: 0;
+        left: 65%;
+        height: 65px;
+        width: 65px;
+        border-radius: 100%;
+        background-color: rgba(var(--primary-color), 1);
+        box-shadow: var(--elevation-5);
+        p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(var(--primary-text-color), 1);
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          font-size: 2.8rem;
+        }
+        span {
+          display: none;
+        }
+
+        @include respond(mobile-lg) {
+          height: 60px;
+          width: 60px;
+
+          p {
+            font-size: 2.5rem;
+          }
+        }
       }
     }
 
     &__list {
       display: flex;
       list-style: none;
+      flex-wrap: wrap;
 
       li:not(:last-child) {
         margin-right: 10px;
+      }
+      @include respond(tab-port) {
+        margin-top: 1rem;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+
+        & > * {
+          margin-bottom: 0.5rem;
+        }
       }
     }
 
@@ -66,9 +187,18 @@
       list-style: none;
       color: rgba(var(--color-white), 1);
       align-items: flex-end;
+
       li {
         &:not(:last-child) {
           margin-right: 20px;
+
+          @include respond(tab-port) {
+            margin-right: 15px;
+          }
+        }
+
+        @include respond(mobile-lg) {
+          text-align: center;
         }
       }
     }
@@ -84,6 +214,10 @@
       p {
         font-size: 16px;
         margin-left: 8px;
+
+        @include respond(tab-port) {
+          font-size: 14px;
+        }
       }
     }
   }

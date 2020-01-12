@@ -28,5 +28,13 @@
     line-height: 1.6;
     font-weight: 400;
     opacity: 1;
+
+    @include respond(mobile-lg) {
+      font-size: 1.5rem;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 1.4rem;
+    }
   }
 }

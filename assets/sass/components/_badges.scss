@@ -10,7 +10,7 @@
   user-select: none;
   &--primary {
     display: inline-flex;
-    font-size: 16px;
+    font-size: 1.6rem;
     background: rgba(var(--primary), 1);
     color: rgba(var(--text), 1);
     border-radius: 5px;
@@ -19,6 +19,14 @@
 
     svg {
       height: 20px;
+    }
+
+    @include respond(laptop) {
+      font-size: 1.45rem;
+    }
+
+    @include respond(mobile-lg) {
+      font-size: 1.3rem;
     }
   }
 

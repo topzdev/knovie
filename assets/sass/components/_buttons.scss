@@ -92,6 +92,7 @@
     @include respond(mobile-lg) {
       height: 4.3rem;
       width: 4.3rem;
+      border-width: 2px;
     }
     @include respond(mobile-m) {
       height: 4rem;

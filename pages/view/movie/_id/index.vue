@@ -4,7 +4,7 @@
 
     <div class="movie container">
       <div class="row" align="start">
-        <div class="col col-9 movie__main pt-5">
+        <div class="col-md-12 col-lg-9 movie__main pt-5">
           <MovieDescription :title="''" :description="movie.overview" />
           <MovieCast
             :url="`/view/movie/${$route.params.id}/cast`"
@@ -12,7 +12,7 @@
             :casts="movie.credits.cast"
           />
         </div>
-        <div class="col col-3 movie__sidebar">
+        <div class="col-md-12 col-lg-3 movie__sidebar">
           <MovieInfo :title="''" :info="movie" />
         </div>
       </div>
@@ -25,7 +25,7 @@
 
     <div class="container" v-if="movie.reviews.results">
       <div class="row">
-        <div class="col col-9">
+        <div class="col-md-12 col-lg-9">
           <MovieReview
             :url="`/view/movie/${$route.params.id}/reviews`"
             :title="''"
@@ -44,7 +44,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col col-9">
+        <div class="col-md-12 col-lg-9">
           <Showcase
             v-if="movie.similar.results.length"
             :title="'Related'"
