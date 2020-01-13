@@ -5,11 +5,9 @@
       `--background-color: ${color.primaryColor};
           --text-color: ${color.textColor}`"
   >
-    <img
-      :src="imagePath(current_season.poster_path, 'w342')"
-      alt
-      class="fit-image tv-show__seasons-cover"
-    />
+    <div class="tv-show__seasons-cover">
+      <img :src="imagePath(current_season.poster_path, 'w342')" alt class="fit-image" />
+    </div>
     <div class="container py-0">
       <div class="tv-show__seasons-header">
         <nuxt-link :to="`${url}/${current_season.season_number}`">
@@ -31,7 +29,7 @@
         </nuxt-link>
 
         <div class="tv-show__seasons-description">
-          <p class="tv-show__season-overview">Currently at</p>
+          <p class="tv-show__season-currently">Currently at</p>
           <h1 class="tv-show__seasons-title" v-text="current_season.name" />
           <p
             class="tv-show__seasons-year"

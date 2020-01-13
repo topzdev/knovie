@@ -7,20 +7,22 @@
         </div>
       </div>
     </div>
+
     <div class="gallery--full" :style="`height: ${gallerySize}`">
       <div class="row no-gutters">
-        <div class="col-6 d-none" height="100%" :style="`max-height:${gallerySize / (12 / 12)}px`">
+        <div class="col-12 col-lg" height="100%" :style="`max-height:${gallerySize / (12 / 12)}px`">
           <GalleryCard :image="{ ...bigImage(), title }" size="w780" />
         </div>
-        <div :class="`col-6 col-lg-${smallImage().divider}`" height="100%">
+
+        <div :class="`col-md-12 col-lg-${smallImage().divider}`" height="100%">
           <div class="row no-gutters" style="height: 100%">
             <div
-              :class="`col-lg-${smallImage().size}`"
+              :class="`col-6 col-sm-4 col-md-3 col-lg-${smallImage().size}`"
               :style="`max-height:${gallerySize / smallImage().row}px`"
               v-for="image in smallImage().images"
               :key="image.file_path"
             >
-              <GalleryCard :image="{ ...image, title }" size="w780" :title="title" />
+              <GalleryCard :image="{ ...image, title }" size="w300" :title="title" />
             </div>
           </div>
         </div>
@@ -30,7 +32,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-9 place-end">
-          <MoreButton :url="url" :title="title + ' Images'" />
+          <MoreButton :url="url" title="Images" />
         </div>
       </div>
     </div>
@@ -51,7 +53,6 @@ export default {
       gallerySize: 500
     };
   },
-
   methods: {
     bigImage() {
       return this.$props.images.backdrops[0];
@@ -65,7 +66,6 @@ export default {
         divider: 8,
         row: 3
       };
-
       if (length >= 9) {
         setBackdrop.size = 4;
         setBackdrop.images = backdrops.slice(1, 10);
@@ -82,7 +82,6 @@ export default {
       } else {
         setBackdrop.divider = 0;
       }
-
       return setBackdrop;
     }
   }

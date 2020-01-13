@@ -2,7 +2,7 @@
   <div class="card--gallery">
     <div class="card__actions" @click="openModal">
       <button @click="saveFile()">
-        <v-icon size="30">{{ icons.download }}</v-icon>
+        <vue-icon size="30" :svg="icons.download" />
       </button>
     </div>
     <img

@@ -51,15 +51,25 @@
 import SearchResult from "@/components/search/SearchResult";
 import DiscoverToggle from "@/components/button/DiscoverToggle";
 import numeral from "numeral";
+import findProperties from "@/utils/findProperties";
 
 export default {
-  async fetch({ store }) {
+  async fetch({ store, query }) {
+    const { genre, type } = query;
+    console.log(type);
+    const { getMovieGenres, getTVGenres } = store.getters;
     await store.dispatch("fetchRecommend", {
       year_value: new Date().getFullYear(),
       sort_value: "popularity.desc",
-      genre_value: "",
+      genre_value: query.genre
+        ? findProperties(
+            type === "movie" ? getMovieGenres : getTVGenres,
+            "name",
+            query.genre
+          ).id
+        : -1,
       page: 1,
-      type: "movie"
+      type: type ? type : "movie"
     });
   },
   data() {

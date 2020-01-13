@@ -4,7 +4,7 @@
     class="btn btn--scroll-top"
     :class="{ 'btn--scroll-top--shrink': !showScrollButton }"
   >
-    <v-icon size="40">{{ icons.chevronTop }}</v-icon>
+    <vue-icon size="40" :svg="icons.chevronTop" />
   </button>
 </template>
 

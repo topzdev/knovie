@@ -4,27 +4,22 @@
 
     <div class="movie container">
       <div class="row" align="start">
-        <div class="col-lg-9 movie__main pt-5">
+        <div class="ol-md-12 col-lg-9 movie__main pt-5">
           <TVDescription :description="tv_show.overview" />
-          <TVCast
-            :url="`/view/tv/${$route.params.id}/cast`"
-            :title="''"
-            :casts="tv_show.credits.cast"
-          />
+          <TVCast :url="`/view/tv/${$route.params.id}/cast`" :casts="tv_show.credits.cast" />
         </div>
-        <div class="movie__sidebar col-lg-3">
-          <TVInfo :title="''" :info="tv_show" />
+        <div class="col-md-12 col-lg-3 movie__sidebar">
+          <TVInfo :info="tv_show" />
         </div>
       </div>
     </div>
-    <TVGallery :url="`/view/tv/${$route.params.id}/gallery`" :title="''" :images="tv_show.images" />
+    <TVGallery :url="`/view/tv/${$route.params.id}/gallery`" :images="tv_show.images" />
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-md-12 col-lg-9">
           <TVReview
             :url="`/view/tv/${$route.params.id}/reviews`"
-            :title="''"
             :reviews="tv_show.reviews.results"
           />
         </div>

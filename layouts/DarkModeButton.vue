@@ -1,6 +1,6 @@
 <template>
   <button class="btn--icon" @click="toggle = !toggle" aria-label="Toggle Light/Dark Mode">
-    <v-icon size="30">{{ toggle ? icons.dark : icons.light }}</v-icon>
+    <vue-icon size="30" :svg="toggle ? icons.dark : icons.light" />
   </button>
 </template>
 

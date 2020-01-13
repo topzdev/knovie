@@ -6,6 +6,10 @@
     background: rgba(var(--base-color), 1);
     overflow: hidden;
 
+    @include respond(tab-land) {
+      height: auto !important;
+      min-height: auto !important;
+    }
     &:hover .card--gallery {
       opacity: 0.6;
 

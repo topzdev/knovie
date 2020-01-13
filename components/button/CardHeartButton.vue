@@ -1,6 +1,6 @@
 <template>
   <button :class="{ 'card-liked': like }" @click="toggleLike({ type, data })">
-    <v-icon size="30">{{ like ? icons.heartFull : icons.heart }}</v-icon>
+    <vue-icon size="30" :svg="like ? icons.heartFull : icons.heart " />
   </button>
 </template>
 

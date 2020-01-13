@@ -7,14 +7,13 @@
           --text-color: ${color.textColor}`"
     >
       <div class="movie__collection-image">
-        <div v-if="collection.backdrop_path != null">
-          <img
-            alt
-            draggable="false"
-            class="fit-image"
-            :src="imagePath(collection.backdrop_path, 'w1280')"
-          />
-        </div>
+        <img
+          alt
+          draggable="false"
+          class="fit-image"
+          v-if="collection.backdrop_path != null"
+          :src="imagePath(collection.backdrop_path, 'w1280')"
+        />
       </div>
 
       <div class="container">

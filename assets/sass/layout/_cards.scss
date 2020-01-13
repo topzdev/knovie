@@ -16,13 +16,14 @@
     @include respond(mobile-lg) {
       height: 300px;
     }
-
+    
     @include respond(mobile-m) {
       height: 280px;
     }
-
+    
     @include respond(mobile-s) {
       height: 220px;
+      width: 100%;
     }
 
     &:hover {
@@ -168,14 +169,17 @@
     }
 
     &__img {
-      --box-size: 210px;
       display: block;
       position: relative;
       z-index: 2;
       border-radius: 5px;
       box-shadow: var(--elevation-10);
       user-select: none;
-      height: var(--box-size);
+      height: 210px;
+
+      @include respond(mobile-lg) {
+        height: 150px;
+      }
 
       img {
         border-radius: 10px;

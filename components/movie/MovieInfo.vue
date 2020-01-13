@@ -5,8 +5,9 @@
       <div class="col-12 p-0 movie__info-header">
         <h1 class="heading--primary mb-3">Movie Facts</h1>
       </div>
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
         <div v-if="director ? true : false">
+          <vue-icon class="movie__icon" :svg="icons.director" />
           <h1 class="heading--secondary mb-1">Director</h1>
           <ul class="movie__info-list">
             <li>
@@ -32,7 +33,8 @@
         </div>
       </div>
 
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.rated" />
         <h1 class="heading--secondary mb-1">Rated</h1>
         <ul class="movie__info-list">
           <p
@@ -43,7 +45,8 @@
         </ul>
       </div>
 
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.status" />
         <h1 class="heading--secondary mb-1">Status</h1>
         <ul class="movie__info-list">
           <li>
@@ -52,16 +55,18 @@
         </ul>
       </div>
 
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.release_date" />
         <h1 class="heading--secondary mb-1">Release Date</h1>
         <ul class="movie__info-list">
           <li>
-            <p class="paragraph--primary">{{ dayjs(info.release_date).format("MMMM Do YYYY") }}</p>
+            <p class="paragraph--primary">{{ dayjs(info.release_date).format("MMMM D, YYYY") }}</p>
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.company" />
         <h1
           class="heading--secondary mb-1"
           title="production companies"
@@ -74,7 +79,8 @@
         </ul>
       </div>
 
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.country" />
         <h1 class="heading--secondary mb-1">Production Countries</h1>
         <ul class="movie__info-list">
           <li v-for="countries in info.production_countries" :key="countries.iso_3166_1">
@@ -83,7 +89,8 @@
         </ul>
       </div>
 
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.language" />
         <h1 class="heading--secondary mb-1">Spoken Language</h1>
         <ul class="movie__info-list">
           <li v-for="language in info.spoken_languages" :key="language.iso_639_1">
@@ -92,14 +99,19 @@
         </ul>
       </div>
 
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.budget" />
         <h1 class="heading--secondary mb-1">Budget</h1>
         <ul class="movie__info-list">
           <li>
             <p class="paragraph--primary">${{ numeral(info.budget).format("0,0.00") }}</p>
           </li>
         </ul>
+      </div>
+
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
         <div>
+          <vue-icon class="movie__icon" :svg="icons.revenue" />
           <h1 class="heading--secondary mb-1">Revenue</h1>
           <ul class="movie__info-list">
             <li>
@@ -113,8 +125,8 @@
           </ul>
         </div>
       </div>
-
-      <div class="col-lg-12 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+        <vue-icon class="movie__icon" :svg="icons.runtime" />
         <h1 class="heading--secondary mb-1">Runtime</h1>
         <ul class="movie__info-list">
           <li>
@@ -131,8 +143,36 @@ import dayjs from "dayjs";
 import numeral from "numeral";
 import imagePath from "@/utils/imagePath";
 import findProperties from "@/utils/findProperties";
+import {
+  mdiAccountTie,
+  mdiFlag,
+  mdiCalendarRange,
+  mdiCurrencyUsd,
+  mdiTranslate,
+  mdiCardBulletedSettingsOutline,
+  mdiCashMultiple,
+  mdiAvTimer,
+  mdiCheckDecagram,
+  mdiDomain
+} from "@mdi/js";
 export default {
   props: ["info"],
+  data() {
+    return {
+      icons: {
+        director: mdiAccountTie,
+        rated: mdiCheckDecagram,
+        status: mdiCardBulletedSettingsOutline,
+        release_date: mdiCalendarRange,
+        country: mdiFlag,
+        language: mdiTranslate,
+        budget: mdiCurrencyUsd,
+        revenue: mdiCashMultiple,
+        runtime: mdiAvTimer,
+        company: mdiDomain
+      }
+    };
+  },
   methods: {
     dayjs,
     numeral,

@@ -9,7 +9,7 @@
       v-on:keyup.enter="onSearch"
     />
     <nuxt-link :to="'/search/' + searchQuery" class="btn btn--icon">
-      <v-icon size="30">{{ icons.magnify }}</v-icon>
+      <vue-icon size="30" :svg="icons.magnify" />
     </nuxt-link>
   </div>
 </template>

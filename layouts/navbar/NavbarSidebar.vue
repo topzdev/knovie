@@ -1,7 +1,7 @@
 <template>
   <div class="navbar__mobile">
     <button class="navbar__menu" @click="show = true">
-      <v-icon size="40">{{icons.menu}}</v-icon>
+      <vue-icon size="40" :svg="icons.menu" />
     </button>
     <div class="navbar__backdrop" v-show="show" @click="show = false" />
     <ul class="navbar__sidebar" @click="show = false" :class="{'navbar__sidebar-show': show}">
@@ -44,9 +44,9 @@
         >Liked</nuxt-link>
       </li>
       <li class="navbar__sidebar-item">
-        <button class="navbar__link navbar-preview__link">
+        <div class="navbar__link navbar-preview__link">
           <DarkModeButton class="mr-1" />
-        </button>
+        </div>
       </li>
     </ul>
   </div>
@@ -70,10 +70,10 @@ export default {
   watch: {
     show() {
       if (this.show) {
-        document.documentElement.style.overflow = "hidden";
+        document.documentElement.style.overflowY = "hidden";
         return;
       }
-      document.documentElement.style.overflow = "auto";
+      document.documentElement.style.overflowY = "auto";
     }
   }
 };

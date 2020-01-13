@@ -32,7 +32,7 @@
           <ul class="previewer--primary__list mb-1">
             <li v-for="genre in movie.genres" :key="genre.id">
               <nuxt-link
-                :to="`/search/${genre.name}`"
+                :to="`/discover?genre=${genre.name}&type=movie`"
                 class="badge badge--primary badge--outlined"
               >{{ genre.name }}</nuxt-link>
             </li>
@@ -89,8 +89,8 @@
 
           <div class="slider__actions mt-1 mt-lg-2">
             <button class="btn btn--primary mr-1 px-3" @click="show = !show">
-              Watch Trailer
-              <v-icon>{{ icons.play }}</v-icon>
+              Watch trailer
+              <vue-icon :svg="icons.play" />
             </button>
             <client-only placeholder="like this movie...">
               <HeartButton :data="movie" type="movie" />

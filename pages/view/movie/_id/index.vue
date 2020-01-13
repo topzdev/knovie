@@ -3,32 +3,24 @@
     <MoviePreviewer :movie="movie" :color="movie.color" />
 
     <div class="movie container">
-      <div class="row" align="start">
+      <div class="row">
         <div class="col-md-12 col-lg-9 movie__main pt-5">
-          <MovieDescription :title="''" :description="movie.overview" />
-          <MovieCast
-            :url="`/view/movie/${$route.params.id}/cast`"
-            :title="''"
-            :casts="movie.credits.cast"
-          />
+          <MovieDescription :description="movie.overview" />
+
+          <MovieCast :url="`/view/movie/${$route.params.id}/cast`" :casts="movie.credits.cast" />
         </div>
         <div class="col-md-12 col-lg-3 movie__sidebar">
-          <MovieInfo :title="''" :info="movie" />
+          <MovieInfo :info="movie" />
         </div>
       </div>
     </div>
-    <MovieGallery
-      :url="`/view/movie/${$route.params.id}/gallery`"
-      :title="''"
-      :images="movie.images"
-    />
+    <MovieGallery :url="`/view/movie/${$route.params.id}/gallery`" :images="movie.images" />
 
     <div class="container" v-if="movie.reviews.results">
       <div class="row">
         <div class="col-md-12 col-lg-9">
           <MovieReview
             :url="`/view/movie/${$route.params.id}/reviews`"
-            :title="''"
             :reviews="movie.reviews.results"
           />
         </div>
@@ -37,7 +29,6 @@
 
     <MovieCollection
       v-if="movie.belongs_to_collection"
-      :title="''"
       :collection="movie.belongs_to_collection"
       :color="movie.color"
     />

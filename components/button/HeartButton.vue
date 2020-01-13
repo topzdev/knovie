@@ -4,7 +4,7 @@
     :class="{ 'btn--favorite--liked': like }"
     @click="toggleLike({ type, data })"
   >
-    <v-icon>{{ like ? icons.fullHeart : icons.heart }}</v-icon>
+    <vue-icon :svg="like ? icons.fullHeart : icons.heart  " />
   </button>
 </template>
 

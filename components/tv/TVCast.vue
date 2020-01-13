@@ -3,7 +3,7 @@
     <h1 class="heading--primary mb-1">Cast</h1>
     <div class="row">
       <div
-        class="col col-lg-15 mb-1"
+        class="col-4 col-sm-3 col-md-3 col-lg-custom"
         v-for="cast in casts.slice(0, 10)"
         :key="cast.id"
       >

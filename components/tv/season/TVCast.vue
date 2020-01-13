@@ -1,21 +1,15 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <h2 class="heading--primary">Cast</h2>
+      <h2 class="heading--primary">Castdd</h2>
 
       <div class="row">
-        <div class="col col-lg-3 mb-1" v-for="cast in credits.cast" :key="cast.id">
+        <div
+          class="col-4 col-sm-3 col-md-3 col-lg-custom"
+          v-for="cast in credits.cast"
+          :key="cast.id"
+        >
           <CastCard :cast="cast" />
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12">
-      <h2 class="heading--primary">Crew</h2>
-
-      <div class="row">
-        <div class="col col-lg-3 mb-1" v-for="crew in credits.crew" :key="crew.id">
-          <CrewCard :crew="crew" />
         </div>
       </div>
     </div>
