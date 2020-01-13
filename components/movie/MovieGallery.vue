@@ -3,14 +3,18 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class="heading--primary">Gallery</h1>
+          <h1 class="heading--primary mb-2">Gallery</h1>
         </div>
       </div>
     </div>
 
     <div class="gallery--full" :style="`height: ${gallerySize}`">
       <div class="row no-gutters">
-        <div class="col-12 col-lg" height="100%" :style="`max-height:${gallerySize / (12 / 12)}px`">
+        <div
+          class="col-12 col-lg"
+          height="100%"
+          :style="`max-height:${gallerySize / (12 / 12)}px`"
+        >
           <GalleryCard :image="{ ...bigImage(), title }" size="w780" />
         </div>
 
@@ -22,7 +26,11 @@
               v-for="image in smallImage().images"
               :key="image.file_path"
             >
-              <GalleryCard :image="{ ...image, title }" size="w300" :title="title" />
+              <GalleryCard
+                :image="{ ...image, title }"
+                size="w300"
+                :title="title"
+              />
             </div>
           </div>
         </div>

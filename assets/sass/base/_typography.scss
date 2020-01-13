@@ -18,6 +18,10 @@
     font-family: var(--font-regular);
     font-weight: 700;
     opacity: 0.9;
+
+    @include respond(mobile-lg) {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -35,6 +39,10 @@
 
     @include respond(mobile-m) {
       font-size: 1.4rem;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 1.3rem;
     }
   }
 }

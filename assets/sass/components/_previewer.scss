@@ -85,6 +85,18 @@
         min-width: 180px;
         margin-right: 0;
       }
+
+      @include respond(mobile-m) {
+        height: 275px;
+        width: 165px;
+        min-width: 165px;
+      }
+
+      @include respond(mobile-s) {
+        height: 250px;
+        width: 155px;
+        min-width: 155px;
+      }
     }
 
     &__body {
@@ -106,12 +118,21 @@
         }
 
         @include respond(tab-port) {
-          font-size: 4.6rem !important;
+          font-size: 4.5rem !important;
           text-align: center;
         }
         @include respond(mobile-lg) {
           font-size: 4rem !important;
           margin-bottom: 0;
+          margin-top: 1.5rem;
+        }
+
+        @include respond(mobile-m) {
+          font-size: 3rem !important;
+        }
+
+        @include respond(mobile-s) {
+          font-size: 2.5rem !important;
         }
       }
 
@@ -157,6 +178,15 @@
 
           p {
             font-size: 2.5rem;
+          }
+        }
+
+        @include respond(mobile-m) {
+          height: 50px;
+          width: 50px;
+
+          p {
+            font-size: 2.2rem;
           }
         }
       }
@@ -210,6 +240,10 @@
       img {
         display: block;
         height: 28px;
+
+        @include respond(mobile-lg) {
+          height: 25px;
+        }
       }
       p {
         font-size: 16px;
@@ -222,15 +256,19 @@
     }
   }
   &--secondary {
-    --previewer-height: 45vh;
     --primary: 52, 113, 190;
     --secondary: 98, 55, 83;
     --text-color: 255, 255, 255;
     position: relative;
-    height: var(--previewer-height);
+    height: 45vh;
     width: 100%;
     padding-top: var(--navbar-height);
     background-color: #000;
+    font-size: 2.5rem;
+
+    @include respond(tab-port) {
+      height: auto;
+    }
 
     &::after {
       content: "";
@@ -252,11 +290,15 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: var(--previewer-height);
+      height: 45vh;
       user-select: none;
       overflow: hidden;
       img {
         filter: blur(3px);
+      }
+
+      @include respond(tab-port) {
+        height: 100%;
       }
     }
 
@@ -268,6 +310,25 @@
       width: 65%;
       height: 30vh;
       z-index: 4;
+
+      @include respond(laptop) {
+        width: 90%;
+      }
+
+      @include respond(tab-port) {
+        height: auto;
+        padding: 15px 0;
+      }
+
+      @include respond(mobile-lg) {
+        align-items: center;
+        width: 100%;
+      }
+
+      @include respond(mobile-m) {
+        flex-direction: column;
+        justify-content: center;
+      }
     }
     &__poster {
       display: block;
@@ -281,18 +342,50 @@
       user-select: none;
       box-shadow: var(--elevation-24);
       margin-right: 30px;
+
+      @include respond(tab-port) {
+        margin-right: 20px;
+        margin-left: 10px;
+        margin-bottom: 0;
+        height: 230px;
+        width: 150px;
+        min-width: 150px;
+      }
     }
 
     &__title {
       font-size: 4.5rem;
       color: rgba(var(--text-color), 1);
       text-shadow: 0 10px 30px rgba(var(--color-dark), 0.5);
+
+      @include respond(tab-port) {
+        font-size: 4rem;
+      }
+
+      @include respond(mobile-lg) {
+        font-size: 3.5rem;
+      }
+
+      @include respond(mobile-m) {
+        text-align: center;
+        font-size: 2.8rem;
+        margin-top: 2rem;
+      }
     }
 
     &__year {
       font-size: 2.5rem;
       color: rgba(var(--text-color), 0.9);
       margin-top: 5px;
+
+      @include respond(tab-port) {
+        font-size: 2.2rem;
+      }
+
+      @include respond(mobile-m) {
+        text-align: center;
+        font-size: 1.8rem;
+      }
     }
   }
 }

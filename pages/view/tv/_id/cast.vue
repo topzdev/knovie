@@ -13,7 +13,7 @@
           </div>
           <div class="row">
             <div
-              class="col col-lg-2 mb-1"
+              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-1"
               v-for="cast in tv_shows.credits.cast"
               :key="cast.credit_id"
             >

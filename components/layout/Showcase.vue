@@ -5,7 +5,7 @@
     <div class="row mt-2" v-if="result">
       <template>
         <div
-          class="col-6 col-md-3 col-sm-4 mb-lg-1 mb-0"
+          class="col-6 col-md-3 col-sm-4 mb-3"
           :class="cardSize ? cardSize : setSize"
           v-for="data in result.slice(0, toShow ? toShow : limitShow)"
           :key="data.id"
@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-      <div class="d-block ml-auto col-lg-auto" v-if="url">
+      <div class="col-auto ml-auto" v-if="url">
         <MoreButton :title="`${title} ${type}`" :url="url" />
       </div>
     </div>

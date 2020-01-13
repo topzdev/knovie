@@ -8,9 +8,8 @@
             class="navbar-preview__link"
           >Main</nuxt-link>
         </li>
-        <li class="navbar-preview__item">
+        <li v-if="season" class="navbar-preview__item">
           <nuxt-link
-            v-if="season"
             :to="{ name: name + '-season', params: { id: $route.params.id } }"
             class="navbar-preview__link"
           >Season</nuxt-link>

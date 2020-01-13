@@ -3,7 +3,7 @@
     // --box-shadow: var(--primary-color);
     position: relative;
     display: block;
-    width: 95%;
+    width: 97%;
     height: 330px;
     max-width: 250px;
     overflow: hidden;
@@ -16,13 +16,13 @@
     @include respond(mobile-lg) {
       height: 300px;
     }
-    
+
     @include respond(mobile-m) {
       height: 280px;
     }
-    
+
     @include respond(mobile-s) {
-      height: 220px;
+      height: 200px;
       width: 100%;
     }
 
@@ -181,6 +181,10 @@
         height: 150px;
       }
 
+      @include respond(mobile-m) {
+        height: 120px;
+      }
+
       img {
         border-radius: 10px;
       }
@@ -198,12 +202,20 @@
       font-family: var(--font-heading);
       color: rgba(var(--base-text-color), 0.9);
       text-align: left;
+
+      @include respond(mobile-m) {
+        font-size: 12px;
+      }
     }
 
     &__film-name {
       font-size: 12px;
-      color: rgba(var(--base-text-color), 0.5);
+      color: rgba(var(--base-text-color), 0.8);
       margin-top: 3px;
+
+      @include respond(mobile-m) {
+        font-size: 10px;
+      }
     }
   }
 
@@ -288,6 +300,14 @@
     overflow: hidden;
     & .paragraph--primary {
       font-size: 1.5rem;
+
+      @include respond(mobile-lg) {
+        font-size: 1.4rem;
+      }
+
+      @include respond(mobile-m) {
+        font-size: 1.3rem;
+      }
     }
 
     & .heading--secondary {
@@ -296,6 +316,14 @@
 
     &__content {
       padding: 24px 20px 15px 20px;
+
+      @include respond(mobile-lg) {
+        padding: 20px 18px 12px 18px;
+      }
+
+      @include respond(mobile-s) {
+        padding: 18px 15px 12px 15px;
+      }
     }
 
     &__user {
@@ -310,6 +338,10 @@
     &__user-name {
       font-size: 14px;
       margin-right: 20px;
+
+      @include respond(mobile-lg) {
+        font-size: 13px;
+      }
     }
 
     &__user-profile {

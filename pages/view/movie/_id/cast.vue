@@ -3,7 +3,7 @@
     <MovieSubPreviewer :movie="movie" :color="movie.color" />
     <NavbarPreview name="view-movie-id" />
 
-    <div class="info__cast mt-3 pb-5">
+    <div class="info__cast mt-0 mt-lg-3 pb-5">
       <div class="container">
         <div class="col">
           <div class="row">
@@ -13,7 +13,7 @@
           </div>
           <div class="row">
             <div
-              class="col col-lg-2 mb-1"
+              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-1"
               v-for="cast in movie.credits.cast"
               :key="cast.credit_id"
             >
@@ -27,7 +27,7 @@
           </div>
           <div class="row">
             <div
-              class="col col-lg-2 mb-1"
+              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-1"
               v-for="crew in movie.credits.crew"
               :key="crew.credit_id"
             >

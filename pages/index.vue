@@ -2,9 +2,19 @@
   <div>
     <MovieSlider :movies="popular.results" />
     <div class="container pb-5">
-      <Showcase title="Popular" :result="popular.results" type="Movies" url="/c/movie/popular" />
+      <Showcase
+        title="Popular"
+        :result="popular.results"
+        type="Movies"
+        url="/c/movie/popular"
+      />
 
-      <Showcase title="Upcoming" :result="upcoming.results" type="Movies" url="/c/movie/upcoming" />
+      <Showcase
+        title="Upcoming"
+        :result="upcoming.results"
+        type="Movies"
+        url="/c/movie/upcoming"
+      />
 
       <Showcase
         title="Now Playing"
@@ -13,7 +23,12 @@
         url="/c/movie/now_playing"
       />
 
-      <Showcase title="Top Rated" :result="top_rated.results" type="Movies" url="/c/movie/top_rated" />
+      <Showcase
+        title="Top Rated"
+        :result="top_rated.results"
+        type="Movies"
+        url="/c/movie/top_rated"
+      />
     </div>
   </div>
 </template>
@@ -49,7 +64,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-@import "./assets/sass/main.scss";
-</style>

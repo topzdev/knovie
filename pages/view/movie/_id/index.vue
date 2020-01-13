@@ -7,18 +7,24 @@
         <div class="col-md-12 col-lg-9 movie__main pt-5">
           <MovieDescription :description="movie.overview" />
 
-          <MovieCast :url="`/view/movie/${$route.params.id}/cast`" :casts="movie.credits.cast" />
+          <MovieCast
+            :url="`/view/movie/${$route.params.id}/cast`"
+            :casts="movie.credits.cast"
+          />
         </div>
         <div class="col-md-12 col-lg-3 movie__sidebar">
           <MovieInfo :info="movie" />
         </div>
       </div>
     </div>
-    <MovieGallery :url="`/view/movie/${$route.params.id}/gallery`" :images="movie.images" />
+    <MovieGallery
+      :url="`/view/movie/${$route.params.id}/gallery`"
+      :images="movie.images"
+    />
 
     <div class="container" v-if="movie.reviews.results">
       <div class="row">
-        <div class="col-md-12 col-lg-9">
+        <div class="col-md-12 col-lg-9 mt-3">
           <MovieReview
             :url="`/view/movie/${$route.params.id}/reviews`"
             :reviews="movie.reviews.results"

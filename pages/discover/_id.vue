@@ -16,7 +16,7 @@
             />
           </div>
 
-          <div class="col-12 col-md-7 col-lg-6 search__selects mt-2 mt-lg-0 ml-auto">
+          <!-- <div class="col-12 col-md-7 col-lg-6 search__selects mt-2 mt-lg-0 ml-auto">
             <div class="row search__sorter">
               <div class="col col-3 py-0">
                 <v-select v-model="filter.year_value" :items="getYears" label="Year"></v-select>
@@ -40,7 +40,7 @@
                 ></v-select>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

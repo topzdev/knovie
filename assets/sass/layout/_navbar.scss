@@ -301,6 +301,14 @@
     margin-left: 220px;
     list-style: none;
 
+    @include respond(tab-port) {
+      margin-left: 25px;
+    }
+
+    @include respond(mobile-lg) {
+      margin-left: 0;
+    }
+
     .nuxt-link-exact-active {
       color: rgba(var(--primary-color), 1) !important;
       &::after {
@@ -314,6 +322,15 @@
 
     &:not(:last-child) {
       margin-right: 1rem;
+
+      @include respond(mobile-lg) {
+        margin-right: 0;
+      }
+    }
+
+    @include respond(mobile-lg) {
+      display: flex;
+      flex: 1;
     }
   }
   &__link {
@@ -329,6 +346,16 @@
     width: 100%;
     overflow: hidden;
     @include transition;
+
+    @include respond(mobile-lg) {
+      font-size: 1.6rem;
+      padding: 0 0 0 0;
+      text-align: center !important;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 1.4rem;
+    }
 
     &:hover,
     &:focus {

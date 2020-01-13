@@ -13,12 +13,13 @@
 
     @include respond(laptop) {
       background-color: rgba(var(--base-color), 1);
+      margin-top: 0rem;
     }
   }
 
   &__main {
     display: block;
-    width: 97%;
+    width: 96%;
     padding-right: 4rem;
 
     @include respond(laptop) {
@@ -40,7 +41,7 @@
   }
 
   &__info {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 
   &__info-header {
@@ -63,6 +64,10 @@
 
     p {
       font-size: 1.5rem;
+
+      @include respond(mobile-lg) {
+        font-size: 1.3rem;
+      }
     }
 
     li {
