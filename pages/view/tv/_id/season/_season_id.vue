@@ -5,13 +5,16 @@
 
     <div class="tv-show container pb-5">
       <div class="row mt-2">
-        <div v-if="tv_season.overview.length > 0" class="col col-8">
+        <div
+          v-if="tv_season.overview.length > 0"
+          class="col col-12 col-lg-10 mb-2"
+        >
           <TVOverview :overview="tv_season.overview" />
         </div>
-        <div class="col col-8">
+        <div class="col-12 col-lg-10">
           <TVCast :credits="tv_season.credits" />
         </div>
-        <div class="col col-8 mt-2">
+        <div class="col-md-12 col-lg-10 mt-2">
           <TVEpisodes :episodes="tv_season.episodes" />
         </div>
       </div>

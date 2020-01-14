@@ -5,38 +5,36 @@
 
     <div class="info__cast mt-3 pb-5">
       <div class="container">
-        <div class="col">
+        <div class="row">
+          <div class="col">
+            <h1 class="heading--primary mb-2">Cast</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-4 col-sm-3 col-md-3 col-lg-2 mb-2"
+            v-for="cast in tv_shows.credits.cast"
+            :key="cast.credit_id"
+          >
+            <CastCard :cast="cast" />
+          </div>
+        </div>
+        <template v-if="tv_shows.credits.crew.length > 0">
           <div class="row">
             <div class="col">
-              <h1 class="heading--primary mb-1">Cast</h1>
+              <h1 class="heading--primary mt-5 mb-1">Crew</h1>
             </div>
           </div>
           <div class="row">
             <div
-              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-1"
-              v-for="cast in tv_shows.credits.cast"
-              :key="cast.credit_id"
+              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-2"
+              v-for="crew in tv_shows.credits.crew"
+              :key="crew.credit_id"
             >
-              <CastCard :cast="cast" />
+              <CrewCard :crew="crew" />
             </div>
           </div>
-          <template v-if="tv_shows.credits.crew.length > 0">
-            <div class="row">
-              <div class="col">
-                <h1 class="heading--primary mt-5 mb-1">Crew</h1>
-              </div>
-            </div>
-            <div class="row">
-              <div
-                class="col col-lg-2 mb-1"
-                v-for="crew in tv_shows.credits.crew"
-                :key="crew.credit_id"
-              >
-                <CrewCard :crew="crew" />
-              </div>
-            </div>
-          </template>
-        </div>
+        </template>
       </div>
     </div>
   </div>

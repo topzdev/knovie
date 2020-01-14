@@ -11,6 +11,10 @@
     @include respond(mobile-m) {
       font-size: 2.8rem;
     }
+
+    @include respond(mobile-s) {
+      font-size: 2.2rem;
+    }
   }
 
   &--secondary {
@@ -33,7 +37,11 @@
     font-weight: 400;
     opacity: 1;
 
-    @include respond(mobile-lg) {
+    @include respond(laptop) {
+      font-size: 1.6rem;
+    }
+
+    @include respond(tab-port) {
       font-size: 1.5rem;
     }
 

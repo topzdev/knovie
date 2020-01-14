@@ -1,12 +1,16 @@
 <template>
   <div class="card--gallery">
     <div class="card__actions" @click="openModal">
-      <button @click="saveFile()">
+      <button
+        aria-label="download button"
+        title="Download Image"
+        @click="imageSaver(image.file_path)"
+      >
         <vue-icon size="30" :svg="icons.download" />
       </button>
     </div>
     <img
-      @click="show=!show"
+      @click="show = !show"
       v-lazy="imagePath(image.file_path, size)"
       :alt="`${title} Images`"
       class="fit-image"
@@ -14,7 +18,21 @@
     />
 
     <Modal :show="show" v-on:toggle-modal="toggleModal" :color="color">
-      <ImagePreviewer :image="imagePath(image.file_path, 'original')" :show="show" />
+      <ImagePreviewer
+        :image="imagePath(image.file_path, 'original')"
+        :show="show"
+        slot="content"
+      />
+
+      <button
+        aria-label="download button"
+        title="Download Image"
+        class="btn"
+        @click="imageSaver(image.file_path)"
+        slot="actions"
+      >
+        <vue-icon size="50" :svg="icons.download" />
+      </button>
     </Modal>
   </div>
 </template>
@@ -22,7 +40,7 @@
 <script>
 import { mdiDownloadOutline } from "@mdi/js";
 import imagePath from "~/utils/imagePath";
-import FileSaver from "file-saver";
+import imageSaver from "~/utils/imageSaver";
 import Modal from "@/components/modal/MainModal";
 import ImagePreviewer from "@/components/image/ImagePreviewer";
 import colorMatcher from "@/utils/colorMatcher";
@@ -48,13 +66,7 @@ export default {
   },
   methods: {
     imagePath,
-    saveFile() {
-      const { file_path, title } = this.$props.image;
-      FileSaver.saveAs(
-        imagePath(file_path, "original"),
-        "knovie.com" + "-" + file_path.replace(" ", "_")
-      );
-    },
+    imageSaver,
     toggleModal(state) {
       console.log("Close the modal");
       this.show = state;

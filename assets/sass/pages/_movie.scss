@@ -13,17 +13,17 @@
 
     @include respond(laptop) {
       background-color: rgba(var(--base-color), 1);
-      margin-top: 0rem;
+      margin-top: 3rem;
     }
   }
 
   &__main {
     display: block;
-    width: 96%;
+    width: 100%;
     padding-right: 4rem;
 
     @include respond(laptop) {
-      padding-right: 0 !important;
+      padding-right: 1.5rem;
     }
   }
 
@@ -143,15 +143,32 @@
       font-size: 2.5rem;
     }
   }
-
-  &__trailer {
-  }
-
   &__trailer {
     display: block;
     height: 500px;
     min-height: 500px;
     width: 60%;
     min-width: 536px;
+
+    @include respond(tab-port) {
+      height: 400px;
+      min-height: 400px;
+      width: 100%;
+      min-width: 100%;
+    }
+
+    @include respond(mobile-lg) {
+      height: 300px;
+      min-height: 300px;
+    }
+    @include respond(mobile-m) {
+      height: 250px;
+      min-height: 250px;
+    }
+
+    @include respond(mobile-s) {
+      height: 200px;
+      min-height: 200px;
+    }
   }
 }

@@ -1,11 +1,11 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <h2 class="heading--primary">Castdd</h2>
+      <h2 class="heading--primary mb-2">Cast</h2>
 
       <div class="row">
         <div
-          class="col-4 col-sm-3 col-md-3 col-lg-custom"
+          class="col-4 col-sm-3 col-lg-custom mb-2"
           v-for="cast in credits.cast"
           :key="cast.id"
         >
@@ -28,5 +28,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

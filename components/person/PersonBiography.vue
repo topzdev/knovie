@@ -1,5 +1,5 @@
 <template>
-  <div class="person__bio">
+  <div class="person__bio mt-2">
     <p class="paragraph--primary" v-text="truncateBiography" />
   </div>
 </template>
@@ -16,5 +16,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

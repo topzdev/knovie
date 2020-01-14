@@ -3,16 +3,36 @@
     class="modal"
     v-if="show"
     @keydown.esc="closeModal"
-    @click="closeModal"
-    :style="`--primary:${color.primaryColor}; --secondary:${color.secondaryColor};`"
+    :style="
+      `--primary:${color.primaryColor}; --secondary:${color.secondaryColor};`
+    "
   >
-    <slot></slot>
+    <div class="modal__action">
+      <slot name="actions" />
+      <button
+        aria-label="close button"
+        title="close modal"
+        class="btn modal__exit"
+        @click="closeModal"
+      >
+        <vue-icon size="50" :svg="icons.close" />
+      </button>
+    </div>
+    <slot name="content" />
   </div>
 </template>
 
 <script>
+import { mdiClose } from "@mdi/js";
 export default {
   props: ["show", "color"],
+  data() {
+    return {
+      icons: {
+        close: mdiClose
+      }
+    };
+  },
   methods: {
     closeModal() {
       this.$emit("toggle-modal", false);
@@ -32,5 +52,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

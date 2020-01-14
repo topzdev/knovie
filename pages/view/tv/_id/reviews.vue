@@ -9,7 +9,7 @@
           <h1 class="heading--primary mb-1 mt-3">Reviews</h1>
         </div>
 
-        <div class="col col-8">
+        <div class="col-12 col-lg-8">
           <div class="row" v-if="other_reviews == null">
             <div
               class="col col-12 mb-1"
@@ -20,7 +20,11 @@
             </div>
           </div>
           <div class="row" v-else>
-            <div class="col col-12 mb-1" v-for="reviews in other_reviews.results" :key="reviews.id">
+            <div
+              class="col col-12 mb-1"
+              v-for="reviews in other_reviews.results"
+              :key="reviews.id"
+            >
               <ReviewCard :review="reviews" />
             </div>
           </div>

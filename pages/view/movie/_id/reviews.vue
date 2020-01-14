@@ -9,10 +9,10 @@
           <h1 class="heading--primary mb-1 mt-3">Reviews</h1>
         </div>
 
-        <div class="col-8">
+        <div class="col-12 col-lg-8">
           <div class="row" v-if="other_reviews == null">
             <div
-              class="col-12 mb-1"
+              class="col-12 mb-2"
               v-for="reviews in movie.reviews.results"
               :key="reviews.id"
             >
@@ -21,7 +21,7 @@
           </div>
           <div class="row" v-else>
             <div
-              class="col-12 mb-1"
+              class="col-12 mb-2"
               v-for="reviews in other_reviews.results"
               :key="reviews.id"
             >

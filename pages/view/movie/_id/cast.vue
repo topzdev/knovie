@@ -3,7 +3,7 @@
     <MovieSubPreviewer :movie="movie" :color="movie.color" />
     <NavbarPreview name="view-movie-id" />
 
-    <div class="info__cast mt-0 mt-lg-3 pb-5">
+    <div class="info__cast mt-3 pb-5">
       <div class="container">
         <div class="col">
           <div class="row">

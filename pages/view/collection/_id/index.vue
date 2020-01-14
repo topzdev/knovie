@@ -1,9 +1,9 @@
 <template>
   <div class="collection">
     <CollectionPreviewer :collection="collection" :color="collection.color" />
-    <div class="container movie mt-4">
+    <div class="container movie mt-0 mt-lg-4">
       <div class="row" align="start">
-        <div class="col col-9 movie__main pt-5">
+        <div class="col-12 col-lg-9 pt-5">
           <MovieDescription :description="collection.overview" />
 
           <Showcase
@@ -15,7 +15,7 @@
           />
         </div>
 
-        <div class="col col-3"></div>
+        <div class="col-12 col-lg-3"></div>
       </div>
     </div>
   </div>

@@ -37,6 +37,14 @@
     font-weight: 700;
     border-radius: 5px;
 
+    @include respond(mobile-lg) {
+      font-size: 1.4rem;
+    }
+
+    @include respond(mobile-m) {
+      font-size: 1.2rem;
+    }
+
     &--g {
       background-color: rgba(var(--color-green), 1);
       color: rgba(var(--color-white), 1);

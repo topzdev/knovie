@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col">
-        <h1 class="heading--primary">Episodes</h1>
-      </div>
-      <div class="col-12" v-for="eps in episodes" :key="eps.id">
-        <EpisodeCard :episode="eps" />
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="heading--primary mb-3">Episodes</h1>
+    </div>
+    <div class="col-12 mb-2" v-for="eps in episodes" :key="eps.id">
+      <EpisodeCard :episode="eps" />
     </div>
   </div>
 </template>
@@ -21,5 +19,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

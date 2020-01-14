@@ -98,7 +98,7 @@
       }
 
       @include respond(mobile-s) {
-        padding: 13px;
+        padding: 10px;
       }
     }
 
@@ -161,7 +161,7 @@
   &--secondary {
     display: block;
     // height: 200px;
-    width: 95%;
+    width: 100%;
     // cursor: pointer;
 
     &:hover &__img:after {
@@ -234,6 +234,10 @@
 
     .card__actions {
       opacity: 0;
+
+      @include respond(tab-land) {
+        opacity: 1;
+      }
       button {
         border-radius: 100%;
         border-color: rgba(var(--color-white), 1);
@@ -271,6 +275,11 @@
     display: flex;
     align-items: center;
     padding: 10px 0;
+
+    @include respond(mobile-lg) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     &__image {
       display: block;
       height: 50px;
@@ -280,14 +289,27 @@
       border-radius: 100%;
       overflow: hidden;
       margin-right: 1rem;
+
+      @include respond(mobile-lg) {
+        height: 40px;
+        min-height: 40px;
+        width: 40px;
+        min-width: 40px;
+      }
     }
 
     &__description {
       a {
         text-decoration: none;
         color: rgba(var(--secondary-text-color), 0.8);
-        font-size: 14px;
+        font-size: 1.4rem;
         font-weight: 400;
+
+        @include respond(mobile-lg) {
+          display: block;
+          margin-top: 10px;
+          font-size: 1.3rem;
+        }
       }
     }
   }
@@ -431,29 +453,74 @@
       align-self: flex-start;
       overflow: hidden;
       border-radius: 10px;
-      height: 220px;
-      width: 150px;
-      min-width: 150px;
+      height: 200px;
+      width: 135px;
+      min-width: 135px;
       margin-right: 20px;
+
+      @include respond(tab-port) {
+        height: 185px;
+        width: 130px;
+        min-width: 130px;
+        margin-right: 15px;
+      }
+
+      @include respond(mobile-lg) {
+        height: 180px;
+        width: 120px;
+        min-width: 120px;
+      }
+
+      @include respond(mobile-s) {
+        height: 160px;
+        width: 110px;
+        min-width: 110px;
+      }
     }
 
     &__overview {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       opacity: 0.9;
       padding-bottom: 20px;
+
+      @include respond(tab-port) {
+        font-size: 1.3rem;
+      }
+
+      @include respond(mobile-s) {
+        display: none;
+      }
     }
 
     &__episodes {
       font-weight: 400;
       opacity: 0.8;
       font-size: 1.4rem;
+
+      @include respond(tab-port) {
+        font-size: 1.3rem;
+      }
+
+      @include respond(mobile-lg) {
+        font-size: 1.2rem;
+      }
     }
 
     &__title {
-      font-size: 3.5rem;
-
+      font-size: 3rem;
+      margin-bottom: 5px;
       color: rgba(var(--secondary-text-color), 1);
+      @include respond(tab-port) {
+        font-size: 2.8rem;
+      }
 
+      @include respond(mobile-lg) {
+        font-size: 2.4rem;
+      }
+
+      @include respond(mobile-m) {
+        font-size: 2.1rem;
+      }
       span {
         font-size: 2rem;
       }
@@ -469,6 +536,10 @@
     border-radius: 10px;
     padding: 15px;
 
+    @include respond(mobile-lg) {
+      flex-direction: column;
+    }
+
     a {
       text-decoration: none !important;
     }
@@ -481,17 +552,50 @@
       width: 260px;
       min-width: 260px;
       margin-right: 20px;
+
+      @include respond(tab-port) {
+        height: 130px;
+        width: 240px;
+        min-width: 240px;
+      }
+
+      @include respond(mobile-lg) {
+        height: 170px;
+        width: 100%;
+        min-width: 100%;
+        margin-bottom: 1.5rem;
+      }
+
+      @include respond(mobile-m) {
+        height: 150px;
+      }
+
+      @include respond(mobile-s) {
+        height: 140px;
+      }
     }
 
     &__overview {
       font-size: 1.5rem;
       opacity: 0.9;
+
+      @include respond(tab-port) {
+        font-size: 1.4rem;
+      }
+
+      @include respond(mobile-m) {
+        font-size: 1.2rem;
+      }
     }
 
     &__episodes {
       font-weight: 400;
       opacity: 0.8;
       font-size: 1.4rem;
+
+      @include respond(mobile-lg) {
+        font-size: 1.3rem;
+      }
     }
 
     &__title {
@@ -499,6 +603,14 @@
       align-items: flex-start;
       justify-content: flex-start;
       font-size: 2.5rem;
+
+      @include respond(tab-port) {
+        font-size: 2rem;
+      }
+
+      @include respond(mobile-m) {
+        font-size: 1.8rem;
+      }
 
       color: rgba(var(--secondary-text-color), 1);
 
@@ -536,6 +648,10 @@
     width: 100%;
     @include transition;
 
+    @include respond(mobile-lg) {
+      padding: 5px;
+    }
+
     button,
     a {
       display: flex;
@@ -546,6 +662,15 @@
       justify-content: center;
       border: 3px solid transparent;
       @include transition;
+
+      @include respond(tab-land) {
+        height: 33px;
+        width: 33px;
+        border-width: 2px;
+        svg {
+          height: 24px;
+        }
+      }
       svg {
         fill: rgba(var(--color-white), 1);
         @include transition;

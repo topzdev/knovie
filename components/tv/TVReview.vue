@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="heading--primary mb-1">Reviews</h1>
+    <h1 class="heading--primary mb-2 mt-3">Reviews</h1>
 
     <div class="row">
       <div
@@ -14,7 +14,7 @@
 
     <div class="row">
       <div class="col-12 place-end">
-        <MoreButton :url="url" :title="title + ' Reviews'" />
+        <MoreButton :url="url" title="Reviews" />
       </div>
     </div>
   </section>

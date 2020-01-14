@@ -1,30 +1,73 @@
 .person {
   &__previewer {
     width: 100%;
-    height: 40vh;
+    height: 30vh;
     background-color: rgba(var(--secondary-color), 1);
   }
 
   &__poster {
     display: block;
     position: relative;
-    height: 400px;
-    width: 100%;
+    height: 370px;
+    width: 250px;
     border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 5rem;
-  }
+    margin-top: -70px;
+    z-index: 3;
 
-  &__header {
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
-    height: 40vh;
+    @include respond(laptop) {
+      height: 320px;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    @include respond(tab-land) {
+      margin: 0 auto;
+      height: 350px;
+      width: 240px;
+      margin-top: -100px;
+    }
+
+    @include respond(tab-port) {
+      height: 300px;
+      width: 200px;
+    }
+
+    @include respond(mobile-lg) {
+      height: 280px;
+      width: 190px;
+      margin-top: -70px;
+    }
+
+    @include respond(mobile-s) {
+      height: 240px;
+      width: 160px;
+    }
   }
 
   &__title {
-    font-size: 50px;
+    font-size: 5rem;
     color: rgba(var(--secondary-text-color), 1);
+
+    @include respond(laptop) {
+      font-size: 4rem;
+    }
+
+    @include respond(tab-land) {
+      text-align: center;
+    }
+
+    @include respond(tab-port) {
+      font-size: 3.5rem;
+    }
+
+    @include respond(mobile-lg) {
+      font-size: 3.2rem;
+    }
+
+    @include respond(mobile-s) {
+      font-size: 3rem;
+    }
   }
 
   &__body {
@@ -38,13 +81,19 @@
 
   &__bio {
     color: rgba(var(--secondary-text-color), 0.8);
+
+    @include respond(laptop) {
+      font-size: 1.6rem;
+    }
+
+    @include respond(tab-land) {
+      text-align: center;
+    }
   }
 
   &__info {
     display: block;
     position: relative;
-    background-color: rgba(var(--secondary-color), 1);
-    margin-top: -60%;
     color: rgba(var(--secondary-text-color), 0.8);
 
     & .heading--secondary {

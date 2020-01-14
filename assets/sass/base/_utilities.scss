@@ -38,6 +38,10 @@
       rgba(var(--base-color), 1),
       rgba(var(--base-color), 0)
     );
+
+    @include respond(mobile-lg) {
+      bottom: -1%;
+    }
   }
 }
 

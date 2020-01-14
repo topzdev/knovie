@@ -6,11 +6,15 @@
     <div class="container">
       <div class="row py-0">
         <div class="col">
-          <h1 class="heading--primary mt-3 mb-1">Wallpapers</h1>
+          <h1 class="heading--primary mt-3 mb-2">Wallpapers</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col col-4" v-for="image in tv_show.images.backdrops" :key="image.file_path">
+        <div
+          class="col-12 col-md-6 col-lg-4 mb-2"
+          v-for="image in tv_show.images.backdrops"
+          :key="image.file_path"
+        >
           <ImageCard
             :image="image"
             :size="'w780'"
@@ -21,11 +25,15 @@
       </div>
       <div class="row py-0">
         <div class="col">
-          <h1 class="heading--primary mt-3 mb-1">Posters</h1>
+          <h1 class="heading--primary mt-3 mb-2">Posters</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col col-2" v-for="image in tv_show.images.posters" :key="image.file_path">
+        <div
+          class="col-6 col-sm-4 col-md-3 col-lg-custom mb-2"
+          v-for="image in tv_show.images.posters"
+          :key="image.file_path"
+        >
           <ImageCard
             :image="image"
             :size="'w300'"

@@ -53,6 +53,10 @@
       height: 35px;
     }
 
+    @include respond(mobile-s) {
+      height: 30px;
+    }
+
     img {
       height: 100%;
       width: auto;
@@ -108,6 +112,9 @@
     }
     @include respond(mobile-m) {
       width: 65%;
+    }
+    @include respond(mobile-s) {
+      width: 62%;
     }
 
     .btn {
@@ -346,6 +353,10 @@
     width: 100%;
     overflow: hidden;
     @include transition;
+
+    @include respond(tab-land) {
+      padding: 0 45px 0 0;
+    }
 
     @include respond(mobile-lg) {
       font-size: 1.6rem;

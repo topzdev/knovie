@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         <div
-          class="col col-4"
+          class="col-12 col-md-6 col-lg-4 mb-2"
           v-for="image in movie.images.backdrops"
           :key="image.file_path"
         >
@@ -30,7 +30,7 @@
       </div>
       <div class="row">
         <div
-          class="col col-2"
+          class="col-6 col-sm-4 col-md-3 col-lg-custom mb-2"
           v-for="image in movie.images.posters"
           :key="image.file_path"
         >

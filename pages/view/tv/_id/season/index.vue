@@ -9,7 +9,11 @@
           <h1 class="heading--primary mb-1 mt-3">Seasons</h1>
         </div>
 
-        <div v-for="season in tv_show.seasons" :key="season.name" class="col col-8">
+        <div
+          v-for="season in tv_show.seasons"
+          :key="season.name"
+          class="col-12 col-md-10 col-lg-8 mb-2"
+        >
           <SeasonCard :season="season" :title="tv_show.name" />
         </div>
       </div>

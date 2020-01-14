@@ -27,6 +27,12 @@
       font-size: 14px;
     }
 
+    @include respond(mobile-s) {
+      width: 100%;
+      padding: 7px 12px;
+      font-size: 13px;
+    }
+
     &:hover {
       // border-bottom-color: rgba(var(--secondary-text-color), 0.8);
       background: rgba(var(--secondary-text-color), 0.5);
