@@ -42,6 +42,10 @@
     flex-direction: column;
     top: 0;
     height: 74px;
+
+    @include respond(mobile-lg) {
+      height: 60px;
+    }
     align-items: flex-start;
     @include transition;
     transition-delay: 100ms;
@@ -54,10 +58,19 @@
     transform: scale(1) translateX(0);
     @include transition;
     transition-delay: 100ms;
+
+    @include respond(mobile-lg) {
+      height: 30px;
+      min-height: 30px;
+    }
   }
 
   &__toggler-chossen {
     top: -37px;
+
+    @include respond(mobile-lg) {
+      top: -30px;
+    }
   }
 
   &__toggler-disabled {
@@ -75,6 +88,10 @@
     @include transition;
     position: relative;
     z-index: 2;
+
+    @include respond(mobile-lg) {
+      padding-top: 10px;
+    }
   }
 
   &__sorter {
@@ -154,88 +171,5 @@
     &:hover {
       color: rgba(var(--primary-color), 1);
     }
-  }
-}
-
-.theme--dark {
-  background-color: rgba(var(--secondary-color), 1) !important ;
-  color: rgba(var(--secondary-text-color), 1) !important;
-}
-.v-list-item {
-  color: rgba(var(--secondary-text-color), 1) !important;
-}
-.v-list-item__title {
-  font-size: 1.4rem !important;
-}
-
-.theme--dark.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
-  color: rgba(var(--secondary-text-color), 1) !important;
-}
-.v-list-item--active {
-  background-color: rgba(var(--primary-color), 1) !important ;
-  font-weight: 600;
-  color: rgba(var(--primary-text-color), 1) !important;
-}
-
-.v-pagination {
-  &__item,
-  &__navigation {
-    font: inherit;
-    font-size: 1.6rem !important;
-    font-weight: 400;
-    height: 45px !important;
-    min-width: 45px !important;
-    border-radius: 5px;
-    background-color: rgba(var(--secondary-color), 1) !important;
-    color: rgba(var(--secondary-text-color), 1) !important;
-    box-shadow: var(--elevation-10);
-    border: 1px solid rgba(var(--secondary-text-color), 0.1);
-    @include transition;
-
-    @include respond(mobile-lg) {
-      height: 40px !important;
-      min-width: 40px !important;
-      font-size: 1.4rem !important;
-    }
-
-    @include respond(mobile-m) {
-      height: 35px !important;
-      min-width: 35px !important;
-      font-size: 1.3rem !important;
-    }
-
-    @include respond(mobile-s) {
-      font-size: 1.2rem;
-    }
-
-    &:hover {
-      background-color: rgba(var(--primary-color), 0.7) !important;
-    }
-  }
-
-  &__item--active {
-    background-color: rgba(var(--primary-color), 1) !important;
-    color: rgba(var(--primary-text-color), 1) !important;
-
-    &:hover {
-      background-color: rgba(var(--primary-color), 1) !important;
-    }
-  }
-
-  &__more {
-    font-size: 1.8rem;
-    color: rgba(var(--secondary-text-color), 0.6) !important;
-    user-select: none;
-  }
-
-  &__navigation {
-    i {
-      color: rgba(var(--secondary-text-color), 1) !important;
-    }
-  }
-
-  &__top {
-    margin-left: -10px;
-    justify-content: flex-start;
   }
 }

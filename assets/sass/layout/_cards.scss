@@ -637,7 +637,7 @@
 
   &__actions {
     --hover-color: var(--color-red);
-    display: flex;
+    display: inline-flex;
     align-items: flex-start;
     justify-content: flex-end;
     padding: 10px;
@@ -645,7 +645,6 @@
     top: 0;
     right: 0;
     z-index: 4;
-    width: 100%;
     @include transition;
 
     @include respond(mobile-lg) {

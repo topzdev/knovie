@@ -7,7 +7,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: "%s - " + process.env.npm_package_name,
+    titleTemplate: "%s | Know more your movie",
     title: "Knovie",
     meta: [
       { charset: "utf-8" },
@@ -15,10 +15,34 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
+        content:
+          "Browse and know more about your favorite movies, tv shows and actors. "
+      },
+      {
+        hid: "keywords",
+        name: "keywords",
+        content:
+          "Browse, Movies, TV Shows, Reviews, Actors, Actresses, Photos, User Ratings, Synopsis, Trailers, Teasers, Credits, Cast"
+      },
+      {
+        hid: "apple-mobile-web-app-capable",
+        name: "apple-mobile-web-app-capable",
+        content: "yes"
+      },
+      {
+        hid: "mobile-web-app-capable",
+        name: "mobile-web-app-capable",
+        content: "yes"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href:
+          "https://fonts.googleapis.com/css?family=Montserrat:400,500i,600,600i,700,800|Open+Sans:300,300i,400,500,600,700&display=swap"
+      }
+    ]
   },
 
   /*

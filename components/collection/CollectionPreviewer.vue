@@ -40,7 +40,7 @@
           ({{collection.year_min+'-'+ collection.year_max}})
           </h1>
           <ul class="previewer--primary__critic">
-            <li>
+            <li class="previewer--primary__rating">
               <p class="slider__rating" aria-label="ratings" title="IMdb rating">
                 {{collection.vote_average }}
                 <span>/10</span>

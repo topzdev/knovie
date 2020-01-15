@@ -128,7 +128,7 @@ export default {
         };
       if (people)
         return {
-          type: "people",
+          type: "person",
           data: this.people,
           length: this.people.total_results
         };

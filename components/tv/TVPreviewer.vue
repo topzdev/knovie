@@ -41,30 +41,20 @@
               <nuxt-link
                 :to="`/discover?genre=${genre.name}&type=tv`"
                 class="badge badge--primary badge--outlined"
-                >{{ genre.name }}</nuxt-link
-              >
+              >{{ genre.name }}</nuxt-link>
             </li>
           </ul>
 
           <ul class="previewer--primary__critic mb-1">
             <li>
-              <p
-                class="slider__rating"
-                aria-label="ratings"
-                title="IMdb rating"
-              >
+              <p class="slider__rating" aria-label="ratings" title="IMdb rating">
                 {{ tv_show.vote_average }}
                 <span>/10</span>
               </p>
             </li>
             <li>
               <div class="previewer--primary__critic-item">
-                <img
-                  src="../../assets/img/like.png"
-                  alt
-                  title="Likes"
-                  draggable="false"
-                />
+                <img src="../../assets/img/like.png" alt title="Likes" draggable="false" />
                 <p>{{ tv_show.vote_count }}</p>
               </div>
             </li>
@@ -72,16 +62,8 @@
 
           <!-- <p class="slider__description" aria-label="sypnosis">{{description}}</p> -->
 
-          <Modal
-            :show="show"
-            v-on:toggle-modal="toggleModal"
-            :color="tv_show.color"
-          >
-            <MovieTrailer
-              :trailer="tv_show.videos"
-              :show="show"
-              slot="content"
-            />
+          <Modal :show="show" v-on:toggle-modal="toggleModal" :color="tv_show.color">
+            <MovieTrailer :trailer="tv_show.videos" :show="show" slot="content" />
           </Modal>
 
           <div class="slider__actions mt-2">

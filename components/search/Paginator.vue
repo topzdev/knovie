@@ -1,23 +1,36 @@
 <template>
-  <!-- <v-pagination
+  <paginate
     v-model="currentPage"
-    :length="totalPage"
-    :value="currentPage"
-    :total-visible="visible ? visible : 8"
-    prev-icon="mdi-chevron-left"
-    next-icon="mdi-chevron-right"
-  ></v-pagination>-->
-  <div></div>
+    :page-count="totalPage"
+    :page-range="visible ? visible : 4"
+    :containerClass="'pagination'"
+    :page-class="'pagination__item'"
+    :prev-class="'pagination__item'"
+    :next-class="'pagination__item'"
+    :prev-text="'<'"
+    :next-text="'>'"
+    :break-view-class="'pagination__break'"
+    :active-class="'pagination__item--active'"
+  >
+  </paginate>
 </template>
 
 <script>
+import Paginate from "vuejs-paginate/src/components/Paginate";
+import { mdiChevronRight, mdiChevronLeft } from "@mdi/js";
 export default {
   props: ["totalPage", "visible"],
-
+  components: {
+    Paginate
+  },
   data() {
     return {
       currentPage: 1,
-      totalResult: 0
+      totalResult: 0,
+      icons: {
+        right: mdiChevronRight,
+        left: mdiChevronLeft
+      }
     };
   },
   watch: {

@@ -10,11 +10,7 @@
 
     <div class="gallery--full" :style="`height: ${gallerySize}`">
       <div class="row no-gutters">
-        <div
-          class="col-12 col-lg"
-          height="100%"
-          :style="`max-height:${gallerySize / (12 / 12)}px`"
-        >
+        <div class="col-12 col-lg" height="100%" :style="`max-height:${gallerySize / (12 / 12)}px`">
           <GalleryCard :image="{ ...bigImage(), title }" size="w780" />
         </div>
 
@@ -26,11 +22,7 @@
               v-for="image in smallImage().images"
               :key="image.file_path"
             >
-              <GalleryCard
-                :image="{ ...image, title }"
-                size="w300"
-                :title="title"
-              />
+              <GalleryCard :image="{ ...image, title }" size="w300" :title="title" />
             </div>
           </div>
         </div>

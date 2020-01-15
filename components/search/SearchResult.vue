@@ -16,14 +16,16 @@
     <slot></slot>
 
     <div class="container">
-      <div class="search__content mb-5">
-        <Paginator
-          v-if="results.total_pages > 0"
-          class="v-pagination__top"
-          :totalPage="results.total_pages"
-          :visible="7"
-        />
-        <div class="search__result mb-3 mt-3">
+      <div class="search__content pb-5">
+        <client-only>
+          <paginator
+            v-if="results.total_pages > 0"
+            class="pagination__top mt-4"
+            :totalPage="results.total_pages"
+            :visible="4"
+          />
+        </client-only>
+        <div class="search__result mt-3">
           <div class="row">
             <div
               class="col-6 col-sm-4 col-md-3 col-lg-custom mb-3"
@@ -34,14 +36,15 @@
             >
               <TVCard v-if="type === 'tv'" :tv_show="result" />
               <MovieCard v-else-if="type === 'movie'" :movie="result" />
-              <PersonCard v-else-if="type === 'people'" :person="result" />
+              <PersonCard v-else-if="type === 'person'" :person="result" />
             </div>
           </div>
         </div>
-        <Paginator
-          v-if="results.total_pages > 0"
-          :totalPage="results.total_pages"
-        />
+        <client-only>
+          <Paginator
+            v-if="results.total_pages > 0"
+            :totalPage="results.total_pages"
+        /></client-only>
       </div>
     </div>
   </div>

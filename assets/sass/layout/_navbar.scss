@@ -34,6 +34,12 @@
     @include respond(tab-land) {
       padding-bottom: 1rem;
     }
+
+    @include respond(mobile-s) {
+      padding-bottom: 0;
+      padding-top: 0;
+      height: 60px !important;
+    }
   }
 
   &__brand {
@@ -161,6 +167,10 @@
       @include respond(mobile-lg) {
         display: block;
         height: 3.4rem !important;
+      }
+
+      @include respond(mobile-m) {
+        height: 3.1rem !important;
       }
     }
   }

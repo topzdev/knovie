@@ -86,6 +86,11 @@
   padding-top: 8rem;
 
   @include respond(mobile-lg) {
+    padding-top: 7rem;
+  }
+
+  @include respond(mobile-m) {
+    padding-top: 6rem;
   }
 }
 

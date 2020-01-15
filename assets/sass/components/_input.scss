@@ -51,3 +51,58 @@
     }
   }
 }
+
+.select {
+  display: flex;
+  flex-direction: column;
+  @include transition;
+  select {
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  &--primary {
+    label {
+      font-size: 1.2rem;
+      margin-bottom: 3px;
+      color: rgba(var(--secondary-text-color), 1);
+
+      @include respond(mobile-lg) {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+      }
+    }
+
+    select {
+      font-size: 1.6rem;
+      color: rgba(var(--secondary-text-color), 0.8);
+      padding: 0;
+      border-bottom: 2px solid rgba(var(--primary-color), 0.8);
+      transition: inherit;
+
+      @include respond(mobile-lg) {
+        font-size: 1.5rem;
+      }
+
+      @include respond(mobile-m) {
+        font-size: 1.4rem;
+      }
+
+      option {
+        background-color: rgba(var(--secondary-color), 1);
+        padding: 3px 5px;
+      }
+
+      &:hover,
+      &:visited {
+        color: rgba(var(--secondary-text-color), 1);
+      }
+
+      &:focus,
+      &:active {
+        color: rgba(var(--secondary-text-color), 1);
+        border-bottom: 2px solid rgba(var(--primary-color), 1);
+      }
+    }
+  }
+}

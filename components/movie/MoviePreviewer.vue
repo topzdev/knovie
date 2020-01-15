@@ -84,11 +84,11 @@
           <!-- <p class="slider__description" aria-label="sypnosis">{{description}}</p> -->
 
           <Modal :show="show" v-on:toggle-modal="toggleModal" :color="movie.color">
-            <MovieTrailer :trailer="movie.videos" :show="show"  slot="content" />
+            <MovieTrailer :trailer="movie.videos" :show="show" slot="content" />
           </Modal>
 
           <div class="slider__actions mt-1 mt-lg-2">
-            <button class="btn btn--primary mr-1 px-3" @click="show = !show"
+            <button class="btn btn--primary mr-1 px-3" @click="show = !show">
               Watch trailer
               <vue-icon :svg="icons.play" />
             </button>

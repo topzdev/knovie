@@ -1,29 +1,54 @@
 <template>
-  <div>
-    <div class="container pt-4 pb-5">
-      <Showcase
-        title="Latest"
-        :result="popular.results"
-        type="Person"
-        url="/person/popular"
-        toShow="40"
-      />
+  <search-result :results="results" type="person">
+    <div class="search__filter">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="heading--primary">
+              Person
+            </h1>
+            <h3
+              class="search__count"
+              aria-label="Search result count"
+              v-text="numeral(results.total_results).format('0,0')"
+              title="total results"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </search-result>
 </template>
 
 <script>
-import Showcase from "@/components/layout/Showcase";
+import SearchResult from "@/components/search/SearchResult";
+import numeral from "numeral";
 
 export default {
-  async fetch({ store, data }) {
-    await store.dispatch("person/fetchCategory", { category: "popular" });
-  },
   components: {
-    Showcase
+    SearchResult
   },
+  methods: { numeral },
+  watch: {
+    async $route() {
+      const { page } = this.$route.query;
+      await this.$store.dispatch("person/fetchCategory", {
+        category: "popular",
+        page
+      });
+    }
+  },
+
+  async created() {
+    const { page } = this.$route.query;
+    await this.$store.dispatch("person/fetchCategory", {
+      category: "popular",
+      page
+    });
+  },
+
   computed: {
-    popular() {
+    results() {
       return this.$store.getters["person/getCategories"]("popular");
     }
   }
