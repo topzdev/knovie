@@ -55,7 +55,7 @@
                 <p>{{ movie.imdb_vote || movie.vote_count }}</p>
               </div>
             </li>
-            <li>
+            <li v-if="rotten_tomato >= 60">
               <div class="previewer--primary__critic-item">
                 <img
                   src="../../assets/img/popcorn.png"
@@ -64,11 +64,11 @@
                   draggable="false"
                 />
 
-                <p>66% Audience</p>
+                <p>{{rotten_tomato}}%</p>
               </div>
             </li>
 
-            <li>
+            <li v-else-if="rotten_tomato < 60">
               <div class="previewer--primary__critic-item">
                 <img
                   src="../../assets/img/rotten.png"
@@ -76,7 +76,7 @@
                   title="Rotten Tomatoes Critics | Rotten"
                   draggable="false"
                 />
-                <p>33% Critics</p>
+                <p>{{rotten_tomato}}%</p>
               </div>
             </li>
           </ul>
@@ -125,6 +125,15 @@ export default {
     Modal
   },
   props: ["movie", "color"],
+  computed: {
+    rotten_tomato() {
+      const rotten = this.$props.movie.other_rate.filter(
+        data => data.Source === "Rotten Tomatoes"
+      )[0];
+      console.log(parseInt(rotten.Value.replace("%", "")));
+      return parseInt(rotten.Value.replace("%", ""));
+    }
+  },
   methods: {
     imagePath,
     toggleModal(state) {

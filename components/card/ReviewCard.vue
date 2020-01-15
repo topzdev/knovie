@@ -4,34 +4,30 @@
       <!-- <h3 class="heading--secondary mb-1">What an amazing movie!!!</h3> -->
       <p class="paragraph--primary">
         {{
-          cliTruncate(
-            review.content,
-            toggle_more ? official_lenght : review.content.length,
-            { position: "end" }
-          )
+        cliTruncate(
+        review.content,
+        toggle_more ? official_lenght : review.content.length,
+        { position: "end" }
+        )
         }}
         <button
           class="btn btn--peek"
           v-if="review.content.length > official_lenght"
           @click="toggle_more = !toggle_more"
-        >
-          see {{ toggle_more ? "more" : "less" }}...
-        </button>
+        >see {{ toggle_more ? "more..." : "less" }}</button>
       </p>
     </div>
 
     <div class="card--review__user">
       <div class="card--review__user-profile">
-        <p class="card--review__user-name" aria-label="Reviewers username">
-          {{ review.author }}
-        </p>
+        <p class="card--review__user-name" aria-label="Reviewers username">{{ review.author }}</p>
         <!-- TODO Integrate the name date of the review here -->
         <!-- <p class="card--review__date">December 20, 2019</p> -->
       </div>
       <!-- <div class="badge badge--primary badge--outlined color-yellow">
         9.8
         <vue-icon :svg="icons.star" />
-      </div> -->
+      </div>-->
     </div>
   </div>
 </template>

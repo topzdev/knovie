@@ -1,6 +1,6 @@
 <template>
   <div class="card--gallery">
-    <div class="card__actions" @click="openModal">
+    <div class="card__actions">
       <button
         aria-label="download button"
         title="Download Image"
@@ -17,12 +17,10 @@
       draggable="false"
     />
 
+    <div class="card--gallery__open"  @click="openModal"/>
+
     <Modal :show="show" v-on:toggle-modal="toggleModal" :color="color">
-      <ImagePreviewer
-        :image="imagePath(image.file_path, 'original')"
-        :show="show"
-        slot="content"
-      />
+      <ImagePreviewer :image="imagePath(image.file_path, 'original')" :show="show" slot="content" />
 
       <button
         aria-label="download button"

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="heading--primary mb-1">Reviews</h1>
+    <h1 class="heading--primary mb-2">Reviews</h1>
 
     <div class="row">
       <div class="col-12 mb-2" v-for="review in reviews.slice(0, 3)" :key="review.id">

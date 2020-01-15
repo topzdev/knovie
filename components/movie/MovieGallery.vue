@@ -31,7 +31,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-12 col-lg-9 place-end">
+        <div class="col-12 col-lg-9 place-end mt-1">
           <MoreButton :url="url" title="Images" />
         </div>
       </div>

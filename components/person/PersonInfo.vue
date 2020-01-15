@@ -6,10 +6,7 @@
         <h1 class="heading--secondary mb-1">Known field</h1>
         <ul class="movie__info-list">
           <li>
-            <p
-              class="paragraph--primary"
-              v-text="person.known_for_department"
-            />
+            <p class="paragraph--primary" v-text="person.known_for_department" />
           </li>
         </ul>
       </div>
@@ -39,10 +36,7 @@
         <h1 class="heading--secondary mb-1">Gender</h1>
         <ul class="movie__info-list">
           <li>
-            <p
-              class="paragraph--primary"
-              v-text="person.gender === 2 ? 'Male' : 'Female'"
-            />
+            <p class="paragraph--primary" v-text="person.gender === 2 ? 'Male' : 'Female'" />
           </li>
         </ul>
       </div>
@@ -62,10 +56,7 @@
         <h1 class="heading--secondary mb-1">Birthdate</h1>
         <ul class="movie__info-list">
           <li>
-            <p
-              class="paragraph--primary"
-              v-text="dayjs(person.birthday).format('MMMM Do YYYY')"
-            />
+            <p class="paragraph--primary" v-text="dayjs(person.birthday).format('MMMM D, YYYY')" />
           </li>
         </ul>
       </div>
@@ -75,10 +66,7 @@
         <h1 class="heading--secondary mb-1">Death Date</h1>
         <ul class="movie__info-list">
           <li>
-            <p
-              class="paragraph--primary"
-              v-text="dayjs(person.deathday).format('MMMM Do YYYY')"
-            />
+            <p class="paragraph--primary" v-text="dayjs(person.deathday).format('MMMM Do YYYY')" />
           </li>
         </ul>
       </div>

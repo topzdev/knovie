@@ -1,0 +1,96 @@
+.footer {
+  background-color: rgba(var(--secondary-color), 1);
+  color: rgba(var(--secondary-text-color), 1);
+  font-size: 1.6rem;
+  padding: 8px 0;
+
+  @include respond(tab-land) {
+    font-size: 1.4rem;
+  }
+
+  @include respond(mobile-lg) {
+    padding: 15px 0;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+
+    @include respond(tab-port) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include respond(mobile-lg) {
+      align-items: center;
+    }
+
+    p {
+      color: rgba(var(--secondary-text-color), 0.6);
+      font-size: 1.3rem;
+      margin-left: auto;
+
+      @include respond(tab-port) {
+        margin-left: unset;
+      }
+    }
+  }
+
+  &__copyright {
+    span {
+      font-size: 2rem;
+    }
+    @include respond(tab-port) {
+      margin-bottom: 1.5rem;
+    }
+
+    @include respond(mobile-lg) {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+
+      span {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  &__admin {
+    font-weight: 700;
+    text-decoration: none;
+    color: rgba(var(--primary-color), 1);
+    font-family: var(--font-heading);
+
+    @include respond(mobile-lg) {
+      display: block;
+      line-height: 1.3;
+    }
+  }
+
+  &__links {
+    display: flex;
+    list-style: none;
+    li {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+
+    a {
+      svg {
+        fill: rgba(var(--secondary-text-color), 0.6);
+        height: 40px;
+
+        @include respond(tab-land) {
+          height: 35px;
+        }
+      }
+
+      &:hover {
+        svg {
+          fill: rgba(var(--primary-color), 1);
+        }
+      }
+    }
+  }
+}

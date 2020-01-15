@@ -4,9 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h1 class="heading--primary">
-              Person
-            </h1>
+            <h1 class="heading--primary">Person</h1>
             <h3
               class="search__count"
               aria-label="Search result count"
@@ -25,6 +23,14 @@ import SearchResult from "@/components/search/SearchResult";
 import numeral from "numeral";
 
 export default {
+  async fetch({store, query }){
+    const { page } = query;
+    await store.dispatch("person/fetchCategory", {
+      category: "popular",
+      page
+    });
+
+  },
   components: {
     SearchResult
   },
@@ -37,14 +43,6 @@ export default {
         page
       });
     }
-  },
-
-  async created() {
-    const { page } = this.$route.query;
-    await this.$store.dispatch("person/fetchCategory", {
-      category: "popular",
-      page
-    });
   },
 
   computed: {

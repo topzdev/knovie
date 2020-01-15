@@ -8,12 +8,12 @@
         <div class="col">
           <div class="row">
             <div class="col">
-              <h1 class="heading--primary mb-1">Cast</h1>
+              <h1 class="heading--primary mt-3 mb-3">Cast</h1>
             </div>
           </div>
           <div class="row">
             <div
-              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-1"
+              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-2"
               v-for="cast in movie.credits.cast"
               :key="cast.credit_id"
             >
@@ -22,12 +22,12 @@
           </div>
           <div class="row">
             <div class="col">
-              <h1 class="heading--primary mt-5 mb-1">Crew</h1>
+              <h1 class="heading--primary mt-5 mb-3">Crew</h1>
             </div>
           </div>
           <div class="row">
             <div
-              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-1"
+              class="col-4 col-sm-3 col-md-3 col-lg-2 mb-2"
               v-for="crew in movie.credits.crew"
               :key="crew.credit_id"
             >

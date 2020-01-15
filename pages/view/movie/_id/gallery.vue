@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row py-0">
         <div class="col">
-          <h1 class="heading--primary mt-3 mb-1">Wallpapers</h1>
+          <h1 class="heading--primary mt-4 mb-3">Wallpapers</h1>
         </div>
       </div>
       <div class="row">

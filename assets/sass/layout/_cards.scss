@@ -13,8 +13,12 @@
     backface-visibility: hidden;
     @include transition;
 
-    @include respond(mobile-lg) {
+    @include respond(tab-land) {
       height: 300px;
+    }
+
+    @include respond(tab-port) {
+      height: 290px;
     }
 
     @include respond(mobile-m) {
@@ -93,7 +97,7 @@
       padding: 18px;
       color: rgba(var(--color-white), 1);
 
-      @include respond(mobile-lg) {
+      @include respond(tab-port) {
         padding: 15px;
       }
 
@@ -114,7 +118,7 @@
       transition: all 200ms ease;
       word-spacing: -1px;
 
-      @include respond(mobile-lg) {
+      @include respond(tab-port) {
         font-size: 1.3rem;
       }
 
@@ -132,8 +136,12 @@
       margin-bottom: -2px;
       line-height: 1.1;
 
-      @include respond(mobile-lg) {
-        font-size: 2.1rem;
+      @include respond(tab-land) {
+        font-size: 2.2rem;
+      }
+
+      @include respond(tab-port) {
+        font-size: 2rem;
       }
 
       @include respond(mobile-m) {
@@ -231,6 +239,15 @@
     user-select: none;
     cursor: pointer;
     @include transition;
+
+    &__open {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
 
     .card__actions {
       opacity: 0;

@@ -11,18 +11,17 @@
     :next-text="'>'"
     :break-view-class="'pagination__break'"
     :active-class="'pagination__item--active'"
-  >
-  </paginate>
+  ></paginate>
 </template>
 
 <script>
-import Paginate from "vuejs-paginate/src/components/Paginate";
+// import Paginate from "vuejs-paginate/src/components/Paginate.vue";
 import { mdiChevronRight, mdiChevronLeft } from "@mdi/js";
 export default {
   props: ["totalPage", "visible"],
-  components: {
-    Paginate
-  },
+  // components: {
+  //   Paginate
+  // },
   data() {
     return {
       currentPage: 1,
