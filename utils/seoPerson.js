@@ -1,5 +1,6 @@
 import imagePath from "@/utils/imagePath";
 import cliTruncate from "cli-truncate";
+require("dotenv").config();
 
 let site_name = process.env.SITE_NAME;
 let site_description = process.env.SITE_NAME;
