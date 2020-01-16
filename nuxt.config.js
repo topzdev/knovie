@@ -1,12 +1,7 @@
 require("dotenv").config();
-
-let site_name = process.env.SITE_NAME;
-let site_description = process.env.SITE_NAME;
-let site_url = process.env.SITE_URL;
-
 export default {
   generate: {
-    devtools: true
+    devtools: false //true
   },
   mode: "universal",
   /*
@@ -14,20 +9,20 @@ export default {
    */
   head: {
     titleTemplate: "%s | Know more your movie",
-    title: "Knovie",
+    title: process.env.SITE_NAME,
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: site_description
+        content: process.env.SITE_DESCRIPTION
       },
       {
         hid: "keywords",
         name: "keywords",
         content:
-          "Browse, Movies, TV Shows, Reviews, Actors, Actresses, Photos, User Ratings, Synopsis, Trailers, Teasers, Credits, Cast"
+          "Browse, Movies, TV Shows, Reviews, Actors, Actresses, Photos, User Ratings, Synopsis, Trailers, Teasers, Credits, Cast, Collection, Information, Crews, Director, Writer, Best, Top Rated, Upcoming, Popular"
       },
       {
         hid: "apple-mobile-web-app-capable",
@@ -42,7 +37,7 @@ export default {
       {
         hid: "og:title",
         property: "og:title",
-        content: `${site_name} | Know more your movie`
+        content: `${process.env.SITE_NAME} | Know more your movie`
       },
       {
         hid: "og:type",
@@ -52,7 +47,7 @@ export default {
       {
         hid: "og:url",
         property: "og:url",
-        content: site_url
+        content: process.env.SITE_URL
       },
       {
         hid: "og:image",
@@ -62,12 +57,12 @@ export default {
       {
         hid: "og:description",
         property: "og:description",
-        content: site_description
+        content: process.env.SITE_DESCRIPTION
       },
       {
         hid: "og:site_name",
         property: "og:site_name",
-        content: "Knovie"
+        content: process.env.SITE_NAME
       },
       {
         hid: "twitter:card",
@@ -77,7 +72,7 @@ export default {
       {
         hid: "twitter:title",
         property: "twitter:title",
-        content: `${site_name} | Know more your movie`
+        content: `${process.env.SITE_NAME} | Know more your movie`
       },
       {
         hid: "twitter:site",
@@ -87,7 +82,7 @@ export default {
       {
         hid: "twitter:description",
         property: "twitter:description",
-        content: site_description
+        content: process.env.SITE_DESCRIPTION
       },
       {
         hid: "twitter:image",
@@ -97,12 +92,12 @@ export default {
       {
         hid: "itemprop:name",
         itemprop: "name",
-        content: `${site_name} | Know more your movie`
+        content: `${process.env.SITE_NAME} | Know more your movie`
       },
       {
         hid: "itemprop:name",
         itemprop: "description",
-        content: site_description
+        content: process.env.SITE_DESCRIPTION
       },
       {
         hid: "itemprop:image",
@@ -166,7 +161,7 @@ export default {
      ** You can extend webpack config here
      */
     transpile: [/^vuetify/],
-    analyze: false,
+    analyze: false, //true
     extend(config, ctx) {
       config.node = {
         fs: "empty"

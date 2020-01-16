@@ -1,6 +1,5 @@
 import imagePath from "@/utils/imagePath";
 import cliTruncate from "cli-truncate";
-require("dotenv").config();
 
 let site_name = process.env.SITE_NAME;
 let site_description = process.env.SITE_NAME;
@@ -24,7 +23,7 @@ export default (data, route) => {
         hid: "keywords",
         name: "keywords",
         content:
-          "actor,actres,cast,director,birthday,movies,tvshows,birth,gender,known as,credits,place of birth,biography,death,dead,facebook,instagram,twitter,account,profile"
+          "actor,actress,cast,director,birthday,movies,tvshows,birth,gender,known as,credits,place of birth,biography,death,dead,facebook,instagram,twitter,account,profile"
       },
       {
         hid: "og:title",
@@ -49,13 +48,12 @@ export default (data, route) => {
       {
         hid: "og:description",
         property: "og:description",
-        content:
-          "Know more about your favourite movies and tv shows right here in knovie.com"
+        content: cliTruncate(biography, 150)
       },
       {
         hid: "og:site_name",
         property: "og:site_name",
-        content: "Knovie"
+        content: site_name
       },
       {
         hid: "twitter:card",

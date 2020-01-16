@@ -6,7 +6,7 @@
     <div class="navbar__backdrop" v-show="show" @click="show = false" />
     <ul class="navbar__sidebar" @click="show = false" :class="{'navbar__sidebar-show': show}">
       <nuxt-link to="/" class="navbar__brand">
-        <img src="~/assets/img/knovie-logo.png" alt="Knovie Logo" draggable="false" />
+        <img src="~/assets/img/knowvie-logo.png" alt="Knowvie Logo" draggable="false" />
       </nuxt-link>
       <li class="navbar__sidebar-item">
         <nuxt-link to="/" class="navbar__link navbar-preview__link" aria-label="Movie">Movie</nuxt-link>

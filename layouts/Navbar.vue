@@ -8,8 +8,8 @@
       <div class="navbar__nav">
         <nuxt-link to="/" class="navbar__brand">
           <img
-            src="~/assets/img/knovie-logo.png"
-            alt="Knovie Logo"
+            src="~/assets/img/knowvie-logo.png"
+            alt="Knowvie Logo"
             draggable="false"
           />
         </nuxt-link>

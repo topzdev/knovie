@@ -5,8 +5,10 @@ import {
   getStorage
 } from "@/utils/tempStorage";
 
-const viewedStorage = "knovie-viewed";
-const likeStorage = "knovie-likes";
+const site_name = process.env.SITE_NAME;
+
+const viewedStorage = site_name + "-viewed";
+const likeStorage = site_name + "-likes";
 
 export const state = () => ({
   liked: [],

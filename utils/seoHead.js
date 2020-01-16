@@ -63,7 +63,7 @@ export const moviePreviewHead = (data, route, page_name) => {
       {
         hid: "og:site_name",
         property: "og:site_name",
-        content: "Knovie"
+        content: site_name
       },
       {
         hid: "twitter:card",

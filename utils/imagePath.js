@@ -1,14 +1,11 @@
-require("dotenv").config();
-
-// Sizes
-
 const img_size = "original";
-const imdb_path = process.env.TMDB_IMAGE_PATH;
+require("dotenv").config();
+import not_found from "~/assets/img/not_found.png";
 
 export default (img_path, size) => {
   if (img_path === null) {
-    return "https://www.uh.edu/pharmacy/_images/directory-faculty/no-image-available.jpg";
+    return not_found;
   }
 
-  return imdb_path + size + img_path;
+  return process.env.TMDB_IMAGE_PATH + size + img_path;
 };
