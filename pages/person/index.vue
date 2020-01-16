@@ -21,15 +21,21 @@
 <script>
 import SearchResult from "@/components/search/SearchResult";
 import numeral from "numeral";
+import seoPage from "@/utils/seoPage";
 
 export default {
-  async fetch({store, query }){
+  head() {
+    return seoPage(
+      "Person",
+      "Find known Actors and Actres also the crews of the Movie and TV Shows"
+    );
+  },
+  async fetch({ store, query }) {
     const { page } = query;
     await store.dispatch("person/fetchCategory", {
       category: "popular",
       page
     });
-
   },
   components: {
     SearchResult

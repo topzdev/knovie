@@ -5,10 +5,7 @@
 
     <div class="tv-show container pb-5">
       <div class="row mt-2">
-        <div
-          v-if="tv_season.overview.length > 0"
-          class="col col-12 col-lg-10 mb-2"
-        >
+        <div v-if="tv_season.overview.length > 0" class="col col-12 col-lg-10 mb-2">
           <TVOverview :overview="tv_season.overview" />
         </div>
         <div class="col-12 col-lg-10">
@@ -29,7 +26,6 @@ import TVOverview from "@/components/tv/season/TVOverview";
 import TVEpisodes from "@/components/tv/season/TVEpisodes";
 import TVCast from "@/components/tv/season/TVCast";
 import TVGallery from "@/components/tv/TVGallery";
-
 export default {
   async fetch({ store, params }) {
     const { id, season_id } = params;

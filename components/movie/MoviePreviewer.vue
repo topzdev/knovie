@@ -3,10 +3,11 @@
     <div class="previewer--primary__cover shadow-overlay">
       <img
         class="fit-image"
-        :src="imagePath(movie.backdrop_path, 'w780')"
+        v-lazy="imagePath(movie.backdrop_path, 'w780')"
         :alt="movie.title + ' official wallpaper'"
         draggable="false"
         aria-label="Movie Wallpaper"
+        onerror="this.style.display='none'"
       />
     </div>
     <div class="container">
@@ -19,11 +20,12 @@
         >
           <img
             class="fit-image"
-            :src="imagePath(movie.poster_path, 'w342')"
+            v-lazy="imagePath(movie.poster_path, 'w342')"
             :title="movie.title"
             :alt="movie.title + ' poster'"
             draggable="false"
             aria-label="Movie Poster"
+            onerror="this.style.display='none'"
           />
         </div>
 

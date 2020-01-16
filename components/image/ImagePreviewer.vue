@@ -1,10 +1,14 @@
 <template>
-  <img :src="image" class="modal__image" />
+  <img v-lazy="imagePath(image, 'original')" class="modal__image" />
 </template>
 
 <script>
+import imagePath from "~/utils/imagePath";
 export default {
-  props: ["image"]
+  props: ["image"],
+  methods: {
+    imagePath
+  }
 };
 </script>
 

@@ -33,6 +33,12 @@ import TVSlider from "@/components/tv/TVSlider";
 import Showcase from "@/components/layout/Showcase";
 
 export default {
+  head() {
+    return {
+      titleTemplate: "%s | Knowvie",
+      title: "TV Shows"
+    };
+  },
   components: {
     TVSlider,
     Showcase

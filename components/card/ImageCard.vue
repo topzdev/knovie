@@ -17,10 +17,10 @@
       draggable="false"
     />
 
-    <div class="card--gallery__open"  @click="openModal"/>
+    <div class="card--gallery__open" @click="openModal" />
 
     <Modal :show="show" v-on:toggle-modal="toggleModal" :color="color">
-      <ImagePreviewer :image="imagePath(image.file_path, 'original')" :show="show" slot="content" />
+      <ImagePreviewer :image="image.file_path" :show="show" slot="content" />
 
       <button
         aria-label="download button"

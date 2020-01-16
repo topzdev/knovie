@@ -32,10 +32,11 @@
         <div class="slider__cover shadow-overlay">
           <img
             class="fit-image"
-            :src="imagePath(tv.backdrop_path, 'w780')"
+            v-lazy="imagePath(tv.backdrop_path, 'w1280')"
             :alt="tv.name"
             draggable="false"
             aria-label="TV Image slider"
+            onerror="this.style.display='none'"
           />
         </div>
       </div>

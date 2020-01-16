@@ -171,7 +171,7 @@
     // height: 200px;
     width: 100%;
     // cursor: pointer;
-
+    overflow: hidden;
     &:hover &__img:after {
       opacity: 0.08;
     }
@@ -237,6 +237,7 @@
     height: 100%;
     overflow: hidden;
     user-select: none;
+
     cursor: pointer;
     @include transition;
 

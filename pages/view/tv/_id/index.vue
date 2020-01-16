@@ -71,7 +71,7 @@ import { moviePreviewHead } from "@/utils/seoHead";
 
 export default {
   head() {
-    return moviePreviewHead(this.tv_show, this.$route);
+    return moviePreviewHead(this.tv_show, this.$route, "");
   },
   async fetch({ params, store }) {
     await store.dispatch("tv/fetchTVShow", params.id);

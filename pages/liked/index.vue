@@ -1,23 +1,17 @@
 <template>
   <div class="container navbar-padding">
-    <Showcase
-      class="mt-0"
-      title="Movies you liked"
-      :result="tv_liked"
-      type="Movies"
-    />
-    <Showcase
-      class="mt-3"
-      title="TV Shows you liked"
-      :result="movie_liked"
-      type="TV Shows"
-    />
+    <Showcase class="mt-0" title="Movies you liked" :result="tv_liked" type="Movies" />
+    <Showcase class="mt-3" title="TV Shows you liked" :result="movie_liked" type="TV Shows" />
   </div>
 </template>
 
 <script>
 import Showcase from "@/components/layout/Showcase";
+import seoPage from "@/utils/seoPage";
 export default {
+  head() {
+    return seoPage("Liked", "Liked Movies and TV Shows");
+  },
   components: {
     Showcase
   },

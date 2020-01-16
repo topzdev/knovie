@@ -8,7 +8,7 @@
           <div class="person__poster">
             <img
               class="fit-image"
-              :src="imagePath(person.profile_path, 'w342')"
+              v-lazy="imagePath(person.profile_path, 'w342')"
               :title="person.name"
               :alt="person.name + ' poster'"
               draggable="false"
@@ -58,7 +58,12 @@ import PersonInfo from "@/components/person/PersonInfo";
 import Showcase from "@/components/layout/Showcase";
 import SocialButton from "@/components/button/SocialButton";
 import imagePath from "@/utils/imagePath";
+import seoPersonHead from "@/utils/seoPerson";
+
 export default {
+  head() {
+    return seoPersonHead(this.person, this.$route);
+  },
   async fetch({ store, params }) {
     await store.dispatch("person/fetchPerson", params.id);
   },

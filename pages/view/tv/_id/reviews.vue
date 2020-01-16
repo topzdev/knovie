@@ -20,11 +20,7 @@
             </div>
           </div>
           <div class="row" v-else>
-            <div
-              class="col col-12 mb-1"
-              v-for="reviews in other_reviews.results"
-              :key="reviews.id"
-            >
+            <div class="col col-12 mb-1" v-for="reviews in other_reviews.results" :key="reviews.id">
               <ReviewCard :review="reviews" />
             </div>
           </div>
@@ -48,6 +44,9 @@ import ReviewCard from "@/components/card/ReviewCard";
 import Paginator from "@/components/search/Paginator";
 
 export default {
+  head() {
+    return moviePreviewHead(this.tv_show, this.$route, "Reviews");
+  },
   async fetch({ store, params }) {
     await store.dispatch("tv/fetchTVShow", params.id);
   },

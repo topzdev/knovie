@@ -50,8 +50,12 @@
 import TVSubPreviewer from "@/components/tv/TVSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import ImageCard from "@/components/card/ImageCard";
+import { moviePreviewHead } from "@/utils/seoHead";
 
 export default {
+  head() {
+    return moviePreviewHead(this.tv_show, this.$route, "Gallery");
+  },
   async fetch({ store, params }) {
     await store.dispatch("tv/fetchTVShow", params.id);
   },

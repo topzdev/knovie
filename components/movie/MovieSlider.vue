@@ -34,10 +34,11 @@
         <div class="slider__cover shadow-overlay">
           <img
             class="fit-image"
-            :src="imagePath(movie.backdrop_path, 'w780')"
+            v-lazy="imagePath(movie.backdrop_path, 'w1280')"
             :alt="movie.title"
             draggable="false"
             aria-label="Movie Image slider"
+            onerror="this.style.display='none'"
           />
         </div>
       </div>

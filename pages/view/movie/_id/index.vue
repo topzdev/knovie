@@ -72,7 +72,7 @@ import { moviePreviewHead } from "@/utils/seoHead";
 import parseLink from "@/utils/parseLink";
 export default {
   head() {
-    return moviePreviewHead(this.movie, this.$route);
+    return moviePreviewHead(this.movie, this.$route, "");
   },
   async fetch({ params, store }) {
     await store.dispatch("movie/fetchMovie", params.id);

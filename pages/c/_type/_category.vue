@@ -24,8 +24,12 @@
 <script>
 import SearchResult from "@/components/search/SearchResult";
 import numeral from "numeral";
+import seoPage from "@/utils/seoPage";
 
 export default {
+  head() {
+    return seoPage("Category", "List of movies and TV Show by categories");
+  },
   data() {
     return {
       type: "TV Shows"

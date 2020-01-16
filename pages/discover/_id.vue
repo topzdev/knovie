@@ -1,18 +1,12 @@
 <template>
-  <SearchResult
-    :results="results"
-    :type="results.type === 'movie' ? 'movie' : 'tv'"
-  >
+  <SearchResult :results="results" :type="results.type === 'movie' ? 'movie' : 'tv'">
     <div class="search__filter mt-2">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-5 col-lg-6 py-0">
             <h1 class="heading--primary search__toggle">
               Discover
-              <DiscoverToggle
-                :toggle="results.type"
-                v-on:dis-toggle="disToggler"
-              />
+              <DiscoverToggle :toggle="results.type" v-on:dis-toggle="disToggler" />
             </h1>
             <h3
               class="search__count"
@@ -22,9 +16,7 @@
             />
           </div>
 
-          <div
-            class="col-12 col-md-7 col-lg-6 search__selects mt-2 mt-lg-0 ml-auto"
-          >
+          <div class="col-12 col-md-7 col-lg-6 search__selects mt-2 mt-lg-0 ml-auto">
             <div class="row search__sorter">
               <div class="col col-3 py-0">
                 <vue-select
@@ -71,8 +63,15 @@ import SearchResult from "@/components/search/SearchResult";
 import DiscoverToggle from "@/components/button/DiscoverToggle";
 import numeral from "numeral";
 import findProperties from "@/utils/findProperties";
+import seoPage from "@/utils/seoPage";
 import VueSelect from "@/components/input/VueSelect";
 export default {
+  head() {
+    return seoPage(
+      "Discover",
+      "Discover Movies and TV Shows, Filter by genre, year, title, vote, release date and popularity"
+    );
+  },
   async fetch({ store, query }) {
     const { genre, type } = query;
     console.log(type);

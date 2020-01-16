@@ -3,10 +3,11 @@
     <div class="previewer--primary__cover shadow-overlay">
       <img
         class="fit-image"
-        :src="imagePath(tv_show.backdrop_path, 'w780')"
+        v-lazy="imagePath(tv_show.backdrop_path, 'w780')"
         :alt="tv_show.name + ' official wallpaper'"
         draggable="false"
         aria-label="Movie Wallpaper"
+        onerror="this.style.display='none'"
       />
     </div>
     <div class="container">
@@ -20,7 +21,7 @@
           <img
             v-if="tv_show.poster_path"
             class="fit-image"
-            :src="imagePath(tv_show.poster_path, 'w342')"
+            v-lazy="imagePath(tv_show.poster_path, 'w342')"
             :title="tv_show.name"
             :alt="tv_show.name + ' poster'"
             draggable="false"

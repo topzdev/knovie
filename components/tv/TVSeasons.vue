@@ -6,7 +6,12 @@
           --text-color: ${color.textColor}`"
   >
     <div class="tv-show__seasons-cover">
-      <img :src="imagePath(current_season.poster_path, 'w342')" alt class="fit-image" />
+      <img
+        v-lazy="imagePath(current_season.poster_path, 'w342')"
+        alt
+        class="fit-image"
+        onerror="this.style.display='none'"
+      />
     </div>
     <div class="container py-0">
       <div class="tv-show__seasons-header">
@@ -20,10 +25,11 @@
             <img
               v-if="current_season.poster_path"
               class="fit-image"
-              :src="imagePath(current_season.poster_path, 'w342')"
+              v-lazy="imagePath(current_season.poster_path, 'w342')"
               :alt="current_season.season_number + ' poster'"
               draggable="false"
-              aria-label="Movie Poster"
+              aria-label="TV Poster"
+              onerror="this.style.display='none'"
             />
           </div>
         </nuxt-link>

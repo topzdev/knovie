@@ -1,7 +1,7 @@
 <template>
   <div class="card--primary" style="--box-shadow: var(--primary-color)">
     <div class="card--primary__img">
-      <img v-lazy="imagePath(movie.poster_path, 'w154')" :alt="movie.title" draggable="false" />
+      <img v-lazy="imagePath(movie.poster_path, 'w154')" :alt="movie.title" draggable="false" onerror="this.style.display='none'"/>
     </div>
 
     <div class="card__actions">

@@ -6,12 +6,11 @@ let site_name = process.env.SITE_NAME;
 let site_description = process.env.SITE_NAME;
 let site_url = process.env.SITE_URL;
 
-export const moviePreviewHead = (data, route, page_name) => {
-  const { keywords, overview, backdrop_path, poster_path, external_id } = data;
-  const { facebook_id, instagram_id, twitter_id } = external_id;
-  const title = `${page_name != "" ? page_name + " - " : ""} ${data.title ||
-    data.name}`;
-
+export default (data, route) => {
+  const { biography, profile_path, poster_path, external_ids } = data;
+  const { facebook_id, instagram_id, twitter_id } = external_ids;
+  const title = data.name;
+  console.log(route);
   return {
     title,
     titleTemplate: "%s | " + site_name,
@@ -19,21 +18,13 @@ export const moviePreviewHead = (data, route, page_name) => {
       {
         hid: "description",
         name: "description",
-        content: cliTruncate(overview, 150)
+        content: cliTruncate(biography, 150)
       },
       {
         hid: "keywords",
         name: "keywords",
-        content: `${
-          keywords.keywords
-            ? keywords.keywords.map(key => key.name).toString()
-            : keywords.results.map(key => key.name).toString()
-        },
-           ${title
-             .replace(/[^a-zA-Z ]/g, "")
-             .split(" ")
-             .toString()
-             .toLowerCase()}, director, movie, tv shows, collections, information, poster, backdrops, wallpaper, background, genre, release date, runtime, revenue, budget, language, cast, gallery, crew, reviews, collection, related, rated, plot,trailer, ratings, rotten, tomatoes, overview, production countries, release companies`
+        content:
+          "actor,actres,cast,director,birthday,movies,tvshows,birth,gender,known as,credits,place of birth,biography,death,dead,facebook,instagram,twitter,account,profile"
       },
       {
         hid: "og:title",
@@ -53,12 +44,13 @@ export const moviePreviewHead = (data, route, page_name) => {
       {
         hid: "og:image",
         property: "og:image",
-        content: imagePath(backdrop_path, "w780")
+        content: imagePath(profile_path, "w780")
       },
       {
         hid: "og:description",
         property: "og:description",
-        content: cliTruncate(overview, 150)
+        content:
+          "Know more about your favourite movies and tv shows right here in knovie.com"
       },
       {
         hid: "og:site_name",
@@ -83,12 +75,12 @@ export const moviePreviewHead = (data, route, page_name) => {
       {
         hid: "twitter:description",
         property: "twitter:description",
-        content: cliTruncate(overview, 197)
+        content: cliTruncate(biography, 197)
       },
       {
         hid: "twitter:image",
         property: "twitter:image",
-        content: imagePath(backdrop_path, "w300")
+        content: imagePath(profile_path, "w300")
       },
       {
         hid: "itemprop:name",
@@ -98,7 +90,7 @@ export const moviePreviewHead = (data, route, page_name) => {
       {
         hid: "itemprop:name",
         itemprop: "description",
-        content: cliTruncate(overview, 150)
+        content: cliTruncate(biography, 150)
       },
       {
         hid: "itemprop:image",

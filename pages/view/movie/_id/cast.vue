@@ -45,7 +45,11 @@ import MovieSubPreviewer from "@/components/movie/MovieSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import CastCard from "@/components/card/CastCard";
 import CrewCard from "@/components/card/CrewCard";
+import { moviePreviewHead } from "@/utils/seoHead";
 export default {
+  head() {
+    return moviePreviewHead(this.movie, this.$route, "Cast");
+  },
   async fetch({ store, params }) {
     await store.dispatch("movie/fetchMovie", params.id);
   },

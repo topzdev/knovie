@@ -57,8 +57,15 @@
 <script>
 import SearchResult from "@/components/search/SearchResult";
 import numeral from "numeral";
+import seoPage from "@/utils/seoPage";
 
 export default {
+  head() {
+    return seoPage(
+      "Search",
+      "Fast Search of Movies, TV Shows and Crew and Cast"
+    );
+  },
   async fetch({ store, params, query }) {
     // console.log(params.name, query.page);
     await store.dispatch("movie/fetchSearch", {

@@ -11,20 +11,12 @@
 
         <div class="col-12 col-lg-8">
           <div class="row" v-if="other_reviews == null">
-            <div
-              class="col-12 mb-2"
-              v-for="reviews in movie.reviews.results"
-              :key="reviews.id"
-            >
+            <div class="col-12 mb-2" v-for="reviews in movie.reviews.results" :key="reviews.id">
               <ReviewCard :review="reviews" />
             </div>
           </div>
           <div class="row" v-else>
-            <div
-              class="col-12 mb-2"
-              v-for="reviews in other_reviews.results"
-              :key="reviews.id"
-            >
+            <div class="col-12 mb-2" v-for="reviews in other_reviews.results" :key="reviews.id">
               <ReviewCard :review="reviews" />
             </div>
           </div>
@@ -44,10 +36,13 @@
 import MovieSubPreviewer from "@/components/movie/MovieSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import ReviewCard from "@/components/card/ReviewCard";
-
 import Paginator from "@/components/search/Paginator";
+import { moviePreviewHead } from "@/utils/seoHead";
 
 export default {
+  head() {
+    return moviePreviewHead(this.movie, this.$route, "Reviews");
+  },
   async fetch({ store, params }) {
     await store.dispatch("movie/fetchMovie", params.id);
   },

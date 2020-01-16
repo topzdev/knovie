@@ -12,7 +12,8 @@
           draggable="false"
           class="fit-image"
           v-if="collection.backdrop_path != null"
-          :src="imagePath(collection.backdrop_path, 'w1280')"
+          v-lazy="imagePath(collection.backdrop_path, 'w780')"
+          onerror="this.style.display='none'"
         />
       </div>
 

@@ -1,3 +1,9 @@
+require("dotenv").config();
+
+let site_name = process.env.SITE_NAME;
+let site_description = process.env.SITE_NAME;
+let site_url = process.env.SITE_URL;
+
 export default {
   generate: {
     devtools: true
@@ -15,8 +21,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content:
-          "Browse and know more about your favorite movies, tv shows and actors. "
+        content: site_description
       },
       {
         hid: "keywords",
@@ -33,6 +38,76 @@ export default {
         hid: "mobile-web-app-capable",
         name: "mobile-web-app-capable",
         content: "yes"
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: `${site_name} | Know more your movie`
+      },
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: "movie"
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: site_url
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        content: "/knowvie_bg.jpg"
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: site_description
+      },
+      {
+        hid: "og:site_name",
+        property: "og:site_name",
+        content: "Knovie"
+      },
+      {
+        hid: "twitter:card",
+        property: "twitter:card",
+        content: "summary_large_image"
+      },
+      {
+        hid: "twitter:title",
+        property: "twitter:title",
+        content: `${site_name} | Know more your movie`
+      },
+      {
+        hid: "twitter:site",
+        property: "twitter:site",
+        content: "@_christop_"
+      },
+      {
+        hid: "twitter:description",
+        property: "twitter:description",
+        content: site_description
+      },
+      {
+        hid: "twitter:image",
+        property: "twitter:image",
+        content: "/knowvie_bg.jpg"
+      },
+      {
+        hid: "itemprop:name",
+        itemprop: "name",
+        content: `${site_name} | Know more your movie`
+      },
+      {
+        hid: "itemprop:name",
+        itemprop: "description",
+        content: site_description
+      },
+      {
+        hid: "itemprop:image",
+        itemprop: "image",
+        content: "/knowvie-logo.jpg"
       }
     ],
     link: [
@@ -56,7 +131,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/vue-lazy", "~/plugins/vue-icon"],
+  plugins: [
+    "~/plugins/vue-lazy",
+    "~/plugins/vue-icon",
+    "~/plugins/vue-paginator"
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -87,7 +166,7 @@ export default {
      ** You can extend webpack config here
      */
     transpile: [/^vuetify/],
-    analyze: true,
+    analyze: false,
     extend(config, ctx) {
       config.node = {
         fs: "empty"
