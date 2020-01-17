@@ -132,7 +132,6 @@ export default {
       const rotten = this.$props.movie.other_rate.filter(
         data => data.Source === "Rotten Tomatoes"
       )[0];
-      console.log(parseInt(rotten.Value.replace("%", "")));
       return parseInt(rotten.Value.replace("%", ""));
     }
   },

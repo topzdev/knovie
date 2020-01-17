@@ -87,8 +87,6 @@ export const actions = {
       id = parseParams(id);
 
       if (state.current != null && state.current.id == id) {
-        console.log("Same");
-
         await commit("SET_CURRENT", state.current);
       } else {
         let tmdb = await axios.get(
@@ -111,12 +109,10 @@ export const actions = {
         tmdb.data.rated = Rated;
         tmdb.data.other_rate = Ratings;
         tmdb.data.external_id = external_id.data;
-        console.log(imdb.data);
-        console.log(tmdb);
 
         let color = await colorMatcher(tmdb.data.backdrop_path);
         tmdb.data.color = color;
-        console.log(state);
+
         commit("SET_CURRENT", tmdb.data);
       }
     } catch (err) {
@@ -125,7 +121,6 @@ export const actions = {
   },
 
   async fetchSearch({ commit }, { query, page }) {
-    console.log(query, page);
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&query=${query}&page=${page}`
@@ -133,14 +128,13 @@ export const actions = {
 
       commit("SET_SEARCH", res.data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
 
   async fetchReviews({ commit }, { id, page }) {
     try {
       id = parseParams(id);
-      console.log(id, page);
       const res = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&page=${page}`
       );
@@ -175,7 +169,6 @@ export const actions = {
         vote_average / res.data.parts.length
       ).toFixed(1);
       res.data.color = color;
-      console.log(res.data);
       commit("SET_COLLECTION", res.data);
     } catch (err) {
       console.error(err);

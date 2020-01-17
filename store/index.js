@@ -99,7 +99,6 @@ export const actions = {
         }${year_value}&page=${page}`
       );
       res.data.type = type;
-      console.log(res);
       commit("SET_RECOMMENDED", res.data);
     } catch (err) {
       console.error(err);

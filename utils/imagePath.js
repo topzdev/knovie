@@ -5,5 +5,5 @@ export default (img_path, size) => {
     return not_found;
   }
 
-  return "http://image.tmdb.org/t/p/" + size + img_path;
+  return "https://image.tmdb.org/t/p/" + size + img_path;
 };

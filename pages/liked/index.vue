@@ -1,7 +1,7 @@
 <template>
   <div class="container navbar-padding">
     <Showcase class="mt-0" title="Movies you liked" :result="tv_liked" type="Movies" />
-    <Showcase class="mt-3" title="TV Shows you liked" :result="movie_liked" type="TV Shows" />
+    <Showcase class="mt-3 mb-5" title="TV Shows you liked" :result="movie_liked" type="TV Shows" />
   </div>
 </template>
 
@@ -24,10 +24,7 @@ export default {
   watch: {
     liked() {
       this.tv_liked = this.liked.filter(like => like.type === "movie");
-
       this.movie_liked = this.liked.filter(like => like.type === "tv");
-
-      console.log(this.tv_liked, this.movie_liked);
     }
   },
 

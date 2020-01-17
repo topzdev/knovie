@@ -54,7 +54,6 @@ export default {
     overview_trucate() {
       const { overview } = this.$props.episode;
       const { toggle_more, official_lenght } = this;
-      console.log(overview);
       if (overview == null) return false;
 
       return {

@@ -4,7 +4,6 @@ let modal_exit = document.getElementById("modal-exit");
 modal_exit.addEventListener("click", () => purchase_close());
 
 modal.addEventListener("keypress", e => {
-  console.log("press");
   if (e.keyCode == 27) {
     purchase_close();
   }

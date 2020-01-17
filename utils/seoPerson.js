@@ -1,6 +1,5 @@
 import imagePath from "@/utils/imagePath";
 import cliTruncate from "cli-truncate";
- 
 
 let site_name = process.env.SITE_NAME;
 let site_description = process.env.SITE_NAME;
@@ -10,7 +9,6 @@ export default (data, route) => {
   const { biography, profile_path, poster_path, external_ids } = data;
   const { facebook_id, instagram_id, twitter_id } = external_ids;
   const title = data.name;
-  console.log(route);
   return {
     title,
     titleTemplate: "%s | " + site_name,

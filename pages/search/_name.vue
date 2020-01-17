@@ -67,7 +67,6 @@ export default {
     );
   },
   async fetch({ store, params, query }) {
-    // console.log(params.name, query.page);
     await store.dispatch("movie/fetchSearch", {
       query: params.name,
       page: query.page ? query.page : 1

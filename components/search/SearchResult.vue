@@ -1,9 +1,6 @@
 <template>
   <div class="search navbar-padding">
-    <transition
-      enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
-    >
+    <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <img
         :src="pageBackground"
         alt="Backdrop image"
@@ -26,25 +23,29 @@
           />
         </client-only>
         <div class="search__result mt-3">
-          <div class="row">
-            <div
-              class="col-6 col-sm-4 col-md-3 col-lg-custom mb-3"
-              @mouseenter="setBackground(result.poster_path)"
-              @mouseleave="removeBackground()"
-              v-for="result in results.results"
-              :key="result.id"
-            >
-              <TVCard v-if="type === 'tv'" :tv_show="result" />
-              <MovieCard v-else-if="type === 'movie'" :movie="result" />
-              <PersonCard v-else-if="type === 'person'" :person="result" />
+          <template v-if="results.total_pages > 0">
+            <div class="row">
+              <div
+                class="col-6 col-sm-4 col-md-3 col-lg-custom mb-3"
+                @mouseenter="setBackground(result.poster_path)"
+                @mouseleave="removeBackground()"
+                v-for="result in results.results"
+                :key="result.id"
+              >
+                <TVCard v-if="type === 'tv'" :tv_show="result" />
+                <MovieCard v-else-if="type === 'movie'" :movie="result" />
+                <PersonCard v-else-if="type === 'person'" :person="result" />
+              </div>
             </div>
-          </div>
+          </template>
+
+          <template v-else>
+            <h2 class="heading--secondary">No results found</h2>
+          </template>
         </div>
         <client-only>
-          <Paginator
-            v-if="results.total_pages > 0"
-            :totalPage="results.total_pages"
-        /></client-only>
+          <Paginator v-if="results.total_pages > 0" :totalPage="results.total_pages" />
+        </client-only>
       </div>
     </div>
   </div>

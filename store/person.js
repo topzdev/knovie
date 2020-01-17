@@ -1,6 +1,5 @@
 import axios from "axios";
 import parseParams from "@/utils/parseParams";
- 
 
 export const state = () => ({
   person: null,
@@ -58,7 +57,6 @@ export const actions = {
       const res = await axios.get(
         `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=images,movie_credits,combined_credits,tv_credits,external_ids,tagged_images`
       );
-      console.log(res.data);
       res.data.movie_credits.cast = sortArrayByDate(
         res.data.movie_credits.cast
       );
@@ -69,20 +67,18 @@ export const actions = {
       res.data.tv_credits.cast = sortArrayByDate(res.data.tv_credits.cast);
       commit("SET_PERSON", res.data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
 
   async fetchSearch({ commit }, { query, page }) {
-    console.log(query, page);
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/search/person?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&query=${query}&page=${page}`
       );
-      console.log(res.data);
       commit("SET_SEARCH", res.data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 };

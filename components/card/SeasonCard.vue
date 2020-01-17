@@ -56,7 +56,6 @@ export default {
     overview_trucate() {
       const { overview } = this.$props.season;
       const { toggle_more, official_lenght } = this;
-      console.log(overview);
       if (overview == null) return false;
 
       return {

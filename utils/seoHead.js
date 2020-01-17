@@ -1,6 +1,5 @@
 import imagePath from "@/utils/imagePath";
 import cliTruncate from "cli-truncate";
- 
 
 let site_name = process.env.SITE_NAME;
 let site_description = process.env.SITE_NAME;
@@ -88,7 +87,7 @@ export const moviePreviewHead = (data, route, page_name) => {
       {
         hid: "twitter:image",
         property: "twitter:image",
-        content: imagePath(backdrop_path, "w300")
+        content: imagePath(backdrop_path, "w780")
       },
       {
         hid: "itemprop:name",

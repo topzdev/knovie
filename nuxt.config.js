@@ -1,4 +1,18 @@
 export default {
+  generate: {
+    devtools: false, //true
+    collapseBooleanAttributes: true,
+    decodeEntities: true,
+    minifyCSS: true,
+    minifyJS: true,
+    processConditionalComments: true,
+    removeEmptyAttributes: true,
+    removeRedundantAttributes: true,
+    trimCustomFragments: true,
+    useShortDoctype: true
+  },
+  mode: "universal",
+
   env: {
     TMDB_API_KEY_V3: process.env.TMDB_API_KEY_V3,
     OMDB_API_KEY: process.env.OMDB_API_KEY,
@@ -6,13 +20,7 @@ export default {
     SITE_DESCRIPTION: process.env.SITE_DESCRIPTION,
     SITE_URL: process.env.SITE_URL
   },
-  generate: {
-    devtools: false //true
-  },
-  mode: "universal",
-  /*
-   ** Headers of the page
-   */
+
   head: {
     titleTemplate: "%s | Know more your movie",
     title: process.env.SITE_NAME,
@@ -153,6 +161,7 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
+
   axios: {},
   /*
    ** vuetify module configuration

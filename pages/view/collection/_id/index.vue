@@ -29,7 +29,6 @@ import CollectionInfo from "@/components/collection/CollectionInfo";
 import Showcase from "@/components/layout/Showcase";
 export default {
   async fetch({ store, params }) {
-    console.log("Hello", params.id);
     await store.dispatch("movie/fetchCollection", params.id);
   },
 

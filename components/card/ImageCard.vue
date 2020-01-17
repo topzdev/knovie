@@ -66,13 +66,11 @@ export default {
     imagePath,
     imageSaver,
     toggleModal(state) {
-      console.log("Close the modal");
       this.show = state;
     },
     async openModal() {
       if (process.browser) {
         const { file_path } = this.$props.image;
-        console.log(file_path);
         this.color = await colorMatcher(file_path);
         this.show = true;
       }

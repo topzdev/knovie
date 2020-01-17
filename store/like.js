@@ -42,8 +42,6 @@ export const mutations = {
       genres
     } = data;
 
-    console.log(genre_ids, genres);
-
     if (likes.some(like => like.id === id)) {
       removeStorage(id, likeStorage);
     } else {

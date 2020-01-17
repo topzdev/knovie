@@ -1,7 +1,6 @@
 import axios from "axios";
 import colorMatcher from "~/utils/colorMatcher";
 import parseParams from "~/utils/parseParams";
- 
 
 export const state = () => ({
   popular: null,
@@ -72,7 +71,6 @@ export const actions = {
     }
   },
   async fetchSearch({ commit }, { query, page }) {
-    console.log(query, page);
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/search/tv?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&query=${query}&page=${page}`
@@ -80,7 +78,7 @@ export const actions = {
 
       commit("SET_SEARCH", res.data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
   async fetchTVShow({ commit, state }, id) {
@@ -88,8 +86,6 @@ export const actions = {
       id = parseParams(id);
 
       if (state.current != null && state.current.id == id) {
-        console.log("Same");
-
         await commit("SET_CURRENT", state.current);
       } else {
         let tmdb = await axios.get(
@@ -104,7 +100,6 @@ export const actions = {
         tmdb.data.external_id = external_id.data;
         let color = await colorMatcher(tmdb.data.backdrop_path);
         tmdb.data.color = color;
-        console.log(state);
         commit("SET_CURRENT", tmdb.data);
       }
     } catch (err) {
@@ -114,7 +109,6 @@ export const actions = {
   async fetchReviews({ commit }, { id, page }) {
     try {
       id = parseParams(id);
-      console.log(id, page);
       const res = await axios.get(
         `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.TMDB_API_KEY_V3}&language=en-US&page=${page}`
       );
@@ -130,7 +124,6 @@ export const actions = {
       const res = await axios.get(
         `https://api.themoviedb.org/3/tv/${id}/season/${season_id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=credits,images&language=en-US`
       );
-      console.log(res.data);
       res.data.color = await colorMatcher(res.data.poster_path);
 
       commit("SET_SEASON", res.data);

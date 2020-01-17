@@ -77,12 +77,12 @@ export default {
   head() {
     return seoPage(
       "Discover",
-      "Discover Movies and TV Shows, Filter by genre, year, title, vote, release date and popularity"
+      "Discover Movies and TV Shows, Filter by genre, year, title, vote, release date and popularity",
+      
     );
   },
   async fetch({ store, query }) {
     const { genre, type } = query;
-    console.log(type);
     const { getMovieGenres, getTVGenres } = store.getters;
     await store.dispatch("fetchRecommend", {
       year_value: new Date().getFullYear(),
@@ -120,9 +120,6 @@ export default {
     numeral,
     fetchResults(page) {
       const { year_value, sort_value, genre_value, toggle } = this.filter;
-
-      console.log(year_value);
-
       this.$store.dispatch("fetchRecommend", {
         year_value,
         sort_value,

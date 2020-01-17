@@ -36,7 +36,6 @@
 <script>
 import MovieSlider from "../components/movie/MovieSlider";
 import Showcase from "../components/layout/Showcase";
-
 export default {
   components: {
     MovieSlider,

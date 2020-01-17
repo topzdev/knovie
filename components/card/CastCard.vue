@@ -14,6 +14,7 @@
         :title="`${cast.name} as ${cast.character}`"
         draggable="false"
         aria-label="Cast profiles"
+        onerror="this.style.display='none'"
       />
     </nuxt-link>
 
@@ -25,15 +26,12 @@
         }"
         class="card--secondary__name"
         aria-label="Actors/Actress of the movie"
-        >{{ cast.name }}</nuxt-link
-      >
+      >{{ cast.name }}</nuxt-link>
       <p
         class="card--secondary__film-name"
         v-if="cast.character"
         aria-label="Movie role/character"
-      >
-        as {{ cast.character }}
-      </p>
+      >as {{ cast.character }}</p>
     </div>
   </div>
 </template>

@@ -45,7 +45,6 @@ export default {
   },
 
   created() {
-    console.log(this.$route.query);
     this.currentPage = parseInt(this.$route.query.page || 1);
   }
 };

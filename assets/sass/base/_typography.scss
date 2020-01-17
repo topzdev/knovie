@@ -22,6 +22,7 @@
     font-family: var(--font-regular);
     font-weight: 700;
     opacity: 0.9;
+    color: rgba(var(--base-text-color), 1);
 
     @include respond(mobile-lg) {
       font-size: 1.5rem;

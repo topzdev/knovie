@@ -7,7 +7,6 @@ export default async image => {
 
   await Vibrant.from(imagePath(image, "w780")).getPalette((err, palette) => {
     const { Vibrant, DarkMuted } = palette;
-    console.log(palette);
     let color = Color(Vibrant._rgb);
     returnColor.primaryColor = Vibrant._rgb.toString();
     returnColor.secondaryColor = DarkMuted._rgb.toString();

@@ -2,8 +2,8 @@
   <div class="mt-4">
     <h1 class="heading--primary">{{ title }}</h1>
 
-    <div class="row mt-2" v-if="result">
-      <template>
+    <div class="row mt-2">
+      <template v-if="result != null && result.length > 0">
         <div
           class="col-6 col-md-3 col-sm-4 mb-3"
           :class="cardSize ? cardSize : setSize"
@@ -13,6 +13,12 @@
           <MovieCard :movie="data" v-if="type === 'Movies'" />
           <TVCard :tv_show="data" v-else-if="type === 'TV Shows'" />
           <PersonCard :person="data" v-else-if="type === 'Person'" />
+        </div>
+      </template>
+
+      <template v-else>
+        <div class="col">
+          <h2 class="heading--secondary">No results found</h2>
         </div>
       </template>
     </div>
