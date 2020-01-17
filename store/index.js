@@ -1,5 +1,4 @@
 import axios from "axios";
- 
 
 export const state = () => ({
   movie_genres: null,
@@ -95,7 +94,9 @@ export const actions = {
           process.env.TMDB_API_KEY_V3
         }&language=en-US&sort_by=${sort_value}${
           genre_value != -1 ? "&with_genres=" + genre_value : ""
-        }&include_adult=false&include_video=false&page=${page}&year=${year_value}`
+        }&include_adult=false&include_video=false&${
+          type === "movie" ? "year=" : "first_air_date_year="
+        }${year_value}&page=${page}`
       );
       res.data.type = type;
       console.log(res);

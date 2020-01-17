@@ -95,7 +95,7 @@ export const actions = {
           `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY_V3}&append_to_response=videos,images,credits,reviews,similar,recommendations,keywords, external_ids`
         );
         // !Remove this to avoid request limit
-        let imdb = await axios.get(`http://www.omdbapi.com/?i=${tmdb.data.imdb_id}&plot=full
+        let imdb = await axios.get(`https://www.omdbapi.com/?i=${tmdb.data.imdb_id}&plot=full
         &apikey=${process.env.OMDB_API_KEY}`);
 
         // For social ids
