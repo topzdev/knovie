@@ -2,7 +2,6 @@ import axios from "axios";
 import colorMatcher from "~/utils/colorMatcher";
 import parseParams from "~/utils/parseParams";
 import dayjs from "dayjs";
-require("dotenv").config();
 
 export const state = () => ({
   now_playing: null,

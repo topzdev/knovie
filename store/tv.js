@@ -1,7 +1,7 @@
 import axios from "axios";
 import colorMatcher from "~/utils/colorMatcher";
 import parseParams from "~/utils/parseParams";
-require("dotenv").config();
+ 
 
 export const state = () => ({
   popular: null,

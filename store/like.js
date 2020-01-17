@@ -5,7 +5,7 @@ import {
   getStorage
 } from "@/utils/tempStorage";
 
-require("dotenv").config();
+ 
 const site_name = process.env.SITE_NAME;
 
 const viewedStorage = site_name + "-viewed";

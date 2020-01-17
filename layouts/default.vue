@@ -1,7 +1,7 @@
-<template >
+<template>
   <div>
     <navbar />
-    <nuxt />
+    <nuxt class="main" />
     <scroll-button />
     <Footer />
   </div>

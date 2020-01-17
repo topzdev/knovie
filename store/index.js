@@ -1,5 +1,5 @@
 import axios from "axios";
-require("dotenv").config();
+ 
 
 export const state = () => ({
   movie_genres: null,

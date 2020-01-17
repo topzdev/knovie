@@ -1,6 +1,6 @@
 import axios from "axios";
 import parseParams from "@/utils/parseParams";
-require("dotenv").config();
+ 
 
 export const state = () => ({
   person: null,
