@@ -4,6 +4,9 @@
       <img
         class="fit-image"
         v-lazy="imagePath(movie.backdrop_path, 'w780')"
+        :data-srcset="`${imagePath(movie.backdrop_path, 'w300')} 600w,
+            ${imagePath(movie.backdrop_path, 'w780')} 1940w, ${imagePath(movie.backdrop_path, 'original')} 1280w`
+            "
         :alt="movie.title + ' official wallpaper'"
         draggable="false"
         aria-label="Movie Wallpaper"
@@ -57,30 +60,32 @@
                 <p>{{ movie.imdb_vote || movie.vote_count }}</p>
               </div>
             </li>
-            <li v-if="rotten_tomato >= 60">
-              <div class="previewer--primary__critic-item">
-                <img
-                  src="../../assets/img/popcorn.png"
-                  alt
-                  title="Rotten Tomatoes Critics | Upright"
-                  draggable="false"
-                />
+            <template v-if="rotten_tomato">
+              <li v-if="rotten_tomato >= 60">
+                <div class="previewer--primary__critic-item">
+                  <img
+                    src="../../assets/img/popcorn.png"
+                    alt
+                    title="Rotten Tomatoes Critics | Upright"
+                    draggable="false"
+                  />
 
-                <p>{{rotten_tomato}}%</p>
-              </div>
-            </li>
+                  <p>{{rotten_tomato}}%</p>
+                </div>
+              </li>
 
-            <li v-else-if="rotten_tomato < 60">
-              <div class="previewer--primary__critic-item">
-                <img
-                  src="../../assets/img/rotten.png"
-                  alt
-                  title="Rotten Tomatoes Critics | Rotten"
-                  draggable="false"
-                />
-                <p>{{rotten_tomato}}%</p>
-              </div>
-            </li>
+              <li v-else-if="rotten_tomato < 60">
+                <div class="previewer--primary__critic-item">
+                  <img
+                    src="../../assets/img/rotten.png"
+                    alt
+                    title="Rotten Tomatoes Critics | Rotten"
+                    draggable="false"
+                  />
+                  <p>{{rotten_tomato}}%</p>
+                </div>
+              </li>
+            </template>
           </ul>
 
           <!-- <p class="slider__description" aria-label="sypnosis">{{description}}</p> -->
@@ -132,7 +137,9 @@ export default {
       const rotten = this.$props.movie.other_rate.filter(
         data => data.Source === "Rotten Tomatoes"
       )[0];
-      return parseInt(rotten.Value.replace("%", ""));
+      return rotten != undefined
+        ? parseInt(rotten.Value.replace("%", ""))
+        : null;
     }
   },
   methods: {

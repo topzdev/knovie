@@ -33,6 +33,9 @@
           <img
             class="fit-image"
             v-lazy="imagePath(tv.backdrop_path, 'w1280')"
+            :data-srcset="`${imagePath(tv.backdrop_path, 'w780')} 600w,
+            ${imagePath(tv.backdrop_path, 'w1280')} 1940w, ${imagePath(tv.backdrop_path, 'original')} 1945w`
+            "
             :alt="tv.name"
             draggable="false"
             aria-label="TV Image slider"

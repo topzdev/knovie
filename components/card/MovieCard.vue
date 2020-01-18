@@ -2,7 +2,8 @@
   <div class="card--primary" style="--box-shadow: var(--primary-color)">
     <div class="card--primary__img">
       <img
-        v-lazy="imagePath(movie.poster_path, 'w154')"
+        v-lazy="imagePath(movie.poster_path, 'w185')"
+        :data-srcset="`${imagePath(movie.poster_path, 'w92')} 300w, ${imagePath(movie.poster_path, 'w154')} 600w, ${imagePath(movie.poster_path, 'w185')} 1940w`"
         :alt="movie.title"
         draggable="false"
         onerror="this.style.display='none'"

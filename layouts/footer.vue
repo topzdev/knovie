@@ -6,11 +6,7 @@
           Made with
           <b>Nuxt+VueJS</b> and
           <b>Love</b> by
-          <a
-            href="https://topzthedev.github.io/portfolio/"
-            target="_blank"
-            class="footer__admin"
-          >
+          <a href="https://topzdev.github.io/portfolio/" target="_blank" class="footer__admin">
             Christopher Lugod
             <span>❤️👌</span>
           </a>
@@ -18,7 +14,7 @@
         <p class="mr-1">visit me on</p>
         <ul class="footer__links">
           <li aria-label="links" title="Visit all my project at Github">
-            <a href="https://github.com/TopzTheDev" target="_blank">
+            <a href="https://github.com/topzdev" target="_blank">
               <vue-icon :svg="icons.github" />
             </a>
           </li>
