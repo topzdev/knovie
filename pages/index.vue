@@ -37,6 +37,12 @@
 import MovieSlider from "../components/movie/MovieSlider";
 import Showcase from "../components/layout/Showcase";
 export default {
+  head() {
+    return {
+      titleTemplate: "%s | Know more your movie",
+      title: "Knovie"
+    };
+  },
   components: {
     MovieSlider,
     Showcase

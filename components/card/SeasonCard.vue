@@ -36,7 +36,6 @@
 
 <script>
 import imagePath from "@/utils/imagePath";
-import parseLink from "@/utils/parseLink";
 import truncate from "cli-truncate";
 import dayjs from "dayjs";
 export default {
@@ -49,7 +48,6 @@ export default {
   },
   methods: {
     imagePath,
-    parseLink,
     dayjs
   },
   computed: {

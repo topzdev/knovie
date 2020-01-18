@@ -59,7 +59,6 @@
 
 <script>
 import imagePath from "@/utils/imagePath";
-import parseLink from "@/utils/parseLink";
 import dayjs from "dayjs";
 import colorMatcher from "@/utils/colorMatcher";
 
@@ -67,8 +66,7 @@ export default {
   props: ["tv_season", "color", "url"],
   methods: {
     imagePath,
-    dayjs,
-    parseLink
+    dayjs
   },
   computed: {
     current_season() {

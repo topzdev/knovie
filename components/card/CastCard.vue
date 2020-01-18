@@ -3,7 +3,7 @@
     <nuxt-link
       :to="{
         name: 'view-person-id',
-        params: { id: parseLink(cast.name, cast.id) }
+        params: { id: parseLink(cast.name, cast.id, true) }
       }"
       class="card--secondary__img"
     >
@@ -22,7 +22,7 @@
       <nuxt-link
         :to="{
           name: 'view-person-id',
-          params: { id: parseLink(cast.name, cast.id) }
+          params: { id: parseLink(cast.name, cast.id, true) }
         }"
         class="card--secondary__name"
         aria-label="Actors/Actress of the movie"

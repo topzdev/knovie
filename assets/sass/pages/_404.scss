@@ -1,9 +1,13 @@
 .page404 {
   position: relative;
   overflow: hidden;
+  height: 100vh;
   &__cover {
-    height: 100vh;
     width: 100%;
+
+    @include respond(mobile-lg) {
+      height: 50vh;
+    }
   }
 
   &__message {
@@ -20,6 +24,17 @@
     font-family: var(--font-heading);
     text-shadow: 10px 0 0 rgba(var(--primary-color), 1);
     line-height: 1;
+
+    @include respond(mobile-lg) {
+      font-size: 5rem;
+      width: 100%;
+      padding: 2rem 5rem;
+      text-shadow: 5px 0 0 rgba(var(--primary-color), 1);
+    }
+
+    @include respond(mobile-lg) {
+      font-size: 3.6rem;
+    }
 
     &:hover {
       background-color: rgba(var(--primary-color), 1);

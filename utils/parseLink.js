@@ -1,6 +1,9 @@
-export default (title, id) => {
-  return `${title
-    .replace(/[^a-zA-Z1-9 ]/g, "")
-    .replace(/ /g, "-")
-    .toLowerCase()}-${id}`;
+export default (title, id, lowercased) => {
+  let parsed = `${title
+    .replace(/[^a-zA-Z1-9& ]/g, "")
+    .replace(/ /g, "-")}-${id}`;
+
+  if (lowercased) parsed.toLowerCase();
+
+  return parsed;
 };

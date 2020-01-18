@@ -1,13 +1,6 @@
 <template>
-  <v-app dark>
-    <template v-if="error.statusCode === 404">
-      <Page404 :title="pageNotFound" />
-    </template>
-
-    <template v-else>
-      <Page404 :title="otherError" />
-    </template>
-  </v-app>
+  <Page404 v-if="error.statusCode === 404" :title="pageNotFound" />
+  <Page404 v-else :title="otherError" />
 </template>
 
 <script>

@@ -14,9 +14,7 @@
         {{ episode.name }}
         <span>{{ parseFloat(episode.vote_average).toFixed(1) }}</span>
       </h1>
-      <p class="card--episode__episodes mb-2">
-        {{ dayjs(episode.air_date).format("MMMM D, YYYY") }}
-      </p>
+      <p class="card--episode__episodes mb-2">{{ dayjs(episode.air_date).format("MMMM D, YYYY") }}</p>
 
       <p v-show="overview_trucate" class="card--episode__overview">
         {{ overview_trucate.text }}
@@ -24,9 +22,7 @@
           v-if="overview_trucate.length > official_lenght"
           class="btn btn--peek"
           @click="toggle_more = !toggle_more"
-        >
-          see {{ toggle_more ? "more" : "less" }}
-        </button>
+        >see {{ toggle_more ? "more" : "less" }}</button>
       </p>
     </div>
   </div>
@@ -34,7 +30,6 @@
 
 <script>
 import imagePath from "@/utils/imagePath";
-import parseLink from "@/utils/parseLink";
 import truncate from "cli-truncate";
 import dayjs from "dayjs";
 export default {
@@ -47,7 +42,6 @@ export default {
   },
   methods: {
     imagePath,
-    parseLink,
     dayjs
   },
   computed: {

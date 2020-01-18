@@ -22,7 +22,7 @@
           <h1 class="movie__collection-header">Part of the {{ collection.name }}</h1>
 
           <nuxt-link
-            :to="`/view/collection/${parseLink(collection.name, collection.id)}`"
+            :to="`/view/collection/${parseLink(collection.name, collection.id, true)}`"
             class="btn btn--primary mt-2"
             :style="`background-color:rgb(${color.primaryColor});
             border-color: rgb(${color.primaryColor});

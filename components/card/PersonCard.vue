@@ -2,17 +2,13 @@
   <nuxt-link
     :to="{
       name: 'view-person-id',
-      params: { id: parseLink(person.name, person.id) }
+      params: { id: parseLink(person.name, person.id, true) }
     }"
     class="card--primary"
     style="--box-shadow: var(--primary-color)"
   >
     <div class="card--primary__img">
-      <img
-        v-lazy="imagePath(person.profile_path, 'w185')"
-        :alt="person.name"
-        draggable="false"
-      />
+      <img v-lazy="imagePath(person.profile_path, 'w185')" :alt="person.name" draggable="false" />
     </div>
 
     <div class="card__actions"></div>

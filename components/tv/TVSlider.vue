@@ -18,7 +18,7 @@
               <nuxt-link
                 :to="{
                   name: 'view-tv-id',
-                  params: { id: parseLink(tv.name, tv.id) }
+                  params: { id: parseLink(tv.name, tv.id, true) }
                 }"
                 class="btn btn--primary mr-1"
               >View more</nuxt-link>

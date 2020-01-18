@@ -16,7 +16,7 @@
                 <nuxt-link
                   :to="{
                     name: 'view-person-id',
-                    params: { id: parseLink(director.name, director.id) }
+                    params: { id: parseLink(director.name, director.id, true) }
                   }"
                   class="card--small__image"
                 >

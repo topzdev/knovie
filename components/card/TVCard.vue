@@ -25,7 +25,7 @@
       class="card__link"
       :to="{
         name: 'view-tv-id',
-        params: { id: parseLink(tv_show.name, tv_show.id) }
+        params: { id: parseLink(tv_show.name, tv_show.id, true) }
       }"
     />
   </div>

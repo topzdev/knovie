@@ -77,27 +77,28 @@ export default {
   head() {
     return seoPage(
       "Discover",
-      "Discover Movies and TV Shows, Filter by genre, year, title, vote, release date and popularity",
-      
+      "Discover Movies and TV Shows, Filter by genre, year, title, vote, release date and popularity"
     );
   },
   async fetch({ store, query }) {
     const { genre, type } = query;
+    console.log(query);
     const { getMovieGenres, getTVGenres } = store.getters;
     await store.dispatch("fetchRecommend", {
       year_value: new Date().getFullYear(),
       sort_value: "popularity.desc",
-      genre_value: query.genre
+      genre_value: genre
         ? findProperties(
             type === "movie" ? getMovieGenres : getTVGenres,
             "name",
-            query.genre
+            genre
           ).id
         : -1,
       page: 1,
       type: type ? type : "movie"
     });
   },
+
   data() {
     return {
       type: "Movies",

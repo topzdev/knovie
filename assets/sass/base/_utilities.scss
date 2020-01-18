@@ -109,3 +109,63 @@ img[lazy="loaded"] {
   filter: blur(0);
   @include transition;
 }
+
+.support {
+  overflow: hidden;
+  &__explain {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+  }
+  &__logo {
+    height: 200px;
+    margin-bottom: 3rem;
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    padding: 4rem 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #000;
+    width: 70%;
+
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    li {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+
+    a {
+      img {
+        height: 60px;
+      }
+    }
+  }
+
+  &__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    img {
+      width: 100%;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

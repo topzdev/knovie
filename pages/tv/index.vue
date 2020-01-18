@@ -31,17 +31,14 @@
 <script>
 import TVSlider from "@/components/tv/TVSlider";
 import Showcase from "@/components/layout/Showcase";
+import seoPage from "@/utils/seoPage";
 
 export default {
   head() {
-    return {
-      titleTemplate: "%s | Knowvie",
-      title: "TV Shows"
-    };
-  },
-  components: {
-    TVSlider,
-    Showcase
+    return seoPage(
+      "TV Shows",
+      "List of TV Shows by popularity, airing today, top rated, currently on the air and more..."
+    );
   },
   async fetch({ store, data }) {
     await store.dispatch("tv/fetchCategory", { category: "airing_today" });
@@ -65,6 +62,10 @@ export default {
     loading() {
       return this.$store.getters["tv/getLoading"];
     }
+  },
+  components: {
+    TVSlider,
+    Showcase
   }
 };
 </script>

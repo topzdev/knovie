@@ -32,7 +32,7 @@
       class="card__link"
       :to="{
         name: 'view-movie-id',
-        params: { id: parseLink(movie.title, movie.id) }
+        params: { id: parseLink(movie.title, movie.id, true) }
       }"
     />
   </div>

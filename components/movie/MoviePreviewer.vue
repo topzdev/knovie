@@ -94,7 +94,7 @@
               Watch trailer
               <vue-icon :svg="icons.play" />
             </button>
-            <client-only placeholder="like this movie...">
+            <client-only>
               <HeartButton :data="movie" type="movie" />
             </client-only>
           </div>

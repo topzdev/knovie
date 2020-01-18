@@ -12,19 +12,18 @@
               <span>/10</span>
             </p>
 
-            <p class="slider__description">
-              {{ cliTruncate(movie.overview, 180, { position: "end" }) }}
-            </p>
+            <p
+              class="slider__description"
+            >{{ cliTruncate(movie.overview, 180, { position: "end" }) }}</p>
 
             <div class="slider__actions mt-2">
               <nuxt-link
                 :to="{
                   name: 'view-movie-id',
-                  params: { id: parseLink(movie.title, movie.id) }
+                  params: { id: parseLink(movie.title, movie.id, true) }
                 }"
                 class="btn btn--primary mr-1"
-                >View more</nuxt-link
-              >
+              >View more</nuxt-link>
 
               <client-only>
                 <HeartButton :data="movie" type="movie" />

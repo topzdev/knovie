@@ -1,3 +1,13 @@
+require("dotenv").config();
+const env = {
+  TMDB_API_KEY_V3: process.env.TMDB_API_KEY_V3,
+  OMDB_API_KEY: process.env.OMDB_API_KEY,
+  SITE_NAME: process.env.SITE_NAME,
+  SITE_DESCRIPTION: process.env.SITE_DESCRIPTION,
+  SITE_KEYWORDS: process.env.SITE_KEYWORDS,
+  SITE_URL: process.env.SITE_URL
+};
+
 export default {
   generate: {
     devtools: false, //true
@@ -13,13 +23,7 @@ export default {
   },
   mode: "universal",
 
-  env: {
-    TMDB_API_KEY_V3: process.env.TMDB_API_KEY_V3,
-    OMDB_API_KEY: process.env.OMDB_API_KEY,
-    SITE_NAME: process.env.SITE_NAME,
-    SITE_DESCRIPTION: process.env.SITE_DESCRIPTION,
-    SITE_URL: process.env.SITE_URL
-  },
+  env,
 
   head: {
     titleTemplate: "%s | Know more your movie",
@@ -35,8 +39,7 @@ export default {
       {
         hid: "keywords",
         name: "keywords",
-        content:
-          "Browse, Movies, TV Shows, Reviews, Actors, Actresses, Photos, User Ratings, Synopsis, Trailers, Teasers, Credits, Cast, Collection, Information, Crews, Director, Writer, Best, Top Rated, Upcoming, Popular"
+        content: process.env.SITE_KEYWORDS
       },
       {
         hid: "apple-mobile-web-app-capable",
@@ -153,7 +156,7 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
+    "nuxt-user-agent",
     "@nuxtjs/axios",
     ["vue-scrollto/nuxt", { duration: 1000, easing: "ease" }]
   ],
@@ -175,6 +178,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    env,
     transpile: [/^vuetify/],
     analyze: false, //true
     extend(config, ctx) {
