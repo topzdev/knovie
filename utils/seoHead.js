@@ -66,28 +66,33 @@ export const moviePreviewHead = (data, route, page_name) => {
       },
       {
         hid: "twitter:card",
-        property: "twitter:card",
-        content: "summary_large_image"
+        name: "twitter:card",
+        content: "summary"
       },
       {
         hid: "twitter:title",
-        property: "twitter:title",
+        name: "twitter:title",
         content: `${title} | ${site_name}`
       },
       {
         hid: "twitter:site",
-        property: "twitter:site",
+        name: "twitter:site",
         content: "@" + twitter_id
       },
       {
         hid: "twitter:description",
-        property: "twitter:description",
+        name: "twitter:description",
         content: cliTruncate(overview, 197)
       },
       {
         hid: "twitter:image",
-        property: "twitter:image",
+        name: "twitter:image",
         content: imagePath(backdrop_path, "w780")
+      },
+      {
+        hid: "twitter:creator",
+        name: "twitter:creator",
+        content: "@_christop_"
       },
       {
         hid: "itemprop:name",

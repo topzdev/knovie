@@ -86,29 +86,34 @@ export default {
       },
       {
         hid: "twitter:card",
-        property: "twitter:card",
-        content: "summary_large_image"
+        name: "twitter:card",
+        content: "summary"
       },
       {
         hid: "twitter:title",
-        property: "twitter:title",
+        name: "twitter:title",
         content: `${"Knowvie"} | Know more your movie`
       },
       {
         hid: "twitter:site",
-        property: "twitter:site",
+        name: "twitter:site",
         content: "@_christop_"
       },
       {
         hid: "twitter:description",
-        property: "twitter:description",
+        name: "twitter:description",
         content:
           "Browse and know more about your favorite movies, tv shows and actors"
       },
       {
         hid: "twitter:image",
-        property: "twitter:image",
+        name: "twitter:image",
         content: "/knowvie_bg.jpg"
+      },
+      {
+        hid: "twitter:creator",
+        name: "twitter:creator",
+        content: "@_christop_"
       },
       {
         hid: "itemprop:name",
@@ -121,6 +126,7 @@ export default {
         content:
           "Browse and know more about your favorite movies, tv shows and actors"
       },
+
       {
         hid: "itemprop:image",
         itemprop: "image",
@@ -142,7 +148,7 @@ export default {
    */
   loading: {
     color: "#1DF7F7",
-    height: "5px"
+    height: "3px"
   },
   /*
    ** Global CSS

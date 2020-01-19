@@ -1,18 +1,12 @@
 <template>
-  <SearchResult
-    :results="results"
-    :type="results.type === 'movie' ? 'movie' : 'tv'"
-  >
+  <SearchResult :results="results" :type="results.type === 'movie' ? 'movie' : 'tv'">
     <div class="search__filter mt-2">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-5 col-lg-6 py-0">
             <h1 class="heading--primary search__toggle">
               Discover
-              <DiscoverToggle
-                :toggle="results.type"
-                v-on:dis-toggle="disToggler"
-              />
+              <DiscoverToggle :toggle="results.type" v-on:dis-toggle="disToggler" />
             </h1>
             <h3
               class="search__count"
@@ -22,9 +16,7 @@
             />
           </div>
 
-          <div
-            class="col-12 col-md-7 col-lg-6 search__selects mt-2 mt-lg-0 ml-auto"
-          >
+          <div class="col-12 col-md-7 col-lg-6 search__selects mt-2 mt-lg-0 ml-auto">
             <div class="row search__sorter">
               <div class="col col-3 py-0">
                 <vue-select
@@ -81,9 +73,12 @@ export default {
     );
   },
   async fetch({ store, query }) {
-    const { genre, type } = query;
-    console.log(query);
+    let { genre, type } = query;
     const { getMovieGenres, getTVGenres } = store.getters;
+
+    if (genre === "Sci-Fi ") genre = "Sci-Fi & Fantasy";
+    else if (genre === "Action ") genre = "Action & Adventure";
+
     await store.dispatch("fetchRecommend", {
       year_value: new Date().getFullYear(),
       sort_value: "popularity.desc",
@@ -121,6 +116,7 @@ export default {
     numeral,
     fetchResults(page) {
       const { year_value, sort_value, genre_value, toggle } = this.filter;
+
       this.$store.dispatch("fetchRecommend", {
         year_value,
         sort_value,

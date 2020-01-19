@@ -32,33 +32,38 @@ export default (title, description) => {
       },
       {
         hid: "og:description",
-        property: "og:description",
+        name: "og:description",
         content: description
       },
       {
         hid: "og:site_name",
-        property: "og:site_name",
+        name: "og:site_name",
         content: site_name
       },
       {
         hid: "twitter:card",
-        property: "twitter:card",
-        content: "summary_large_image"
+        name: "twitter:card",
+        content: "summary"
       },
       {
         hid: "twitter:title",
-        property: "twitter:title",
+        name: "twitter:title",
         content: `${title} | ${site_name}`
       },
       {
         hid: "twitter:description",
-        property: "twitter:description",
+        name: "twitter:description",
         content: description
       },
       {
         hid: "twitter:image",
-        property: "twitter:image",
+        name: "twitter:image",
         content: imagePath(backdrop_path, "w780")
+      },
+      {
+        hid: "twitter:creator",
+        name: "twitter:creator",
+        content: "@_christop_"
       },
       {
         hid: "itemprop:name",
