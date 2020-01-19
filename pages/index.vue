@@ -40,7 +40,7 @@ export default {
   head() {
     return {
       titleTemplate: "%s | Know more your movie",
-      title: "Knovie"
+      title: "Knowvie"
     };
   },
   components: {

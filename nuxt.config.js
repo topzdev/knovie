@@ -27,19 +27,21 @@ export default {
 
   head: {
     titleTemplate: "%s | Know more your movie",
-    title: process.env.SITE_NAME,
+    title: "Knowvie",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: process.env.SITE_DESCRIPTION
+        content:
+          "Browse and know more about your favorite movies, tv shows and actors"
       },
       {
         hid: "keywords",
         name: "keywords",
-        content: process.env.SITE_KEYWORDS
+        content:
+          "Browse, Movies, TV Shows, Reviews, Actors, Actresses, Photos, User Ratings, Synopsis, Trailers, Teasers, Credits, Cast, Collection, Information, Crews, Director, Writer, Best, Top Rated, Upcoming, Popular"
       },
       {
         hid: "apple-mobile-web-app-capable",
@@ -54,7 +56,7 @@ export default {
       {
         hid: "og:title",
         property: "og:title",
-        content: `${process.env.SITE_NAME} | Know more your movie`
+        content: `${"Knowvie"} | Know more your movie`
       },
       {
         hid: "og:type",
@@ -74,12 +76,13 @@ export default {
       {
         hid: "og:description",
         property: "og:description",
-        content: process.env.SITE_DESCRIPTION
+        content:
+          "Browse and know more about your favorite movies, tv shows and actors"
       },
       {
         hid: "og:site_name",
         property: "og:site_name",
-        content: process.env.SITE_NAME
+        content: "Knowvie"
       },
       {
         hid: "twitter:card",
@@ -89,7 +92,7 @@ export default {
       {
         hid: "twitter:title",
         property: "twitter:title",
-        content: `${process.env.SITE_NAME} | Know more your movie`
+        content: `${"Knowvie"} | Know more your movie`
       },
       {
         hid: "twitter:site",
@@ -99,7 +102,8 @@ export default {
       {
         hid: "twitter:description",
         property: "twitter:description",
-        content: process.env.SITE_DESCRIPTION
+        content:
+          "Browse and know more about your favorite movies, tv shows and actors"
       },
       {
         hid: "twitter:image",
@@ -109,12 +113,13 @@ export default {
       {
         hid: "itemprop:name",
         itemprop: "name",
-        content: `${process.env.SITE_NAME} | Know more your movie`
+        content: `${"Knowvie"} | Know more your movie`
       },
       {
         hid: "itemprop:name",
         itemprop: "description",
-        content: process.env.SITE_DESCRIPTION
+        content:
+          "Browse and know more about your favorite movies, tv shows and actors"
       },
       {
         hid: "itemprop:image",
@@ -135,7 +140,10 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#1DF7F7" },
+  loading: {
+    color: "#1DF7F7",
+    height: "5px"
+  },
   /*
    ** Global CSS
    */
