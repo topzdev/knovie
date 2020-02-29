@@ -1,14 +1,13 @@
 <template>
   <div class="card--secondary">
     <nuxt-link :to="castLink" class="card--secondary__img">
-      <img
-        v-lazy="imagePath(cast.profile_path, 'w185')"
+      <lazy-img
+        :path="cast.profile_path"
         class="fit-image"
+        size="w185"
         :alt="`${cast.name} as ${cast.character}`"
         :title="`${cast.name} as ${cast.character}`"
-        draggable="false"
         aria-label="Cast profiles"
-        onerror="this.style.display='none'"
       />
     </nuxt-link>
 
@@ -17,7 +16,8 @@
         :to="castLink"
         class="card--secondary__name"
         aria-label="Actors/Actress of the movie"
-      >{{ cast.name }}</nuxt-link>
+        v-text="cast.name"
+      />
       <p
         class="card--secondary__film-name"
         v-if="cast.character"
@@ -28,12 +28,10 @@
 </template>
 
 <script>
-import imagePath from "@/utils/imagePath";
 import parseLink from "@/utils/parseLink";
 export default {
   props: ["cast"],
   methods: {
-    imagePath,
     parseLink
   },
   computed: {

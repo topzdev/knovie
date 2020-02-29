@@ -1,12 +1,7 @@
 <template>
   <div class="card--primary">
     <div class="card--primary__img">
-      <img
-        v-lazy="imagePath(movie.poster_path, 'w154')"
-        :alt="movie.title"
-        draggable="false"
-        onerror="this.style.display='none'"
-      />
+      <lazy-img :path="movie.poster_path" size="w154" :alt="movie.title" />
     </div>
 
     <div class="card__actions">
@@ -33,7 +28,6 @@
 
 <script>
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
-import imagePath from "@/utils/imagePath";
 import parseLink from "@/utils/parseLink";
 import findProperties from "@/utils/findProperties";
 import dayjs from "dayjs";
@@ -62,7 +56,6 @@ export default {
     CardHeartButton
   },
   methods: {
-    imagePath,
     findProperties
   }
 };

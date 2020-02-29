@@ -160,7 +160,8 @@ export default {
   plugins: [
     "~/plugins/vue-lazy",
     "~/plugins/vue-icon",
-    "~/plugins/vue-paginator"
+    "~/plugins/vue-paginator",
+    "~/plugins/vue-lazy-img"
   ],
   /*
    ** Nuxt.js dev-modules

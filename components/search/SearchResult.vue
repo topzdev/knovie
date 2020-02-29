@@ -2,10 +2,11 @@
   <div class="search navbar-padding">
     <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <img
-        :src="pageBackground"
-        alt="Backdrop image"
-        class="search__backdrop fit-image"
         v-if="transition"
+        :path="pageBackground"
+        alt="Backdrop image"
+        size="w185"
+        class="search__backdrop fit-image"
       />
     </transition>
 
@@ -55,7 +56,6 @@
 import MovieCard from "../card/MovieCard";
 import TVCard from "../card/TVCard";
 import PersonCard from "../card/PersonCard";
-import imagePath from "@/utils/imagePath";
 import Paginator from "../search/Paginator";
 
 export default {
@@ -73,11 +73,10 @@ export default {
     PersonCard
   },
   methods: {
-    imagePath,
     setBackground: function(url) {
       var self = this;
       setTimeout(function() {
-        self.pageBackground = imagePath(url, "w185");
+        self.pageBackground = url;
         self.transition = true;
       }, 300);
     },

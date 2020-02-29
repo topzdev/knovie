@@ -1,45 +1,29 @@
 <template>
   <section aria-label="Collection" class="mt-5">
-    <div
-      class="movie__collection"
-      :style="
-        '--background-color:' +
-          color.primaryColor +
-          ' ;' +
-          '--text-color:' +
-          color.textColor
-      "
-    >
+    <div class="movie__collection" :style="backgroudColor">
       <div class="movie__collection-image">
         <div v-if="collection.backdrop_path != null">
-          <img
-            alt
+          <lazy-img
+            :path="collection.backdrop_path"
+            size="w1280"
             draggable="false"
             class="fit-image"
-            :src="imagePath(collection.backdrop_path, 'w1280')"
           />
         </div>
       </div>
 
       <div class="container">
         <div class="movie__collection-content">
-          <h1 class="movie__collection-header">
-            Part of the {{ collection.name }}
-          </h1>
+          <h1 class="movie__collection-header">Part of the {{ collection.name }}</h1>
           <!-- <p
             class="paragraph--primary"
-          >Includes The Avengers, Avengers: Age of Ultron, Avengers: Infinity War</p> -->
+          >Includes The Avengers, Avengers: Age of Ultron, Avengers: Infinity War</p>-->
 
           <nuxt-link
             :to="'/movie/collection/' + collection.id"
             class="btn btn--primary mt-2"
-            :style="
-              `background-color:rgb(${color.secondaryColor}); 
-              border-color: rgb(${color.secondaryColor});
-              color: rgba(${color.textColor})`
-            "
-            >View {{ collection.name }}'s</nuxt-link
-          >
+            :style="collectionColor"
+          >View {{ collection.name }}'s</nuxt-link>
         </div>
       </div>
     </div>
@@ -52,6 +36,17 @@ export default {
   props: ["collection", "color"],
   methods: {
     imagePath
+  },
+  computed: {
+    collectionColor() {
+      return `background-color:rgb(${this.color.secondaryColor}); 
+              border-color: rgb(${this.color.secondaryColor});
+              color: rgba(${this.color.textColor})`;
+    },
+    backgroundColor() {
+      return `--background-color:" ${this.color.primaryColor};
+        --text-color:" ${this.color.textColor}`;
+    }
   }
 };
 </script>

@@ -9,13 +9,13 @@
         <vue-icon size="30" :svg="icons.download" />
       </button>
     </div>
-    <img
+    <lazy-img
       @click="show = !show"
-      v-lazy="imagePath(image.file_path, size)"
+      :path="image.file_path"
       :data-srcset="imageSrcset"
+      :size="size"
       :alt="`${title} Images`"
       class="fit-image"
-      draggable="false"
     />
 
     <div class="card--gallery__open" @click="openModal" />

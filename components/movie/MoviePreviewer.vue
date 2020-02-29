@@ -1,34 +1,25 @@
 <template>
   <div class="previewer--primary">
     <div class="previewer--primary__cover shadow-overlay">
-      <img
+      <lazy-img
         class="fit-image"
-        v-lazy="imagePath(movie.backdrop_path, 'w780')"
-        :data-srcset="`${imagePath(movie.backdrop_path, 'w300')} 600w,
-            ${imagePath(movie.backdrop_path, 'w780')} 1940w, ${imagePath(movie.backdrop_path, 'original')} 1280w`
-            "
+        :path="movie.backdrop_path"
+        size="w780"
+        :data-srcset="imgSrcset"
         :alt="movie.title + ' official wallpaper'"
-        draggable="false"
         aria-label="Movie Wallpaper"
-        onerror="this.style.display='none'"
       />
     </div>
     <div class="container">
       <div class="previewer--primary__content">
-        <div
-          class="previewer--primary__poster backdrop-gradient"
-          :style="
-            `--first: rgb(${color.primaryColor}); --second: rgb(${color.secondaryColor})`
-          "
-        >
-          <img
+        <div class="previewer--primary__poster backdrop-gradient" :style="gradientBackground">
+          <lazy-img
             class="fit-image"
-            v-lazy="imagePath(movie.poster_path, 'w342')"
+            :path="movie.poster_path"
+            size="w342"
             :title="movie.title"
             :alt="movie.title + ' poster'"
-            draggable="false"
             aria-label="Movie Poster"
-            onerror="this.style.display='none'"
           />
         </div>
 
@@ -46,11 +37,7 @@
           <ul class="previewer--primary__critic mb-1">
             <li class="previewer--primary__rating">
               <p class="slider__rating" aria-label="ratings" title="IMdb rating">
-                {{
-                movie.imdb_rating !== "N/A"
-                ? movie.imdb_rating
-                : movie.vote_average
-                }}
+                {{movieRating}}
                 <span>/10</span>
               </p>
             </li>
@@ -140,6 +127,24 @@ export default {
       return rotten != undefined
         ? parseInt(rotten.Value.replace("%", ""))
         : null;
+    },
+
+    imgSrcset() {
+      return `${imagePath(this.movie.backdrop_path, "w300")} 600w,
+            ${imagePath(this.movie.backdrop_path, "w780")} 1940w, ${imagePath(
+        this.movie.backdrop_path,
+        "original"
+      )} 1280w`;
+    },
+
+    gradientBackground() {
+      return `--first: rgb(${this.color.primaryColor}); --second: rgb(${this.color.secondaryColor})`;
+    },
+
+    movieRating() {
+      return this.movie.imdb_rating !== "N/A"
+        ? this.movie.imdb_rating
+        : this.movie.vote_average;
     }
   },
   methods: {

@@ -1,12 +1,11 @@
 <template>
   <div class="card--secondary">
     <nuxt-link :to="'/people/' + crew.credit_id" class="card--secondary__img">
-      <img
-        :src="imagePath(crew.profile_path, 'w185')"
+      <lazy-img
+        :path="crew.profile_path"
         class="fit-image"
         :alt="`${crew.name} as ${crew.department} department`"
-        :title="`${crew.name} as ${crew.department} department` "
-        draggable="false"
+        :title="`${crew.name} as ${crew.department} department`"
         aria-label="Crew profiles"
       />
     </nuxt-link>

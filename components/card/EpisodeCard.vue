@@ -1,11 +1,11 @@
 <template>
   <div class="card--episode">
     <div class="card--episode__poster">
-      <img
-        :src="imagePath(episode.still_path, 'w300')"
+      <lazy-img
+        :path="episode.still_path"
+        size="w300"
         :alt="`${episode.name} poster`"
         class="fit-image"
-        draggable="false"
       />
     </div>
 
@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import imagePath from "@/utils/imagePath";
 import truncate from "cli-truncate";
 import dayjs from "dayjs";
 export default {
@@ -39,9 +38,6 @@ export default {
       toggle_more: true,
       official_lenght: 120
     };
-  },
-  methods: {
-    imagePath
   },
   computed: {
     overview_trucate() {
@@ -61,7 +57,7 @@ export default {
       return this.toggle_more ? "more" : "less";
     },
     episodeRating() {
-      return parseFloat(episode.vote_average).toFixed(1);
+      return parseFloat(this.episode.vote_average).toFixed(1);
     },
     airedDate() {
       return dayjs(this.episode.air_date).format("MMMM D, YYYY");

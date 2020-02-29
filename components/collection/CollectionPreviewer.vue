@@ -1,9 +1,10 @@
 <template>
   <div class="previewer--secondary" :style="colorStyle">
     <div class="previewer--secondary__cover">
-      <img
+      <lazy-img
         class="fit-image"
-        :src="collectionImage"
+        :path="collection.backdrop_path"
+        size="w1280"
         :alt="collection.name + ' official wallpaper'"
         draggable="false"
         aria-label="Collection Wallpaper"
@@ -12,9 +13,10 @@
     <div class="container">
       <div class="previewer--secondary__content">
         <div class="previewer--secondary__poster backdrop-gradient" :style="gradientBackground">
-          <img
+          <lazy-img
             class="fit-image"
-            :src="imagePath(collection.poster_path, 'w342')"
+            :path="collection.poster_path"
+            size="w342"
             :title="collection.name"
             :alt="collection.name + ' poster'"
             draggable="false"
@@ -43,14 +45,9 @@
 </template>
 
 <script>
-import imagePath from "@/utils/imagePath";
-import dayjs from "dayjs";
 export default {
   props: ["collection", "color"],
-  methods: {
-    imagePath,
-    dayjs
-  },
+
   computed: {
     gradientBackground() {
       return `--first: rgb(${this.color.primaryColor}); --second: rgb(${this.color.secondaryColor})`;
@@ -62,12 +59,10 @@ export default {
         "--text-color": this.color.textColor
       };
     },
-    collectionImage() {
-      return imagePath(this.collection.backdrop_path, "w1280");
-    },
     collectionTitle() {
       return `${this.collection.name} (${this.collection.year_min +
-        "-" + this.collection.year_max})`;
+        "-" +
+        this.collection.year_max})`;
     }
   }
 };

@@ -44,17 +44,11 @@
         </div>
       </div>
     </VueSlickCarousel>
-    <!-- <VueSlickCarousel class="slider-nav slider__sidebar" v-bind="sideSlickOption" v-if="TVs">
-      >
-      <SliderCard v-for="TV in TVs" :key="tv.name" :trend="TV" />
-    </VueSlickCarousel>-->
   </header>
 </template>
 
 <script>
 import { mdiHeartOutline } from "@mdi/js";
-import SliderCard from "../card/SliderCard";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VueSlickCarousel from "vue-slick-carousel";
@@ -65,7 +59,6 @@ import HeartButton from "@/components/button/HeartButton";
 import cliTruncate from "cli-truncate";
 export default {
   components: {
-    SliderCard,
     HeartButton,
     VueSlickCarousel
   },

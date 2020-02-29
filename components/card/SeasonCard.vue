@@ -2,8 +2,9 @@
   <div class="card--season">
     <div class="card--season__poster">
       <nuxt-link :to="`season/${season.season_number}`">
-        <img
-          :src="imagePath(season.poster_path, 'w185')"
+        <lazy-img
+          :path="season.poster_path"
+          size="w185"
           :alt="`${title} ${season.name} poster`"
           class="fit-image"
           draggable="false"

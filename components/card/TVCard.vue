@@ -1,7 +1,7 @@
 <template>
   <div class="card--primary" style="--box-shadow: var(--primary-color)">
     <div class="card--primary__img">
-      <img v-lazy="poster" :alt="tv_show.name" draggable="false" />
+      <lazy-img :path="tv_show.poster_path" size="w185" :alt="tv_show.name" draggable="false" />
     </div>
 
     <div class="card__actions">
@@ -60,9 +60,6 @@ export default {
     },
     truncateTitle() {
       return cliTruncate(this.tv_show.name, 40, { position: "end" });
-    },
-    poster() {
-      return imagePath(this.tv_show.poster_path, "w185");
     }
   },
   methods: {

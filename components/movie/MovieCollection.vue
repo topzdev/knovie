@@ -2,12 +2,11 @@
   <section aria-label="Collection" class="mt-5">
     <div class="movie__collection" :style="backgroundColor">
       <div class="movie__collection-image">
-        <img
-          alt
-          draggable="false"
+        <lazy-img
           class="fit-image"
           v-if="collection.backdrop_path != null"
-          v-lazy="imagePath(collection.backdrop_path, 'w780')"
+          :path="collection.backdrop_path"
+          size="w780"
           onerror="this.style.display='none'"
         />
       </div>
