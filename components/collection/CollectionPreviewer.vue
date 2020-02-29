@@ -1,14 +1,9 @@
 <template>
-  <div
-    class="previewer--secondary"
-    :style="{
-      '--primary': color.primaryColor, '--secondary': color.secondaryColor, '--text-color': color.textColor
-  }"
-  >
+  <div class="previewer--secondary" :style="colorStyle">
     <div class="previewer--secondary__cover">
       <img
         class="fit-image"
-        :src="imagePath(collection.backdrop_path, 'w1280')"
+        :src="collectionImage"
         :alt="collection.name + ' official wallpaper'"
         draggable="false"
         aria-label="Collection Wallpaper"
@@ -16,12 +11,7 @@
     </div>
     <div class="container">
       <div class="previewer--secondary__content">
-        <div
-          class="previewer--secondary__poster backdrop-gradient"
-          :style="
-            `--first: rgb(${color.primaryColor}); --second: rgb(${color.secondaryColor})`
-          "
-        >
+        <div class="previewer--secondary__poster backdrop-gradient" :style="gradientBackground">
           <img
             class="fit-image"
             :src="imagePath(collection.poster_path, 'w342')"
@@ -36,9 +26,8 @@
           <h1
             class="previewer--secondary__title"
             aria-label="Collection title"
-          >{{ collection.name }} 
-          ({{collection.year_min+'-'+ collection.year_max}})
-          </h1>
+            v-text="collectionTitle"
+          />
           <ul class="previewer--primary__critic">
             <li class="previewer--primary__rating">
               <p class="slider__rating" aria-label="ratings" title="IMdb rating">
@@ -55,12 +44,31 @@
 
 <script>
 import imagePath from "@/utils/imagePath";
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 export default {
   props: ["collection", "color"],
   methods: {
     imagePath,
     dayjs
+  },
+  computed: {
+    gradientBackground() {
+      return `--first: rgb(${this.color.primaryColor}); --second: rgb(${this.color.secondaryColor})`;
+    },
+    colorStyle() {
+      return {
+        "--primary": this.color.primaryColor,
+        "--secondary": this.color.secondaryColor,
+        "--text-color": this.color.textColor
+      };
+    },
+    collectionImage() {
+      return imagePath(this.collection.backdrop_path, "w1280");
+    },
+    collectionTitle() {
+      return `${this.collection.name} (${this.collection.year_min +
+        "-" + this.collection.year_max})`;
+    }
   }
 };
 </script>

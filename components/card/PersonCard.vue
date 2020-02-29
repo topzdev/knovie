@@ -14,7 +14,7 @@
     <div class="card__actions"></div>
 
     <div class="card--primary__body">
-      <h1 class="card--primary__title" v-text="cliTruncate(person.name, 40)" />
+      <h1 class="card--primary__title" v-text="truncateTitle" />
       <div class="card--primary__genre">
         <span
           v-for="known in person.known_for.slice(0, 2)"
@@ -43,9 +43,13 @@ export default {
     };
   },
   methods: {
-    cliTruncate,
     imagePath,
     parseLink
+  },
+  computed: {
+    truncateTitle() {
+      return cliTruncate(this.person.name, 40);
+    }
   }
 };
 </script>

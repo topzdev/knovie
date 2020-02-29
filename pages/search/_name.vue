@@ -7,17 +7,7 @@
             Search Results for
             <span class="search__query" v-text="$route.params.name" />
           </h1>
-          <h3
-            class="search__count"
-            aria-label="Search result count"
-            v-text="
-              numeral(
-                movie.total_results +
-                  tv_show.total_results +
-                  people.total_results
-              ).format('0,0')
-            "
-          />
+          <h3 class="search__count" aria-label="Search result count" v-text="totalResults" />
 
           <div class="search__tab">
             <button
@@ -155,6 +145,13 @@ export default {
     },
     people() {
       return this.$store.getters["person/getSearch"];
+    },
+    totalResults() {
+      return numeral(
+        this.movie.total_results +
+          this.tv_show.total_results +
+          this.people.total_results
+      ).format("0,0");
     }
   }
 };

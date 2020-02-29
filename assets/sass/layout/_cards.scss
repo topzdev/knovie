@@ -1,6 +1,6 @@
 .card {
   &--primary {
-    // --box-shadow: var(--primary-color);
+    --box-shadow: var(--primary-color);
     position: relative;
     display: block;
     width: 97%;
@@ -67,6 +67,7 @@
         width: 100%;
         border-radius: 20px;
         object-fit: cover;
+        opacity: 0;
       }
 
       &::after {

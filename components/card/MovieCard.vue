@@ -1,5 +1,5 @@
 <template>
-  <div class="card--primary" style="--box-shadow: var(--primary-color)">
+  <div class="card--primary">
     <div class="card--primary__img">
       <img
         v-lazy="imagePath(movie.poster_path, 'w154')"
@@ -17,24 +17,17 @@
 
     <div class="card--primary__body">
       <div class="badge badge--primary" v-text="movie.vote_average"></div>
-      <h1 class="card--primary__title" v-text="cliTruncate(movie.title, 40, { position: 'end' })" />
+      <h1 class="card--primary__title" v-text="textTruncate" />
       <div class="card--primary__genre" v-if="genres">
-        <span v-for="genre in movie.genre_ids.slice(0, 2)" :key="genre">
-          {{
-          findProperties(genres, "id", genre).name
-          }}
-        </span>
+        <span
+          v-for="genre in movie.genre_ids.slice(0, 2)"
+          :key="genre"
+        >{{ findProperties(genres, "id", genre).name }}</span>
       </div>
-      <p class="card--primary__date">{{ dayjs(movie.release_date).format("YYYY") }}</p>
+      <p class="card--primary__date" v-text="releaseDate" />
     </div>
 
-    <nuxt-link
-      class="card__link"
-      :to="{
-        name: 'view-movie-id',
-        params: { id: parseLink(movie.title, movie.id, true) }
-      }"
-    />
+    <nuxt-link class="card__link" :to="moviePath" />
   </div>
 </template>
 
@@ -51,16 +44,25 @@ export default {
   computed: {
     genres() {
       return this.$store.getters["getMovieGenres"];
+    },
+    releaseDate() {
+      return dayjs(this.movie.release_date).format("YYYY");
+    },
+    textTruncate() {
+      return cliTruncate(this.movie.title, 40, { position: "end" });
+    },
+    moviePath() {
+      return {
+        name: "view-movie-id",
+        params: { id: parseLink(this.movie.title, this.movie.id, true) }
+      };
     }
   },
   components: {
     CardHeartButton
   },
   methods: {
-    cliTruncate,
     imagePath,
-    dayjs,
-    parseLink,
     findProperties
   }
 };

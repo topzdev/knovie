@@ -12,9 +12,7 @@
     <img
       @click="show = !show"
       v-lazy="imagePath(image.file_path, size)"
-      :data-srcset="`${imagePath(image.file_path, 'w300')} 600w,
-            ${imagePath(image.file_path, 'w780')} 1940w, ${imagePath(image.file_path, 'original')} 1280w`
-            "
+      :data-srcset="imageSrcset"
       :alt="`${title} Images`"
       class="fit-image"
       draggable="false"
@@ -77,6 +75,15 @@ export default {
         this.color = await colorMatcher(file_path);
         this.show = true;
       }
+    }
+  },
+  computed: {
+    imageSrcset() {
+      return `${imagePath(this.image.file_path, "w300")} 600w,
+            ${imagePath(this.image.file_path, "w780")} 1940w, ${imagePath(
+        this.image.file_path,
+        "original"
+      )} 1280w`;
     }
   }
 };

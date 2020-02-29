@@ -12,9 +12,9 @@
     <div class="card--episode__description">
       <h1 class="card--episode__title" aria-label="season title">
         {{ episode.name }}
-        <span>{{ parseFloat(episode.vote_average).toFixed(1) }}</span>
+        <span>{{ episodeRating }}</span>
       </h1>
-      <p class="card--episode__episodes mb-2">{{ dayjs(episode.air_date).format("MMMM D, YYYY") }}</p>
+      <p class="card--episode__episodes mb-2" v-text="airedDate" />
 
       <p v-show="overview_trucate" class="card--episode__overview">
         {{ overview_trucate.text }}
@@ -22,7 +22,7 @@
           v-if="overview_trucate.length > official_lenght"
           class="btn btn--peek"
           @click="toggle_more = !toggle_more"
-        >see {{ toggle_more ? "more" : "less" }}</button>
+        >see {{ toggleText }}</button>
       </p>
     </div>
   </div>
@@ -41,8 +41,7 @@ export default {
     };
   },
   methods: {
-    imagePath,
-    dayjs
+    imagePath
   },
   computed: {
     overview_trucate() {
@@ -57,6 +56,15 @@ export default {
           toggle_more ? official_lenght : overview.length
         )
       };
+    },
+    toggleText() {
+      return this.toggle_more ? "more" : "less";
+    },
+    episodeRating() {
+      return parseFloat(episode.vote_average).toFixed(1);
+    },
+    airedDate() {
+      return dayjs(this.episode.air_date).format("MMMM D, YYYY");
     }
   }
 };

@@ -3,18 +3,12 @@
     <div class="card--review__content">
       <!-- <h3 class="heading--secondary mb-1">What an amazing movie!!!</h3> -->
       <p class="paragraph--primary">
-        {{
-        cliTruncate(
-        review.content,
-        toggle_more ? official_lenght : review.content.length,
-        { position: "end" }
-        )
-        }}
+        {{ truncateReview }}
         <button
           class="btn btn--peek"
           v-if="review.content.length > official_lenght"
           @click="toggle_more = !toggle_more"
-        >see {{ toggle_more ? "more..." : "less" }}</button>
+        >see {{ toggleText }}</button>
       </p>
     </div>
 
@@ -37,6 +31,7 @@ import { mdiStar } from "@mdi/js";
 import cliTruncate from "cli-truncate";
 
 export default {
+  props: ["review"],
   data() {
     return {
       content: "",
@@ -47,13 +42,17 @@ export default {
       }
     };
   },
-  props: ["review"],
-
-  methods: {
-    cliTruncate
-  },
-  watch: {
-    toggle_more() {}
+  computed: {
+    truncateReview() {
+      return cliTruncate(
+        this.review.content,
+        this.toggle_more ? this.official_lenght : this.review.content.length,
+        { position: "end" }
+      );
+    },
+    toggleText() {
+      return this.toggle_more ? "more..." : "less";
+    }
   }
 };
 </script>

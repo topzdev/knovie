@@ -6,12 +6,12 @@
           <div class="col py-0">
             <h1 class="heading--primary">
               <span class="search__query" v-text="parseCategory" />
-              {{ $route.params.type === "movie" ? "Movies" : "TV Shows" }}
+              {{ resultType }}
             </h1>
             <h3
               class="search__count"
               aria-label="Search result count"
-              v-text="numeral(results.total_results).format('0,0')"
+              v-text="totalResults"
               title="total results"
             />
           </div>
@@ -46,9 +46,6 @@ export default {
   components: {
     SearchResult
   },
-  methods: {
-    numeral
-  },
   watch: {
     $route() {
       const { params, query } = this.$route;
@@ -74,6 +71,12 @@ export default {
           return word.replace(word[0], word[0].toUpperCase());
         })
         .join(" ");
+    },
+    resultType() {
+      return this.$route.params.type === "movie" ? "Movies" : "TV Shows";
+    },
+    totalResults() {
+      return numeral(this.results.total_results).format("0,0");
     }
   }
 };

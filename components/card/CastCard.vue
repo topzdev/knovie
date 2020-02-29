@@ -1,12 +1,6 @@
 <template>
   <div class="card--secondary">
-    <nuxt-link
-      :to="{
-        name: 'view-person-id',
-        params: { id: parseLink(cast.name, cast.id, true) }
-      }"
-      class="card--secondary__img"
-    >
+    <nuxt-link :to="castLink" class="card--secondary__img">
       <img
         v-lazy="imagePath(cast.profile_path, 'w185')"
         class="fit-image"
@@ -20,10 +14,7 @@
 
     <div class="card--secondary__content">
       <nuxt-link
-        :to="{
-          name: 'view-person-id',
-          params: { id: parseLink(cast.name, cast.id, true) }
-        }"
+        :to="castLink"
         class="card--secondary__name"
         aria-label="Actors/Actress of the movie"
       >{{ cast.name }}</nuxt-link>
@@ -44,6 +35,14 @@ export default {
   methods: {
     imagePath,
     parseLink
+  },
+  computed: {
+    castLink() {
+      return {
+        name: "view-person-id",
+        params: { id: parseLink(this.cast.name, this.cast.id, true) }
+      };
+    }
   }
 };
 </script>

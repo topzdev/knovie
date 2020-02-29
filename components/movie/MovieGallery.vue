@@ -10,15 +10,15 @@
 
     <div class="gallery--full" :style="`height: ${gallerySize}`">
       <div class="row no-gutters">
-        <div class="col-12 col-lg" height="100%" :style="`max-height:${gallerySize / (12 / 12)}px`">
+        <div class="col-12 col-lg" height="100%" :style="bigImageClass">
           <GalleryCard :image="{ ...bigImage(), title }" size="w780" />
         </div>
 
-        <div :class="`col-md-12 col-lg-${smallImage().divider}`" height="100%">
+        <div :class="dividerClass" height="100%">
           <div class="row no-gutters" style="height: 100%">
             <div
-              :class="`col-6 col-sm-4 col-md-3 col-lg-${smallImage().size}`"
-              :style="`max-height:${gallerySize / smallImage().row}px`"
+              :class="smallImageClass"
+              :style="smallImageStyle"
               v-for="image in smallImage().images"
               :key="image.file_path"
             >
@@ -83,6 +83,20 @@ export default {
         setBackdrop.divider = 0;
       }
       return setBackdrop;
+    }
+  },
+  computed: {
+    bigImageClass() {
+      return `max-height:${this.gallerySize / (12 / 12)}px`;
+    },
+    smallImageStyle() {
+      return `max-height:${this.gallerySize / this.smallImage().row}px`;
+    },
+    smallImageClass() {
+      return `col-6 col-sm-4 col-md-3 col-lg-${this.smallImage().size}`;
+    },
+    dividerClass() {
+      return `col-md-12 col-lg-${this.smallImage().divider}`;
     }
   }
 };
