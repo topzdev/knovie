@@ -3,6 +3,7 @@
     class="btn btn--favorite"
     :class="{ 'btn--favorite--liked': like }"
     @click="toggleLike({ type, data })"
+    aria-label="Like Button"
   >
     <vue-icon :svg="like ? icons.fullHeart : icons.heart  " />
   </button>

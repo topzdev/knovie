@@ -26,6 +26,7 @@
         <button
           v-if="overview_trucate.length > official_lenght"
           class="btn btn--peek"
+          aria-label="Show more text"
           @click="toggle_more = !toggle_more"
         >see {{toggleText }}</button>
       </p>

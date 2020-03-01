@@ -35,11 +35,13 @@
         <vue-icon class="movie__icon" :svg="icons.rated" />
         <h1 class="heading--secondary mb-1">Rated</h1>
         <ul class="movie__info-list">
-          <p
-            class="badge badge__rated"
-            :class="`badge__rated--${info.rated.toLowerCase()}`"
-            v-text="info.rated"
-          />
+          <li>
+            <p
+              class="badge badge__rated"
+              :class="`badge__rated--${info.rated.toLowerCase()}`"
+              v-text="info.rated"
+            />
+          </li>
         </ul>
       </div>
 

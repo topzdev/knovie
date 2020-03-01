@@ -24,7 +24,7 @@
         </div>
 
         <div class="previewer--primary__body">
-          <h1 class="slider__title">{{ movie.title }}</h1>
+          <h1 class="slider__title" v-text="titleTruncate" />
           <ul class="previewer--primary__list mb-1">
             <li v-for="genre in movie.genres" :key="genre.id">
               <nuxt-link
@@ -82,7 +82,11 @@
           </Modal>
 
           <div class="slider__actions mt-1 mt-lg-2">
-            <button class="btn btn--primary mr-1 px-3" @click="show = !show">
+            <button
+              aria-label="watch trailer"
+              class="btn btn--primary mr-1 px-3"
+              @click="show = !show"
+            >
               Watch trailer
               <vue-icon :svg="icons.play" />
             </button>
@@ -102,6 +106,7 @@ import imagePath from "@/utils/imagePath";
 import HeartButton from "@/components/button/HeartButton";
 import MovieTrailer from "@/components/movie/MovieTrailer";
 import Modal from "@/components/modal/MainModal";
+import cliTruncate from "cli-truncate";
 
 export default {
   data() {
@@ -145,6 +150,10 @@ export default {
       return this.movie.imdb_rating !== "N/A"
         ? this.movie.imdb_rating
         : this.movie.vote_average;
+    },
+
+    titleTruncate() {
+      return cliTruncate(this.movie.title, 30);
     }
   },
   methods: {

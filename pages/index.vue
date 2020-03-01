@@ -1,20 +1,10 @@
 <template>
   <div>
-    <MovieSlider :movies="popular.results" />
+    <MovieSlider :watch="popular.results" />
     <div class="container pb-5">
-      <Showcase
-        title="Popular"
-        :result="popular.results"
-        type="Movies"
-        url="/c/movie/popular"
-      />
+      <Showcase title="Popular" :result="popular.results" type="Movies" url="/c/movie/popular" />
 
-      <Showcase
-        title="Upcoming"
-        :result="upcoming.results"
-        type="Movies"
-        url="/c/movie/upcoming"
-      />
+      <Showcase title="Upcoming" :result="upcoming.results" type="Movies" url="/c/movie/upcoming" />
 
       <Showcase
         title="Now Playing"

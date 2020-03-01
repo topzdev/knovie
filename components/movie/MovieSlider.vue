@@ -1,9 +1,9 @@
 <template>
   <header class="slider">
     <!--   -->
-    <VueSlickCarousel class="slider-for" v-bind="mainSlickOption" v-if="movies">
-      <div v-for="movie in movies" :key="movie.title">
-        <MovieSliderCard :movie="movie" />
+    <VueSlickCarousel class="slider-for" v-bind="mainSlickOption" v-if="watch">
+      <div v-for="movie in limitWatch" :key="movie.title">
+        <MovieSliderCard :watch="movie" />
       </div>
     </VueSlickCarousel>
   </header>
@@ -11,39 +11,12 @@
 
 <script>
 import MovieSliderCard from "../card/MovieSliderCard";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import VueSlickCarousel from "vue-slick-carousel";
+import SliderMixins from "@/mixins/SliderMixins";
 export default {
-  props: ["category", "movies"],
+  mixins: [SliderMixins],
+  props: ["category", "watch"],
   components: {
-    MovieSliderCard,
-    VueSlickCarousel
-  },
-  data() {
-    return {
-      mainSlickOption: {
-        autoplaySpeed: 10000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade: true,
-        arrows: false,
-        autoplay: true,
-        swipe: false,
-        pauseOnHover: false
-      },
-      sideSlickOption: {
-        vertical: true,
-        infinite: true,
-        verticalSwiping: true,
-        focusOnSelect: true,
-        centerMode: true,
-        slidesToShow: 3,
-        arrows: false
-      },
-      loading: false
-    };
+    MovieSliderCard
   }
 };
 </script>

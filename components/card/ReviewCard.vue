@@ -6,6 +6,7 @@
         {{ truncateReview }}
         <button
           class="btn btn--peek"
+          aria-label="read more"
           v-if="review.content.length > official_lenght"
           @click="toggle_more = !toggle_more"
         >see {{ toggleText }}</button>

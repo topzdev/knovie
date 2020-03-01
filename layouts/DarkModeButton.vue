@@ -1,5 +1,5 @@
 <template>
-  <button class="btn--icon" @click="toggle = !toggle" aria-label="Toggle Light/Dark Mode">
+  <button class="btn--icon" @click="toggle = !toggle" :aria-label="`Toggle ${isMode} mode`">
     <vue-icon size="30" :svg="toggle ? icons.dark : icons.light" />
   </button>
 </template>
@@ -16,12 +16,17 @@ export default {
       }
     };
   },
+  computed: {
+    isMode() {
+      return this.toggle ? "dark" : "light";
+    }
+  },
   head() {
     return {
       link: [
         {
           rel: "stylesheet",
-          href: `/${this.toggle ? "dark" : "light"}.css`
+          href: `/${this.isMode}.css`
         }
       ]
     };

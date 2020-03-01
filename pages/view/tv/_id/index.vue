@@ -27,6 +27,7 @@
     </div>
 
     <TVSeasons
+      class="mt-5 mb-5"
       :tv_season="tv_show.seasons"
       :color="tv_show.color"
       :url="`/view/tv/${$route.params.id}/season`"

@@ -11,6 +11,7 @@
 
           <div class="search__tab">
             <button
+              aria-label="change to movie tab"
               class="search__tab-item"
               :class="{ 'search__tab-active': active.movie }"
               @click="tabChanger('movie')"
@@ -21,6 +22,7 @@
             </button>
             <button
               class="search__tab-item"
+              aria-label="change to tv show tab"
               :class="{ 'search__tab-active': active.tv_show }"
               @click="tabChanger('tv_show')"
               title="results for TV shows"
@@ -30,6 +32,7 @@
             </button>
             <button
               class="search__tab-item"
+              aria-label="change to people tab"
               :class="{ 'search__tab-active': active.people }"
               @click="tabChanger('people')"
               title="results for People"

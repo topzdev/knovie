@@ -1,5 +1,9 @@
 <template>
-  <button :class="{ 'card-liked': like }" @click="toggleLike({ type, data })">
+  <button
+    :class="{ 'card-liked': like }"
+    @click="toggleLike({ type, data })"
+    aria-label="Like Button"
+  >
     <vue-icon size="30" :svg="like ? icons.heartFull : icons.heart " />
   </button>
 </template>

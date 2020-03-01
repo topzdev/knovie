@@ -2,7 +2,7 @@
   <div class="card--gallery">
     <div class="card__actions">
       <button
-        aria-label="download button"
+        aria-label="Download Image"
         title="Download Image"
         @click="imageSaver(image.file_path)"
       >

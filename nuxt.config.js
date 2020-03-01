@@ -29,6 +29,7 @@ export default {
     titleTemplate: "%s | Know more your movie",
     title: "Knowvie",
     meta: [
+      { name: "theme-color", content: "" },
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
@@ -135,6 +136,10 @@ export default {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: `/dark.css`
+      },
       {
         rel: "stylesheet",
         href:
