@@ -29,6 +29,7 @@ export default {
     titleTemplate: "%s | Know more your movie",
     title: "Knowvie",
     meta: [
+      { name: "theme-color", content: "" },
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
@@ -87,7 +88,7 @@ export default {
       {
         hid: "twitter:card",
         name: "twitter:card",
-        content: "summary"
+        content: "summary_large_image"
       },
       {
         hid: "twitter:title",
@@ -137,6 +138,10 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
+        href: `/dark.css`
+      },
+      {
+        rel: "stylesheet",
         href:
           "https://fonts.googleapis.com/css?family=Montserrat:400,500i,600,600i,700,800|Open+Sans:300,300i,400,500,600,700&display=swap"
       }
@@ -160,7 +165,8 @@ export default {
   plugins: [
     "~/plugins/vue-lazy",
     "~/plugins/vue-icon",
-    "~/plugins/vue-paginator"
+    "~/plugins/vue-paginator",
+    "~/plugins/vue-lazy-img"
   ],
   /*
    ** Nuxt.js dev-modules

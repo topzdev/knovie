@@ -25,15 +25,10 @@ import MoreButton from "../button/MoreButton";
 import CastCard from "../card/CastCard";
 
 export default {
+  props: ["title", "casts", "url"],
   components: {
     MoreButton,
     CastCard
-  },
-
-  props: ["title", "casts", "url"],
-
-  data() {
-    return {};
   }
 };
 </script>

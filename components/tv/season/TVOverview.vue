@@ -6,6 +6,7 @@
       <button
         v-if="overview_trucate.length > official_lenght"
         class="btn btn--peek"
+        aria-label="read more"
         @click="toggle_more = !toggle_more"
       >see {{ toggle_more ? "more" : "less" }}</button>
     </p>

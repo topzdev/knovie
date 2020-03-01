@@ -2,22 +2,20 @@
   <div class="card--gallery">
     <div class="card__actions">
       <button
-        aria-label="download button"
+        aria-label="Download Image"
         title="Download Image"
         @click="imageSaver(image.file_path)"
       >
         <vue-icon size="30" :svg="icons.download" />
       </button>
     </div>
-    <img
+    <lazy-img
       @click="show = !show"
-      v-lazy="imagePath(image.file_path, size)"
-      :data-srcset="`${imagePath(image.file_path, 'w300')} 600w,
-            ${imagePath(image.file_path, 'w780')} 1940w, ${imagePath(image.file_path, 'original')} 1280w`
-            "
+      :path="image.file_path"
+      :data-srcset="imageSrcset"
+      :size="size"
       :alt="`${title} Images`"
       class="fit-image"
-      draggable="false"
     />
 
     <div class="card--gallery__open" @click="openModal" />
@@ -77,6 +75,15 @@ export default {
         this.color = await colorMatcher(file_path);
         this.show = true;
       }
+    }
+  },
+  computed: {
+    imageSrcset() {
+      return `${imagePath(this.image.file_path, "w300")} 600w,
+            ${imagePath(this.image.file_path, "w780")} 1940w, ${imagePath(
+        this.image.file_path,
+        "original"
+      )} 1280w`;
     }
   }
 };

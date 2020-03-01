@@ -1,13 +1,15 @@
 <template>
   <div class="navbar__mobile">
-    <button class="navbar__menu" @click="show = true">
+    <button class="navbar__menu" aria-label="show sidebar" @click="show = true">
       <vue-icon size="40" :svg="icons.menu" />
     </button>
     <div class="navbar__backdrop" v-show="show" @click="show = false" />
     <ul class="navbar__sidebar" @click="show = false" :class="{'navbar__sidebar-show': show}">
-      <nuxt-link to="/" class="navbar__brand">
-        <img src="~/assets/img/knowvie-logo.png" alt="Knowvie Logo" draggable="false" />
-      </nuxt-link>
+      <li>
+        <nuxt-link to="/" class="navbar__brand">
+          <img src="~/assets/img/knowvie-logo.png" alt="Knowvie Logo" draggable="false" />
+        </nuxt-link>
+      </li>
       <li class="navbar__sidebar-item">
         <nuxt-link to="/" class="navbar__link navbar-preview__link" aria-label="Movie">Movie</nuxt-link>
       </li>

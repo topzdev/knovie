@@ -6,20 +6,20 @@
         class="social__link"
         target="_blank"
         title="Official Website"
+        aria-label="Visit Official Website"
+        rel="noreferrer"
       >
         <vue-icon size="40" :svg="icons.web" />
       </a>
     </li>
-    <li
-      class="social__item"
-      aria-label="facebook link"
-      v-if="links.facebook_id"
-    >
+    <li class="social__item" aria-label="facebook link" v-if="links.facebook_id">
       <a
         :href="`https://www.facebook.com/${links.facebook_id}`"
         class="social__link"
         target="_blank"
         title="Facebook"
+        aria-label="Visit Official Facebook"
+        rel="noreferrer"
       >
         <vue-icon size="40" :svg="icons.facebook" />
       </a>
@@ -31,6 +31,8 @@
         class="social__link"
         target="_blank"
         title="Instagram"
+        aria-label="Visit Intagram"
+        rel="noreferrer"
       >
         <vue-icon size="40" :svg="icons.instagram" />
       </a>
@@ -42,6 +44,8 @@
         class="social__link"
         target="_blank"
         title="Twitter"
+        aria-label="Visit Twitter"
+        rel="noreferrer"
       >
         <vue-icon size="40" :svg="icons.twitter" />
       </a>
@@ -53,6 +57,8 @@
         class="social__link"
         target="_blank"
         title="IMDB"
+        aria-label="Visit IMDB"
+        rel="noreferrer"
       >
         <vue-icon size="40" :svg="icons.imdb" />
       </a>

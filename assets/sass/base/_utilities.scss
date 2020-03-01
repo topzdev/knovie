@@ -98,6 +98,10 @@
   align-items: center;
 }
 
+.lazy-image {
+  opacity: 0;
+}
+
 img[lazy="loading"] {
   filter: blur(20px);
   @include transition;
@@ -106,6 +110,7 @@ img[lazy="error"] {
   /*your style here*/
 }
 img[lazy="loaded"] {
+  opacity: 1;
   filter: blur(0);
   @include transition;
 }

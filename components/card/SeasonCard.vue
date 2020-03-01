@@ -2,8 +2,9 @@
   <div class="card--season">
     <div class="card--season__poster">
       <nuxt-link :to="`season/${season.season_number}`">
-        <img
-          :src="imagePath(season.poster_path, 'w185')"
+        <lazy-img
+          :path="season.poster_path"
+          size="w185"
           :alt="`${title} ${season.name} poster`"
           class="fit-image"
           draggable="false"
@@ -15,20 +16,19 @@
       <nuxt-link :to="`season/${season.season_number}`">
         <h1 class="card--season__title" aria-label="season title">
           {{season.name}}
-          <span>({{dayjs(season.air_date).format('YYYY')}})</span>
+          <span>({{airedDate}})</span>
         </h1>
       </nuxt-link>
-      <p
-        class="card--season__episodes mb-2"
-      >with {{season.episode_count}} episodes premiered on {{dayjs(season.air_date).format('MMMM D, YYYY')}}</p>
+      <p class="card--season__episodes mb-2" v-text="airedSeason" />
 
       <p v-show="overview_trucate" class="card--season__overview">
         {{overview_trucate.text}}
         <button
           v-if="overview_trucate.length > official_lenght"
           class="btn btn--peek"
+          aria-label="Show more text"
           @click="toggle_more = !toggle_more"
-        >see {{ toggle_more ? "more" : "less" }}</button>
+        >see {{toggleText }}</button>
       </p>
     </div>
   </div>
@@ -63,6 +63,17 @@ export default {
           toggle_more ? official_lenght : overview.length
         )
       };
+    },
+    airedDate() {
+      return dayjs(this.season.air_date).format("YYYY");
+    },
+    airedSeason() {
+      return `with ${this.season.episode_count} episodes premiered on ${dayjs(
+        this.season.air_date
+      ).format("MMMM D, YYYY")}`;
+    },
+    toggleText() {
+      return this.toggle_more ? "more" : "less";
     }
   }
 };

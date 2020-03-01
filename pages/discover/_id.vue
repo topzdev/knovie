@@ -131,23 +131,26 @@ export default {
     }
   },
   computed: {
-    results: function() {
+    results() {
       return this.$store.getters.getRecommend;
     },
-    getYears: function() {
+    getYears() {
       return this.$store.getters.getYears;
     },
-    getMovieGenre: function() {
+    getMovieGenre() {
       return this.$store.getters.getMovieGenres;
     },
-    getTVGenre: function() {
+    getTVGenre() {
       return this.$store.getters.getTVGenres;
     },
-    getSortMovieBy: function() {
+    getSortMovieBy() {
       return this.$store.getters.getSortMovieBy;
     },
-    getSortTVBy: function() {
+    getSortTVBy() {
       return this.$store.getters.getSortTVBy;
+    },
+    type() {
+      return results.type === "movie" ? "movie" : "tv";
     }
   },
 

@@ -67,7 +67,7 @@ export const moviePreviewHead = (data, route, page_name) => {
       {
         hid: "twitter:card",
         name: "twitter:card",
-        content: "summary"
+        content: "summary_large_image"
       },
       {
         hid: "twitter:title",

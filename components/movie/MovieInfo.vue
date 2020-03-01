@@ -6,29 +6,24 @@
         <h1 class="heading--primary mb-3">Movie Facts</h1>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
-        <div v-if="director ? true : false">
+      <div :class="infoClass">
+        <div v-if="isDirector">
           <vue-icon class="movie__icon" :svg="icons.director" />
           <h1 class="heading--secondary mb-1">Director</h1>
           <ul class="movie__info-list">
             <li>
               <div class="card--small">
-                <nuxt-link
-                  :to="{
-                    name: 'view-person-id',
-                    params: { id: parseLink(director.name, director.id, true) }
-                  }"
-                  class="card--small__image"
-                >
-                  <img
-                    :src="imagePath(director.profile_path, 'w185')"
+                <nuxt-link :to="personLink" class="card--small__image">
+                  <lazy-img
+                    :path="director.profile_path"
+                    size="w185"
                     alt="Movie Director"
                     class="fit-image"
                     draggable="false"
                   />
                 </nuxt-link>
                 <div class="card--small__description">
-                  <nuxt-link :to="`/people/${director.credit_id}`">{{ director.name }}</nuxt-link>
+                  <nuxt-link :to="`/people/${director.credit_id}`" v-text=" director.name" />
                 </div>
               </div>
             </li>
@@ -36,39 +31,41 @@
         </div>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.rated" />
         <h1 class="heading--secondary mb-1">Rated</h1>
         <ul class="movie__info-list">
-          <p
-            class="badge badge__rated"
-            :class="`badge__rated--${info.rated.toLowerCase()}`"
-            v-text="info.rated"
-          />
+          <li>
+            <p
+              class="badge badge__rated"
+              :class="`badge__rated--${info.rated.toLowerCase()}`"
+              v-text="info.rated"
+            />
+          </li>
         </ul>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.status" />
         <h1 class="heading--secondary mb-1">Status</h1>
         <ul class="movie__info-list">
           <li>
-            <p class="paragraph--primary">{{ info.status }}</p>
+            <p class="paragraph--primary" v-text="info.status" />
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.release_date" />
         <h1 class="heading--secondary mb-1">Release Date</h1>
         <ul class="movie__info-list">
           <li>
-            <p class="paragraph--primary">{{ dayjs(info.release_date).format("MMMM D, YYYY") }}</p>
+            <p class="paragraph--primary" v-text="movieReleaseDate" />
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.company" />
         <h1
           class="heading--secondary mb-1"
@@ -82,60 +79,53 @@
         </ul>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.country" />
         <h1 class="heading--secondary mb-1">Production Countries</h1>
         <ul class="movie__info-list">
           <li v-for="countries in info.production_countries" :key="countries.iso_3166_1">
-            <p class="paragraph--primary">{{ countries.name }}</p>
+            <p class="paragraph--primary" v-text="countries.name" />
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.language" />
         <h1 class="heading--secondary mb-1">Spoken Language</h1>
         <ul class="movie__info-list">
           <li v-for="language in info.spoken_languages" :key="language.iso_639_1">
-            <p class="paragraph--primary">{{ language.name }}</p>
+            <p class="paragraph--primary" v-text="language.name" />
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.budget" />
         <h1 class="heading--secondary mb-1">Budget</h1>
         <ul class="movie__info-list">
           <li>
-            <p class="paragraph--primary">${{ numeral(info.budget).format("0,0.00") }}</p>
+            <p class="paragraph--primary" v-text="movieBudget" />
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <div>
           <vue-icon class="movie__icon" :svg="icons.revenue" />
           <h1 class="heading--secondary mb-1">Revenue</h1>
           <ul class="movie__info-list">
             <li>
-              <p
-                class="paragraph--primary"
-                v-text="
-                  info.revenue
-                    ? '$' + numeral(info.revenue).format('0,0.00')
-                    : '-'
-                "
-              />
+              <p class="paragraph--primary" v-text="movieRevenue" />
             </li>
           </ul>
         </div>
       </div>
-      <div class="col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0">
+      <div :class="infoClass">
         <vue-icon class="movie__icon" :svg="icons.runtime" />
         <h1 class="heading--secondary mb-1">Runtime</h1>
         <ul class="movie__info-list">
           <li>
-            <p class="paragraph--primary">{{ parseFloat(info.runtime / 60).toFixed(2) }} hrs</p>
+            <p class="paragraph--primary" v-text="runtimeFormat" />
           </li>
         </ul>
       </div>
@@ -195,6 +185,38 @@ export default {
   computed: {
     director: function() {
       return findProperties(this.$props.info.credits.crew, "job", "Director");
+    },
+    personLink() {
+      const { director } = this.info;
+      return {
+        name: "view-person-id",
+        params: { id: parseLink(director.name, director.id, true) }
+      };
+    },
+    runtimeFormat() {
+      return `${parseFloat(this.info.runtime / 60).toFixed(2)} hrs`;
+    },
+
+    movieRevenue() {
+      return this.info.revenue
+        ? "$" + numeral(this.info.revenue).format("0,0.00")
+        : "-";
+    },
+
+    movieBudget() {
+      return `$${numeral(this.info.budget).format("0,0.00")}`;
+    },
+
+    movieReleaseDate() {
+      return dayjs(this.info.release_date).format("MMMM D, YYYY");
+    },
+
+    isDirector() {
+      return this.info.director ? true : false;
+    },
+
+    infoClass() {
+      return "col-lg-12 col-sm-4 col-md-4 col-6 p-0 mb-1 pr-lg-0 pr-1 mb-lg-0";
     }
   }
 };

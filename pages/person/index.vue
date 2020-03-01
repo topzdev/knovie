@@ -8,7 +8,7 @@
             <h3
               class="search__count"
               aria-label="Search result count"
-              v-text="numeral(results.total_results).format('0,0')"
+              v-text="totalResults"
               title="total results"
             />
           </div>
@@ -54,6 +54,9 @@ export default {
   computed: {
     results() {
       return this.$store.getters["person/getCategories"]("popular");
+    },
+    totalResults() {
+      return this.results.type === "movie" ? "movie" : "tv";
     }
   }
 };

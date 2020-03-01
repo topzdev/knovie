@@ -36,7 +36,7 @@
         <h1 class="heading--secondary mb-1">Gender</h1>
         <ul class="movie__info-list">
           <li>
-            <p class="paragraph--primary" v-text="person.gender === 2 ? 'Male' : 'Female'" />
+            <p class="paragraph--primary" v-text="gender" />
           </li>
         </ul>
       </div>
@@ -120,12 +120,15 @@ export default {
 
   computed: {
     total_movie_credits() {
-      const { cast, crew } = this.$props.person.movie_credits;
+      const { cast, crew } = this.person.movie_credits;
       return cast.length + crew.length;
     },
     total_tv_credits() {
-      const { cast, crew } = this.$props.person.tv_credits;
+      const { cast, crew } = this.person.tv_credits;
       return cast.length + crew.length;
+    },
+    gender() {
+      return this.person.gender === 2 ? "Male" : "Female";
     }
   }
 };

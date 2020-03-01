@@ -1,18 +1,12 @@
 <template>
   <section aria-label="Collection" class="mt-5">
-    <div
-      class="movie__collection"
-      :style="  
-      `--background-color: ${color.primaryColor};
-          --text-color: ${color.textColor}`"
-    >
+    <div class="movie__collection" :style="backgroundColor">
       <div class="movie__collection-image">
-        <img
-          alt
-          draggable="false"
+        <lazy-img
           class="fit-image"
           v-if="collection.backdrop_path != null"
-          v-lazy="imagePath(collection.backdrop_path, 'w780')"
+          :path="collection.backdrop_path"
+          size="w780"
           onerror="this.style.display='none'"
         />
       </div>
@@ -22,12 +16,9 @@
           <h1 class="movie__collection-header">Part of the {{ collection.name }}</h1>
 
           <nuxt-link
-            :to="`/view/collection/${parseLink(collection.name, collection.id, true)}`"
+            :to="collectionLink"
             class="btn btn--primary mt-2"
-            :style="`background-color:rgb(${color.primaryColor});
-            border-color: rgb(${color.primaryColor});
-            color: rgba(${color.textColor})`
-            "
+            :style="collectionColor"
           >View {{ collection.name }}'s</nuxt-link>
         </div>
       </div>
@@ -44,6 +35,24 @@ export default {
   methods: {
     imagePath,
     parseLink
+  },
+  computed: {
+    backgroundColor() {
+      return `--background-color: ${this.color.primaryColor};
+          --text-color: ${this.color.textColor}`;
+    },
+    collectionColor() {
+      return `background-color:rgb(${this.color.primaryColor});
+            border-color: rgb(${this.color.primaryColor});
+            color: rgba(${this.color.textColor})`;
+    },
+    collectionLink() {
+      return `/view/collection/${parseLink(
+        this.collection.name,
+        this.collection.id,
+        true
+      )}`;
+    }
   }
 };
 </script>

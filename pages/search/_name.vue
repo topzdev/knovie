@@ -7,20 +7,11 @@
             Search Results for
             <span class="search__query" v-text="$route.params.name" />
           </h1>
-          <h3
-            class="search__count"
-            aria-label="Search result count"
-            v-text="
-              numeral(
-                movie.total_results +
-                  tv_show.total_results +
-                  people.total_results
-              ).format('0,0')
-            "
-          />
+          <h3 class="search__count" aria-label="Search result count" v-text="totalResults" />
 
           <div class="search__tab">
             <button
+              aria-label="change to movie tab"
               class="search__tab-item"
               :class="{ 'search__tab-active': active.movie }"
               @click="tabChanger('movie')"
@@ -31,6 +22,7 @@
             </button>
             <button
               class="search__tab-item"
+              aria-label="change to tv show tab"
               :class="{ 'search__tab-active': active.tv_show }"
               @click="tabChanger('tv_show')"
               title="results for TV shows"
@@ -40,6 +32,7 @@
             </button>
             <button
               class="search__tab-item"
+              aria-label="change to people tab"
               :class="{ 'search__tab-active': active.people }"
               @click="tabChanger('people')"
               title="results for People"
@@ -155,6 +148,13 @@ export default {
     },
     people() {
       return this.$store.getters["person/getSearch"];
+    },
+    totalResults() {
+      return numeral(
+        this.movie.total_results +
+          this.tv_show.total_results +
+          this.people.total_results
+      ).format("0,0");
     }
   }
 };

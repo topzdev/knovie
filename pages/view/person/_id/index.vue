@@ -68,19 +68,6 @@ export default {
     await store.dispatch("person/fetchPerson", params.id);
   },
 
-  data() {
-    return {
-      data: {
-        profile: "/kU3B75TyRiCgE270EyZnHjfivoq.jpg",
-        color: {
-          primaryColor: "#000",
-          secondaryColor: "#000"
-        },
-        name: "Brad Pitt"
-      }
-    };
-  },
-
   components: {
     PersonBiography,
     PersonPreviewer,

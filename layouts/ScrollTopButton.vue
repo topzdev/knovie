@@ -1,6 +1,7 @@
 <template>
   <button
     v-scroll-to="'#scrollhere'"
+    aria-label="scroll up"
     class="btn btn--scroll-top"
     :class="{ 'btn--scroll-top--shrink': !showScrollButton }"
   >

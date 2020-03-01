@@ -1,20 +1,13 @@
 <template>
-  <nuxt-link
-    :to="{
-      name: 'view-person-id',
-      params: { id: parseLink(person.name, person.id, true) }
-    }"
-    class="card--primary"
-    style="--box-shadow: var(--primary-color)"
-  >
+  <nuxt-link :to="personLink" class="card--primary">
     <div class="card--primary__img">
-      <img v-lazy="imagePath(person.profile_path, 'w185')" :alt="person.name" draggable="false" />
+      <lazy-img :path="person.profile_path" size="w185" :alt="person.name" />
     </div>
 
     <div class="card__actions"></div>
 
     <div class="card--primary__body">
-      <h1 class="card--primary__title" v-text="cliTruncate(person.name, 40)" />
+      <h1 class="card--primary__title" v-text="truncateTitle" />
       <div class="card--primary__genre">
         <span
           v-for="known in person.known_for.slice(0, 2)"
@@ -43,9 +36,19 @@ export default {
     };
   },
   methods: {
-    cliTruncate,
     imagePath,
     parseLink
+  },
+  computed: {
+    truncateTitle() {
+      return cliTruncate(this.person.name, 40);
+    },
+    personLink() {
+      return {
+        name: "view-person-id",
+        params: { id: parseLink(this.person.name, this.person.id, true) }
+      };
+    }
   }
 };
 </script>

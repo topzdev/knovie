@@ -56,7 +56,7 @@
             <li>
               <div class="previewer--primary__critic-item">
                 <img src="../../assets/img/like.png" alt title="Likes" draggable="false" />
-                <p>{{ tv_show.vote_count }}</p>
+                <p v-text="tv_show.vote_count" />
               </div>
             </li>
           </ul>
@@ -68,7 +68,11 @@
           </Modal>
 
           <div class="slider__actions mt-2">
-            <button class="btn btn--primary mr-1 px-3" @click="show = !show">
+            <button
+              aria-label="watch trailer"
+              class="btn btn--primary mr-1 px-3"
+              @click="show = !show"
+            >
               Watch Trailer
               <vue-icon :svg="icons.play" />
             </button>

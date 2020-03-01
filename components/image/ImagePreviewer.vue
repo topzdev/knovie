@@ -1,5 +1,5 @@
 <template>
-  <img v-lazy="imagePath(image, 'original')" class="modal__image" />
+  <img v-lazy="imagePath(image, 'original')" class="modal__image lazy-image" />
 </template>
 
 <script>
