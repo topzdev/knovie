@@ -20,8 +20,7 @@ export default {
   data() {
     return {
       links: [
-        { path: "", text: "Season" },
-        { path: "-season", text: "Season" },
+        { path: "", text: "Main" },
         { path: "-cast", text: "Cast" },
         { path: "-gallery", text: "Gallery" },
         { path: "-reviews", text: "Reviews" }

@@ -27,7 +27,7 @@
           <p
             class="previewer--secondary__year"
             aria-label="Movie released year"
-            :title="dateFormat('MMMM Do YYYY')"
+            :title="dateFormat('MMMM DD, YYYY')"
           >({{dateFormat('YYYY')}})</p>
         </div>
       </div>
@@ -53,8 +53,11 @@ export default {
     },
     gradientBackground() {
       return `--first: rgb(${this.color.primaryColor}); --second: rgb(${this.color.secondaryColor})`;
-    },
+    }
+  },
+  methods: {
     dateFormat(format) {
+      console.log(this.movie.release_date);
       return dayjs(this.movie.release_date).format(format);
     }
   }

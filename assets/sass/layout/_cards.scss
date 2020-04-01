@@ -173,7 +173,7 @@
     // height: 200px;
     width: 100%;
     // cursor: pointer;
-    overflow: hidden;
+    // overflow: hidden;
     &:hover &__img:after {
       opacity: 0.08;
     }
@@ -182,7 +182,7 @@
       display: block;
       position: relative;
       z-index: 2;
-      border-radius: 5px;
+      border-radius: 8px;
       box-shadow: var(--elevation-10);
       user-select: none;
       height: 210px;

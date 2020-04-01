@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MovieSlider :watch="popular.results" />
+    <MovieSlider :watch="upcoming.results" />
     <div class="container pb-5">
       <Showcase title="Popular" :result="popular.results" type="Movies" url="/c/movie/popular" />
 

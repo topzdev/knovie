@@ -3,6 +3,7 @@
     <nuxt-link :to="'/people/' + crew.credit_id" class="card--secondary__img">
       <lazy-img
         :path="crew.profile_path"
+        size="w185"
         class="fit-image"
         :alt="`${crew.name} as ${crew.department} department`"
         :title="`${crew.name} as ${crew.department} department`"

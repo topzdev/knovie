@@ -4,7 +4,7 @@
       <div class="footer__main">
         <div class="footer__copyright">
           Made with
-          <b>Nuxt+VueJS</b> and
+          <b>VueJS + NuxtJs</b> and
           <b>Love</b> by
           <a
             href="https://topzdev.github.io/portfolio/"
