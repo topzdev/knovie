@@ -1,5 +1,5 @@
 <template>
-  <SearchResult :results="results" :type="results.type === 'movie' ? 'movie' : 'tv'">
+  <SearchResult :results="results" :type="typeTitle">
     <div class="search__filter mt-2">
       <div class="container">
         <div class="row">
@@ -149,7 +149,7 @@ export default {
     getSortTVBy() {
       return this.$store.getters.getSortTVBy;
     },
-    type() {
+    typeTitle() {
       return results.type === "movie" ? "movie" : "tv";
     }
   },

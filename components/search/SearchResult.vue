@@ -1,7 +1,7 @@
 <template>
   <div class="search navbar-padding">
     <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-      <img
+      <lazy-img
         v-if="transition"
         :path="pageBackground"
         alt="Backdrop image"
@@ -29,7 +29,7 @@
               <div
                 class="col-6 col-sm-4 col-md-3 col-lg-custom mb-3"
                 @mouseenter="setBackground(result.poster_path)"
-                @mouseleave="removeBackground()"
+                @mouseleave="removeBackground"
                 v-for="result in results.results"
                 :key="result.id"
               >
@@ -74,11 +74,13 @@ export default {
   },
   methods: {
     setBackground: function(url) {
+      console.log("Hello", url);
       var self = this;
       setTimeout(function() {
         self.pageBackground = url;
         self.transition = true;
       }, 300);
+      console.log(this.transition);
     },
     removeBackground: function() {
       var self = this;
