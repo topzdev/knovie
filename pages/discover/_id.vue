@@ -150,7 +150,7 @@ export default {
       return this.$store.getters.getSortTVBy;
     },
     typeTitle() {
-      return results.type === "movie" ? "movie" : "tv";
+      return this.results.type === "movie" ? "movie" : "tv";
     }
   },
 
