@@ -29,6 +29,9 @@
           <PersonBiography :biography="person.biography" />
           <PersonInfo :person="person" />
         </div>
+        <div class="ads-box">
+          <adsbygoogle />
+        </div>
 
         <div class="col">
           <Showcase

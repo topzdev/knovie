@@ -47,6 +47,9 @@
         <client-only>
           <Paginator v-if="results.total_pages > 0" :totalPage="results.total_pages" />
         </client-only>
+        <div class="ads-box">
+          <adsbygoogle />
+        </div>
       </div>
     </div>
   </div>

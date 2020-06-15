@@ -6,7 +6,6 @@
       <div class="row">
         <div class="col-md-12 col-lg-9 movie__main pt-5">
           <MovieDescription :description="movie.overview" />
-
           <MovieCast :url="`/view/movie/${$route.params.id}/cast`" :casts="movie.credits.cast" />
         </div>
         <div class="col-md-12 col-lg-3 movie__sidebar">
@@ -23,6 +22,11 @@
             :url="`/view/movie/${$route.params.id}/reviews`"
             :reviews="movie.reviews.results"
           />
+        </div>
+        <div class="col-md-12 col-lg-3">
+          <div class="ads-box">
+            <adsbygoogle />
+          </div>
         </div>
       </div>
     </div>
@@ -54,6 +58,11 @@
             type="Movies"
           />
         </div>
+        <div class="col-md-12 col-lg-9">
+          <div class="ads-box">
+            <adsbygoogle />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -68,7 +77,7 @@ import MovieInfo from "@/components/movie/MovieInfo";
 import MovieReview from "@/components/movie/MovieReview";
 import MovieCollection from "@/components/movie/MovieCollection";
 import Showcase from "@/components/layout/Showcase";
-import { moviePreviewHead } from "@/utils/seoHead";
+import { moviePreviewHead, titleHead } from "@/utils/seoHead";
 export default {
   head() {
     return moviePreviewHead(this.movie, this.$route, "");

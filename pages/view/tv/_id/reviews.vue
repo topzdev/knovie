@@ -9,7 +9,7 @@
           <h1 class="heading--primary mb-1 mt-3">Reviews</h1>
         </div>
 
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-9">
           <div class="row" v-if="other_reviews == null">
             <div
               class="col col-12 mb-1"
@@ -23,6 +23,11 @@
             <div class="col col-12 mb-1" v-for="reviews in other_reviews.results" :key="reviews.id">
               <ReviewCard :review="reviews" />
             </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="ads-box">
+            <adsbygoogle />
           </div>
         </div>
       </div>
@@ -40,12 +45,12 @@
 import TVSubPreviewer from "@/components/tv/TVSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import ReviewCard from "@/components/card/ReviewCard";
-
+import { moviePreviewHead, titleHead } from "@/utils/seoHead";
 import Paginator from "@/components/search/Paginator";
 
 export default {
   head() {
-    return moviePreviewHead(this.tv_show, this.$route, "Reviews");
+    return titleHead("Reviews");
   },
   async fetch({ store, params }) {
     await store.dispatch("tv/fetchTVShow", params.id);

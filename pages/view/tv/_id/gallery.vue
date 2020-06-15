@@ -23,6 +23,11 @@
           />
         </div>
       </div>
+
+      <div class="ads-box">
+        <adsbygoogle />
+      </div>
+
       <div class="row py-0">
         <div class="col">
           <h1 class="heading--primary mt-3 mb-2">Posters</h1>
@@ -42,6 +47,9 @@
           />
         </div>
       </div>
+      <div class="ads-box">
+        <adsbygoogle />
+      </div>
     </div>
   </div>
 </template>
@@ -50,11 +58,11 @@
 import TVSubPreviewer from "@/components/tv/TVSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import ImageCard from "@/components/card/ImageCard";
-import { moviePreviewHead } from "@/utils/seoHead";
+import { moviePreviewHead, titleHead } from "@/utils/seoHead";
 
 export default {
   head() {
-    return moviePreviewHead(this.tv_show, this.$route, "Gallery");
+    return titleHead("Gallery");
   },
   async fetch({ store, params }) {
     await store.dispatch("tv/fetchTVShow", params.id);

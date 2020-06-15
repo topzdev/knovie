@@ -178,8 +178,13 @@ export default {
   modules: [
     "nuxt-user-agent",
     "@nuxtjs/axios",
-    ["vue-scrollto/nuxt", { duration: 1000, easing: "ease" }]
+    ["vue-scrollto/nuxt", { duration: 1000, easing: "ease" }],
+   '@nuxtjs/google-adsense'
   ],
+
+   'google-adsense': {
+    id: 'ca-pub-#########'
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

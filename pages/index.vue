@@ -6,6 +6,9 @@
 
       <Showcase title="Upcoming" :result="upcoming.results" type="Movies" url="/c/movie/upcoming" />
 
+      <div class="ads-box" style="height: 150px !important">
+       <adsbygoogle/>
+      </div>
       <Showcase
         title="Now Playing"
         :result="now_playing.results"
@@ -19,6 +22,9 @@
         type="Movies"
         url="/c/movie/top_rated"
       />
+      <div class="ads-box" style="height: 150px !important">
+       <adsbygoogle />
+      </div>
     </div>
   </div>
 </template>

@@ -1,8 +1,7 @@
 
 <script>
 import VueSlickCarousel from "vue-slick-carousel";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 export default {
   components: {
     VueSlickCarousel
@@ -28,3 +27,8 @@ export default {
   }
 };
 </script>
+<style>
+.slick-track{
+  display: flex;
+}
+</style>

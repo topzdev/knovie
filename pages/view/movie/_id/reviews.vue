@@ -9,7 +9,7 @@
           <h1 class="heading--primary mb-1 mt-3">Reviews</h1>
         </div>
 
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-9">
           <div class="row" v-if="other_reviews == null">
             <div class="col-12 mb-2" v-for="reviews in movie.reviews.results" :key="reviews.id">
               <ReviewCard :review="reviews" />
@@ -20,6 +20,12 @@
               <ReviewCard :review="reviews" />
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-3">
+        <div class="ads-box">
+          <adsbygoogle />
         </div>
       </div>
 
@@ -37,11 +43,11 @@ import MovieSubPreviewer from "@/components/movie/MovieSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import ReviewCard from "@/components/card/ReviewCard";
 import Paginator from "@/components/search/Paginator";
-import { moviePreviewHead } from "@/utils/seoHead";
+import { moviePreviewHead, titleHead } from "@/utils/seoHead";
 
 export default {
   head() {
-    return moviePreviewHead(this.movie, this.$route, "Reviews");
+    return titleHead("Reviews");
   },
   async fetch({ store, params }) {
     await store.dispatch("movie/fetchMovie", params.id);

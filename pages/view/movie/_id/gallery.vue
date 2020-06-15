@@ -23,6 +23,10 @@
           />
         </div>
       </div>
+
+      <div class="ads-box">
+        <adsbygoogle />
+      </div>
       <div class="row py-0">
         <div class="col">
           <h1 class="heading--primary mt-3 mb-1">Posters</h1>
@@ -42,6 +46,10 @@
           />
         </div>
       </div>
+
+      <div class="ads-box">
+        <adsbygoogle />
+      </div>
     </div>
   </div>
 </template>
@@ -50,7 +58,7 @@
 import MovieSubPreviewer from "@/components/movie/MovieSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import ImageCard from "@/components/card/ImageCard";
-import { moviePreviewHead } from "@/utils/seoHead";
+import { moviePreviewHead, titleHead } from "@/utils/seoHead";
 
 export default {
   head() {

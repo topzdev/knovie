@@ -11,6 +11,10 @@
         url="/c/tv/airing_today"
       />
 
+      <div class="ads-box">
+        <adsbygoogle />
+      </div>
+
       <Showcase
         title="On The Air"
         :result="on_the_air.results"
@@ -24,6 +28,10 @@
         type="TV Shows"
         url="/c/tv/top_rated"
       />
+
+      <div class="ads-box">
+        <adsbygoogle />
+      </div>
     </div>
   </div>
 </template>

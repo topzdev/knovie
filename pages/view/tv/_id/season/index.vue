@@ -5,16 +5,19 @@
 
     <div class="container pb-5">
       <div class="row">
-        <div class="col col-12">
+        <div class="col col-9">
           <h1 class="heading--primary mb-1 mt-3">Seasons</h1>
         </div>
 
-        <div
-          v-for="season in tv_show.seasons"
-          :key="season.name"
-          class="col-12 col-md-10 col-lg-8 mb-2"
-        >
-          <SeasonCard :season="season" :title="tv_show.name" />
+        <div class="col col-9">
+          <div v-for="season in tv_show.seasons" :key="season.name" class="col-12">
+            <SeasonCard :season="season" :title="tv_show.name" />
+          </div>
+        </div>
+        <div class="col col-3">
+          <div class="ads-box">
+            <adsbygoogle />
+          </div>
         </div>
       </div>
     </div>
@@ -25,10 +28,10 @@
 import TVSubPreviewer from "@/components/tv/TVSubPreviewer";
 import NavbarPreview from "@/components/layout/NavbarPreview";
 import SeasonCard from "@/components/card/SeasonCard";
-import { moviePreviewHead } from "@/utils/seoHead";
+import { moviePreviewHead, titleHead } from "@/utils/seoHead";
 export default {
   head() {
-    return moviePreviewHead(this.tv_show, this.$route, "Seasons");
+    return titleHead("Seasons");
   },
   async fetch({ store, params }) {
     await store.dispatch("tv/fetchTVShow", params.id);

@@ -23,6 +23,11 @@
             :reviews="tv_show.reviews.results"
           />
         </div>
+        <div class="col-md-12 col-lg-3">
+          <div class="ads-box">
+            <adsbygoogle />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -54,6 +59,11 @@
             type="TV Shows"
           />
         </div>
+        <div class="col-lg-3">
+          <div class="ads-box">
+            <adsbygoogle />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -68,11 +78,11 @@ import TVInfo from "@/components/tv/TVInfo";
 import TVReview from "@/components/tv/TVReview";
 import TVSeasons from "@/components/tv/TVSeasons";
 import Showcase from "@/components/layout/Showcase";
-import { moviePreviewHead } from "@/utils/seoHead";
+import { moviePreviewHead, titleHead } from "@/utils/seoHead";
 
 export default {
   head() {
-    return moviePreviewHead(this.tv_show, this.$route, "");
+    return titleHead("");
   },
   async fetch({ params, store }) {
     await store.dispatch("tv/fetchTVShow", params.id);
