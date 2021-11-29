@@ -19,10 +19,6 @@
             >
               <CastCard :cast="cast" />
             </div>
-
-            <div class="ads-box">
-              <adsbygoogle />
-            </div>
           </div>
           <div class="row">
             <div class="col">
@@ -37,10 +33,6 @@
             >
               <CrewCard :crew="crew" />
             </div>
-          </div>
-
-          <div class="ads-box">
-            <adsbygoogle />
           </div>
         </div>
       </div>
@@ -65,13 +57,13 @@ export default {
     MovieSubPreviewer,
     NavbarPreview,
     CastCard,
-    CrewCard
+    CrewCard,
   },
   computed: {
     movie() {
       return this.$store.getters["movie/getCurrent"];
-    }
-  }
+    },
+  },
 };
 </script>
 

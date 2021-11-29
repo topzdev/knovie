@@ -10,6 +10,7 @@ const env = {
 
 export default {
   generate: {
+    fallback: true,
     devtools: false, //true
     collapseBooleanAttributes: true,
     decodeEntities: true,
@@ -27,7 +28,7 @@ export default {
 
   head: {
     titleTemplate: "%s | Know more your movie",
-    title: "Knowvie",
+    title: "Knovie",
     meta: [
       { name: "theme-color", content: "" },
       { charset: "utf-8" },
@@ -57,7 +58,7 @@ export default {
       {
         hid: "og:title",
         property: "og:title",
-        content: `${"Knowvie"} | Know more your movie`
+        content: `${"Knovie"} | Know more your movie`
       },
       {
         hid: "og:type",
@@ -72,7 +73,7 @@ export default {
       {
         hid: "og:image",
         property: "og:image",
-        content: "/knowvie_bg.jpg"
+        content: "/knovie_bg.jpg"
       },
       {
         hid: "og:description",
@@ -83,7 +84,7 @@ export default {
       {
         hid: "og:site_name",
         property: "og:site_name",
-        content: "Knowvie"
+        content: "Knovie"
       },
       {
         hid: "twitter:card",
@@ -93,7 +94,7 @@ export default {
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: `${"Knowvie"} | Know more your movie`
+        content: `${"Knovie"} | Know more your movie`
       },
       {
         hid: "twitter:site",
@@ -109,7 +110,7 @@ export default {
       {
         hid: "twitter:image",
         name: "twitter:image",
-        content: "/knowvie_bg.jpg"
+        content: "/knovie_bg.jpg"
       },
       {
         hid: "twitter:creator",
@@ -119,7 +120,7 @@ export default {
       {
         hid: "itemprop:name",
         itemprop: "name",
-        content: `${"Knowvie"} | Know more your movie`
+        content: `${"Knovie"} | Know more your movie`
       },
       {
         hid: "itemprop:name",
@@ -131,7 +132,7 @@ export default {
       {
         hid: "itemprop:image",
         itemprop: "image",
-        content: "/knowvie-logo.jpg"
+        content: "/knovie-logo.jpg"
       }
     ],
     link: [
@@ -139,12 +140,12 @@ export default {
       {
         rel: "stylesheet",
         href: `/dark.css`
-      },
-      {
-        rel: "stylesheet",
-        href:
-          "https://fonts.googleapis.com/css?family=Montserrat:400,500i,600,600i,700,800|Open+Sans:300,300i,400,500,600,700&display=swap"
       }
+      // {
+      //   rel: "stylesheet",
+      //   href:
+      //     "https://fonts.googleapis.com/css?family=Montserrat:400,500i,600,600i,700,800|Open+Sans:300,300i,400,500,600,700&display=swap"
+      // }
     ]
   },
 
@@ -171,20 +172,16 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/dotenv"],
+  buildModules: ["@nuxtjs/dotenv", "nuxt-purgecss"],
   /*
    ** Nuxt.js modules
    */
   modules: [
     "nuxt-user-agent",
     "@nuxtjs/axios",
-    ["vue-scrollto/nuxt", { duration: 1000, easing: "ease" }],
-   '@nuxtjs/google-adsense'
+    ["vue-scrollto/nuxt", { duration: 1000, easing: "ease" }]
   ],
 
-   'google-adsense': {
-    id: 'ca-pub-#########'
-  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

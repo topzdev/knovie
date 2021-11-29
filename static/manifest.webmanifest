@@ -1,15 +1,15 @@
 {
-  "short_name": "Knowvie",
-  "name": "Knowvie | Know more your movie",
+  "short_name": "Knovie",
+  "name": "Knovie | Know more your movie",
   "description": "Browse and know more about your favorite movies, tv shows and actors",
   "icons": [
     {
-      "src": "/knowvie-logo-w192.png",
+      "src": "/knovie-logo-w192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/knowvie-logo-w512.png",
+      "src": "/knovie-logo-w512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

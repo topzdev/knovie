@@ -1,6 +1,9 @@
 <template>
   <div class="search navbar-padding">
-    <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+    <transition
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+    >
       <lazy-img
         v-if="transition"
         :path="pageBackground"
@@ -45,11 +48,11 @@
           </template>
         </div>
         <client-only>
-          <Paginator v-if="results.total_pages > 0" :totalPage="results.total_pages" />
+          <Paginator
+            v-if="results.total_pages > 0"
+            :totalPage="results.total_pages"
+          />
         </client-only>
-        <div class="ads-box">
-          <adsbygoogle />
-        </div>
       </div>
     </div>
   </div>
@@ -66,32 +69,32 @@ export default {
   data() {
     return {
       pageBackground: null,
-      transition: false
+      transition: false,
     };
   },
   components: {
     MovieCard,
     TVCard,
     Paginator,
-    PersonCard
+    PersonCard,
   },
   methods: {
-    setBackground: function(url) {
+    setBackground: function (url) {
       console.log("Hello", url);
       var self = this;
-      setTimeout(function() {
+      setTimeout(function () {
         self.pageBackground = url;
         self.transition = true;
       }, 300);
       console.log(this.transition);
     },
-    removeBackground: function() {
+    removeBackground: function () {
       var self = this;
-      setTimeout(function() {
+      setTimeout(function () {
         self.transition = false;
       }, 300);
-    }
-  }
+    },
+  },
 };
 </script>
 

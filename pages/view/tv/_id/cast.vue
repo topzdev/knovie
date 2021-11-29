@@ -18,10 +18,6 @@
           >
             <CastCard :cast="cast" />
           </div>
-
-          <div class="ads-box">
-            <adsbygoogle />
-          </div>
         </div>
         <template v-if="tv_shows.credits.crew.length > 0">
           <div class="row">
@@ -37,10 +33,6 @@
             >
               <CrewCard :crew="crew" />
             </div>
-          </div>
-
-          <div class="ads-box">
-            <adsbygoogle />
           </div>
         </template>
       </div>
@@ -65,13 +57,13 @@ export default {
     TVSubPreviewer,
     NavbarPreview,
     CastCard,
-    CrewCard
+    CrewCard,
   },
   computed: {
     tv_shows() {
       return this.$store.getters["tv/getCurrent"];
-    }
-  }
+    },
+  },
 };
 </script>
 

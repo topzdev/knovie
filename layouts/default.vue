@@ -9,15 +9,15 @@
     <template v-else>
       <div class="support">
         <div class="support__cover">
-          <img src="@/static/knowvie_bg.jpg" alt />
+          <img src="@/static/knovie_bg.jpg" alt />
         </div>
         <div class="support__content mb-2">
-          <img src="@/static/knowvie-logo.png" alt class="support__logo" />
+          <img src="@/static/knovie-logo.png" alt class="support__logo" />
 
           <h1 class="heading--primary">Oh no! Browser not supported</h1>
 
           <p class="support__explain mb-3">
-            Knowvie features is not working in this browser. Please use modern
+            Knovie features is not working in this browser. Please use modern
             browser like google chrome, mozilla, or Microsoft edge (Chromium).
             Click browser icon below to download the selected browser.
           </p>
@@ -68,7 +68,7 @@ export default {
   components: {
     Footer,
     Navbar,
-    ScrollButton
-  }
+    ScrollButton,
+  },
 };
 </script>

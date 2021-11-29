@@ -1,13 +1,13 @@
 import imagePath from "@/utils/imagePath";
-import backdrop_path from "@/static/knowvie_bg.jpg";
-import poster_path from "@/static/knowvie-logo.png";
+import backdrop_path from "@/static/knovie_bg.jpg";
+import poster_path from "@/static/knovie-logo.png";
 let site_name = process.env.SITE_NAME;
 let site_url = process.env.SITE_URL;
 
 export default (title, description) => {
   console.log(title, description);
   return {
-    titleTemplate: "%s | Knowvie",
+    titleTemplate: "%s | Knovie",
     title,
     meta: [
       {

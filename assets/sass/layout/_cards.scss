@@ -98,6 +98,8 @@
       z-index: 1;
       padding: 18px;
       color: rgba(var(--color-white), 1);
+      text-decoration: none;
+      font-family: var(--font-regular);
 
       @include respond(tab-port) {
         padding: 15px;
@@ -109,6 +111,7 @@
     }
 
     &__genre {
+      font: inherit;
       font-size: 1.5rem;
       color: rgba(var(--primary-color), 1);
       height: 18px;
@@ -134,9 +137,11 @@
     }
 
     &__title {
+      font: inherit;
       font-size: 2.4rem;
       margin-bottom: -2px;
       line-height: 1.1;
+      font-weight: 700;
 
       @include respond(tab-land) {
         font-size: 2.2rem;
@@ -156,7 +161,9 @@
     }
 
     &__date {
+      font: inherit;
       font-size: 1.4rem;
+
       color: rgba(var(--color-white), 0.6);
       @include respond(mobile-lg) {
         font-size: 1.3rem;
@@ -396,7 +403,7 @@
       font-size: 10px;
       margin-top: 3px;
       opacity: 0.5;
-      font-weight: 200;
+      // font-weight: 200;
     }
   }
 

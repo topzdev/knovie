@@ -1,8 +1,8 @@
 <template>
   <div class="card--primary">
-    <div class="card--primary__img">
+    <nuxt-link :to="moviePath" class="card--primary__img">
       <lazy-img :path="movie.poster_path" size="w154" :alt="movie.title" />
-    </div>
+    </nuxt-link>
 
     <div class="card__actions">
       <client-only>
@@ -10,19 +10,18 @@
       </client-only>
     </div>
 
-    <div class="card--primary__body">
+    <nuxt-link :to="moviePath" class="card--primary__body">
       <div class="badge badge--primary" v-text="movie.vote_average"></div>
       <h1 class="card--primary__title" v-text="textTruncate" />
       <div class="card--primary__genre" v-if="genres">
-        <span
-          v-for="genre in movie.genre_ids.slice(0, 2)"
-          :key="genre"
-        >{{ findProperties(genres, "id", genre).name }}</span>
+        <span v-for="genre in movie.genre_ids.slice(0, 2)" :key="genre">{{
+          findProperties(genres, "id", genre).name
+        }}</span>
       </div>
       <p class="card--primary__date" v-text="releaseDate" />
-    </div>
+    </nuxt-link>
 
-    <nuxt-link class="card__link" :to="moviePath" />
+    <!-- <nuxt-link class="card__link"  /> -->
   </div>
 </template>
 
@@ -48,16 +47,16 @@ export default {
     moviePath() {
       return {
         name: "view-movie-id",
-        params: { id: parseLink(this.movie.title, this.movie.id, true) }
+        params: { id: parseLink(this.movie.title, this.movie.id, true) },
       };
-    }
+    },
   },
   components: {
-    CardHeartButton
+    CardHeartButton,
   },
   methods: {
-    findProperties
-  }
+    findProperties,
+  },
 };
 </script>
 

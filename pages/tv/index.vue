@@ -2,7 +2,12 @@
   <div>
     <TVSlider :watch="popular.results" />
     <div class="container pt-2 pb-5">
-      <Showcase title="Popular" :result="popular.results" type="TV Shows" url="/c/tv/popular" />
+      <Showcase
+        title="Popular"
+        :result="popular.results"
+        type="TV Shows"
+        url="/c/tv/popular"
+      />
 
       <Showcase
         title="Airing Today"
@@ -10,10 +15,6 @@
         type="TV Shows"
         url="/c/tv/airing_today"
       />
-
-      <div class="ads-box">
-        <adsbygoogle />
-      </div>
 
       <Showcase
         title="On The Air"
@@ -28,10 +29,6 @@
         type="TV Shows"
         url="/c/tv/top_rated"
       />
-
-      <div class="ads-box">
-        <adsbygoogle />
-      </div>
     </div>
   </div>
 </template>
@@ -69,11 +66,11 @@ export default {
     },
     loading() {
       return this.$store.getters["tv/getLoading"];
-    }
+    },
   },
   components: {
     TVSlider,
-    Showcase
-  }
+    Showcase,
+  },
 };
 </script>

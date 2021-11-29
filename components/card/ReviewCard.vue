@@ -3,19 +3,26 @@
     <div class="card--review__content">
       <!-- <h3 class="heading--secondary mb-1">What an amazing movie!!!</h3> -->
       <p class="paragraph--primary">
-        {{ truncateReview }}
+        <span v-html="truncateReview"></span>
+
         <button
           class="btn btn--peek"
           aria-label="read more"
           v-if="review.content.length > official_lenght"
           @click="toggle_more = !toggle_more"
-        >see {{ toggleText }}</button>
+        >
+          see {{ toggleText }}
+        </button>
       </p>
     </div>
 
     <div class="card--review__user">
       <div class="card--review__user-profile">
-        <p class="card--review__user-name" aria-label="Reviewers username">{{ review.author }}</p>
+        <p
+          class="card--review__user-name"
+          aria-label="Reviewers username"
+          v-html="review.author"
+        ></p>
         <!-- TODO Integrate the name date of the review here -->
         <!-- <p class="card--review__date">December 20, 2019</p> -->
       </div>
@@ -39,8 +46,8 @@ export default {
       official_lenght: 400,
       toggle_more: true,
       icons: {
-        star: mdiStar
-      }
+        star: mdiStar,
+      },
     };
   },
   computed: {
@@ -53,7 +60,7 @@ export default {
     },
     toggleText() {
       return this.toggle_more ? "more..." : "less";
-    }
-  }
+    },
+  },
 };
 </script>

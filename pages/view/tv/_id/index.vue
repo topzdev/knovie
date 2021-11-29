@@ -6,14 +6,20 @@
       <div class="row" align="start">
         <div class="ol-md-12 col-lg-9 movie__main pt-5">
           <TVDescription :description="tv_show.overview" />
-          <TVCast :url="`/view/tv/${$route.params.id}/cast`" :casts="tv_show.credits.cast" />
+          <TVCast
+            :url="`/view/tv/${$route.params.id}/cast`"
+            :casts="tv_show.credits.cast"
+          />
         </div>
         <div class="col-md-12 col-lg-3 movie__sidebar">
           <TVInfo :info="tv_show" />
         </div>
       </div>
     </div>
-    <TVGallery :url="`/view/tv/${$route.params.id}/gallery`" :images="tv_show.images" />
+    <TVGallery
+      :url="`/view/tv/${$route.params.id}/gallery`"
+      :images="tv_show.images"
+    />
 
     <div class="container">
       <div class="row">
@@ -22,11 +28,6 @@
             :url="`/view/tv/${$route.params.id}/reviews`"
             :reviews="tv_show.reviews.results"
           />
-        </div>
-        <div class="col-md-12 col-lg-3">
-          <div class="ads-box">
-            <adsbygoogle />
-          </div>
         </div>
       </div>
     </div>
@@ -59,11 +60,6 @@
             type="TV Shows"
           />
         </div>
-        <div class="col-lg-3">
-          <div class="ads-box">
-            <adsbygoogle />
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -95,19 +91,19 @@ export default {
     TVInfo,
     TVReview,
     Showcase,
-    TVSeasons
+    TVSeasons,
   },
   watch: {
     $route(to, from) {
       this.$store.dispatch("tv/fetchTVShow", this.$route.params.id);
-    }
+    },
   },
   scrollToTop: true,
   computed: {
     tv_show() {
       return this.$store.getters["tv/getCurrent"];
-    }
-  }
+    },
+  },
 };
 </script>
 

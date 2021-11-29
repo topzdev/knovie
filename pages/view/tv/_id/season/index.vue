@@ -10,13 +10,12 @@
         </div>
 
         <div class="col col-9">
-          <div v-for="season in tv_show.seasons" :key="season.name" class="col-12">
+          <div
+            v-for="season in tv_show.seasons"
+            :key="season.name"
+            class="col-12"
+          >
             <SeasonCard :season="season" :title="tv_show.name" />
-          </div>
-        </div>
-        <div class="col col-3">
-          <div class="ads-box">
-            <adsbygoogle />
           </div>
         </div>
       </div>
@@ -42,7 +41,7 @@ export default {
   components: {
     TVSubPreviewer,
     NavbarPreview,
-    SeasonCard
+    SeasonCard,
   },
   watch: {
     $route() {
@@ -53,9 +52,9 @@ export default {
       const { params, query } = this.$route;
       this.$store.dispatch("tv/fetchReviews", {
         id: params.id,
-        page: query.page ? query.page : 1
+        page: query.page ? query.page : 1,
       });
-    }
+    },
   },
   computed: {
     tv_show() {
@@ -63,8 +62,8 @@ export default {
     },
     other_reviews() {
       return this.$store.getters["tv/getReviews"];
-    }
-  }
+    },
+  },
 };
 </script>
 

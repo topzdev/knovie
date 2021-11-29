@@ -11,21 +11,23 @@
 
         <div class="col-12 col-lg-9">
           <div class="row" v-if="other_reviews == null">
-            <div class="col-12 mb-2" v-for="reviews in movie.reviews.results" :key="reviews.id">
+            <div
+              class="col-12 mb-2"
+              v-for="reviews in movie.reviews.results"
+              :key="reviews.id"
+            >
               <ReviewCard :review="reviews" />
             </div>
           </div>
           <div class="row" v-else>
-            <div class="col-12 mb-2" v-for="reviews in other_reviews.results" :key="reviews.id">
+            <div
+              class="col-12 mb-2"
+              v-for="reviews in other_reviews.results"
+              :key="reviews.id"
+            >
               <ReviewCard :review="reviews" />
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-3">
-        <div class="ads-box">
-          <adsbygoogle />
         </div>
       </div>
 
@@ -59,7 +61,7 @@ export default {
     MovieSubPreviewer,
     NavbarPreview,
     ReviewCard,
-    Paginator
+    Paginator,
   },
   watch: {
     $route() {
@@ -70,9 +72,9 @@ export default {
       const { params, query } = this.$route;
       this.$store.dispatch("movie/fetchReviews", {
         id: params.id,
-        page: query.page ? query.page : 1
+        page: query.page ? query.page : 1,
       });
-    }
+    },
   },
   computed: {
     movie() {
@@ -80,8 +82,8 @@ export default {
     },
     other_reviews() {
       return this.$store.getters["movie/getReviews"];
-    }
-  }
+    },
+  },
 };
 </script>
 

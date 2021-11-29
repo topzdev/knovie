@@ -24,10 +24,6 @@
         </div>
       </div>
 
-      <div class="ads-box">
-        <adsbygoogle />
-      </div>
-
       <div class="row py-0">
         <div class="col">
           <h1 class="heading--primary mt-3 mb-2">Posters</h1>
@@ -46,9 +42,6 @@
             :style="`--primary: ${tv_show.color.secondaryColor}`"
           />
         </div>
-      </div>
-      <div class="ads-box">
-        <adsbygoogle />
       </div>
     </div>
   </div>
@@ -70,13 +63,13 @@ export default {
   components: {
     TVSubPreviewer,
     NavbarPreview,
-    ImageCard
+    ImageCard,
   },
   computed: {
     tv_show() {
       return this.$store.getters["tv/getCurrent"];
-    }
-  }
+    },
+  },
 };
 </script>
 

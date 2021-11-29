@@ -29,9 +29,6 @@
           <PersonBiography :biography="person.biography" />
           <PersonInfo :person="person" />
         </div>
-        <div class="ads-box">
-          <adsbygoogle />
-        </div>
 
         <div class="col">
           <Showcase
@@ -76,18 +73,18 @@ export default {
     PersonPreviewer,
     Showcase,
     PersonInfo,
-    SocialButton
+    SocialButton,
   },
 
   methods: {
-    imagePath
+    imagePath,
   },
 
   computed: {
     person() {
       return this.$store.getters["person/getPerson"];
-    }
-  }
+    },
+  },
 };
 </script>
 

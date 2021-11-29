@@ -24,9 +24,6 @@
         </div>
       </div>
 
-      <div class="ads-box">
-        <adsbygoogle />
-      </div>
       <div class="row py-0">
         <div class="col">
           <h1 class="heading--primary mt-3 mb-1">Posters</h1>
@@ -45,10 +42,6 @@
             :style="`--primary: ${movie.color.secondaryColor}`"
           />
         </div>
-      </div>
-
-      <div class="ads-box">
-        <adsbygoogle />
       </div>
     </div>
   </div>
@@ -70,13 +63,13 @@ export default {
   components: {
     MovieSubPreviewer,
     NavbarPreview,
-    ImageCard
+    ImageCard,
   },
   computed: {
     movie() {
       return this.$store.getters["movie/getCurrent"];
-    }
-  }
+    },
+  },
 };
 </script>
 

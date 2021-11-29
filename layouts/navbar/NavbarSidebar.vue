@@ -4,14 +4,27 @@
       <vue-icon size="40" :svg="icons.menu" />
     </button>
     <div class="navbar__backdrop" v-show="show" @click="show = false" />
-    <ul class="navbar__sidebar" @click="show = false" :class="{'navbar__sidebar-show': show}">
+    <ul
+      class="navbar__sidebar"
+      @click="show = false"
+      :class="{ 'navbar__sidebar-show': show }"
+    >
       <li>
         <nuxt-link to="/" class="navbar__brand">
-          <img src="~/assets/img/knowvie-logo.png" alt="Knowvie Logo" draggable="false" />
+          <img
+            src="~/assets/img/knovie-logo.png"
+            alt="Knovie Logo"
+            draggable="false"
+          />
         </nuxt-link>
       </li>
       <li class="navbar__sidebar-item">
-        <nuxt-link to="/" class="navbar__link navbar-preview__link" aria-label="Movie">Movie</nuxt-link>
+        <nuxt-link
+          to="/"
+          class="navbar__link navbar-preview__link"
+          aria-label="Movie"
+          >Movie</nuxt-link
+        >
       </li>
       <li class="navbar__sidebar-item">
         <nuxt-link
@@ -19,7 +32,8 @@
           class="navbar__link navbar-preview__link"
           aria-label="List of tv shows"
           title="See list of tv shows"
-        >TV Shows</nuxt-link>
+          >TV Shows</nuxt-link
+        >
       </li>
       <li class="navbar__sidebar-item">
         <nuxt-link
@@ -27,7 +41,8 @@
           class="navbar__link navbar-preview__link"
           aria-label="List of person"
           title="See list of people in film industry"
-        >Person</nuxt-link>
+          >Person</nuxt-link
+        >
       </li>
       <li class="navbar__sidebar-item">
         <nuxt-link
@@ -35,7 +50,8 @@
           class="navbar__link navbar-preview__link"
           aria-label="Discover movies"
           title="Discover and search movies or tv shows "
-        >Discover</nuxt-link>
+          >Discover</nuxt-link
+        >
       </li>
       <li class="navbar__sidebar-item">
         <nuxt-link
@@ -43,7 +59,8 @@
           class="navbar__link navbar-preview__link"
           aria-label="Movie you liked"
           title="Movie you like"
-        >Liked</nuxt-link>
+          >Liked</nuxt-link
+        >
       </li>
       <li class="navbar__sidebar-item">
         <div class="navbar__link navbar-preview__link">
@@ -62,12 +79,12 @@ export default {
     return {
       show: false,
       icons: {
-        menu: mdiMenu
-      }
+        menu: mdiMenu,
+      },
     };
   },
   components: {
-    DarkModeButton
+    DarkModeButton,
   },
   watch: {
     show() {
@@ -76,8 +93,8 @@ export default {
         return;
       }
       document.documentElement.style.overflowY = "auto";
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -16,7 +16,7 @@ export default {
   mixins: [SliderMixins],
   props: ["category", "watch"],
   components: {
-    MovieSliderCard
-  }
+    MovieSliderCard,
+  },
 };
 </script>

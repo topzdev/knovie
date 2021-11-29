@@ -20,14 +20,13 @@
             </div>
           </div>
           <div class="row" v-else>
-            <div class="col col-12 mb-1" v-for="reviews in other_reviews.results" :key="reviews.id">
+            <div
+              class="col col-12 mb-1"
+              v-for="reviews in other_reviews.results"
+              :key="reviews.id"
+            >
               <ReviewCard :review="reviews" />
             </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-3">
-          <div class="ads-box">
-            <adsbygoogle />
           </div>
         </div>
       </div>
@@ -62,7 +61,7 @@ export default {
     TVSubPreviewer,
     NavbarPreview,
     ReviewCard,
-    Paginator
+    Paginator,
   },
   watch: {
     $route() {
@@ -73,9 +72,9 @@ export default {
       const { params, query } = this.$route;
       this.$store.dispatch("tv/fetchReviews", {
         id: params.id,
-        page: query.page ? query.page : 1
+        page: query.page ? query.page : 1,
       });
-    }
+    },
   },
   computed: {
     tv_show() {
@@ -83,8 +82,8 @@ export default {
     },
     other_reviews() {
       return this.$store.getters["tv/getReviews"];
-    }
-  }
+    },
+  },
 };
 </script>
 
