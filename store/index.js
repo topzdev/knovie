@@ -90,12 +90,9 @@ export const actions = {
   ) {
     try {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/discover/${type}?api_key=${
-          process.env.TMDB_API_KEY_V3
-        }&language=en-US&sort_by=${sort_value}${
-          genre_value != -1 ? "&with_genres=" + genre_value : ""
-        }&include_adult=false&include_video=false&${
-          type === "movie" ? "year=" : "first_air_date_year="
+        `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.TMDB_API_KEY_V3
+        }&language=en-US&sort_by=${sort_value}${genre_value != -1 ? "&with_genres=" + genre_value : ""
+        }&include_adult=false&include_video=false&${type === "movie" ? "year=" : "first_air_date_year="
         }${year_value}&page=${page}`
       );
       res.data.type = type;

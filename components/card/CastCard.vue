@@ -5,6 +5,8 @@
         :path="cast.profile_path"
         class="fit-image"
         size="w185"
+        height="210"
+        width="143"
         :alt="`${cast.name} as ${cast.character}`"
         :title="`${cast.name} as ${cast.character}`"
         aria-label="Cast profiles"
@@ -22,7 +24,9 @@
         class="card--secondary__film-name"
         v-if="cast.character"
         aria-label="Movie role/character"
-      >as {{ cast.character }}</p>
+      >
+        as {{ cast.character }}
+      </p>
     </div>
   </div>
 </template>

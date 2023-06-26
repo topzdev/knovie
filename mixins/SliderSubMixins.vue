@@ -16,10 +16,17 @@ export default {
       return cliTruncate(this.watch.overview, 190);
     },
     imgSrcSet() {
-      return `${imagePath(this.watch.backdrop_path, "w780")} 600w,${imagePath(
-        this.watch.backdrop_path,
-        "w1280"
-      )} 1940w, ${imagePath(this.watch.backdrop_path, "original")} 1945w`;
+      return `${imagePath(this.watch.backdrop_path, "w780")} 600w,
+        ${imagePath(this.watch.backdrop_path, "w1280")} 1200w, 
+        ${imagePath(this.watch.backdrop_path, "original")} 1945w`;
+    },
+
+    imgPictureImages() {
+      return {
+        w600: imagePath(this.watch.backdrop_path, "w780"),
+        w1940: imagePath(this.watch.backdrop_path, "w1280"),
+        original: imagePath(this.watch.backdrop_path, "original")
+      };
     }
   },
   methods: {

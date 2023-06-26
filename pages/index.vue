@@ -40,12 +40,12 @@ export default {
   head() {
     return {
       titleTemplate: "%s | Know more your movie",
-      title: "Knovie",
+      title: "Knovie"
     };
   },
   components: {
     MovieSlider,
-    Showcase,
+    Showcase
   },
   async fetch({ store, data }) {
     await store.dispatch("movie/fetchCategory", { category: "now_playing" });
@@ -65,7 +65,7 @@ export default {
     },
     popular() {
       return this.$store.getters["movie/getCategories"]("popular");
-    },
-  },
+    }
+  }
 };
 </script>

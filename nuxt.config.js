@@ -201,7 +201,6 @@ export default {
      ** You can extend webpack config here
      */
     env,
-    transpile: [/^vuetify/],
     analyze: false, //true
     extend(config, ctx) {
       config.node = {

@@ -11,6 +11,9 @@
             src="/knovie-logo-w192.png"
             alt="Knovie Logo"
             draggable="false"
+            height="50"
+            width="50"
+            loading="lazy"
           />
         </nuxt-link>
 
@@ -79,13 +82,13 @@ export default {
     return {
       fixedNavbar: false,
       hiddenNav: false,
-      lastScrollPosition: 0,
+      lastScrollPosition: 0
     };
   },
   components: {
     NavbarSearch,
     NavbarSidebar,
-    DarkModeButton,
+    DarkModeButton
   },
   methods: {
     onScroll() {
@@ -103,13 +106,13 @@ export default {
       }
 
       this.lastScrollPosition = currentScrollPosition;
-    },
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.onScroll);
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.onScroll);
-  },
+  }
 };
 </script>

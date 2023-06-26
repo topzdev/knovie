@@ -11,9 +11,8 @@
 import imagePath from "@/utils/imagePath";
 export default {
   props: ["path", "size"],
-  methods: { imagePath },
+  methods: { imagePath }
 };
 </script>
 
-<style>
-</style>
+<style></style>

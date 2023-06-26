@@ -1,7 +1,14 @@
 <template>
   <div class="card--primary">
     <nuxt-link :to="moviePath" class="card--primary__img">
-      <lazy-img :path="movie.poster_path" size="w154" :alt="movie.title" />
+      <lazy-img
+        :path="movie.poster_path"
+        size="w342"
+        data
+        :alt="movie.title"
+        width="201"
+        height="330"
+      />
     </nuxt-link>
 
     <div class="card__actions">
@@ -26,7 +33,6 @@
 </template>
 
 <script>
-import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import parseLink from "@/utils/parseLink";
 import findProperties from "@/utils/findProperties";
 import dayjs from "dayjs";
@@ -47,16 +53,16 @@ export default {
     moviePath() {
       return {
         name: "view-movie-id",
-        params: { id: parseLink(this.movie.title, this.movie.id, true) },
+        params: { id: parseLink(this.movie.title, this.movie.id, true) }
       };
-    },
+    }
   },
   components: {
-    CardHeartButton,
+    CardHeartButton
   },
   methods: {
-    findProperties,
-  },
+    findProperties
+  }
 };
 </script>
 

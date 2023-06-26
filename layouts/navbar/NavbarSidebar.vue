@@ -15,6 +15,9 @@
             src="~/assets/img/knovie-logo.png"
             alt="Knovie Logo"
             draggable="false"
+            loading="lazy"
+            height="50"
+            width="46"
           />
         </nuxt-link>
       </li>
@@ -79,12 +82,12 @@ export default {
     return {
       show: false,
       icons: {
-        menu: mdiMenu,
-      },
+        menu: mdiMenu
+      }
     };
   },
   components: {
-    DarkModeButton,
+    DarkModeButton
   },
   watch: {
     show() {
@@ -93,10 +96,9 @@ export default {
         return;
       }
       document.documentElement.style.overflowY = "auto";
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>
