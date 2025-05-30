@@ -1,0 +1,19 @@
+services:
+  knowvie:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+      - PORT=3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.nuxt
+    command: npm run dev
+
+#docker compose -f compose.prod.yaml up --build -d

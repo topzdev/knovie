@@ -1,0 +1,11 @@
+services:
+  knowvie:
+    image: knowvie:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+
+#docker compose -f compose.prod.yaml up --build -d
